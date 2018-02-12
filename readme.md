@@ -1,29 +1,24 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+LazyBrain | LazyClub app
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+Repository contains application apllicable for internal purposes of LazyBrain organization.
+
 
 ### How do I get set up? ###
+$ git clone https://github.com/LazyBrainAI/LazyClub.git
+$ cd LazyClub/
+$ composer install
+$ php artisan serve
+$ php artisan serve --port=available_port_num (If port 8000 is already in use on your machine do this command instead )
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+You may see the application on http://127.0.0.1:port_num
 
-### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* Repo owner
+* Team members
