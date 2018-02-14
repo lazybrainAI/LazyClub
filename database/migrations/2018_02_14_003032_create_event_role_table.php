@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSocialTable extends Migration
+class CreateEventRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateSocialTable extends Migration
      */
     public function up()
     {
-        Schema::create('social', function (Blueprint $table) {
-            $table->increments('social_id');
-            $table->primary('social_id');
-            $table->string('social_name');
+        Schema::create('event_role', function (Blueprint $table) {
+            $table->increments('id_role');
+            //composite pk id_event
+            $table->integer('id_event'); //part of pk
 
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateSocialTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social');
+        Schema::dropIfExists('event_project_role');
     }
 }

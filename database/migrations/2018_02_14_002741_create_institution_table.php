@@ -1,19 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: TEODORA
- * Date: 2/12/2018
- * Time: 9:07 AM
- */
-
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectActionTable extends Migration
+class CreateInstitutionTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -21,13 +13,11 @@ class CreateProjectActionTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_action', function (Blueprint $table) {
-            $table->increments('institution_id');
-            $table->primary('institution_id');
+        Schema::create('institution', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('institution_name');
             $table->string('institution_address');
-
-
+            $table->timestamps();
         });
     }
 
@@ -38,8 +28,6 @@ class CreateProjectActionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_action');
+        Schema::dropIfExists('institution');
     }
-
-
 }

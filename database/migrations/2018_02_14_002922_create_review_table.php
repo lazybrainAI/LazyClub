@@ -1,13 +1,11 @@
 <?php
 
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanyTable extends Migration
+class CreateReviewTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -15,11 +13,11 @@ class CreateCompanyTable extends Migration
      */
     public function up()
     {
-        Schema::create('company', function (Blueprint $table) {
-            $table->increments('company_id');
-            $table->primary('company_id');
-            $table->string('company_name');
-
+        Schema::create('review', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('date_post');
+            $table->string('description');
+            $table->timestamps();
         });
     }
 
@@ -30,7 +28,6 @@ class CreateCompanyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('company');
+        Schema::dropIfExists('review');
     }
-
 }
