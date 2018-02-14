@@ -13,11 +13,17 @@ class CreateEducationTable extends Migration
      */
     public function up()
     {
-        Schema::create('institution_member', function (Blueprint $table) {
+        Schema::create('education', function (Blueprint $table) {
+            $table->primary(['user_id', 'institution_id']);
             $table->string('title');
-
             $table->date('start_date');  //period of time
             $table->date('end_date');
+
+            $table->integer('user_id')->unsigned();
+            $table->integer('institution_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('institution_id')->references('id')->on('institution');
+
             $table->timestamps();
         });
     }
@@ -29,6 +35,6 @@ class CreateEducationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('institution_member');
+        Schema::dropIfExists('education');
     }
 }

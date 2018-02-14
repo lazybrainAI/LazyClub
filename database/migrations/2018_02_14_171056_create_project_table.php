@@ -14,16 +14,22 @@ class CreateProjectTable extends Migration
     public function up()
     {
         Schema::create('project', function (Blueprint $table) {
+
             $table->increments('id');
             $table->string('name');
             $table->string('description');
             $table->string('sector');
             $table->date('start_date');
             $table->date('end_date');
-            $table->integer('id_language');
-            $table->string('id_location');
-            $table->string('id_team');
 
+            $table->integer('loc_id')->unsigned();
+            $table->integer('lang_id')->unsigned();
+            $table->integer('team_id')->unsigned();
+            $table->foreign('lang_id')->references('id')->on('language');
+            $table->foreign('loc_id')->references('id')->on('location');
+            $table->foreign('team_id')->references('id')->on('team');
+
+            $table->timestamps();
         });
     }
 

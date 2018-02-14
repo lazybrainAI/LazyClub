@@ -14,10 +14,13 @@ class CreateSocialNetworksTable extends Migration
     public function up()
     {
         Schema::create('social_networks', function (Blueprint $table) {
-
-
+            $table->primary(['sn_id', 'user_id']);
+            $table->integer('sn_id');
             $table->string('SN_name');
             $table->string('URL');
+
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

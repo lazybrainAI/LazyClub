@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReviewTable extends Migration
+class CreateViewTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateReviewTable extends Migration
      */
     public function up()
     {
-        Schema::create('review', function (Blueprint $table) {
+        Schema::create('view_type', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date_post');
-            $table->string('description');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateReviewTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('review');
+        Schema::dropIfExists('view_type');
     }
 }

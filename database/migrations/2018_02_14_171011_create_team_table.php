@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectRoleTable extends Migration
+class CreateTeamTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateProjectRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_role', function (Blueprint $table) {
-
-            $table->integer('id_role');
-            //composite pk id_event
-            $table->integer('id_project'); //part of pk
-            $table->string('status');
+        Schema::create('team', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateProjectRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_role');
+        Schema::dropIfExists('team');
     }
 }

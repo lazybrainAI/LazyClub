@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //return user social network
+    public function social_network(){
+
+        return $this->hasMany('App\SocialNetwork'); //looks for a foreign key in SocialNetwork Model
+    }
 
 
 }

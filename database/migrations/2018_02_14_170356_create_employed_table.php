@@ -14,10 +14,19 @@ class CreateEmployedTable extends Migration
     public function up()
     {
         Schema::create('employed', function (Blueprint $table) {
+            $table->primary(['user_id', 'company_id']);
+
             $table->date('start_date');
             $table->date('end_date');
             $table->text('description');
             $table->string('position');
+
+            $table->integer('user_id')->unsigned();
+            $table->integer('company_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('company_id')->references('id')->on('company');
+
+            $table->timestamps();
         });
     }
 
