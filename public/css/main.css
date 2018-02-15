@@ -1,11 +1,32 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 body, html {
-  min-height: 100%;
+  height: 100%;
   position: relative;
   margin: 0px;
 }
 
 #page_top_picture {
-  background-image: url("/img/page_top.jpeg");
-  height: 150px;
+  background-image: url("/img/page_top.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  height: 250px;
+}
+
+.container-fluid {
+  position: fixed;
+  top: 200px;
+  width: 100%;
+}
+.container-fluid .row #page_title {
+  width: 30%;
+  background-color: white;
+  border: 1px solid #025284;
+  border-radius: 10px;
+  margin: auto;
+}
+.container-fluid .row #page_title h1 {
+  text-align: center;
+  color: #025284;
 }

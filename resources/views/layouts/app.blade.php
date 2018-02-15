@@ -23,6 +23,9 @@
 @section('page_top_picture')
 @show
 
+@section('page_title_button')
+@show
+
 @section('sidebar')
 @show
 

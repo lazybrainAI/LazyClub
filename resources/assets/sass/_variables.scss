@@ -1,10 +1,20 @@
 
-// Body
+// Colors
+
+$blue:#025284;
 
 
+
+//Opacity
+
+$bckg-img-opacity:30%;
+
+//Images
+$page-top:"/img/page_top.jpg";
+$page-top-height:250px;
 
 // Typography
-$font-family-sans-serif: "Raleway", sans-serif;
+$font-family-sans-serif: "Miriad", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 $text-color: #636b6f;
@@ -17,3 +27,4 @@ $btn-default-color: $text-color;
 
 // Panels
 $panel-default-heading-bg: #fff;
+

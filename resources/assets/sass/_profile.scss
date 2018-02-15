@@ -1,11 +1,31 @@
-body, html{
-  min-height: 100%;
-  position: relative;
-  margin:0px;
+@import "variables";
+@import "page-base";
+
+
+
+.container-fluid{
+  position:fixed;
+  top:200px;
+  width:100%;
+  .row{
+
+    #page_title{
+      width:30%;
+      background-color: white;
+      border:1px solid $blue;
+      border-radius: 10px;
+
+      margin:auto;
+      h1{
+        text-align: center;
+        color:$blue;
+      }
+
+    }
+  }
 }
 
 
-#page_top_picture{
-  background-image: url("/img/page_top.jpeg");
-  height: 150px;
-}
+
+
+
