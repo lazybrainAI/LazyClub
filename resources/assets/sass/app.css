@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+::placeholder {
+  color: #025284;
+  font-family: "Miriad", sans-serif;
+  font-size: 2rem; }
+
+body {
+  background-image: url("/img/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; }
+
+section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; }
+
+#div_for_form {
+  padding-top: 12%;
+  align-items: center;
+  text-align: center; }
+
+form {
+  background: rgba(2, 82, 132, 0.8);
+  border-radius: 10px;
+  margin: auto;
+  width: 45%;
+  height: 100%;
+  padding: 1%; }
+
+h2 {
+  font-size: 4.8em;
+  color: #fff;
+  padding-bottom: 1.5%;
+  font-family: "Miriad", sans-serif; }
+
+#username, #password {
+  width: 90%;
+  height: 8%;
+  padding: 10px 10px 10px 25px;
+  border-radius: 15px;
+  font-size: 2rem;
+  border-color: rgba(2, 82, 132, 0.8);
+  margin-bottom: 4%; }
+
+#loginButton {
+  text-align: center;
+  padding-bottom: 3%; }
+
+button {
+  width: 45%;
+  border-radius: 15px;
+  background-color: #025284;
+  border-color: #fff;
+  font-size: 2rem;
+  color: #fff;
+  margin: 0px; }
+
+body, html {
+  height: 100%;
+  position: relative;
+  margin: 0px; }
+
+#page_top_picture {
+  background-image: url("/img/page_top.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  height: 250px; }
+
+.container-fluid {
+  position: fixed;
+  top: 200px;
+  width: 100%; }
+  .container-fluid .row #page_title {
+    width: 30%;
+    background-color: white;
+    border: 1px solid #025284;
+    border-radius: 10px;
+    margin: auto; }
+    .container-fluid .row #page_title h1 {
+      text-align: center;
+      color: #025284; }
+
+/*# sourceMappingURL=app.css.map */

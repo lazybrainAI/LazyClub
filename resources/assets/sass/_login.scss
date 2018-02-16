@@ -1,0 +1,65 @@
+@import "variables";
+
+::placeholder {
+  color: #025284;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-fields;
+}
+
+body {
+  background-image: url($background-picture);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+#div_for_form{
+  padding-top: 12%;
+  align-items: center;
+  text-align: center;
+}
+form{
+  background: $bck-color-with-opacity;
+  border-radius: 10px;
+  margin: auto;
+  width: 45%;
+  height: 100%;
+  padding: 1%;
+
+}
+h2{
+  font-size: 4.8em;
+  color: $text-color-headings;
+  padding-bottom: 1.5%;
+  font-family: $font-family-sans-serif;
+}
+#username, #password{
+  width: $login-fields;
+  height: 8%;
+  padding: 10px 10px 10px 25px;
+  border-radius: $login-borders;
+  font-size: $font-size-fields;
+  border-color: $bck-color-with-opacity;
+  margin-bottom: 4%;
+}
+
+#loginButton{
+  text-align: center;
+  padding-bottom: 3%;
+}
+button{
+  width: 45%;
+  border-radius: $login-borders;
+  background-color: $blue;
+  border-color: $text-color-headings;
+  font-size: $font-size-fields;
+  color:$login-button;
+  margin:auto;
+}
