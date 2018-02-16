@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/login', function () {
+Route::get('/', function () {
     return view('login');
 });
 
@@ -21,4 +21,8 @@ Route::get('/profile', function(){
 });
 Route::get('/project', function (){
     return view('project');
+});
+
+Route::get('/event', function (){
+    return view('event');
 });

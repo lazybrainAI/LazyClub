@@ -18,7 +18,7 @@
         margin-bottom:2px;
         height:35px;
 
-        padding-left:10px;
+        padding:5px 5px 5px 10px !important;
 
         &:hover{
           background-color: white;
@@ -140,9 +140,12 @@
     .experience{
       border-left: 1px solid $blue;
       padding-left:15px;
-      h5, h6{
+      h5{
         color:$blue!important;
         font-weight: 500!important;
+      }
+      h6{
+        color:white!important;
       }
     }
 

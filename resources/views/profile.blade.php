@@ -230,11 +230,6 @@
 
 
 
-@section('sidebar_section')
- @parent
-
-@endsection
-
 
 
 
