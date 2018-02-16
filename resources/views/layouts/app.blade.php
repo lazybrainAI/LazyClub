@@ -14,7 +14,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
-    <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
+    @section('include_css')
+        @show
 
     <title>Lazy Club @yield('title')</title>
 </head>
