@@ -14,10 +14,32 @@ $page-top:"/img/page_top.jpg";
 $page-top-height:250px;
 
 // Typography
-$font-family-sans-serif: "Miriad", sans-serif;
+$font-family-sans-serif: "MiriadPro", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
-$text-color: #636b6f;
+$text-color: $blue;
+
+
+
+h2{ //page_title
+  color:$blue!important;
+  text-align: center;
+}
+
+h5{ //sidebar, section_title
+  font-weight: 400!important;
+  color:white!important;
+}
+
+h6{ //text, profile details
+  font-weight: 400!important;
+
+}
+
+.h7{
+  font-weight: 300!important;
+  font-size:0.8rem!important;
+}
 
 // Navbar
 $navbar-default-bg: #fff;

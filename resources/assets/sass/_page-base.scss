@@ -1,9 +1,11 @@
 @import "variables";
 
 body, html{
-  height: 100%;
+  min-height: 100%;
   position: relative;
-  margin:0px;
+  margin:0;
+
+
 }
 
 
@@ -15,6 +17,24 @@ body, html{
     repeat: no-repeat;
     attachment: scroll;
   }
-
+  position: relative;
   height: $page-top-height;
+
+
+  .p_t_button{
+    position:absolute;
+    bottom:-15px;
+
+    .row{
+
+      #page_title{
+        background-color: white;
+        border:1px solid $blue;
+        border-radius: 12px;
+
+      }
+    }
+  }
+
 }
+

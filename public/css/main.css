@@ -1,8 +1,46 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+h2 {
+  color: #025284 !important;
+  text-align: center;
+}
+
+h5 {
+  font-weight: 400 !important;
+  color: white !important;
+}
+
+h6 {
+  font-weight: 400 !important;
+}
+
+.h7 {
+  font-weight: 300 !important;
+  font-size: 0.8rem !important;
+}
+
+h2 {
+  color: #025284 !important;
+  text-align: center;
+}
+
+h5 {
+  font-weight: 400 !important;
+  color: white !important;
+}
+
+h6 {
+  font-weight: 400 !important;
+}
+
+.h7 {
+  font-weight: 300 !important;
+  font-size: 0.8rem !important;
+}
+
 body, html {
-  height: 100%;
+  min-height: 100%;
   position: relative;
-  margin: 0px;
+  margin: 0;
 }
 
 #page_top_picture {
@@ -11,22 +49,114 @@ body, html {
   background-position: bottom;
   background-repeat: no-repeat;
   background-attachment: scroll;
+  position: relative;
   height: 250px;
 }
-
-.container-fluid {
-  position: fixed;
-  top: 200px;
-  width: 100%;
+#page_top_picture .p_t_button {
+  position: absolute;
+  bottom: -15px;
 }
-.container-fluid .row #page_title {
-  width: 30%;
+#page_top_picture .p_t_button .row #page_title {
   background-color: white;
   border: 1px solid #025284;
-  border-radius: 10px;
-  margin: auto;
+  border-radius: 12px;
 }
-.container-fluid .row #page_title h1 {
-  text-align: center;
-  color: #025284;
+
+.sidebar {
+  margin-top: 70px;
+}
+.sidebar .row #sidebar-menu {
+  position: sticky;
+}
+.sidebar .row #sidebar-menu li:first-child {
+  border-top-right-radius: 10px;
+}
+.sidebar .row #sidebar-menu li {
+  list-style: none;
+  background-color: #025284;
+  margin-bottom: 2px;
+  height: 35px;
+  padding-left: 10px;
+}
+.sidebar .row #sidebar-menu li:hover {
+  background-color: white;
+  border: 1px solid #025284;
+}
+.sidebar .row #sidebar-menu li:hover a h5 {
+  color: #025284 !important;
+}
+.sidebar .row #sidebar-menu li a:hover {
+  text-decoration: none;
+}
+
+.profile_info {
+  border-left: 1px solid #025284;
+  padding-left: 0 !important;
+}
+.profile_info .profile_details_container {
+  padding-left: 0;
+  margin-left: 0;
+}
+.profile_info .profile_details_container .section_title {
+  background-color: #025284;
+  color: white;
+  height: 35px;
+  width: 40%;
+  border-bottom-right-radius: 10px;
+  padding-left: 10px;
+}
+.profile_info .profile_img_container {
+  margin-top: -60px;
+}
+.profile_info .profile_img_container .profile_img {
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 150px;
+  width: 150px;
+}
+
+.profile_details {
+  height: 150px;
+  background-color: #025284;
+  color: white;
+  padding-left: 10px !important;
+}
+.profile_details h6:first-child {
+  padding-top: 10px;
+}
+
+@media (max-width: 1100px) {
+  #sidebar-menu {
+    padding-left: 0;
+  }
+}
+@media (max-width: 790px) {
+  .section_title {
+    width: 60% !important;
+  }
+
+  .profile_details_container {
+    margin-bottom: 10px;
+  }
+
+  .profile_img_container {
+    margin-top: 0 !important;
+  }
+}
+@media (max-width: 590px) {
+  #page_title {
+    width: 50%;
+  }
+
+  .profile_info {
+    margin-left: 10px;
+  }
+
+  .section_title {
+    width: 30% !important;
+  }
+
+  #sidebar-menu {
+    display: none;
+  }
 }
