@@ -20,7 +20,7 @@ h6 {
 
 ::placeholder {
   color: #025284;
-  font-family: "MiriadPro", sans-serif;
+  font-family: MyriadPro, sans-serif;
   font-size: 2rem;
 }
 
@@ -55,11 +55,11 @@ form {
   padding: 1%;
 }
 
-h2 {
+.lazytittle {
   font-size: 4.8em;
-  color: #fff;
   padding-bottom: 1.5%;
-  font-family: "MiriadPro", sans-serif;
+  font-family: MyriadPro, sans-serif;
+  color: #fff !important;
 }
 
 #username, #password {
@@ -75,16 +75,16 @@ h2 {
 #loginButton {
   text-align: center;
   padding-bottom: 3%;
+  font-size: 2rem;
 }
 
-button {
+#lazybutton {
   width: 45%;
   border-radius: 15px;
   background-color: #025284;
   border-color: #fff;
   font-size: 2rem;
   color: #fff;
-  margin: auto;
 }
 
 h2 {

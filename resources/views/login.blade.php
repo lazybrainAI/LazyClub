@@ -7,7 +7,7 @@
     <div id="div_for_form">
         <form>
             <div class="col-xs-12">
-                <h2>
+                <h2 class="lazytittle" id="lazytittle">
                     Club | LazyBrain
                 </h2>
             </div>
@@ -17,7 +17,7 @@
             <div class="col-xs-12">
                 <input type="password" name="password" placeholder="password" id="password">
             </div>
-            <div  class="col-xs-12" id="loginButton"><button type="submit" class="btn btn-primary">log in</button>
+            <div  class="col-xs-12" id="loginButton"><button type="submit" class="btn btn-primary" id="lazybutton">log in</button>
             </div>
         </form>
     </div>
