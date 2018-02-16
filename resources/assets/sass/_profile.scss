@@ -1,12 +1,13 @@
 @import "variables";
 @import "page-base";
 
+// ------------- navbar section ------------
 
-
-.sidebar {
+.sidebar_section {
   margin-top:70px;
+  margin-bottom:50px;
   .row{
-    #sidebar-menu{
+    #sidebar_menu{
       position: sticky;
       li:first-child{
         border-top-right-radius: 10px;
@@ -39,20 +40,19 @@
   }
 }
 
-.profile_info{
+// --------------- user info section --------------
+
+
+.user_info_section{
   border-left: 1px solid $blue;
   padding-left:0 !important;
 
-  .profile_details_container{
+  .profile_details_section{
     padding-left: 0;
     margin-left: 0;
     .section_title{
-      background-color: $blue;
-      color:white;
-      height:35px;
-      width:40%;
-      border-bottom-right-radius: 10px;
-      padding-left:10px;
+
+      width:100px;
     }
 
     .profile_details{
@@ -64,12 +64,14 @@
         padding-top:10px;
       }
     }
+
   }
 
+// ---------------- basic info section --------------
 
-
-  .profile_img_container{
+  .basic_info_section{
     margin-top:-90px;
+    margin-bottom: 10px;
     .profile_img {
       border-radius: 50%;
       border: 1px solid black;
@@ -78,11 +80,129 @@
 
     }
     .personal_info{
+
       h5{
         color:$blue!important;
       }
       h6 a:hover{
         cursor:pointer;
+      }
+      h5, h6{
+        font-weight: 500!important;
+      }
+    }
+  }
+
+  // -------- biography section -----------
+
+  .biography_section{
+    padding-left: 0;
+    margin-top:30px;
+    margin-bottom:30px;
+    .section_title{
+      width:80px;
+    }
+
+    .read_more_btn{
+      background-color: #025284;
+      border-radius: 5px;
+      width:100px;
+      margin-left: 15px!important;
+      h6{
+        text-align: center;
+        line-height: 30px;
+        color:white;
+      }
+    }
+  }
+
+  // ------------------ education section ----------------
+  .education_section{
+    margin-left: 15px;
+    .education{
+      border-left: 1px solid $blue;
+      margin-bottom: 10px;
+
+      h5, h6{
+        color:$blue!important;
+      }
+    }
+  }
+
+
+// --------------- experience section ---------------
+  .experience_section{
+    .section_title{
+      width:120px;
+      margin-left:-15px;
+    }
+
+    .experience{
+      border-left: 1px solid $blue;
+      padding-left:15px;
+      h5, h6{
+        color:$blue!important;
+        font-weight: 500!important;
+      }
+    }
+
+
+
+  }
+
+  // ------------ documents section -----------------
+  .documents_section{
+
+    .document{
+      background-color: $blue;
+      height: 70px;
+      padding-left:10px;
+      padding-top:15px;
+      margin-bottom: 10px;
+        h6{
+          color:white!important;
+
+        }
+    }
+  }
+
+
+// ----------- title for each section -------------
+  .section_title{
+    background-color: $blue;
+    color:white;
+    height:35px;
+    width:20%;
+    border-bottom-right-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 30px;
+
+  }
+
+// ----------- btn for adding experience and institution ------------
+  .add_btn{
+    border:1px solid $blue;
+    border-radius: 5px;
+    width: 150px;
+    height:35px;
+    margin:{
+      top:20px;
+      bottom:20px;
+      left:15px;
+    }
+    h6{
+      color:$blue!important;
+      text-align: center;
+      line-height: 30px;
+    }
+
+    &:hover{
+      background-color: $blue;
+      cursor:pointer;
+      h6{
+        color:white!important;
+
       }
     }
   }
@@ -92,13 +212,10 @@
 
 
 
-
-
-
 // --------------- media queries --------------------
 
 @media (max-width: 1100px) {
-  #sidebar-menu{
+  #sidebar_menu{
     padding-left: 0;
 
   }
@@ -114,12 +231,16 @@
   .section_title{
     width:60%!important;
   }
-  .profile_details_container{
+  .profile_details_section{
     margin-bottom: 10px;
   }
 
-  .profile_img_container{
+  .basic_info_section{
     margin-top:0!important;
+  }
+
+  .profile_details{
+    width:40%;
   }
 }
 
@@ -127,15 +248,19 @@
   #page_title{
     width:50%;
   }
-  .profile_info{
+  .user_info_section{
     margin-left:10px;
   }
 
   .section_title{
     width:30%!important;
   }
-  #sidebar-menu{
+  #sidebar_menu{
     display: none;
+  }
+
+  .document{
+    width:60%;
   }
 
 }
