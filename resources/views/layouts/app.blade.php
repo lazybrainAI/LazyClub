@@ -19,12 +19,12 @@
     <link rel="stylesheet" href= {{ URL::asset('css/bootstrap.min.css') }}>
 
     @section('include_css')
-        @show
+    @show
 
 
     <title>Lazy Club @yield('title')</title>
 </head>
-<body>
+<body id="@yield('id')">
 
 @section('page_top_picture')
 @show

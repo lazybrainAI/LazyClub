@@ -2,10 +2,10 @@
 @section('include_css')
     <link rel="stylesheet" href= {{ URL::asset('css/login.css') }}>
     @endsection
-
-<section>
+@section('id', 'loginbackground');
+<section id="loginsection">
     <div id="div_for_form">
-        <form>
+        <form id="loginform">
             <div class="col-xs-12">
                 <h2 class="lazytittle" id="lazytittle">
                     Club | LazyBrain
