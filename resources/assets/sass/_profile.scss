@@ -22,6 +22,7 @@
         &:hover{
           background-color: white;
           border:1px solid $blue;
+          cursor:pointer;
           a h5{
             color:$blue!important;
           }
@@ -53,12 +54,22 @@
       border-bottom-right-radius: 10px;
       padding-left:10px;
     }
+
+    .profile_details{
+      height:150px;
+      background-color:$blue;
+      color:white;
+      padding-left: 10px!important;
+      h6:first-child{
+        padding-top:10px;
+      }
+    }
   }
 
 
 
   .profile_img_container{
-    margin-top:-60px;
+    margin-top:-90px;
     .profile_img {
       border-radius: 50%;
       border: 1px solid black;
@@ -66,21 +77,21 @@
       width: 150px;
 
     }
+    .personal_info{
+      h5{
+        color:$blue!important;
+      }
+      h6 a:hover{
+        cursor:pointer;
+      }
+    }
   }
 
 
 }
 
 
-.profile_details{
-  height:150px;
-  background-color:$blue;
-  color:white;
-  padding-left: 10px!important;
-  h6:first-child{
-    padding-top:10px;
-  }
-}
+
 
 
 
@@ -92,10 +103,14 @@
 
   }
 
+  .personal_info{
+    margin-left:20px;
+  }
+
 }
 
 
-@media (max-width: 790px){
+@media (max-width: 767px){
   .section_title{
     width:60%!important;
   }

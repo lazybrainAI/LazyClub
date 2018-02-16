@@ -15,7 +15,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="">
 
+
     <link rel="stylesheet" href= {{ URL::asset('css/bootstrap.min.css') }}>
+
+    @section('include_css')
+        @show
 
 
     <title>Lazy Club @yield('title')</title>

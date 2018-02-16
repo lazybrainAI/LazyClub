@@ -3,11 +3,16 @@
 
 @section('title', '| Profile')
 
+@section('include_css')
+@parent
+    <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
+
+@endsection
+
+
 @section('page_top_picture')
  @parent
 
-
- <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
 
 
  <div id="page_top_picture">
@@ -91,11 +96,19 @@
             </div>
 
              <div class="container profile_img_container">
-                 <div class="row">
-                     <div class="col-md-2">
+                 <div class="row align-items-center">
+                     <div class="col-md-3 col-lg-2">
                          <img class=" profile_img" src={{ URL::asset('img/teo.jpeg') }} />
                      </div>
-                     <div class="col-md-10"></div>
+                     <div class="col-md-4 col-lg-3 personal_info">
+                         <h5>Person Person</h5>
+                         <h5>Sector name</h5>
+                         <h5>SPosition</h5>
+                         <h5>email@email.com</h5>
+                         <h5>+381 065 444 444</h5>
+                         <h6><a>LinkedIn |</a><a>Twitter |</a><a>Facebook</a></h6>
+
+                     </div>
                  </div>
              </div>
 

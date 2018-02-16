@@ -1,9 +1,28 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: TEODORA
- * Date: 2/12/2018
- * Time: 4:33 AM
- */
+@extends('layouts.app')
+@section('include_css')
+    <link rel="stylesheet" href= {{ URL::asset('css/login.css') }}>
+    @endsection
 
-@extends ('layouts.app')
+<section>
+    <div id="div_for_form">
+        <form>
+            <div class="col-xs-12">
+                <h2>
+                    Club | LazyBrain
+                </h2>
+            </div>
+            <div class="col-xs-12">
+                <input  id="username"  type="text" name="username" placeholder="username">
+            </div>
+            <div class="col-xs-12">
+                <input type="password" name="password" placeholder="password" id="password">
+            </div>
+            <div  class="col-xs-12" id="loginButton"><button type="submit" class="btn btn-primary">log in</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+

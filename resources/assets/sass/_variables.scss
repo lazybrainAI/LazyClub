@@ -8,16 +8,21 @@ $blue:#025284;
 //Opacity
 
 $bckg-img-opacity:30%;
+$bck-color-with-opacity: rgba(2, 82, 132, 0.8);
 
 //Images
 $page-top:"/img/page_top.jpg";
 $page-top-height:250px;
+$background-picture: "/img/background.jpg";
 
 // Typography
 $font-family-sans-serif: "MiriadPro", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+
 $text-color: $blue;
+$font-size-fields:2rem;
+$text-color-headings: #fff;
 
 
 
@@ -34,6 +39,7 @@ h5{ //sidebar, section_title
 h6{ //text, profile details
   font-weight: 400!important;
 
+
 }
 
 .h7{
@@ -41,12 +47,18 @@ h6{ //text, profile details
   font-size:0.8rem!important;
 }
 
+
+
 // Navbar
 $navbar-default-bg: #fff;
 
 // Buttons
 $btn-default-color: $text-color;
+$login-button: #fff;
 
 // Panels
 $panel-default-heading-bg: #fff;
 
+// Fields login
+$login-fields:90%;
+$login-borders:15px;
