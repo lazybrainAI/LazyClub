@@ -5,7 +5,7 @@
 @section('id', 'loginbackground');
 <section id="loginsection">
     <div id="div_for_form">
-        <form id="loginform">
+        <form id="loginform" action="post">
             <div class="col-xs-12">
                 <h2 class="lazytittle" id="lazytittle">
                     Club | LazyBrain
