@@ -21,7 +21,7 @@ h6 {
 ::placeholder {
   color: #025284;
   font-family: MyriadPro, sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 #loginbackground {
@@ -37,7 +37,7 @@ h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 80%;
 }
 
 #div_for_form {
@@ -56,18 +56,18 @@ h6 {
 }
 
 .lazytittle {
-  font-size: 4.8em;
+  font-size: 4em;
   padding-bottom: 1.5%;
   font-family: MyriadPro, sans-serif;
   color: #fff !important;
 }
 
 #username, #password {
-  width: 90%;
+  width: 70%;
   height: 8%;
   padding: 10px 10px 10px 25px;
   border-radius: 15px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-color: rgba(2, 82, 132, 0.8);
   margin-bottom: 4%;
 }
@@ -75,15 +75,15 @@ h6 {
 #loginButton {
   text-align: center;
   padding-bottom: 3%;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 #lazybutton {
-  width: 45%;
+  width: 35%;
   border-radius: 15px;
   background-color: #025284;
   border-color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #fff;
 }
 
@@ -367,69 +367,6 @@ h6 {
   font-size: 0.8rem !important;
 }
 
-h2 {
-  color: #025284 !important;
-  text-align: center;
-}
-
-h5 {
-  font-weight: 400 !important;
-  color: white !important;
-}
-
-h6 {
-  font-weight: 400 !important;
-}
-
-.h7 {
-  font-weight: 300 !important;
-  font-size: 0.8rem !important;
-}
-
-h2 {
-  color: #025284 !important;
-  text-align: center;
-}
-
-h5 {
-  font-weight: 400 !important;
-  color: white !important;
-}
-
-h6 {
-  font-weight: 400 !important;
-}
-
-.h7 {
-  font-weight: 300 !important;
-  font-size: 0.8rem !important;
-}
-
-body, html {
-  min-height: 100%;
-  position: relative;
-  margin: 0;
-}
-
-#page_top_picture {
-  background-image: url("/img/page_top.jpg");
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  position: relative;
-  height: 250px;
-}
-#page_top_picture .p_t_button {
-  position: absolute;
-  bottom: -15px;
-}
-#page_top_picture .p_t_button .row #page_title {
-  background-color: white;
-  border: 1px solid #025284;
-  border-radius: 12px;
-}
-
 .sidebar_section {
   margin-top: 70px;
   margin-bottom: 50px;
@@ -445,11 +382,10 @@ body, html {
   background-color: #025284;
   margin-bottom: 2px;
   height: 35px;
-  padding-left: 10px;
+  padding: 5px 5px 5px 10px;
 }
 .sidebar_section .row #sidebar_menu li:hover {
   background-color: white;
-  border: 1px solid #025284;
   cursor: pointer;
 }
 .sidebar_section .row #sidebar_menu li:hover a h5 {
@@ -459,97 +395,235 @@ body, html {
   text-decoration: none;
 }
 
-.user_info_section {
-  border-left: 1px solid #025284;
+.project_info_section {
   padding-left: 0 !important;
 }
-.user_info_section .profile_details_section {
+.project_info_section .project_details_section {
   padding-left: 0;
   margin-left: 0;
 }
-.user_info_section .profile_details_section .section_title {
-  width: 100px;
+.project_info_section .project_details_section .section_title {
+  width: 30%;
 }
-.user_info_section .profile_details_section .profile_details {
-  height: 150px;
+.project_info_section .project_details_section .project_details {
+  height: 100%;
   background-color: #025284;
   color: white;
+  font-size: 15px;
   padding-left: 10px !important;
 }
-.user_info_section .profile_details_section .profile_details h6:first-child {
+.project_info_section .project_details_section .project_details h6:first-child {
   padding-top: 10px;
 }
-.user_info_section .basic_info_section {
-  margin-top: -90px;
-  margin-bottom: 10px;
+.project_info_section #project_descr {
+  padding-top: 5%;
+  color: #666666;
+  text-align: justify;
 }
-.user_info_section .basic_info_section .profile_img {
-  border-radius: 50%;
-  border: 1px solid black;
-  height: 150px;
-  width: 150px;
+.project_info_section .section_title {
+  background-color: #025284 !important;
+  color: white;
+  height: 35px;
+  width: 20%;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 30px;
 }
-.user_info_section .basic_info_section .personal_info h5 {
-  color: #025284 !important;
+@media (max-width: 1100px) {
+  .project_info_section #sidebar_menu {
+    padding-left: 0;
+  }
+  .project_info_section .personal_info {
+    margin-left: 20px;
+  }
 }
-.user_info_section .basic_info_section .personal_info h6 a:hover {
-  cursor: pointer;
+@media (max-width: 767px) {
+  .project_info_section .section_title {
+    width: 60% !important;
+  }
+  .project_info_section .profile_details_section {
+    margin-bottom: 10px;
+  }
+  .project_info_section .basic_info_section {
+    margin-top: 0 !important;
+  }
+  .project_info_section .profile_details {
+    width: 40%;
+  }
 }
-.user_info_section .basic_info_section .personal_info h5, .user_info_section .basic_info_section .personal_info h6 {
-  font-weight: 500 !important;
+@media (max-width: 590px) {
+  .project_info_section #page_title {
+    width: 50%;
+  }
+  .project_info_section .user_info_section {
+    margin-left: 10px;
+  }
+  .project_info_section .section_title {
+    width: 30% !important;
+  }
+  .project_info_section #sidebar_menu {
+    display: none;
+  }
+  .project_info_section .document {
+    width: 60%;
+  }
 }
-.user_info_section .biography_section {
-  padding-left: 0;
-  margin-top: 30px;
-  margin-bottom: 30px;
+.project_info_section .p_t_button {
+  position: absolute;
+  bottom: -15px;
 }
-.user_info_section .biography_section .section_title {
-  width: 80px;
+.project_info_section .p_t_button .row #page_title {
+  background-color: white;
+  border-radius: 12px 0px 12px 0px;
 }
-.user_info_section .biography_section .read_more_btn {
+
+#page_title {
+  background-color: white;
+  border-radius: 12px 0px 12px 0px !important;
+}
+
+.read_more_btn {
   background-color: #025284;
   border-radius: 5px;
   width: 100px;
   margin-left: 15px !important;
 }
-.user_info_section .biography_section .read_more_btn h6 {
+.read_more_btn h6 {
   text-align: center;
   line-height: 30px;
   color: white;
 }
-.user_info_section .education_section {
-  margin-left: 15px;
+
+.timeline_lazy {
+  padding-left: 0%;
 }
-.user_info_section .education_section .education {
-  border-left: 1px solid #025284;
-  margin-bottom: 10px;
-}
-.user_info_section .education_section .education h5, .user_info_section .education_section .education h6 {
-  color: #025284 !important;
-}
-.user_info_section .experience_section .section_title {
-  width: 120px;
+.timeline_lazy .section_title {
   margin-left: -15px;
+  padding-bottom: 2%;
+  width: 50%;
 }
-.user_info_section .experience_section .experience {
+
+.main-timeline-section {
+  position: relative;
+  width: 100%;
+  margin-left: 0px;
+  padding-left: 0px;
+  height: 300px;
+}
+
+.main-timeline-section .conference-center-line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #025284;
+}
+
+.timeline-article {
+  width: 20%;
+  position: relative;
+  min-height: 300px;
+  float: right;
+}
+
+.timeline-article .content-date {
+  position: absolute;
+  top: 35%;
+  left: -30px;
+  font-size: 18px;
+}
+
+.timeline-article .content-box {
+  padding: 10px 20px;
+  text-align: left;
+  border: 1px solid #025284;
+  background-color: #025284;
+  border-radius: 0px 12px 0px 12px;
+  width: 180px;
+  position: absolute;
+  top: 60%;
+  left: -80px;
+  color: #fff;
+}
+
+.timeline-article-top .content-box:before {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -30px;
   border-left: 1px solid #025284;
-  padding-left: 15px;
+  bottom: 90%;
+  border-bottom-color: #025284;
 }
-.user_info_section .experience_section .experience h5, .user_info_section .experience_section .experience h6 {
-  color: #025284 !important;
-  font-weight: 500 !important;
+
+.timeline-article-bottom .content-date {
+  top: 59%;
 }
-.user_info_section .documents_section .document {
+
+.timeline-article-bottom .content-box {
+  top: 0%;
+}
+
+.timeline-article-bottom .content-box:before {
+  content: " ";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -60px;
+  top: 90%;
+  border-left: 1px solid #025284;
+  border-top-color: #025284;
+}
+
+@media (max-width: 460px) {
+  body {
+    display: none;
+  }
+}
+.content-box {
+  height: 30%;
+}
+.content-box .lazy_picture {
+  position: absolute;
+  border-radius: 100%;
+  border: 3px solid white;
+  width: 70px;
+  height: 70px;
+  right: -20px;
+  bottom: -20px;
+}
+
+.document_part {
+  padding-left: 0 !important;
+  margin-top: 5%;
+}
+.document_part .document_section {
+  padding-left: 0px;
+}
+.document_part .document_section .document {
   background-color: #025284;
   height: 70px;
   padding-left: 10px;
   padding-top: 15px;
   margin-bottom: 10px;
 }
-.user_info_section .documents_section .document h6 {
+.document_part .document_section .document h6 {
   color: white !important;
 }
-.user_info_section .section_title {
+.document_part .document_section .documents_row {
+  padding-left: 50px;
+  margin-top: 5%;
+}
+
+h5 {
+  font-weight: 400 !important;
+  color: white !important;
+}
+
+.section_title {
   background-color: #025284;
   color: white;
   height: 35px;
@@ -559,72 +633,13 @@ body, html {
   margin-bottom: 20px;
   line-height: 30px;
 }
-.user_info_section .add_btn {
-  border: 1px solid #025284;
-  border-radius: 5px;
-  width: 150px;
-  height: 35px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  margin-left: 15px;
-}
-.user_info_section .add_btn h6 {
-  color: #025284 !important;
-  text-align: center;
-  line-height: 30px;
-}
-.user_info_section .add_btn:hover {
-  background-color: #025284;
-  cursor: pointer;
-}
-.user_info_section .add_btn:hover h6 {
-  color: white !important;
+
+.timeline_info_section {
+  margin-top: 5%;
 }
 
-@media (max-width: 1100px) {
-  #sidebar_menu {
-    padding-left: 0;
-  }
-
-  .personal_info {
-    margin-left: 20px;
-  }
-}
-@media (max-width: 767px) {
-  .section_title {
-    width: 60% !important;
-  }
-
-  .profile_details_section {
-    margin-bottom: 10px;
-  }
-
-  .basic_info_section {
-    margin-top: 0 !important;
-  }
-
-  .profile_details {
-    width: 40%;
-  }
-}
-@media (max-width: 590px) {
-  #page_title {
-    width: 50%;
-  }
-
-  .user_info_section {
-    margin-left: 10px;
-  }
-
-  .section_title {
-    width: 30% !important;
-  }
-
-  #sidebar_menu {
-    display: none;
-  }
-
-  .document {
-    width: 60%;
-  }
+.right_side {
+  border-left: 1px solid #025284;
+  padding-left: 0px;
+  margin-left: 0px;
 }
