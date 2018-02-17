@@ -474,17 +474,17 @@ h6 {
 .document_part {
   padding-left: 0 !important;
   margin-top: 5%; }
-  .document_part .document_section {
+  .document_part .project_pg_section {
     padding-left: 0px; }
-    .document_part .document_section .document {
+    .document_part .project_pg_section .document {
       background-color: #025284;
       height: 70px;
       padding-left: 10px;
       padding-top: 15px;
       margin-bottom: 10px; }
-      .document_part .document_section .document h6 {
+      .document_part .project_pg_section .document h6 {
         color: white !important; }
-    .document_part .document_section .documents_row {
+    .document_part .project_pg_section .documents_row {
       padding-left: 50px;
       margin-top: 5%; }
 

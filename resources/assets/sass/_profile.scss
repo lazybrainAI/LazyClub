@@ -155,6 +155,10 @@
 
   // ------------ documents section -----------------
   .documents_section{
+    margin:{
+      bottom:50px;
+      top:50px;
+    }
 
     .document{
       background-color: $blue;

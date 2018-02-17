@@ -1,330 +1,146 @@
 @import "variables";
 
 
-// ------------- navbar section ------------
+.project_pg_section{
+  padding-left: 0;
+  margin-top:-200px;
+  margin-bottom:30px;
+  .section_title{
+    width:80px;
+  }
 
-.sidebar_section {
-  margin-top:70px;
-  margin-bottom:50px;
+  .read_more_btn{
+    background-color: #025284;
+    border-radius: 5px;
+    width:100px;
+    margin-left: 15px!important;
+    h6{
+      text-align: center;
+      line-height: 30px;
+      color:white;
+    }
+  }
+}
+
+
+.timeline_section{
+  margin:{
+    top:40px;
+    bottom:40px;
+    left:0;
+  }
+
   .row{
-    #sidebar_menu{
-      position: sticky;
-      li:first-child{
-        border-top-right-radius: 10px;
-      }
-      li{
-        list-style: none;
-        background-color: #025284;
-        margin-bottom:2px;
-        height:35px;
+    padding-bottom:25px;
+    border-bottom: 1px solid $blue;
 
-        padding:5px 5px 5px 10px;
+    .project_action{
+      position:relative;
+      height:80px;
 
-        &:hover{
-          background-color: white;
-          cursor:pointer;
-          a h5{
-            color:$blue!important;
-          }
-        }
-
-        a {
-          &:hover{
-            text-decoration: none;
-          }
-        }
-      }
-
-    }
-  }
-}
-// --------------- project info section --------------
-
-
-.project_info_section {
-
-
-  padding-left: 0 !important;
-
-  .project_details_section {
-    padding-left: 0;
-    margin-left: 0;
-    .section_title {
-      width: 30%;
-    }
-
-    .project_details {
-      height: 100%;
+      width:80%;
       background-color: $blue;
-      color: white;
-      font-size: 15px;
-      padding-left: 10px !important;
-      h6:first-child {
-        padding-top: 10px;
+      padding:{
+        left:10px;
+        top:15px;
       }
-    }
-
-  }
-
-  #project_descr{
-
-    padding-top: 5%;
-    color: #666666;
-    text-align: justify;
-
-  }
-
-  // ----------- title for each section -------------
-  .section_title {
-    background-color: $blue !important;
-    color: white;
-    height: 35px;
-    width: 20%;
-    border-bottom-right-radius: 10px;
-    text-align: center;
-    margin-bottom: 20px;
-    line-height: 30px;
-
-  }
-
-  // --------------- media queries --------------------
-
-  @media (max-width: 1100px) {
-    #sidebar_menu {
-      padding-left: 0;
-
-    }
-
-    .personal_info {
-      margin-left: 20px;
-    }
-
-  }
-
-  @media (max-width: 767px) {
-    .section_title {
-      width: 60% !important;
-    }
-    .profile_details_section {
-      margin-bottom: 10px;
-    }
-
-    .basic_info_section {
-      margin-top: 0 !important;
-    }
-
-    .profile_details {
-      width: 40%;
-    }
-  }
-
-  @media (max-width: 590px) {
-    #page_title {
-      width: 50%;
-    }
-    .user_info_section {
-      margin-left: 10px;
-    }
-
-    .section_title {
-      width: 30% !important;
-    }
-    #sidebar_menu {
-      display: none;
-    }
-
-    .document {
-      width: 60%;
-    }
-
-  }
-  .p_t_button {
-    position: absolute;
-    bottom: -15px;
-
-    .row {
-
-      #page_title {
-        background-color: white;
-
-        border-radius: 12px 0px 12px 0px;
-
+      border:{
+        top-right-radius: 10px;
+        bottom-left-radius:10px;
       }
-    }
-  }
-}
-#page_title {
-  background-color: white;
-
-  border-radius: 12px 0px 12px 0px !important;
-
-}
-.read_more_btn{
-  background-color: #025284;
-  border-radius: 5px;
-  width:100px;
-  margin-left: 15px!important;
-  h6{
-    text-align: center;
-    line-height: 30px;
-    color:white;
-  }
-}
-
-//Timeline
-
-.timeline_lazy{
-  padding-left: 0%;
-
-
-  .section_title {
-    margin-left: -15px;
-    padding-bottom: 2%;
-    width: 50%;
-
-  }
-
-}
-.main-timeline-section{
-  position: relative;
-  width: 100%;
-  margin-left: 0px;
-  padding-left: 0px;
-  height:300px;
-}
-
-.main-timeline-section .conference-center-line{
-  position: absolute;
-  width:100%;
-  height:1px;
-  top:50%;
-  transform: translateY(-50%);
-  background:$blue;
-}
-.timeline-article{
-  width: 20%;
-  position: relative;
-  min-height: 300px;
-  float:right;
-}
-.timeline-article .content-date{
-  position: absolute;
-  top: 35%;
-  left: -30px;
-  font-size:18px;
-}
-
-.timeline-article .content-box{
-  padding: 10px 20px;
-  text-align: left;
-  border:1px solid $blue;
-  background-color: $blue;
-  border-radius: 0px 12px 0px 12px;
-  width: 180px;
-  position: absolute;
-  top: 60%;
-  left: -80px;
-  color: $text-color-headings;
-}
-.timeline-article-top .content-box:before{
-  content: " ";
-  position:absolute;
-  left:50%;
-  transform: translateX(-50%);
-  top:-30px;
-  border-left: 1px solid $blue;
-  bottom: 90%;
-  border-bottom-color: $blue;
-}
-.timeline-article-bottom .content-date{
-  top: 59%;
-}
-.timeline-article-bottom .content-box{
-  top: 0%;
-}
-.timeline-article-bottom .content-box:before{
-  content: " ";
-  position:absolute;
-  left:50%;
-  transform: translateX(-50%);
-  bottom:-60px;
-  top:90%;
-  border-left:1px solid $blue;
-  border-top-color:$blue;
-}
-
-
-@media (max-width:460px){
-  body{
-    display: none;
-  }
-}
-
-.content-box{
-  height: 30%;
-  .lazy_picture{
-    position: absolute;
-    border-radius: 100%;
-    border: 3px solid white;
-    width:70px;
-    height: 70px;
-    right:-20px;
-    bottom: -20px;
-
-  }
-}
-// ------------ documents section -----------------
-.document_part{
-
-  padding-left: 0 !important;
-  margin-top: 5%;
-
-  .document_section{
-    padding-left: 0px;
-    .document{
-      background-color: $blue;
-      height: 70px;
-      padding-left: 10px;
-      padding-top:15px;
-      margin-bottom: 10px;
       h6{
-        color:white!important;
+        color:white;
 
       }
+
+      .vertical_line{
+        position:absolute;
+        height:25px;
+        bottom:-25px;
+        right:50px;
+        color:$blue;
+        border-left: 1px solid $blue;
+      }
+
+      .action_responsible_img{
+        position:absolute;
+        width: 60px;
+        height:60px;
+        border:{
+          radius: 50%;
+
+        }
+        border:3px solid white;
+        bottom:-20px;
+        right:-20px;
+      }
+
     }
-    .documents_row{
-      padding-left: 50px;
-      margin-top: 5%;
+  }
+
+
+
+}
+
+
+.timeline_section_bellow {
+  margin:{
+    top:40px;
+    bottom:40px;
+    left:0;
+  }
+  .project_action {
+    position: relative;
+    height: 80px;
+
+    width: 80%;
+    background-color: $blue;
+    padding: {
+      left: 10px;
+      top: 15px;
     }
+    border: {
+      top-right-radius: 10px;
+      bottom-left-radius: 10px;
+    }
+    h6 {
+      color: white;
+
+    }
+
+    .vertical_line_up {
+      position: absolute;
+      height: 40px;
+      top:-40px;
+      right: 50px;
+      color: $blue;
+      border-left: 1px solid $blue;
+    }
+
+    .action_responsible_img {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border: {
+        radius: 50%;
+
+      }
+      border: 3px solid white;
+      bottom: -20px;
+      right: -20px;
+    }
+
   }
 }
 
-
-h5{ //sidebar_section, section_title
-  font-weight: 400!important;
-  color:white!important;
+@media (max-width: 1100px){
+  .project_action{
+    width:90%!important;
+  }
 }
-// ----------- title for each section -------------
-.section_title{
-  background-color: $blue;
-  color:white;
-  height:35px;
-  width:20%;
-  border-bottom-right-radius: 10px;
-  text-align: center;
-  margin-bottom: 20px;
-  line-height: 30px;
-
-}
-.timeline_info_section{
-  margin-top: 5%;
-  ;
-}
-
-
-
-.right_side{
-  border-left: 1px solid $blue;
-  padding-left: 0px;
-  margin-left: 0px;
+// ispod ove sirine mora vertikalni timeline
+@media (max-width: 767px){
+  .project_pg_section{
+    margin-top: 0!important;
+  }
 }
