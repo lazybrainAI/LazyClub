@@ -21,7 +21,7 @@ h6 {
 ::placeholder {
   color: #025284;
   font-family: MyriadPro, sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 #loginbackground {
@@ -37,7 +37,7 @@ h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: 80%;
 }
 
 #div_for_form {
@@ -56,18 +56,18 @@ h6 {
 }
 
 .lazytittle {
-  font-size: 4.8em;
+  font-size: 4em;
   padding-bottom: 1.5%;
   font-family: MyriadPro, sans-serif;
   color: #fff !important;
 }
 
 #username, #password {
-  width: 90%;
+  width: 70%;
   height: 8%;
   padding: 10px 10px 10px 25px;
   border-radius: 15px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border-color: rgba(2, 82, 132, 0.8);
   margin-bottom: 4%;
 }
@@ -75,15 +75,15 @@ h6 {
 #loginButton {
   text-align: center;
   padding-bottom: 3%;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 #lazybutton {
-  width: 45%;
+  width: 35%;
   border-radius: 15px;
   background-color: #025284;
   border-color: #fff;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #fff;
 }
 
