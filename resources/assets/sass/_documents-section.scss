@@ -1,0 +1,27 @@
+// ------------ documents section -----------------
+
+.documents_section{
+  margin:{
+    bottom:$section-margin-bottom;
+    top:$section-margin-top;
+    left:25px;
+  }
+/*
+  .row{
+    div:last-child .document{
+      margin-bottom: 0px!important;
+    }
+  } */
+
+  .document{
+    background-color: $blue;
+    height: 80px;
+    padding-left:10px;
+    padding-top:15px;
+    margin-bottom: 10px;
+    h6{
+      color:white!important;
+
+    }
+  }
+}

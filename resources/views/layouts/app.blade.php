@@ -22,7 +22,7 @@
     @show
 
 
-    <title>Lazy Club @yield('title')</title>
+    <title>Lazy Club | @yield('title')</title>
 </head>
 <body id="@yield('id')">
 

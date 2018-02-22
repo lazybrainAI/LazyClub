@@ -1,0 +1,25 @@
+
+// ------------------ click_to_add  ----------------
+
+.add_section{
+  margin:{
+    left: 35px;
+    top:$section-margin-top;
+    bottom:$section-margin-bottom;
+  }
+  .click_to_add{
+    border-left: 1px solid $blue;
+    margin-bottom: 10px;
+  //  padding-left:15px;
+
+
+    h5, h6{
+      color:$blue;
+      font-weight: 500!important;
+
+    }
+    p {
+      color:black;
+    }
+  }
+}

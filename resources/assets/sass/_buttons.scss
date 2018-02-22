@@ -1,0 +1,42 @@
+// --------- read more button ---------
+
+.read_more_btn{
+  background-color: #025284;
+  border-radius: 5px;
+  width:100px;
+
+  h6{
+    text-align: center;
+    line-height: 30px;
+    color:white!important;
+    font-weight: 300;
+  }
+}
+
+// ------------ add something button ----------
+
+.add_btn{
+  border:1px solid $blue;
+  border-radius: 5px;
+  width: 150px;
+  height:35px;
+  margin:{
+    bottom:10px;
+  }
+
+  h6{
+    color:$blue!important;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  &:hover{
+    background-color: $blue;
+    cursor:pointer;
+    h6{
+      color:white!important;
+
+    }
+  }
+}
+

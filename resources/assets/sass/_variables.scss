@@ -4,8 +4,6 @@
 $blue:#025284;
 
 
-
-
 //Opacity
 
 $bckg-img-opacity:30%;
@@ -17,14 +15,17 @@ $page-top-height:250px;
 $background-picture: "/img/background.jpg";
 
 // Typography
-$font-family-sans-serif: MyriadPro, sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
 
 $text-color: $blue;
-$font-size-fields:1.5rem;
+$font-size-fields:1.1rem;
 $text-color-headings: #fff;
 
+
+//Margins
+
+$section-margin-top:30px;
+$section-margin-bottom:30px;
+$container-margin-left:0px!important;
 
 
 h2{ //page_title
@@ -34,7 +35,7 @@ h2{ //page_title
 
 h5{ //sidebar_section, section_title
   font-weight: 400!important;
-  color:white!important;
+
 }
 
 h6{ //text, profile details
@@ -50,16 +51,17 @@ h6{ //text, profile details
 
 
 
-// Navbar
-$navbar-default-bg: #fff;
-
 // Buttons
-$btn-default-color: $text-color;
 $login-button: #fff;
 
-// Panels
-$panel-default-heading-bg: #fff;
+
 
 // Fields login
 $login-fields:70%;
 $login-borders:15px;
+
+
+//Bootstrap container class
+.container-left-margin{
+  margin-left: $container-margin-left;
+}

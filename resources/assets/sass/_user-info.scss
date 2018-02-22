@@ -1,0 +1,25 @@
+// ---------------- user info --------------
+
+.user_info_section{
+
+  margin-bottom: $section-margin-bottom;
+  .profile_img {
+    border-radius: 50%;
+    border: 1px solid black;
+    height: 150px;
+    width: 150px;
+
+  }
+  .personal_info{
+    margin-left: 25px;
+    h5{
+      color:$blue;
+    }
+    h6 a:hover{
+      cursor:pointer;
+    }
+    h5, h6{
+      font-weight: 500!important;
+    }
+  }
+}

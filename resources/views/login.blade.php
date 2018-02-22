@@ -1,27 +1,42 @@
 @extends('layouts.app')
+
+@section('title', 'Login')
+
 @section('include_css')
-    <link rel="stylesheet" href= {{ URL::asset('css/login.css') }}>
+    <link rel="stylesheet" href= {{ URL::asset('css/app.css') }}>
     @endsection
-@section('id', 'loginbackground');
-<section id="loginsection">
-    <div id="div_for_form">
-        <form id="loginform" action="post">
-            <div class="col-xs-12">
-                <h2 class="lazytittle" id="lazytittle">
-                    Club | LazyBrain
-                </h2>
-            </div>
-            <div class="col-xs-12">
-                <input  id="username"  type="text" name="username" placeholder="username">
-            </div>
-            <div class="col-xs-12">
-                <input type="password" name="password" placeholder="password" id="password">
-            </div>
-            <div  class="col-xs-12" id="loginButton"><button type="submit" class="btn btn-primary" id="lazybutton">log in</button>
-            </div>
-        </form>
+@section('id', 'login_background');
+<div class="container" id="login_section">
+    <div  class="row align-content-center justify-content-center" id="div_for_form">
+       <div class=" col-md-6">
+           <form id="login_form" action="post">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-md-12">
+
+                           <h1 class="lazy_tittle" id="lazy_tittle">
+                               Club | LazyBrain
+                           </h1>
+                           <div>
+                               <input  id="username"  type="text" name="username" placeholder="username">
+                           </div>
+                           <div>
+                               <input type="password" name="password" placeholder="password" id="password">
+
+                           </div>
+                           <div   id="login_button">
+                               <button type="submit" class="btn btn-primary">log in</button>
+                           </div>
+
+                       </div>
+                   </div>
+               </div>
+
+
+           </form>
+       </div>
     </div>
-</section>
+</div>
 
 
 
