@@ -1,5 +1,14 @@
 // ------------------- attendees section ----------------
 
+
+.profile_img{
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 150px;
+  width: 150px;
+}
+
+
 .attendees_section {
   margin:{
     bottom: $section-margin-bottom;
@@ -13,12 +22,7 @@
     }
   }
 
-  .profile_img{
-    border-radius: 50%;
-    border: 1px solid black;
-    height: 150px;
-    width: 150px;
-  }
+
 
   .personal_info {
 

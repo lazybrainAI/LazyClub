@@ -1,114 +1,83 @@
 
 
 
-.timeline_section{
-  margin:{
-    top:40px;
-    bottom:40px;
-    left:0;
+.timeline_section {
+  margin: {
+    top: 40px;
+    bottom: 40px;
+    left: 0;
   }
+  height: 230px;
 
-  .row{
+  .horizontal_line{
+
     padding-bottom:25px;
     border-bottom: 1px solid $blue;
 
-    .project_action{
-      position:relative;
-      height:80px;
+    .project_action {
+      position: relative;
+      height: 80px;
+      width:150px;
+      display: inline-block;
 
-      width:80%;
       background-color: $blue;
-      padding:{
-        left:10px;
-        top:15px;
+      padding: {
+        left: 10px;
+        top: 15px;
       }
-      border:{
+      border: {
         top-right-radius: 10px;
-        bottom-left-radius:10px;
+        bottom-left-radius: 10px;
       }
-      h6{
-        color:white;
+      h6 {
+        color: white;
 
       }
-
-      .vertical_line{
-        position:absolute;
-        height:25px;
-        bottom:-25px;
-        right:50px;
-        color:$blue;
-        border-left: 1px solid $blue;
+      &:first-child{
+        margin-left: 15px;
+      }
+      &:nth-child(odd) {
+        .vertical_line {
+          position: absolute;
+          height: 25px;
+          bottom: -25px;
+          right: 50px;
+          color: $blue;
+          border-left: 1px solid $blue;
+        }
       }
 
-      .action_responsible_img{
-        position:absolute;
+      &:nth-child(even) {
+        bottom: -130px;
+        .vertical_line {
+          position: absolute;
+          height: 25px;
+          top: -25px;
+          right: 50px;
+          color: $blue;
+          border-left: 1px solid $blue;
+        }
+      }
+
+      .action_responsible_img {
+        position: absolute;
         width: 60px;
-        height:60px;
-        border:{
+        height: 60px;
+        border: {
           radius: 50%;
 
         }
-        border:3px solid white;
-        bottom:-20px;
-        right:-20px;
+        border: 3px solid white;
+        bottom: -20px;
+        right: -20px;
       }
 
     }
+
   }
-
-
 
 }
 
 
-.timeline_section_bellow {
-  margin:{
-    top:40px;
-    bottom:40px;
-    left:0;
-  }
-  .project_action {
-    position: relative;
-    height: 80px;
-
-    width: 80%;
-    background-color: $blue;
-    padding: {
-      left: 10px;
-      top: 15px;
-    }
-    border: {
-      top-right-radius: 10px;
-      bottom-left-radius: 10px;
-    }
-    h6 {
-      color: white;
-
-    }
-
-    .vertical_line_up {
-      position: absolute;
-      height: 40px;
-      top:-40px;
-      right: 50px;
-      color: $blue;
-      border-left: 1px solid $blue;
-    }
-
-    .action_responsible_img {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      border: {
-        radius: 50%;
-
-      }
-      border: 3px solid white;
-      bottom: -20px;
-      right: -20px;
-    }
-
-  }
-}
 
 

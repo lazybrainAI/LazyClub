@@ -16,14 +16,21 @@ Route::get('/', function () {
 });
 
 
+Route::get('/home', function () {
+    return view('home');
+});
+
+
+
+
 Route::get('/profile', function(){
     return view('profile');
 });
 
 
 
-Route::get('/project', function (){
-    return view('project');
+Route::get('/p_e_card', function (){
+    return view('p_e_card');
 });
 
 Route::get('/event', function (){

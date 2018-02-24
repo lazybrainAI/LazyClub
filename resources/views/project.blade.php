@@ -132,60 +132,35 @@
                     </div>
                 </div>
 
-                <div class="container timeline_section">
-                    <div class="row align-items-center">
+              <div class="timeline_section">
+                  <div  class="horizontal_line">
 
-                        <div class="col-md-3 col-sm-6">
-                            <div class="project_action">
-                                <h6 id="action_name">Action name</h6>
-                                <h6 class="h7" id="action_responsible">Responsible</h6>
-                                <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
-                                <div class="vertical_line"></div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="project_action">
-                                <h6 id="action_name">Action name</h6>
-                                <h6 class="h7" id="action_responsible">Responsible</h6>
-                                <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
-                                <div class="vertical_line"></div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-md-3 col-sm-6">
-                            <div class="project_action">
-                                <h6 id="action_name">Action name</h6>
-                                <h6 class="h7" id="action_responsible">Responsible</h6>
-                                <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
-                                <div class="vertical_line"></div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="container timeline_section_bellow">
-                    <div class="row align-items-center">
-
-                        <div class="col-md-3 offset-md-4 col-sm-6">
-                            <div class="project_action">
-                                <h6 id="action_name">Action name</h6>
-                                <h6 class="h7" id="action_responsible">Responsible</h6>
-                                <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
-                                <div class="vertical_line_up"></div>
-                            </div>
-
-                        </div>
+                      <div class="project_action">
+                          <h6 id="action_name">Action name</h6>
+                          <h6 class="h7" id="action_responsible">Responsible</h6>
+                          <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
+                          <div class="vertical_line"></div>
+                      </div>
 
 
+                      <div class="project_action">
+                          <h6 id="action_name">Action name</h6>
+                          <h6 class="h7" id="action_responsible">Responsible</h6>
+                          <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
+                          <div class="vertical_line"></div>
 
-                    </div>
-                </div>
+                      </div>
 
+                      <div class="project_action">
+                          <h6 id="action_name">Action name</h6>
+                          <h6 class="h7" id="action_responsible">Responsible</h6>
+                          <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
+                          <div class="vertical_line"></div>
+
+                      </div>
+
+                  </div>
+              </div>
 
                 <div class="container container-left-margin">
                     <div class="row">

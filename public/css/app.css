@@ -26,6 +26,7 @@ body, html {
   position: relative;
   margin: 0;
   color: #025284;
+  overflow-x: hidden;
 }
 
 #page_top_picture {
@@ -223,6 +224,13 @@ body, html {
   padding-top: 10px;
 }
 
+.profile_img {
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 150px;
+  width: 150px;
+}
+
 .attendees_section {
   margin-bottom: 30px;
   margin-top: 30px;
@@ -233,12 +241,6 @@ body, html {
 }
 .attendees_section .organizer .personal_info {
   margin-left: 15px;
-}
-.attendees_section .profile_img {
-  border-radius: 50%;
-  border: 1px solid black;
-  height: 150px;
-  width: 150px;
 }
 .attendees_section .personal_info h5 {
   font-weight: 500 !important;
@@ -306,29 +308,110 @@ body, html {
   color: black;
 }
 
+.projects_section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 35px;
+}
+.projects_section .p_e_card {
+  height: 300px;
+}
+
+.p_e_card {
+  border: 1px solid #025284;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: relative;
+}
+.p_e_card .p_e_img {
+  height: 150px;
+  width: inherit;
+  position: relative;
+  background-image: url("/img/page_top.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+.p_e_card .p_e_img h5 {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.p_e_card .p_e_img ul {
+  position: absolute;
+  bottom: -5px;
+  left: -25px;
+  list-style: none;
+}
+.p_e_card .p_e_img ul li {
+  display: inline-block;
+  margin-right: 5px;
+}
+.p_e_card .p_e_img ul li .profile_img {
+  width: 30px;
+  height: 30px;
+}
+.p_e_card .p_e_info {
+  padding-top: 20px;
+  padding-left: 5px;
+  height: 150px;
+}
+.p_e_card .p_e_info h5, .p_e_card .p_e_info p {
+  color: black;
+}
+
+.review {
+  height: 200px;
+  background-color: #025284;
+  padding-top: 15px;
+  padding-left: 15px;
+  border-bottom-right-radius: 10%;
+}
+.review .select_field {
+  margin-bottom: 15px;
+}
+.review .select_field input {
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.review .review_text input {
+  background-color: white;
+  border-bottom-right-radius: 10%;
+  border-top-left-radius: 10%;
+  height: 120px;
+}
+
 .timeline_section {
   margin-top: 40px;
   margin-bottom: 40px;
   margin-left: 0;
+  height: 230px;
 }
-.timeline_section .row {
+.timeline_section .horizontal_line {
   padding-bottom: 25px;
   border-bottom: 1px solid #025284;
 }
-.timeline_section .row .project_action {
+.timeline_section .horizontal_line .project_action {
   position: relative;
   height: 80px;
-  width: 80%;
+  width: 150px;
+  display: inline-block;
   background-color: #025284;
   padding-left: 10px;
   padding-top: 15px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.timeline_section .row .project_action h6 {
+.timeline_section .horizontal_line .project_action h6 {
   color: white;
 }
-.timeline_section .row .project_action .vertical_line {
+.timeline_section .horizontal_line .project_action:first-child {
+  margin-left: 15px;
+}
+.timeline_section .horizontal_line .project_action:nth-child(odd) .vertical_line {
   position: absolute;
   height: 25px;
   bottom: -25px;
@@ -336,43 +419,18 @@ body, html {
   color: #025284;
   border-left: 1px solid #025284;
 }
-.timeline_section .row .project_action .action_responsible_img {
+.timeline_section .horizontal_line .project_action:nth-child(even) {
+  bottom: -130px;
+}
+.timeline_section .horizontal_line .project_action:nth-child(even) .vertical_line {
   position: absolute;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 3px solid white;
-  bottom: -20px;
-  right: -20px;
-}
-
-.timeline_section_bellow {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: 0;
-}
-.timeline_section_bellow .project_action {
-  position: relative;
-  height: 80px;
-  width: 80%;
-  background-color: #025284;
-  padding-left: 10px;
-  padding-top: 15px;
-  border-top-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-}
-.timeline_section_bellow .project_action h6 {
-  color: white;
-}
-.timeline_section_bellow .project_action .vertical_line_up {
-  position: absolute;
-  height: 40px;
-  top: -40px;
+  height: 25px;
+  top: -25px;
   right: 50px;
   color: #025284;
   border-left: 1px solid #025284;
 }
-.timeline_section_bellow .project_action .action_responsible_img {
+.timeline_section .horizontal_line .project_action .action_responsible_img {
   position: absolute;
   width: 60px;
   height: 60px;
@@ -382,11 +440,61 @@ body, html {
   right: -20px;
 }
 
-@media (max-width: 1100px) {
-  .project_action {
-    width: 90% !important;
-  }
+.home_section {
+  margin-top: 80px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.home_section .p_e_card {
+  height: 200px;
+  margin-bottom: 20px;
+}
+.home_section .p_e_card .p_e_img {
+  height: 100px;
+}
+.home_section .p_e_card .p_e_info {
+  height: 100px;
+  padding-top: 0 !important;
+}
+.home_section .p_e_card .read_more_btn {
+  margin-top: -5px;
+}
+.home_section .right_section .padding_left {
+  padding-left: 0 !important;
+}
+.home_section .right_section .read_more_btn h6 {
+  margin-bottom: 0px !important;
+}
+.home_section .right_section .review_ppl_section .read_more_btn {
+  margin-top: 20px;
+}
+.home_section .right_section .review_ppl_section .people_home_section {
+  height: 200px;
+}
+.home_section .right_section .review_ppl_section .people_home_section .people_img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+.home_section .left_section {
+  margin-bottom: 30px;
+}
+.home_section .left_section .p_e_card {
+  position: relative;
+}
+.home_section .left_section .p_e_card .read_more_btn {
+  width: 50px;
+}
+.home_section .left_section .p_e_card .read_more_btn h6 {
+  margin-bottom: 0px !important;
+}
+.home_section .left_section .event_date {
+  height: 200px;
+  margin-bottom: 20px;
+}
 
+@media (max-width: 1100px) {
   #sidebar_menu {
     padding-left: 0;
   }

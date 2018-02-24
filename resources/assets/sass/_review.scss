@@ -1,0 +1,31 @@
+
+.review{
+  height: 200px;
+  background-color: $blue;
+  padding:{
+    top:15px;
+    left:15px;
+  }
+  border-bottom-right-radius: 10%;
+
+
+  .select_field{
+    margin-bottom: 15px;
+    input {
+      border-bottom-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+
+  }
+
+  .review_text{
+    input{
+      background-color: white;
+      border-bottom-right-radius: 10%;
+      border-top-left-radius: 10%;
+      height: 120px;
+    }
+
+  }
+
+}
