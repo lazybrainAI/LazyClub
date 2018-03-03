@@ -1,16 +1,35 @@
 // --------- read more button ---------
+// staying on same page
 
-.read_more_btn{
+// ---------------- see more button -----------
+// leads to another page
+
+
+.read_more_btn, .see_more_btn, .submit_btn{
   background-color: #025284;
   border-radius: 5px;
+  border:1px solid $blue;
   width:100px;
+  height:30px;
 
   h6{
     text-align: center;
-    line-height: 30px;
     color:white!important;
     font-weight: 300;
+    line-height: 25px;
   }
+
+  &:hover{
+    cursor:pointer;
+    background-color: white;
+    border: 1px solid $blue;
+    h6{
+      color:$blue!important;
+    }
+  }
+
+
+
 }
 
 // ------------ add something button ----------
@@ -39,4 +58,5 @@
     }
   }
 }
+
 

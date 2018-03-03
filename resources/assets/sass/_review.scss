@@ -1,10 +1,11 @@
 
 .review{
-  height: 200px;
+  height: 180px;
   background-color: $blue;
   padding:{
     top:15px;
     left:15px;
+    right: 15px;
   }
   border-bottom-right-radius: 10%;
 
@@ -18,12 +19,23 @@
 
   }
 
+  .profile_img{
+    display: none;
+    height:30px;
+    width:30px;
+    border-radius: 50%;
+  }
+
   .review_text{
-    input{
+
+    input, .text{
       background-color: white;
       border-bottom-right-radius: 10%;
       border-top-left-radius: 10%;
-      height: 120px;
+      height: 100px;
+    }
+    .text{
+      display: none;
     }
 
   }

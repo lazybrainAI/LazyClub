@@ -29,8 +29,8 @@ Route::get('/profile', function(){
 
 
 
-Route::get('/p_e_card', function (){
-    return view('p_e_card');
+Route::get('/project', function (){
+    return view('project');
 });
 
 Route::get('/event', function (){

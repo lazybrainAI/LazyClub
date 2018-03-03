@@ -13,6 +13,10 @@
 
 // ispod ove sirine mora vertikalni timeline kod projekta
 @media (max-width: 767px){
+
+  //sredi vertikalni na home page-u
+
+
   .description_section{
     margin-top: 0!important;
   }
@@ -60,6 +64,15 @@
 
 @media (max-width: 575px){
 
+  .horizontal_line_left, .horizontal_line_right, .timeline_circle{
+    display:none;
+  }
 
+  .timeline_vertical:before{
+    content:none;
+  }
 
+  .event_date_left, .event_date_right{
+    text-align: center!important;
+  }
 }

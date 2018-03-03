@@ -2,6 +2,8 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 
+// Font awesome
+
 //Variables
 @import "variables";
 
@@ -44,24 +46,27 @@
 @import "documents-section";
 
 //Description section
-
 @import "description-section";
 
 // Add section
-
 @import "add-section";
 
 // Projects section
-
 @import "project-event-card";
 
 // Review
-
 @import "review";
+
+// Review section
+@import "review-section";
 
 //Timeline
 
 @import "timeline";
+
+//Vertical timeline
+
+@import "timeline-vertical";
 
 // Home page main section
 @import "home-main-section.scss";

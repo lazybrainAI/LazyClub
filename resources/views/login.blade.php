@@ -2,9 +2,7 @@
 
 @section('title', 'Login')
 
-@section('include_css')
-    <link rel="stylesheet" href= {{ URL::asset('css/app.css') }}>
-    @endsection
+
 @section('id', 'login_background');
 <div class="container" id="login_section">
     <div  class="row align-content-center justify-content-center" id="div_for_form">

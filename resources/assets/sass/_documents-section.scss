@@ -19,9 +19,22 @@
     padding-left:10px;
     padding-top:15px;
     margin-bottom: 10px;
+    position:relative;
     h6{
       color:white!important;
 
+    }
+    .delete_icon, .edit_icon{
+      display: none;
+    }
+
+    &:hover{
+
+      .delete_icon, .edit_icon{
+        display: block;
+        position:absolute;
+
+      }
     }
   }
 }
