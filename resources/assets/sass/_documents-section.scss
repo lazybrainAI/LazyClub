@@ -25,15 +25,28 @@
 
     }
     .delete_icon, .edit_icon{
-      display: none;
+     display: none;
     }
+
 
     &:hover{
 
       .delete_icon, .edit_icon{
-        display: block;
+        display: inline;
+        color:white;
         position:absolute;
+        top:0;
+        z-index: 10;
+        &:hover{
+          cursor:pointer;
+        }
+      }
+      .delete_icon{
+        right:5px;
+      }
 
+      .edit_icon{
+        right:30px;
       }
     }
   }

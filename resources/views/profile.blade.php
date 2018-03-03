@@ -105,6 +105,8 @@
                          <h6 id="address">Address</h6>
                          <h6 id="period_education">Period</h6>
                          <h6 id="title">Title</h6>
+                         <a class="edit_icon"><i class="far fa-edit"></i></a>
+                         <a class="delete_icon"><i class="far fa-trash-alt"></i></a>
 
                      </div>
                      <div class="col-sm-6 click_to_add">
@@ -112,6 +114,8 @@
                          <h6 id="address">Address</h6>
                          <h6 id="period_education">Period</h6>
                          <h6 id="title">Title</h6>
+                         <a class="edit_icon"><i class="far fa-edit"></i></a>
+                         <a class="delete_icon"><i class="far fa-trash-alt"></i></a>
                      </div>
                      <div class="add_btn">
                          <h6>Add experience</h6>
@@ -131,18 +135,20 @@
                  <div class="row">
                      <div class="col-md-12 click_to_add">
 
-                             <h5 id="position">Position</h5>
-                             <h5 id="company">Company</h5>
-                             <h5 id="period">Period</h5>
+                         <h5 id="position">Position</h5>
+                         <h5 id="company">Company</h5>
+                         <h5 id="period">Period</h5>
+                         <a class="edit_icon"><i class="far fa-edit"></i></a>
+                         <a class="delete_icon"><i class="far fa-trash-alt"></i></a>
 
-                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                 Ducimus enim fugit iure laboriosam nobis optio praesentium veritatis voluptatem.
-                                 Asperiores consectetur culpa, debitis facilis maxime quae quam quibusdam sit
-                                 ullam voluptatem
-                             </p>
-                             <div class="read_more_btn">
-                                 <h6>read more</h6>
-                             </div>
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                             Ducimus enim fugit iure laboriosam nobis optio praesentium veritatis voluptatem.
+                             Asperiores consectetur culpa, debitis facilis maxime quae quam quibusdam sit
+                             ullam voluptatem
+                         </p>
+                         <div class="read_more_btn">
+                             <h6>read more</h6>
+                         </div>
 
                      </div>
                      <div class="add_btn">

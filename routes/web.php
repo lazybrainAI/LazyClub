@@ -33,6 +33,19 @@ Route::get('/project', function (){
     return view('project');
 });
 
+
+Route::get('/projects', function (){
+    return view('projects');
+});
+
 Route::get('/event', function (){
     return view('event');
+});
+
+Route::get('/events', function (){
+    return view('events');
+});
+
+Route::get('/documents', function (){
+    return view('documents');
 });

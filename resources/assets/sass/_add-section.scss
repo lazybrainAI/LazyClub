@@ -10,8 +10,6 @@
   .click_to_add{
     border-left: 1px solid $blue;
     margin-bottom: 10px;
-  //  padding-left:15px;
-
 
     h5, h6{
       color:$blue;
@@ -20,6 +18,29 @@
     }
     p {
       color:black;
+    }
+    .delete_icon, .edit_icon{
+      display: none;
+    }
+    &:hover{
+
+      .delete_icon, .edit_icon{
+        display: inline;
+        color:$blue;
+        position:absolute;
+        top:0;
+        z-index: 10;
+        &:hover{
+          cursor:pointer;
+        }
+      }
+      .delete_icon{
+        left:200px;
+      }
+
+      .edit_icon{
+        left:180px;
+      }
     }
   }
 }
