@@ -14,10 +14,7 @@ Route::get('/', 'Auth\LoginController@getLogin');
 Route::post('/', 'Auth\LoginController@postLogin');
 
 
-Route::get('/home', function () {
-    return view('home');
-});
-
+Route::get('/home', 'HomeController@returnEventsAndProjects');
 
 
 
