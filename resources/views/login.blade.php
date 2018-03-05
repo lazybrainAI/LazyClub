@@ -3,20 +3,20 @@
 @section('title', 'Login')
 
 
-@section('id', 'login_background');
+@section('id', 'login_background')
 <div class="container" id="login_section">
     <div  class="row align-content-center justify-content-center" id="div_for_form">
        <div class=" col-md-6">
-           <form id="login_form" action="post">
+           <form id="login_form" method="POST" action="/" accept-charset="UTF-8">
                <div class="container">
                    <div class="row">
                        <div class="col-md-12">
-
+                               {{ csrf_field() }}
                            <h1 class="lazy_tittle" id="lazy_tittle">
                                Club | LazyBrain
                            </h1>
                            <div>
-                               <input  id="username"  type="text" name="username" placeholder="username">
+                               <input  id="email"  type="email" name="email" placeholder="email">
                            </div>
                            <div>
                                <input type="password" name="password" placeholder="password" id="password">
