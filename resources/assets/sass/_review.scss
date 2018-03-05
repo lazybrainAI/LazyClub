@@ -12,9 +12,20 @@
 
   .select_field{
     margin-bottom: 15px;
-    input {
+    select {
+      list-style: none;
       border-bottom-right-radius: 10px;
       border-top-left-radius: 10px;
+      &:last-child(option){
+        border-bottom:none;
+      }
+
+      option{
+        &:hover{
+          background-color: $blue;
+          //dfgljdfkghdjk
+        }
+      }
     }
 
   }

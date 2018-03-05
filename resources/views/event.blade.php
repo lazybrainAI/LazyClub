@@ -95,7 +95,9 @@
                             </div>
                         </div>
                         <div class="col-md-7  attendees">
-                            <div class="container">
+                            <button onclick="plusDivs(-1)"><i class="fas fa-angle-left fa-2x"></i></button>
+                            <button onclick="plusDivs(+1)"><i class="fas fa-angle-right fa-2x"></i></button>
+                            <div class="container mySlides">
                                 <div class="row">
                                     <div class="col-6 col-sm-4">
                                         <div  style="margin-bottom:20px">
@@ -182,6 +184,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 

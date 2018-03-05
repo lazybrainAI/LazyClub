@@ -3563,6 +3563,23 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
+/*!
+ * Font Awesome Free 5.0.8 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
+ */
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../webfonts/fa-solid-900.eot");
+  src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("../webfonts/fa-solid-900.svg#fontawesome") format("svg");
+}
+.fa,
+.fas {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
 h2 {
   color: #025284 !important;
   text-align: center;
@@ -3831,6 +3848,28 @@ body, html {
 .attendees_section .personal_info h5 {
   font-weight: 500 !important;
 }
+.attendees_section .attendees {
+  position: relative;
+}
+.attendees_section .attendees:hover button {
+  display: block;
+}
+.attendees_section .attendees button {
+  display: none;
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  top: 50%;
+}
+.attendees_section .attendees button:nth-of-type(1) {
+  left: 0;
+}
+.attendees_section .attendees button:nth-of-type(2) {
+  right: 20px;
+}
+.attendees_section .attendees button i:hover {
+  cursor: pointer;
+}
 .attendees_section .attendees .attendees_img {
   border-radius: 50%;
   border: 1px solid black;
@@ -3999,9 +4038,16 @@ body, html {
 .review .select_field {
   margin-bottom: 15px;
 }
-.review .select_field input {
+.review .select_field select {
+  list-style: none;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+.review .select_field select:last-child(option) {
+  border-bottom: none;
+}
+.review .select_field select option:hover {
+  background-color: #025284;
 }
 .review .profile_img {
   display: none;
