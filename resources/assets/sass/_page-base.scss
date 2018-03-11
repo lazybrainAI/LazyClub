@@ -1,40 +1,21 @@
-@import "variables";
 
 body, html{
   height: 100%;
   position: relative;
   margin:0;
-
+  color:$text-color;
+  overflow-x: hidden;
 
 }
-
-
-#page_top_picture{
-  background: {
-    image: url($page-top);
-    size: cover;
-    position: bottom;
-    repeat: no-repeat;
-    attachment: scroll;
-  }
-  position: relative;
-  height: $page-top-height;
-
-
-  .p_t_button{
-    position:absolute;
-    bottom:-15px;
-
-    .row{
-
-      #page_title{
-        background-color: white;
-        border:1px solid $blue;
-        border-radius: 12px;
-
-      }
+#body_home{
+  #page_top_picture{
+    .profile_img{
+      display: block!important;
     }
   }
-
 }
+
+
+
+
 

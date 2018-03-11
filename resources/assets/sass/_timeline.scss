@@ -1,0 +1,83 @@
+
+
+
+.timeline_section {
+  margin: {
+    top: 40px;
+    bottom: 40px;
+    left: 0;
+  }
+  height: 230px;
+
+  .horizontal_line{
+
+    padding-bottom:25px;
+    border-bottom: 1px solid $blue;
+
+    .project_action {
+      position: relative;
+      height: 80px;
+      width:150px;
+      display: inline-block;
+
+      background-color: $blue;
+      padding: {
+        left: 10px;
+        top: 15px;
+      }
+      border: {
+        top-right-radius: 10px;
+        bottom-left-radius: 10px;
+      }
+      h6 {
+        color: white;
+
+      }
+      &:first-child{
+        margin-left: 15px;
+      }
+      &:nth-child(odd) {
+        .vertical_line {
+          position: absolute;
+          height: 25px;
+          bottom: -25px;
+          right: 50px;
+          color: $blue;
+          border-left: 1px solid $blue;
+        }
+      }
+
+      &:nth-child(even) {
+        bottom: -130px;
+        .vertical_line {
+          position: absolute;
+          height: 25px;
+          top: -25px;
+          right: 50px;
+          color: $blue;
+          border-left: 1px solid $blue;
+        }
+      }
+
+      .action_responsible_img {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border: {
+          radius: 50%;
+
+        }
+        border: 3px solid white;
+        bottom: -20px;
+        right: -20px;
+      }
+
+    }
+
+  }
+
+}
+
+
+
+

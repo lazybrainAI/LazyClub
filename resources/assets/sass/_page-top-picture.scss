@@ -1,0 +1,35 @@
+#page_top_picture{
+  background: {
+    image: url($page-top);
+    size: cover;
+    position: bottom;
+    repeat: no-repeat;
+    attachment: scroll;
+  }
+  position: relative;
+  height: $page-top-height;
+
+  .profile_img{
+
+    position:absolute;
+    top:20px;
+    right:20px;
+    height:50px;
+    width:50px;
+    display:none;
+  }
+  .p_t_button{
+    position:absolute;
+    bottom:-15px;
+
+    .row{
+
+      #page_title{
+        background-color: white;
+        border:1px solid $blue;
+        border-radius: 12px;
+
+      }
+    }
+  }
+}

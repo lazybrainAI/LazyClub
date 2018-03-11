@@ -1,0 +1,41 @@
+// ----------------- navbar -------------
+
+
+.sidebar_section {
+  margin-top:70px;
+  margin-bottom:50px;
+  .row{
+    #sidebar_menu{
+      position: sticky;
+      li:first-child{
+        border-top-right-radius: 10px;
+      }
+      li{
+        list-style: none;
+        background-color: #025284;
+        margin-bottom:2px;
+        height:35px;
+
+        padding:5px 5px 5px 10px !important;
+        h5{
+          color: white!important;
+        }
+        &:hover{
+          background-color: white;
+          border:1px solid $blue;
+          cursor:pointer;
+          a h5{
+            color:$blue!important;
+          }
+        }
+
+        a {
+          &:hover{
+            text-decoration: none;
+          }
+        }
+      }
+
+    }
+  }
+}

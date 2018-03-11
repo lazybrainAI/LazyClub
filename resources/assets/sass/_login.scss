@@ -1,65 +1,62 @@
-@import "variables";
 
-::placeholder {
-  color: #025284;
-  font-family: $font-family-sans-serif;
-  font-size: $font-size-fields;
-}
+// ------------------------------------------------
 
-#loginbackground {
+
+#login_background {
   background-image: url($background-picture);
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
-#loginsection {
+
+#login_section {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
+  transform:translate(-50%, -50%);
+
 }
 #div_for_form{
-  padding-top: 12%;
   align-items: center;
   text-align: center;
 }
-#loginform{
+#login_form{
   background: $bck-color-with-opacity;
   border-radius: 10px;
   margin: auto;
-  width: 45%;
   height: 100%;
   padding: 1%;
 
+  input{
+    width:70%;
+    height: 8%;
+    padding: 10px 10px 10px 25px;
+    border-radius: $login-borders;
+    font-size: $font-size-fields;
+    border-color: $bck-color-with-opacity;
+    margin-bottom: 4%;
+    color:$text-color;
+  }
+
 }
-.lazytittle{
-  font-size: 4em;
+.lazy_tittle{
+  margin-top:30px;
   padding-bottom: 1.5%;
-  font-family: $font-family-sans-serif;
   color: $text-color-headings !important;
 }
-#username, #password{
-  width: $login-fields;
-  height: 8%;
-  padding: 10px 10px 10px 25px;
-  border-radius: $login-borders;
-  font-size: $font-size-fields;
-  border-color: $bck-color-with-opacity;
-  margin-bottom: 4%;
-}
 
-#loginButton{
+
+#login_button{
   text-align: center;
   padding-bottom: 3%;
-  font-size: $font-size-fields;
+  button{
+    width:35%;
+    border-radius: $login-borders;
+    background-color: $blue;
+    border-color: $text-color-headings;
+    font-size: $font-size-fields;
+    color:$login-button;
+  }
 }
-#lazybutton{
-  width: 35%;
-  border-radius: $login-borders;
-  background-color: $blue;
-  border-color: $text-color-headings;
-  font-size: $font-size-fields;
-  color:$login-button;
-}
+

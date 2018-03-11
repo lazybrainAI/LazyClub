@@ -1,0 +1,82 @@
+// ------------------- attendees section ----------------
+
+
+.profile_img{
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 150px;
+  width: 150px;
+}
+
+
+.attendees_section {
+  margin:{
+    bottom: $section-margin-bottom;
+    top:$section-margin-top;
+    left:25px;
+  }
+  .organizer{
+    margin-bottom: 10px;
+    .personal_info{
+      margin-left: 15px;
+    }
+  }
+
+
+
+  .personal_info {
+
+    h5 {
+      font-weight: 500 !important;
+    }
+
+  }
+
+  .attendees{
+    position:relative;
+
+    &:hover{
+      button{
+        display: block;
+      }
+    }
+    button{
+      display:none;
+      position:absolute;
+      border:none;
+      background-color: transparent;
+      top:50%;
+      &:nth-of-type(1){
+        left:0;
+      }
+      &:nth-of-type(2){
+        right:20px;
+      }
+      i:hover{
+        cursor:pointer;
+      }
+    }
+
+
+    .attendees_img{
+      border-radius: 50%;
+      border: 1px solid black;
+      height: 50px;
+      width: 50px;
+      float:left;
+    }
+
+    .attendee_info{
+      margin-left:55px;
+      h6 {
+        color: $blue !important;
+        font-weight: 500 !important;
+      }
+    }
+
+
+
+
+  }
+
+}

@@ -1,0 +1,118 @@
+
+
+
+.home_section{
+
+  margin:{
+    top:80px;
+    left:0;
+    right:0;
+  }
+
+  .p_e_card{
+    height: 200px;
+    margin-bottom: 20px;
+    .p_e_img{
+      height: 100px;
+    }
+
+    .p_e_info{
+      height:100px;
+      padding-top: 0!important;
+
+    }
+
+  }
+
+  .right_section{
+    .padding_left{
+      padding-left: 0!important;
+    }
+
+    .see_more_btn {
+      h6{
+        margin-bottom: 0px!important;
+
+      }
+    }
+
+
+
+
+    .review_ppl_section{
+      .submit_btn{
+        margin-top: 20px;
+      }
+      .people_home_section{
+        height: 200px;
+
+        .people_img{
+          height: 40px;
+          width:40px;
+          border-radius: 50%;
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+
+
+
+  }
+
+  .left_section{
+    margin-bottom: 30px;
+
+    .see_more_btn{
+      background-color:$green;
+      border:1px solid $green;
+      width:50px;
+      display: inline-block;
+      h6{
+        margin-bottom: 0px!important;
+      }
+
+      &:hover{
+        background-color: white;
+        border: 1px solid $green;
+        h6{
+          color:$green!important;
+        }
+      }
+    }
+
+    .section_title{
+      background-color: $green;
+    }
+
+
+    .event_date_left, .event_date_right{
+      width:100%;
+      height: 200px;
+      margin-bottom: 20px;
+      display:table;
+
+
+      h6{
+        display:table-cell;
+        vertical-align: middle;
+      }
+    }
+
+    .event_date_left{
+      text-align: left;
+    }
+
+    .event_date_right{
+      text-align: right;
+    }
+
+
+
+
+
+
+  }
+
+}
+

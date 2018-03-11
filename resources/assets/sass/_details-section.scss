@@ -1,0 +1,46 @@
+
+
+// --------------- main section --------------
+
+
+.main_content_section{
+  border-left: 1px solid $blue;
+  padding-left:0 !important;
+
+  .details_section{
+    margin:{
+      left: 25px;
+      bottom:$section-margin-bottom;
+      top:$section-margin-top;
+    }
+
+    p{
+      color:black;
+    }
+
+    .details_div{
+      height:150px;
+      background-color:$blue;
+      color:white;
+      padding-left: 10px!important;
+      h6:first-child{
+        padding-top:10px;
+      }
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+

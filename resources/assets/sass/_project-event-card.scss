@@ -1,0 +1,77 @@
+.projects_section{
+  margin:{
+    top:$section-margin-top;
+    bottom:$section-margin-bottom;
+    left:35px;
+  }
+
+  .p_e_card{
+    height:300px;
+  }
+}
+
+
+  .p_e_card{
+    border:1px solid $blue;
+    border:{
+      bottom-right-radius:10px;
+      bottom-left-radius:10px;
+    }
+
+    position:relative;
+
+
+    .p_e_img{
+      height: 150px;
+      width:inherit;
+      position:relative;
+      background: {
+        image: url($page-top);
+        size: cover;
+        position: bottom;
+        repeat: no-repeat;
+        attachment: scroll;
+      }
+      h5{
+        position:absolute;
+        top:10px;
+        left:15px;
+        padding: {
+          left: 10px;
+          right:10px;
+        };
+
+      }
+      ul{
+        position: absolute;
+        bottom:-5px;
+        left:-25px;
+        list-style: none;
+        li{
+          display: inline-block;
+          margin-right:5px;
+          .profile_img{
+
+          width: 30px;
+          height: 30px;
+          }
+        }
+      }
+    }
+
+    .p_e_info{
+
+      padding-top:20px;
+      padding-left:5px;
+      height: 150px;
+      h5, p{
+        color:black;
+      }
+
+    }
+
+  }
+
+
+
+

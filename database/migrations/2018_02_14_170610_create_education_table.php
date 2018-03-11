@@ -13,7 +13,7 @@ class CreateEducationTable extends Migration
      */
     public function up()
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('click_to_add', function (Blueprint $table) {
             $table->primary(['user_id', 'institution_id']);
             $table->string('title');
             $table->date('start_date');  //period of time
@@ -35,6 +35,6 @@ class CreateEducationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('education');
+        Schema::dropIfExists('click_to_add');
     }
 }

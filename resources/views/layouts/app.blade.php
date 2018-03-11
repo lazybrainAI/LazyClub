@@ -1,11 +1,4 @@
 
-<!--
- * Created by PhpStorm.
- * User: TEODORA
- * Date: 2/12/2018
- * Time: 4:35 AM
- * -->
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,11 +10,15 @@
 
 
     <link rel="stylesheet" href= {{ URL::asset('css/bootstrap.min.css') }}>
+<<<<<<< HEAD
 
     @section('include_css')
     @show
 
 
+=======
+    <link rel="stylesheet" href= {{ URL::asset('css/app.css') }}>
+>>>>>>> c6ecfaedf596604793b779f27459fc3a41f092f3
     <title>Lazy Club | @yield('title')</title>
 </head>
 <body id="@yield('id')">
@@ -29,14 +26,8 @@
 @section('page_top_picture')
 @show
 
-
-
 @section('main')
-
 @show
-
-
-
 
 <script src={{ URL::asset('js/jquery-3.3.1.min.js') }}></script>
 <script src={{ URL::asset('js/bootstrap.min.js') }}></script>

@@ -1,0 +1,81 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+
+// Font awesome
+@import "scss/fontawesome.scss";
+@import "scss/fa-regular.scss";
+@import "scss/fa-solid.scss";
+
+
+//Variables
+@import "variables";
+
+//Style for body tag
+@import "page-base";
+
+//Page top picture section
+
+@import "page-top-picture";
+
+
+//Navbar
+
+@import "navbar";
+
+//Buttons
+
+@import "buttons";
+
+//User info
+
+@import "user-info";
+
+//Login
+@import "login";
+
+//Section title
+
+@import "section-title";
+
+//Profile
+
+@import "details-section";
+
+//People section
+
+@import "people-section";
+
+//Documents section
+@import "documents-section";
+
+//Description section
+@import "description-section";
+
+// Add section
+@import "add-section";
+
+// Projects section
+@import "project-event-card";
+
+// Review
+@import "review";
+
+// Review section
+@import "review-section";
+
+//Timeline
+
+@import "timeline";
+
+//Vertical timeline
+
+@import "timeline-vertical";
+
+// Home page main section
+@import "home-main-section.scss";
+
+//Media queries
+
+@import "media-queries";
+

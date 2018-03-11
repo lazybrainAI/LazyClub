@@ -1,0 +1,28 @@
+.review_section{
+  margin:{
+    bottom: $section-margin-bottom;
+    top:$section-margin-top;
+    left:25px;
+  }
+
+  .review{
+    .select_field{
+      display: none;
+    }
+    .profile_img{
+      display:block;
+      margin:auto;
+      margin-bottom:10px;
+
+    }
+
+    .review_text{
+      input{
+        display: none;
+      }
+      .text{
+        display: block;
+      }
+    }
+  }
+}

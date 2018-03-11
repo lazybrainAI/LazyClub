@@ -1,0 +1,78 @@
+
+@media (max-width: 1100px){
+
+  #sidebar_menu{
+    padding-left: 0;
+
+  }
+
+}
+
+
+
+
+// ispod ove sirine mora vertikalni timeline kod projekta
+@media (max-width: 767px){
+
+  //sredi vertikalni na home page-u
+
+
+  .description_section{
+    margin-top: 0!important;
+  }
+
+
+  .details_section{
+    margin-bottom: 10px;
+
+    .details_div{
+      margin-left: -40px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .basic_info_section{
+    margin-top:0!important;
+  }
+
+  .profile_details{
+    width:40%;
+  }
+}
+
+
+@media (max-width: 590px){
+  #page_title{
+    width:50%;
+  }
+  .main_content_section{
+    margin-left:10px;
+  }
+
+
+  #sidebar_menu{
+    display: none;
+  }
+
+  .document{
+    width:60%;
+  }
+
+
+
+}
+
+@media (max-width: 575px){
+
+  .horizontal_line_left, .horizontal_line_right, .timeline_circle{
+    display:none;
+  }
+
+  .timeline_vertical:before{
+    content:none;
+  }
+
+  .event_date_left, .event_date_right{
+    text-align: center!important;
+  }
+}

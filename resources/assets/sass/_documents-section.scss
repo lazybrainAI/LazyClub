@@ -1,0 +1,53 @@
+// ------------ documents section -----------------
+
+.documents_section{
+  margin:{
+    bottom:$section-margin-bottom;
+    top:$section-margin-top;
+    left:25px;
+  }
+/*
+  .row{
+    div:last-child .document{
+      margin-bottom: 0px!important;
+    }
+  } */
+
+  .document{
+    background-color: $blue;
+    height: 80px;
+    padding-left:10px;
+    padding-top:15px;
+    margin-bottom: 10px;
+    position:relative;
+    h6{
+      color:white!important;
+
+    }
+    .delete_icon, .edit_icon{
+     display: none;
+    }
+
+
+    &:hover{
+
+      .delete_icon, .edit_icon{
+        display: inline;
+        color:white;
+        position:absolute;
+        top:0;
+        z-index: 10;
+        &:hover{
+          cursor:pointer;
+        }
+      }
+      .delete_icon{
+        right:5px;
+      }
+
+      .edit_icon{
+        right:30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+
+.review{
+  height: 180px;
+  background-color: $blue;
+  padding:{
+    top:15px;
+    left:15px;
+    right: 15px;
+  }
+  border-bottom-right-radius: 10%;
+
+
+  .select_field{
+    margin-bottom: 15px;
+    select {
+      list-style: none;
+      border-bottom-right-radius: 10px;
+      border-top-left-radius: 10px;
+      &:last-child(option){
+        border-bottom:none;
+      }
+
+      option{
+        &:hover{
+          background-color: $blue;
+          //dfgljdfkghdjk
+        }
+      }
+    }
+
+  }
+
+  .profile_img{
+    display: none;
+    height:30px;
+    width:30px;
+    border-radius: 50%;
+  }
+
+  .review_text{
+
+    input, .text{
+      background-color: white;
+      border-bottom-right-radius: 10%;
+      border-top-left-radius: 10%;
+      height: 100px;
+    }
+    .text{
+      display: none;
+    }
+
+  }
+
+}
