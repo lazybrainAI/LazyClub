@@ -1,7 +1,7 @@
 
 @extends ('layouts.app')
 
-@section('title', '| Event')
+@section('title', 'Project')
 
 @section('include_css')
     @parent
@@ -209,7 +209,7 @@
                     </div>
                 </div>
 
-                <h5 class="section_title">Attendees</h5>
+                <h5 class="section_title">Team</h5>
                 <div class="container attendees_section">
                     <div class="row align-items-center">
                         <div class="col-md-5 organizer">
@@ -280,13 +280,13 @@
                     <div class="row">
                         <div class="col-sm-5 col-md-3 col-xl-2">
                             <div class=" add_btn">
-                                <h6>Going</h6>
+                                <h6>Join us</h6>
                             </div>
                         </div>
 
                         <div class="col-sm-5 col-md-3 col-xl-2">
                             <div class=" add_btn">
-                                <h6>Ask organizer</h6>
+                                <h6>Contact us</h6>
 
                             </div>
                         </div>

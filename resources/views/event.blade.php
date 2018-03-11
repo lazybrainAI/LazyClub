@@ -1,7 +1,7 @@
 
 @extends ('layouts.app')
 
-@section('title', '| Event')
+@section('title', 'Event')
 
 @section('include_css')
     @parent

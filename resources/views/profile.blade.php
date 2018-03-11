@@ -1,7 +1,7 @@
 
 @extends ('layouts.app')
 
-@section('title', '| Profile')
+@section('title', 'Profile')
 
 @section('include_css')
 @parent
