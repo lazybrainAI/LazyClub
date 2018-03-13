@@ -31,6 +31,6 @@ class CreateEventRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event-role');
+        Schema::dropIfExists('event_role');
     }
 }

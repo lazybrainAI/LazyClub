@@ -30,6 +30,6 @@ class CreateEventReviewTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event-review');
+        Schema::dropIfExists('event_review');
     }
 }

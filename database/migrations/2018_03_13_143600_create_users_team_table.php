@@ -19,7 +19,7 @@ class CreateUsersTeamTable extends Migration
             $table->integer('team_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('team_id')->references('id')->on('team');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateUsersTeamTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users-team');
+        Schema::dropIfExists('users_team');
     }
 }

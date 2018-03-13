@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectViewTypeTable extends Migration
+class CreateProjectViewType extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,7 @@ class CreateProjectViewTypeTable extends Migration
     public function up()
     {
         Schema::create('project_view_type', function (Blueprint $table) {
+
             $table->primary(['type_id', 'project_id']);
             $table->integer('type_id')->unsigned();
             $table->integer('project_id')->unsigned();

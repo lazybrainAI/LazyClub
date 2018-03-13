@@ -35,6 +35,6 @@ class CreateEducationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('click_to_add');
+        Schema::dropIfExists('education');
     }
 }

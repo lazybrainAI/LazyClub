@@ -32,6 +32,6 @@ class CreateProjectRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project-role');
+        Schema::dropIfExists('project_role');
     }
 }

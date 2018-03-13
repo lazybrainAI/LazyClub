@@ -32,6 +32,6 @@ class CreateProjectReviewTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project-review');
+        Schema::dropIfExists('project_review');
     }
 }

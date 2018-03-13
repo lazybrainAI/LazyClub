@@ -15,11 +15,11 @@ class CreateUserRoleTable extends Migration
     {
         Schema::create('user_role', function (Blueprint $table) {
 
-            $table->primary(['review_id', 'user_id']);
+            $table->primary(['role_id', 'user_id']);
             $table->integer('role_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('role_id')->references('id')->on('role');
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateUserRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user-role');
+        Schema::dropIfExists('user_role');
     }
 }
