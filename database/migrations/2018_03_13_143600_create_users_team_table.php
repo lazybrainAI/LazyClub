@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSocialNetworksTable extends Migration
+class CreateUsersTeamTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateSocialNetworksTable extends Migration
      */
     public function up()
     {
-        Schema::create('social_networks', function (Blueprint $table) {
-            $table->primary(['sn_id', 'user_id']);
-            $table->integer('sn_id');
-            $table->string('sn_name');
-            $table->string('URL');
+        Schema::create('users_team', function (Blueprint $table) {
 
+            $table->primary(['team_id', 'user_id']);
+            $table->integer('team_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('team_id')->references('id')->on('team');
+            $table->foreign('user_id')->references('id')->on('user');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateSocialNetworksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_networks');
+        Schema::dropIfExists('users-team');
     }
 }

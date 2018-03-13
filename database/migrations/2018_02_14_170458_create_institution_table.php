@@ -15,8 +15,8 @@ class CreateInstitutionTable extends Migration
     {
         Schema::create('institution', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('institution_name');
-            $table->string('institution_address');
+            $table->string('name');
+            $table->string('address');
             $table->timestamps();
         });
     }

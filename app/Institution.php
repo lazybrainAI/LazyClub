@@ -7,4 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Institution extends Model
 {
     //
+
+    public function users(){
+        return $this->belongsToMany('App\User');
+    }
 }

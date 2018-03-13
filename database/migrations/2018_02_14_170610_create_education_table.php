@@ -13,7 +13,7 @@ class CreateEducationTable extends Migration
      */
     public function up()
     {
-        Schema::create('click_to_add', function (Blueprint $table) {
+        Schema::create('education', function (Blueprint $table) {
             $table->primary(['user_id', 'institution_id']);
             $table->string('title');
             $table->date('start_date');  //period of time
