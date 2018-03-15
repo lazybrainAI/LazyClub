@@ -10,36 +10,51 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::get('/', 'Auth\LoginController@getLogin');
-Route::post('/', 'Auth\LoginController@postLogin');
+//Route::get('/', 'Auth\LoginController@getLogin');
+//Route::post('/', 'Auth\LoginController@postLogin');
+Auth::routes();
 
+//Route::get('/home', 'HomeController@returnEventsAndProjects');
 
-Route::get('/home', 'HomeController@returnEventsAndProjects');
-
-
+Route::get('/home', function(){
+    return view('home');
+})->middleware('auth');
 
 Route::get('/profile/{id}', 'ProfileController@getProfileDetails');
 
-
-
-
-Route::get('/project', function (){
-    return view('project');
-});
+Route::get('/profile', function(){
+    return view('profile');
+})->middleware('auth');
+Route::get('/events', function (){
+    return view('events');
+})->middleware('auth');
 
 
 Route::get('/projects', function (){
     return view('projects');
-});
+})->middleware('auth');
 
-Route::get('/event', function (){
-    return view('event');
-});
+//Route::get('/{project}', 'ProjectController@showDetails');
+//
+//
+//
+//
+//Route::get('/events/{name}', 'EventController@showDetails');
 
-Route::get('/events', function (){
-    return view('events');
-});
 
-Route::get('/documents', function (){
-    return view('documents');
-});
+
+//Route::get('/documents', function (){
+//    return view('documents');
+//});
+
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
+//
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

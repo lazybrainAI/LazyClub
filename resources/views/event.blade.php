@@ -30,20 +30,14 @@
                 <div class="container  container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
-                            <h5 class="section_title">Event</h5>
+                            <h5 class="section_title">{{$event->first()->event_name}}</h5>
                         </div>
                     </div>
                 </div>
                 <div class="container details_section" >
                     <div class="row justify-content-between no-gutters">
                         <div class="col-md-8 order-md-1 order-2">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Ducimus enim fugit iure laboriosam nobis optio praesentium veritatis voluptatem.
-                                Asperiores consectetur culpa, debitis facilis maxime quae quam quibusdam sit
-                                ullam voluptatemLorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Ducimus enim fugit iure laboriosam nobis optio praesentium veritatis voluptatem.
-                                Asperiores consectetur culpa, debitis facilis maxime quae quam quibusdam sit
-                                ullam voluptatem
+                            <p>{{$event->first()->description}}
                             </p>
                             <div class="read_more_btn">
                                 <h6>read more</h6>
@@ -52,8 +46,8 @@
                         <div class=" col-md-3 order-md-2 order-1 details_div">
                             <h6>Event details:</h6>
                             <br>
-                            <h6 class="h7" id="event_date">Date/</h6>
-                            <h6 class="h7" id="event_time">Time/</h6>
+                            <h6 class="h7" id="event_date">Date/   {{ \Carbon\Carbon::parse($event->first()->date)->format('d.m.Y') }}</h6>
+                            <h6 class="h7" id="event_time">Time/   {{\Carbon\Carbon::parse($event->first()->time)->format('H:i')}}</h6>
                             <h6 class="h7" id="=event_loc">Location/</h6>
                             <h6 class="h7" id="=event_lang">Language/</h6>
 

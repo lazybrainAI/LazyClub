@@ -11,10 +11,17 @@
 
     <link rel="stylesheet" href= {{ URL::asset('css/bootstrap.min.css') }}>
 
+
     @section('include_css')
     @show
 
     <link rel="stylesheet" href= {{ URL::asset('css/app.css') }}>
+
+
+
+    <link rel="stylesheet" href= {{ URL::asset('css/app.css') }}>
+
+
     <title>Lazy Club | @yield('title')</title>
 </head>
 <body id="@yield('id')">

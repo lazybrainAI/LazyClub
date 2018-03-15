@@ -1,7 +1,9 @@
 
 <div id="page_top_picture">
     <div>
-        <img class="profile_img" src="">
+        <a href="/profile">
+            <img class="profile_img" src="img/teo.jpeg">
+        </a>
     </div>
     <div class="container-fluid p_t_button">
         <div class="row justify-content-center">

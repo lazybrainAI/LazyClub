@@ -24,8 +24,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-         'remember_token',
+         'password', 'remember_token',
     ];
+//    public $timestamps = false;
+    public function generateToken(){
+        $this->remember_token = str_random(60);
+        $this->save();
+        return $this->remember_token;
+    }
 
     //return user social network
     public function social_network(){
