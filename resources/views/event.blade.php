@@ -2,7 +2,7 @@
 @extends ('layouts.app')
 
 @section('title', 'Event')
-<<<<<<< HEAD
+
 
 @section('include_css')
     @parent
@@ -10,8 +10,6 @@
 
 @endsection
 
-=======
->>>>>>> c6ecfaedf596604793b779f27459fc3a41f092f3
 
 @section('page_top_picture')
     @parent

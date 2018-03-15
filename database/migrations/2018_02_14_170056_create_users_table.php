@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
 
             $table->string('photo_link');
             $table->string('position');
+            $table->string('sector');
             $table->text('bio');
             $table->date('join_date');
             $table->string('status');

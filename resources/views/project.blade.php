@@ -2,15 +2,12 @@
 @extends ('layouts.app')
 
 @section('title', 'Project')
-<<<<<<< HEAD
 
 @section('include_css')
     @parent
     <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
 
 @endsection
-=======
->>>>>>> c6ecfaedf596604793b779f27459fc3a41f092f3
 
 
 @section('page_top_picture')
@@ -160,9 +157,8 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <h5 class="section_title">Team</h5>
-=======
+
                 <div class="container container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3 col-lg-2">
@@ -170,7 +166,6 @@
                         </div>
                     </div>
                 </div>
->>>>>>> c6ecfaedf596604793b779f27459fc3a41f092f3
                 <div class="container attendees_section">
                     <div class="row align-items-center">
                         <div class="col-md-5 organizer">

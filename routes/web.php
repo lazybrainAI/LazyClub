@@ -18,9 +18,8 @@ Route::get('/home', 'HomeController@returnEventsAndProjects');
 
 
 
-Route::get('/profile', function(){
-    return view('profile');
-});
+Route::get('/profile/{id}', 'ProfileController@getProfileDetails');
+
 
 
 
