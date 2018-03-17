@@ -11,6 +11,7 @@
 @endsection
 
 
+
 @section('page_top_picture')
  @parent
     @include ('/php/page_top_picture')

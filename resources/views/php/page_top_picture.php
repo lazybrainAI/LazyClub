@@ -1,8 +1,14 @@
-
+<?php $user = \Illuminate\Support\Facades\Auth::user();?>
 <div id="page_top_picture">
     <div>
+<<<<<<< HEAD
         <img class="profile_img" src="">
 
+=======
+        <a href="/profile/<?php echo $user->id; ?>">
+            <img class="profile_img" src="img/teo.jpeg">
+        </a>
+>>>>>>> f1f8a1265a20b35baf7c553be7868b29bc7a155d
     </div>
     <div class="container-fluid p_t_button">
         <div class="row justify-content-center">
