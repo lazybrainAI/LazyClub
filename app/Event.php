@@ -22,7 +22,9 @@ class Event extends Model
         return $this->belongsTo('App\Language');
     }
     public function location(){
-        return $this->belongsTo('App\Location');
+        return $this->belongsTo('App\Location', 'loc_id', 'id');
     }
+
+
 
 }

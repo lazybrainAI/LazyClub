@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 class EventController extends Controller
 {
     public function showDetails($name){
-        $event = DB::table('event')->where('event_name', '=', $name)->get();
+        $event = DB::table('event')->where('name', '=', $name)->get();
         if(sizeof($event)>0){
             return view('event', compact('event'));
         }

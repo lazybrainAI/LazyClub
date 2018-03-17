@@ -14,17 +14,15 @@
 //Route::post('/', 'Auth\LoginController@postLogin');
 Auth::routes();
 
-//Route::get('/home', 'HomeController@returnEventsAndProjects');
+Route::get('/home', 'HomeController@returnEventsAndProjects');
+Route::post('/home', 'HomeController@saveReview');
 
-Route::get('/home', function(){
-    return view('home');
-})->middleware('auth');
 
-Route::get('/profile/{id}', 'ProfileController@getProfileDetails');
+Route::get('/profile/{id}', 'ProfileController@getProfileDetails')->middleware('auth');
 
-Route::get('/profile', function(){
-    return view('profile');
-})->middleware('auth');
+//Route::get('/profile', function(){
+//    return view('profile');
+//})->middleware('auth');
 Route::get('/events', function (){
     return view('events');
 })->middleware('auth');
@@ -34,12 +32,12 @@ Route::get('/projects', function (){
     return view('projects');
 })->middleware('auth');
 
-//Route::get('/{project}', 'ProjectController@showDetails');
+Route::get('/{project}', 'ProjectController@showDetails');
 //
 //
 //
 //
-//Route::get('/events/{name}', 'EventController@showDetails');
+Route::get('/events/{name}', 'EventController@showDetails');
 
 
 
@@ -54,7 +52,7 @@ Route::get('/projects', function (){
 //Auth::routes();
 //
 //Route::get('/home', 'HomeController@index')->name('home');
+//
+//Auth::routes();
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

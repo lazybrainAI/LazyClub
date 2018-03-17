@@ -45,11 +45,11 @@
                                     <img class=" profile_img" src={{ URL::asset('img/teo.jpeg') }} />
                                 </div>
                                 <div class="col-xs-6  personal_info">
-                                    //<h5>{{$user->name}} {{$user->surname}}</h5>
-                                    //<h5>{{$user->sector}}</h5>
-                                    //<h5>{{$user->position}}</h5>
-                                    //<h5>{{$user->email}}</h5>
-                                    //<h5 contenteditable="true">{{$user->phone_num}}</h5>
+                                    <h5>{{$user->name}} {{$user->surname}}</h5>
+                                    <h5>{{$user->sector}}</h5>
+                                    <h5>{{$user->position}}</h5>
+                                    <h5>{{$user->email}}</h5>
+                                    <h5 contenteditable="true">{{$user->phone_num}}</h5>
                                     <h6><a>LinkedIn |</a><a>Twitter |</a><a>Facebook</a></h6>
 
                                 </div>
@@ -83,7 +83,7 @@
                  <div class="row">
                      <div class="col-md-12">
 
-                         //<p>{{$user->bio}}</p>
+                         <p>{{$user->bio}}</p>
                          <div class="read_more_btn">
                             <h6>read more</h6>
                          </div>

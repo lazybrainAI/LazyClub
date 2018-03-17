@@ -30,7 +30,7 @@
                 <div class="container  container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
-                            <h5 class="section_title">{{$event->first()->event_name}}</h5>
+                            <h5 class="section_title">{{$event->first()->name}}</h5>
                         </div>
                     </div>
                 </div>

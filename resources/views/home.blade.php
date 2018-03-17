@@ -22,118 +22,30 @@
 
                     </div>
                 </div>
+
                 <div class="container timeline_vertical">
-
-                    <div class="row no-gutters justify-content-between">
-                        <div class="col-sm-6 col-md-5">
-                            <div class="event_date_right">
-                                <h6>
-                                    {{ \Carbon\Carbon::parse($records[0]->date)->format('d.m.Y') }} {{\Carbon\Carbon::parse($records[0]->time)->format('H:i')}}
-                                </h6>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-5">
-                            <div class="p_e_card" id="p_e_card_1">
-                                <div class="p_e_img">
-                                    <h5 class="section_title">{{$records[0]->event_name}}</h5>
-                                </div>
-                                <div class="p_e_info">
-                                    <p>{{$records[0]->description}}</p>
-
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Attend</h6>
+                    @foreach($events as $event)
+                        @if($loop->index%2==0)
+                            <div class="row no-gutters justify-content-between">
+                                <div class="col-sm-6 col-md-5">
+                                    <div class="event_date_right">
+                                        <h6>@include('/php/date')</h6>
                                     </div>
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Location</h6>
+                                </div>
+                                @include('/php/event_card_right_home')
+                            </div>
+
+                        @else
+                            <div class="row no-gutters justify-content-between">
+                                @include('/php/event_card_right_home')
+                                <div class="col-sm-6 col-md-5 order-1 order-sm-2">
+                                    <div class="event_date_left">
+                                        <h6>@include('/php/date')</h6>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row no-gutters justify-content-between">
-                        <div class="col-sm-6 col-md-5 order-2 order-sm-1">
-                            <div class="p_e_card" id="p_e_card_2">
-                                <div class="p_e_img">
-                                    <h5 class="section_title">{{$records[1]->event_name}}</h5>
-                                </div>
-                                <div class="p_e_info">
-                                    <p>{{$records[1]->description}}</p>
-
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Attend</h6>
-                                    </div>
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Location</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-5 order-1 order-sm-2">
-                            <div class="event_date_left">
-                                <h6>{{ \Carbon\Carbon::parse($records[1]->date)->format('d.m.Y') }} {{\Carbon\Carbon::parse($records[1]->time)->format('H:i')}}</h6>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row no-gutters justify-content-between">
-                        <div class="col-sm-6 col-md-5">
-                            <div class="event_date_right">
-                                <h6>{{ \Carbon\Carbon::parse($records[2]->date)->format('d.m.Y') }} {{\Carbon\Carbon::parse($records[2]->time)->format('H:i')}}</h6>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-5">
-                            <div class="p_e_card" id="p_e_card_3">
-                                <div class="p_e_img">
-                                    <h5 class="section_title">{{$records[2]->event_name}}</h5>
-                                </div>
-                                <div class="p_e_info">
-                                    <p>{{$records[2]->description}}</p>
-
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Attend</h6>
-                                    </div>
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Location</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row no-gutters justify-content-between">
-                        <div class="col-sm-6 col-md-5 order-2 order-sm-1">
-                            <div class="p_e_card" id="p_e_card_4">
-                                <div class="p_e_img">
-                                    {{--<h5 class="section_title">{{$records[3]->event_name}}</h5>--}}
-                                </div>
-                                <div class="p_e_info">
-                                    {{--<p>{{$records[3]->description}}</p>--}}
-
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Attend</h6>
-                                    </div>
-                                    <div class="see_more_btn">
-                                        <h6 class="h7">Location</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-5 order-1 order-sm-2">
-                            <div class="event_date_left">
-                                {{--<h6>{{ \Carbon\Carbon::parse($records[3]->date)->format('d.m.Y') }} {{\Carbon\Carbon::parse($records[3]->time)->format('H:i')}}</h6>--}}
-                            </div>
-
-                        </div>
-                    </div>
-
-
-
+                        @endif
+                    @endforeach
                     <div class="timeline_circle" id="tml_crcl_1">
                         <div class="horizontal_line_right"></div>
 
@@ -169,20 +81,13 @@
 
                 <div class="container">
                     <div class="row">
-                        {{--@foreach($projectFirstHalf as $project)--}}
-                            {{--@include('/php/project_card_home')--}}
-                        {{--@endforeach--}}
-
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        @foreach($projectSecondHalf as $project)
+                        @foreach($projects as $project)
                             @include('/php/project_card_home')
                         @endforeach
-                        <div class="see_more_btn" style="margin-bottom:70px" >
+                        <div class="see_more_btn" style="margin-bottom:70px">
                             <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
                         </div>
+
                     </div>
                 </div>
 
@@ -199,9 +104,6 @@
 
                             @include ('/php/review_card')
 
-                            <div class="submit_btn" style="margin-bottom:70px">
-                                <h6>Submit</h6>
-                            </div>
 
 
 
@@ -235,7 +137,6 @@
                             <div class="see_more_btn" style="margin-bottom:70px">
                                 <h6>View more</h6>
                             </div>
-
 
 
                         </div>
