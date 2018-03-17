@@ -19,7 +19,7 @@ Route::get('/home', 'HomeController@returnEventsAndProjects');
 
 
 Route::get('/profile/{id}', 'ProfileController@getProfileDetails');
-
+Route::post('/profile', 'ProfileController@editProfile');
 
 
 
@@ -43,3 +43,5 @@ Route::get('/events', function (){
 Route::get('/documents', function (){
     return view('documents');
 });
+
+

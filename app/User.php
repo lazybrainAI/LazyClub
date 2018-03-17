@@ -33,6 +33,8 @@ class User extends Authenticatable
         return $this->hasMany('App\SocialNetwork'); //looks for a foreign key in SocialNetwork Model
     }
 
+
+
     public function system_role(){
         return $this->belongsTo('App\SystemRole');
     }

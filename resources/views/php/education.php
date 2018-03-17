@@ -1,8 +1,7 @@
-<div class="col-sm-6 click_to_add education">
-    <h5 id="institution">Institution name</h5>
-    <h6 id="address">Address</h6>
-    <h6 id="period_education">Period</h6>
-    <h6 id="title">Title</h6>
-    <a class="edit_icon"><i class="far fa-edit"></i></a>
-    <a class="delete_icon"><i class="far fa-trash-alt"></i></a>
+<div class="col-sm-6 click_to_add education" >
+    <input id="institution" type="text" value="<?php echo $user->name; ?>" disabled="disabled" required> <!-- institution -->
+    <input id="address" type="text" value="Address" disabled="disabled" required>
+    <input id="from_period_education" type="text" placeholder="From" disabled="disabled"><input id="to_period_education" type="text" placeholder="To" disabled="disabled" required>
+    <input id="title" type="text" value="Title" disabled="disabled" required>
+    <a class="delete_icon delete_btn"><i class="far fa-trash-alt"></i></a>
 </div>

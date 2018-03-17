@@ -2,6 +2,7 @@
 <div id="page_top_picture">
     <div>
         <img class="profile_img" src="">
+
     </div>
     <div class="container-fluid p_t_button">
         <div class="row justify-content-center">
@@ -9,5 +10,8 @@
                 <h2>Club | LazyBrain</h2>
             </div>
          </div>
+    </div>
+    <div class="add_btn" id="edit_btn">
+        <h6>Edit profile</h6>
     </div>
 </div>

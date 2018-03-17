@@ -12,13 +12,20 @@
   }
   .personal_info{
     margin-left: 25px;
-    h5{
+    input{
       color:$blue;
+      background: none;
+      border:none;
+      display: block;
+      &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+        font-size: 1.25rem;
+
+      }
     }
     h6 a:hover{
       cursor:pointer;
     }
-    h5, h6{
+    input, h6{
       font-weight: 500!important;
     }
   }

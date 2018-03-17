@@ -3640,6 +3640,11 @@ body, html {
   border: 1px solid #025284;
   border-radius: 12px;
 }
+#page_top_picture #edit_btn {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+}
 
 .sidebar_section {
   margin-top: 70px;
@@ -3673,26 +3678,58 @@ body, html {
   text-decoration: none;
 }
 
-.read_more_btn, .see_more_btn, .submit_btn {
+.read_more_btn, .see_more_btn, .submit_btn, #save_btn, #cancel_btn {
   background-color: #025284;
   border-radius: 5px;
   border: 1px solid #025284;
   width: 100px;
   height: 30px;
 }
-.read_more_btn h6, .see_more_btn h6, .submit_btn h6 {
+.read_more_btn h6, .see_more_btn h6, .submit_btn h6, #save_btn h6, #cancel_btn h6 {
   text-align: center;
   color: white !important;
   font-weight: 300;
   line-height: 25px;
 }
-.read_more_btn:hover, .see_more_btn:hover, .submit_btn:hover {
+.read_more_btn:hover, .see_more_btn:hover, .submit_btn:hover, #save_btn:hover, #cancel_btn:hover {
   cursor: pointer;
   background-color: white;
   border: 1px solid #025284;
 }
-.read_more_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6 {
+.read_more_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6, #save_btn:hover h6, #cancel_btn:hover h6 {
   color: #025284 !important;
+}
+
+#save_btn {
+  right: 130px;
+}
+
+#cancel_btn {
+  right: 10px;
+}
+
+#save_btn, #cancel_btn {
+  position: absolute;
+  width: 110px;
+  display: none;
+}
+
+#edit_btn {
+  background-color: #fff;
+  opacity: 0.4;
+}
+#edit_btn h6 {
+  color: #777 !important;
+}
+#edit_btn:hover {
+  opacity: 0.7;
+}
+#edit_btn:hover h6 {
+  color: #777 !important;
+}
+
+#add_education, #add_experience {
+  display: none;
 }
 
 .add_btn {
@@ -3727,13 +3764,19 @@ body, html {
 .user_info_section .personal_info {
   margin-left: 25px;
 }
-.user_info_section .personal_info h5 {
+.user_info_section .personal_info input {
   color: #025284;
+  background: none;
+  border: none;
+  display: block;
+}
+.user_info_section .personal_info input:first-child, .user_info_section .personal_info input:nth-child(2), .user_info_section .personal_info input:nth-child(3), .user_info_section .personal_info input:nth-child(4), .user_info_section .personal_info input:nth-child(5) {
+  font-size: 1.25rem;
 }
 .user_info_section .personal_info h6 a:hover {
   cursor: pointer;
 }
-.user_info_section .personal_info h5, .user_info_section .personal_info h6 {
+.user_info_section .personal_info input, .user_info_section .personal_info h6 {
   font-weight: 500 !important;
 }
 
@@ -3808,6 +3851,7 @@ body, html {
 .main_content_section {
   border-left: 1px solid #025284;
   padding-left: 0 !important;
+  position: relative;
 }
 .main_content_section .details_section {
   margin-left: 25px;
@@ -3932,8 +3976,10 @@ body, html {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.description_section p {
-  color: black !important;
+.description_section #bio_description {
+  color: black;
+  background: none;
+  border: none;
 }
 
 .add_section {
@@ -3945,31 +3991,37 @@ body, html {
   border-left: 1px solid #025284;
   margin-bottom: 10px;
 }
-.add_section .click_to_add h5, .add_section .click_to_add h6 {
+.add_section .click_to_add input {
+  background: none;
+  display: block;
+  border: none;
   color: #025284;
-  font-weight: 500 !important;
+  font-weight: 500;
+  font-size: 1rem;
 }
-.add_section .click_to_add p {
-  color: black;
+.add_section .click_to_add input:first-child {
+  font-size: 1.25rem;
 }
-.add_section .click_to_add .delete_icon, .add_section .click_to_add .edit_icon {
-  display: none;
-}
-.add_section .click_to_add:hover .delete_icon, .add_section .click_to_add:hover .edit_icon {
+.add_section .click_to_add #from_period_education, .add_section .click_to_add #to_period_education,
+.add_section .click_to_add #from_period_experience, .add_section .click_to_add #to_period_experience {
   display: inline;
+}
+.add_section .click_to_add #position_description {
+  color: black;
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+}
+.add_section .click_to_add .delete_icon {
+  display: none;
   color: #025284;
   position: absolute;
   top: 0;
   z-index: 10;
-}
-.add_section .click_to_add:hover .delete_icon:hover, .add_section .click_to_add:hover .edit_icon:hover {
-  cursor: pointer;
-}
-.add_section .click_to_add:hover .delete_icon {
   left: 200px;
 }
-.add_section .click_to_add:hover .edit_icon {
-  left: 180px;
+.add_section .click_to_add .delete_icon:hover {
+  cursor: pointer;
 }
 
 .projects_section {

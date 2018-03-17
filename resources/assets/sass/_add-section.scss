@@ -7,40 +7,49 @@
     top:$section-margin-top;
     bottom:$section-margin-bottom;
   }
+
+
   .click_to_add{
     border-left: 1px solid $blue;
     margin-bottom: 10px;
 
-    h5, h6{
+
+    input{
+      background: none;
+      display: block;
+      border:none;
       color:$blue;
-      font-weight: 500!important;
-
+      font-weight: 500;
+      font-size: 1rem; //like h6
+      &:first-child{
+        font-size: 1.25rem; //h5
+      }
     }
-    p {
+
+    #from_period_education, #to_period_education,
+    #from_period_experience, #to_period_experience{
+      display: inline;
+    }
+
+    #position_description{
       color:black;
+      margin-bottom: 10px;
+      background: none;
+      border: none;
+      //maxlength:450;
     }
-    .delete_icon, .edit_icon{
+
+    .delete_icon{
       display: none;
-    }
-    &:hover{
-
-      .delete_icon, .edit_icon{
-        display: inline;
-        color:$blue;
-        position:absolute;
-        top:0;
-        z-index: 10;
-        &:hover{
-          cursor:pointer;
-        }
-      }
-      .delete_icon{
-        left:200px;
-      }
-
-      .edit_icon{
-        left:180px;
+      color:$blue;
+      position:absolute;
+      top:0;
+      z-index: 10;
+      left:200px;
+      &:hover{
+        cursor:pointer;
       }
     }
+
   }
 }
