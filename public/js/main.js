@@ -87,6 +87,69 @@ $(document).ready(function(){
 
 
     });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#hr_form').submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var name = $('#firstNameHR').val();
+        var last_name = $('#lastNameHR').val();
+        var mail = $('#emailHR').val();
+        var username = $('#usernameHR').val();
+
+        $.ajax({
+            url: '/hrpanel',
+            type: 'POST',
+            data: {name:name, lastname:last_name, mail: mail, username:username},
+            success: function () {
+                $('#description').val('');
+                $('#project_event_select').val('selected');
+                $('#email_sent').text('Your review has been saved!').show();
+                $('#email_sent').text('Your review has been saved!').delay(2000).fadeOut(1000);
+            },
+            error: function(data) {
+                alert();
+                $('#email_not_sent').text(data).show();
+                $('#email_not_sent').text(data).delay(2000).fadeOut(1000);
+
+            }
+
+        });
+
+
+    });
+    $('#review_form').submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var description = $('#description').val();
+        var project_event_select = $('#project_event_select').val();
+
+        $.ajax({
+            url: '/home',
+            type: 'POST',
+            data: {project_event_select: project_event_select, description:description},
+            success: function () {
+                $('#description').val('');
+                $('#project_event_select').val('selected');
+                $('#uspesno_poslata').text('Your review has been saved!').show();
+                $('#uspesno_poslata').text('Your review has been saved!').delay(2000).fadeOut(1000);
+            },
+            error: function(data) {
+                $('#neuspesno_poslata').text('You have to pick project/event and enter your note!').show();
+                $('#neuspesno_poslata').text('You have to pick project/event and enter your note!').delay(2000).fadeOut(1000);
+
+            }
+
+        });
+
+
+    });
 
 
 

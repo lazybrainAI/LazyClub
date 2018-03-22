@@ -11,6 +11,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
+                                @csrf
 
                                 <h1 class="lazy_tittle" id="lazy_tittle">
                                     Club | LazyBrain

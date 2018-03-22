@@ -46,10 +46,8 @@
                             </div>
                         @endif
                     @endforeach
-                    <div class="timeline_circle" id="tml_crcl_1">
-                        <div class="horizontal_line_right"></div>
 
-                    </div>
+
                     <div class="timeline_circle" id="tml_crcl_2">
                         <div class="horizontal_line_left"></div>
 

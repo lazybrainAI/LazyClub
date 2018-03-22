@@ -114,7 +114,7 @@
                 <div class="container review_section">
                     <div class="row align-items-center">
                         <div class="col-md-4 col-sm-6">
-                            @include('/php/review_card')
+                            {{--@include('/php/review_card')--}}
                         </div>
                     </div>
                 </div>
