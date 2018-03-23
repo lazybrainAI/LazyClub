@@ -4082,6 +4082,23 @@ body, html {
   color: black;
 }
 
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #025284;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #025284;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #025284;
+}
+
 .review {
   height: 180px;
   background-color: #025284;
@@ -4089,11 +4106,16 @@ body, html {
   padding-left: 15px;
   padding-right: 15px;
   border-bottom-right-radius: 10%;
+  border-top-left-radius: 10px;
+  width: 85%;
 }
 .review .select_field {
   margin-bottom: 15px;
 }
 .review .select_field select {
+  color: #025284;
+  padding-bottom: 2%;
+  width: 70%;
   list-style: none;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -4110,11 +4132,13 @@ body, html {
   width: 30px;
   border-radius: 50%;
 }
-.review .review_text input, .review .review_text .text {
+.review .review_text textarea, .review .review_text .text {
+  color: #025284;
   background-color: white;
   border-bottom-right-radius: 10%;
   border-top-left-radius: 10%;
   height: 100px;
+  width: 90%;
 }
 .review .review_text .text {
   display: none;
@@ -4183,7 +4207,7 @@ body, html {
   margin-top: 40px;
   margin-bottom: 40px;
   margin-left: 0;
-  height: 230px;
+  height: 100%;
 }
 .timeline_section .horizontal_line {
   padding-bottom: 25px;
@@ -4302,6 +4326,14 @@ body, html {
 .home_section .p_e_card .p_e_info {
   height: 100px;
   padding-top: 0 !important;
+}
+.home_section .p_e_card .p_e_info a {
+  text-decoration: none;
+}
+.home_section .p_e_card #see_more_btn_location {
+  width: auto;
+  padding-left: 2%;
+  padding-right: 2%;
 }
 .home_section .right_section .padding_left {
   padding-left: 0 !important;

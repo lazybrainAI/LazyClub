@@ -6,7 +6,7 @@
 
     <div class="select_field">
         <select name = "project_event_select" id="project_event_select" title="project_event_select">
-            <option selected="selected" value="selected">Choose event/project</option>
+            <option selected="selected" value="selected">Select Project / Event</option>
             <?php foreach ($projects as $project){?>
                 <option value="<?php echo $project['name']?>"><?php echo $project['name']?></option>
             <?php } ?>
@@ -20,7 +20,7 @@
 
     </div>
     <div class="review_text">
-        <input type="text" placeholder="Your note" id="description" name="description">
+        <textarea placeholder="Your note" id="description" name="description"></textarea>
 
     </div>
 

@@ -19,7 +19,15 @@
     .p_e_info{
       height:100px;
       padding-top: 0!important;
+      a{
+        text-decoration: none;
+      }
 
+    }
+    #see_more_btn_location{
+      width: auto;
+      padding-left: 2%;
+      padding-right: 2%;
     }
 
   }

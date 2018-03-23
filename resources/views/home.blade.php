@@ -13,60 +13,68 @@
 
     <div class="container-fluid home_section">
         <div class="row">
+
             <div class="col-lg-6 left_section">
+
                 <div class="container container-left-margin">
                     <div class="row">
                         <div class="col-sm-4">
                             <h4 class="section_title">Events</h4>
                         </div>
-
                     </div>
                 </div>
 
-                <div class="container timeline_vertical">
-                    @foreach($events as $event)
-                        @if($loop->index%2==0)
-                            <div class="row no-gutters justify-content-between">
-                                <div class="col-sm-6 col-md-5">
-                                    <div class="event_date_right">
-                                        <h6>@include('/php/date')</h6>
+
+                <div class="container">
+
+                    @if(count($events)>0)
+
+                        <div class="timeline_vertical">
+                            @foreach($events as $event)
+                                @if($loop->index%2==0)
+                                    <div class="row no-gutters justify-content-between">
+                                        <div class="col-sm-6 col-md-5">
+                                            <div class="event_date_right">
+                                                <h6>@include('/php/date')</h6>
+                                            </div>
+                                        </div>
+                                        @include('/php/event_card_right_home')
                                     </div>
-                                </div>
-                                @include('/php/event_card_right_home')
-                            </div>
-
-                        @else
-                            <div class="row no-gutters justify-content-between">
-                                @include('/php/event_card_right_home')
-                                <div class="col-sm-6 col-md-5 order-1 order-sm-2">
-                                    <div class="event_date_left">
-                                        <h6>@include('/php/date')</h6>
+                                @else
+                                    <div class="row no-gutters justify-content-between">
+                                        @include('/php/event_card_right_home')
+                                        <div class="col-sm-6 col-md-5 order-1 order-sm-2">
+                                            <div class="event_date_left">
+                                                <h6>@include('/php/date')</h6>
+                                            </div>
+                                        </div>
                                     </div>
+                                @endif
+                            @endforeach
+                            @foreach($events as $event)
+                                <div class="timeline_circle" id="tml_crcl_{{$loop->index+1}}">
+                                    @if($loop->index%2==0)
+                                        <div class="horizontal_line_right"></div>
+                                    @else
+                                        <div class="horizontal_line_left"></div>
+                                    @endif
                                 </div>
+                            @endforeach
+
+                            <div class="see_more_btn" style="width:100px">
+                                <a href="/events" style="text-decoration: none;"><h6>View more</h6></a>
                             </div>
-                        @endif
-                    @endforeach
+                        </div>
+                    @else
+                        <div>
+                            There are no events at the moment.
+                        </div>
+                    @endif
 
 
-                    <div class="timeline_circle" id="tml_crcl_2">
-                        <div class="horizontal_line_left"></div>
-
-                    </div>
-                    <div class="timeline_circle" id="tml_crcl_3">
-                        <div class="horizontal_line_right"></div>
-
-                    </div>
-                    <div class="timeline_circle" id="tml_crcl_4">
-                        <div class="horizontal_line_left"></div>
-
-                    </div>
-
-                    <div class="see_more_btn" style="width:100px">
-                        <a href="/events" style="text-decoration: none;"><h6>View more</h6></a>
-                    </div>
                 </div>
-
             </div>
+
             <div class="col-lg-6 right_section">
                 <div class="container container-left-margin">
                     <div class="row">
@@ -79,12 +87,18 @@
 
                 <div class="container">
                     <div class="row">
-                        @foreach($projects as $project)
-                            @include('/php/project_card_home')
-                        @endforeach
-                        <div class="see_more_btn" style="margin-bottom:70px">
-                            <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
-                        </div>
+                        @if(count($projects)>0)
+                            @foreach($projects as $project)
+                                @include('/php/project_card_home')
+                            @endforeach
+                            <div class="see_more_btn" style="margin-bottom:70px">
+                                <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
+                            </div>
+                        @else
+                            <div style="margin-bottom: 10%;">
+                                There are no projects at the moment.
+                            </div>
+                        @endif
 
                     </div>
                 </div>
@@ -101,8 +115,6 @@
                             </div>
 
                             @include ('/php/review_card')
-
-
 
 
                         </div>

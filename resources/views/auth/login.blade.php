@@ -17,14 +17,17 @@
                                     Club | LazyBrain
                                 </h1>
                                 <div>
-                                    <input  id="email"  type="email" name="email" placeholder="email" required autofocus>
+                                    <input  id="email"  type="text" name="email" placeholder="email" required autocomplete="off">
                                 </div>
                                 <div>
-                                    <input type="password" name="password" placeholder="password" id="password" required >
+                                    <input type="password" name="password" placeholder="password" id="password" required autocomplete="off">
 
                                 </div>
                                 <div   id="login_button">
                                     <button type="submit" class="btn btn-primary">log in</button>
+                                </div>
+                                <div>
+
                                 </div>
 
                             </div>
