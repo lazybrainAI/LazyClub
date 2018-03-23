@@ -1,0 +1,66 @@
+h2 {
+  color: #025284 !important;
+  text-align: center;
+}
+
+h5 {
+  font-weight: 400 !important;
+}
+
+h6 {
+  font-weight: 400 !important;
+}
+
+.h7 {
+  font-weight: 300 !important;
+  font-size: 0.8rem !important;
+}
+
+.container-left-margin {
+  margin-left: 0px !important;
+}
+
+#hr_section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#div_for_form {
+  align-items: center;
+  text-align: center;
+}
+
+#hr_form_div {
+  align-items: center;
+}
+#hr_form_div #hr_div_id {
+  width: 100%;
+  height: 8%;
+  padding: 10px 10px 30px 25px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  border-color: rgba(2, 82, 132, 0.8);
+  margin-bottom: 20%;
+  color: #025284;
+}
+
+.hr_tittle {
+  margin-top: 30px;
+  padding-bottom: 1.5%;
+  color: #fff !important;
+}
+
+#hr_button {
+  text-align: center;
+  padding-bottom: 3%;
+}
+#hr_button button {
+  width: 35%;
+  border-radius: 15px;
+  background-color: #025284;
+  border-color: #fff;
+  font-size: 1.1rem;
+  color: #fff;
+}

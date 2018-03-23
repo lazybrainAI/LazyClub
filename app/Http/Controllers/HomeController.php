@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Event;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
+
 
 class HomeController extends Controller
 {
@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function returnEventsAndProjects(){
         $events = Event::orderBy('date', 'desc')->take(4)->get();
         $projects = Project::orderBy('start_date', 'desc')->take(4)->get()->toArray();
-        return view('home', compact('events', 'projects'));
+        return view('home', compact('projects', 'events'));
 
 
     }

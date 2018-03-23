@@ -4140,6 +4140,45 @@ body, html {
   display: block;
 }
 
+#hr_form {
+  text-align: center;
+}
+#hr_form label {
+  font-size: 1.1rem;
+}
+#hr_form input {
+  width: 85%;
+  height: 8%;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  border: 1px solid;
+  margin-bottom: 5%;
+  color: #025284;
+  box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.2);
+}
+
+.hr_tittle {
+  margin-top: 30px;
+  padding-bottom: 1.5%;
+  color: #fff !important;
+}
+
+#hr_button {
+  text-align: center;
+  padding-bottom: 3%;
+}
+#hr_button button {
+  width: 35%;
+  border-radius: 15px;
+  background-color: #025284;
+  border-color: #025284;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-top: 5%;
+  box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.9);
+}
+
 .timeline_section {
   margin-top: 40px;
   margin-bottom: 40px;
