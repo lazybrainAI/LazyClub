@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+
+    protected $guarded = [];
+
+
     public $timestamps = false;
     /**
      * The attributes that are mass assignable.
@@ -49,14 +53,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Team');
     }
 
-    public function institutions(){
-        return $this->belongsToMany('App\Institution');
+    public function studies(){
+        return $this->hasMany('App\Study');
     }
 
-    public function companies(){
-        return $this->belongsToMany('App\Company');
+    public function employments(){
+        return $this->hasMany('App\Employment');
     }
-
 
     public function reviews(){
         return $this->belongsToMany('App\Review');
@@ -64,5 +67,21 @@ class User extends Authenticatable
 
     public function documents(){
         return $this->belongsToMany('App\Document');
+    }
+
+
+    public function actions(){
+        return $this->hasMany('App\Action');
+    }
+
+
+    public function event_attendings(){
+
+        return $this->hasMany('App\Event_Attending');
+    }
+
+    public function project_attendings(){
+
+        return $this->hasMany('App\Project_Attending');
     }
 }

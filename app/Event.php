@@ -6,11 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    protected $table = 'event';
 
 
-    public function roles(){
-        return $this->belongsToMany('App\Role');
+    public function event_attendings(){
+
+        return $this->hasMany('App\Event_Attending');
+    }
+
+    public function project_attendings(){
+
+        return $this->hasMany('App\Project_Attending');
     }
 
     public function reviews(){

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployedTable extends Migration
+class CreateTeamUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,13 @@ class CreateEmployedTable extends Migration
      */
     public function up()
     {
-        Schema::create('employed', function (Blueprint $table) {
-            $table->primary(['user_id', 'company_id']);
+        Schema::create('team_user', function (Blueprint $table) {
 
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->text('description');
-            $table->string('position');
-
+            $table->primary(['team_id', 'user_id']);
+            $table->integer('team_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->integer('company_id')->unsigned();
+            $table->foreign('team_id')->references('id')->on('teams');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('company_id')->references('id')->on('company');
-
             $table->timestamps();
         });
     }
@@ -37,6 +31,6 @@ class CreateEmployedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employed');
+        Schema::dropIfExists('team_user');
     }
 }

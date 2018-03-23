@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    protected $table = 'project';
+
     public function reviews(){
         return $this->hasMany('App\Review');
         }
@@ -29,10 +29,20 @@ class Project extends Model
         return $this->hasMany('App\Action');
     }
 
-    public function roles(){
-        return $this->belongsToMany('App\Role');
+
+    public function team(){
+        return $this->belongsTo('App\Team');
     }
 
+    public function event_attendings(){
+
+        return $this->hasMany('App\Event_Attending');
+    }
+
+    public function project_attendings(){
+
+        return $this->hasMany('App\Project_Attending');
+    }
 
 
 

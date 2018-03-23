@@ -38,7 +38,7 @@
 
 @import "section-title";
 
-//ProfileController
+//UserController
 
 @import "details-section";
 
@@ -74,6 +74,9 @@
 
 // Home page main section
 @import "home-main-section.scss";
+
+// Notifications
+@import "notifications";
 
 //Media queries
 

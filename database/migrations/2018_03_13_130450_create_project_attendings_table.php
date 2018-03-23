@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReviewTable extends Migration
+class CreateProjectAttendingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateReviewTable extends Migration
      */
     public function up()
     {
-        Schema::create('review', function (Blueprint $table) {
-            $table->increments('id');
-            $table->date('date_posted');
-            $table->string('description');
-
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('event_id')->unsigned();
-            $table->foreign('event_id')->references('id')->on('event');
+        Schema::create('project_attendings', function (Blueprint $table) {
+            $table->integer('id');
             $table->integer('project_id')->unsigned();
-            $table->foreign('project_id')->references('id')->on('project');
+            $table->integer('role_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+
+            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreign('user_id')->references('id')->on('users');
 
 
             $table->timestamps();
@@ -37,6 +36,6 @@ class CreateReviewTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('review');
+        Schema::dropIfExists('project_attendings');
     }
 }

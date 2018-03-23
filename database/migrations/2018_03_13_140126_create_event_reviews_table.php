@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventRoleTable extends Migration
+class CreateEventReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateEventRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('event_role', function (Blueprint $table) {
-
-            $table->primary(['event_id', 'role_id']);
+        Schema::create('event_reviews', function (Blueprint $table) {
+            $table->primary(['review_id', 'event_id']);
+            $table->integer('review_id')->unsigned();
             $table->integer('event_id')->unsigned();
-            $table->integer('role_id')->unsigned();
-            $table->foreign('event_id')->references('id')->on('event');
-            $table->foreign('role_id')->references('id')->on('role');
+            $table->foreign('review_id')->references('id')->on('reviews');
+            $table->foreign('event_id')->references('id')->on('events');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateEventRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_role');
+        Schema::dropIfExists('event_reviews');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateViewTypeTable extends Migration
+class CreateCompaniesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateViewTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('view_type', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type_name');
+            $table->string('company_name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateViewTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('view_type');
+        Schema::dropIfExists('companies');
     }
 }

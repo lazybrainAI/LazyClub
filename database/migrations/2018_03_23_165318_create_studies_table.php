@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentTable extends Migration
+class CreateStudiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateDocumentTable extends Migration
      */
     public function up()
     {
-        Schema::create('document', function (Blueprint $table) {
-
+        Schema::create('studies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('link');
-            $table->dateTime('date_uploaded');
-
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('user_id')->unsigned();
-            $table->integer('project_id')->unsigned();
+            $table->integer('institution_id')->unsigned();
+            $table->integer('title_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('project_id')->references('id')->on('project');
-
+            $table->foreign('institution_id')->references('id')->on('institutions');
+            $table->foreign('title_id')->references('id')->on('titles');
 
             $table->timestamps();
         });
@@ -37,6 +35,6 @@ class CreateDocumentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('document');
+        Schema::dropIfExists('studies');
     }
 }

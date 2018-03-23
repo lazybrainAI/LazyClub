@@ -20,19 +20,19 @@ class CreateUsersTable extends Migration
             $table->string('surname');
             $table->string('username');
             $table->string('password');
-            $table->string('email');
+            $table->string('email')->unique();
 
-            $table->string('photo_link');
-            $table->string('position');
-            $table->string('sector');
-            $table->text('bio');
+            $table->string('photo_link')->nullable();
+            $table->string('position')->nullable();
+            $table->string('sector')->nullable();
+            $table->text('bio')->nullable();
             $table->date('join_date');
             $table->string('status');
-            $table->integer('strength');
-            $table->string('phone_num');
+            $table->integer('strength')->nullable();
+            $table->string('phone_num')->nullable();
 
             $table->integer('SystemRole_id')->unsigned();
-            $table->foreign('SystemRole_id')->references('id')->on('system_role');
+            $table->foreign('SystemRole_id')->references('id')->on('system_roles');
             $table->rememberToken();
         });
     }

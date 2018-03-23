@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectRoleTable extends Migration
+class CreateProjectReviewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateProjectRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_role', function (Blueprint $table) {
-            $table->primary(['project_id', 'role_id']);
+        Schema::create('project_reviews', function (Blueprint $table) {
+            $table->primary(['review_id', 'project_id']);
+            $table->integer('review_id')->unsigned();
             $table->integer('project_id')->unsigned();
-            $table->integer('role_id')->unsigned();
+            $table->foreign('review_id')->references('id')->on('reviews');
+            $table->foreign('project_id')->references('id')->on('projects');
 
-            $table->foreign('project_id')->references('id')->on('project');
-            $table->foreign('role_id')->references('id')->on('role');
 
             $table->timestamps();
         });
@@ -32,6 +32,6 @@ class CreateProjectRoleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('project_role');
+        Schema::dropIfExists('project_reviews');
     }
 }

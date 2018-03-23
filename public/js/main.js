@@ -2,34 +2,65 @@
 
 $(document).ready(function(){
 
+    var i=1;
+    $('.education').each(function(){
+        if($(this).attr('id', '')){
+            $(this).attr('id', 'education_' + i);
+        }
+        i++;
+    });
+    var z=1;
+    $('.experience').each(function(){
+        if($(this).attr('id', '')){
+            $(this).attr('id', 'experience_' + z);
+        }
+        z++;
+    });
+
+
     // adding education on button click
     $('#add_education').click(function(){
 
-        var el = "<div class=\"col-sm-6 click_to_add education\" >\n" +
-            "    <input id=\"institution\" type=\"text\" value=\"Name\" disabled=\"disabled\"> <!-- institution -->\n" +
-            "    <input id=\"address\" type=\"text\" value=\"Address\" disabled=\"disabled\">\n" +
-            "    <input id=\"from_period_education\" type=\"text\" value=\"From\" disabled=\"disabled\"><input id=\"to_period_education\" type=\"text\" value=\"To\" disabled=\"disabled\">\n" +
-            "    <input id=\"title\" type=\"text\" value=\"Title\" disabled=\"disabled\">\n" +
-            "    <a class=\"delete_icon delete_btn\"><i class=\"far fa-trash-alt\"></i></a>\n" +
-            "</div>"
+        var count = $('.education').length + 1;
+        var id = "education_" +count;
+
+
+        var el = $("<div class=\"col-sm-6 click_to_add education\" >\n" +
+            "    <input name=\"institution\" id=\"institution\" type=\"text\" value=\"Institution\"  required> <!-- institution -->\n" +
+            "    <input name=\"address\" id=\"address\" type=\"text\" value=\"Address\"  required>\n" +
+            "    <input name=\"from_period_education\" id=\"from_period_education\" type=\"text\" placeholder=\"From\" ><input namee=\"to_period_education\" id=\"to_period_education\" type=\"text\" placeholder=\"To\" disabled=\"disabled\" required>\n" +
+            "    <input name=\"title\" id=\"title\" type=\"text\" value=\"Title\" required>\n" +
+            "    <a class=\"delete_icon delete_btn\" style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
+            "</div>" ).attr('id', 'education_' + count);
+
 
         $(el).appendTo( $('#education_section'));
+
 
     });
 
     // adding experience on button click
     $('#add_experience').click(function(){
-        var experience="<div class=\"col-md-12 click_to_add experience\">\n" +
+
+
+        var count = $('.experience').length + 1;
+        var id = "experience_" +count;
+
+        var experience=$("<div class=\"col-md-12 click_to_add experience\" >\n" +
             "\n" +
             "    <div class=\"experience_div\">\n" +
-            "        <input id=\"position\" value=\"Institution\"  disabled=\"disabled\"> <!--Position-->\n" +
-            "        <input id=\"company\" value=\"Company\"  disabled=\"disabled\">\n" +
-            "        <input id=\"from_period_experience\" type=\"text\" value=\"From\" disabled=\"disabled\"><input id=\"to_period_experience\" type=\"text\" value=\"To\" disabled=\"disabled\">\n" +
+            "        <input name=\"company_position\" id=\"position\"\n" +
+            "               value=\"Company position\" > <!--Position-->\n" +
             "\n" +
-            "        <a class=\"delete_icon delete_btn\"><i class=\"far fa-trash-alt\"></i></a>\n" +
+            "        <input name=\"company_name\" id=\"company\"  value=\"Company name\">\n" +
             "\n" +
-            "        <textarea rows=\"4\" cols=\"100\" id=\"position_description\" disabled=\"disabled\" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus enim fugit iure laboriosam nobis optio praesentium veritatis voluptatem.Asperiores consectetur culpa, debitis facilis maxime quae quam quibusdam situllam voluptatem</textarea>\n" +
+            "        <input name=\"from_period_experience\" id=\"from_period_experience\" type=\"text\"  value=\"From\" >\n" +
             "\n" +
+            "        <input name=\"to_period_experience\" id=\"to_period_experience\" type=\"text\"\n" +
+            "               value=\"To\" >\n" +
+            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" >Description</textarea>\n" +
+            "\n" +
+            "        <a class=\"delete_icon delete_btn\"  style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
             "\n" +
             "    </div>\n" +
             "    <div class=\"read_more_btn\">\n" +
@@ -37,51 +68,175 @@ $(document).ready(function(){
             "    </div>\n" +
             "\n" +
             "\n" +
-            "</div>"
+            "</div>").attr('id', 'experience_' + count);
+
+
         $(experience).appendTo( $('#experience_section'));
 
 
     });
 
-    // deleting education
+    // ---------- deleting education
     $('#education_section').on('click', '.delete_icon', function () {
 
-        $(this).parent().remove();
-        //brisanje iz baze ovih info
+        // deleting from DB with AJAX
+        var parent=$(this).parent();
+        var inst_id=parent.attr('id').split("_")[1];
+        var id=$('.personal_info').attr('id');
+
+
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/profile/' + id,
+            data: {inst_id:inst_id},
+            success: function(){
+
+                parent.remove();
+                var j=1;
+                $('.education').each(function(){  //after removin one/more assign new id values
+                    $(this).attr('id', 'education_' + j);
+                    j++;
+                });
+
+            },
+            error:function(data){
+
+            }
+
+
+
+        });
+
+
 
     });
 
-    //deleting experience section
+    // --------- deleting experience section
 
     $('#experience_section').on('click', '.delete_icon' ,function () {
-        $(this).parent().parent().remove();
-        //brisanje iz baze ovih info
+
+        var parent=$(this).parent().parent();
+        var comp_id=parent.attr('id').split("_")[1];
+        var id=$('.personal_info').attr('id');
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+
+        // deleting from DB with AJAX
+
+        $.ajax({
+            type: 'DELETE',
+            url: '/profile/' + id,
+            data: {comp_id:comp_id},
+            success: function(data){
+
+            parent.remove();
+            var j=1;
+            $('.experience').each(function(){  //after removin one/more assign new id values
+                $(this).attr('id', 'experience_' + j);
+                j++;
+            });
+
+        },
+        error:function(data){
+            $('#msg').css('display','block');
+            $('#msg').text('Error');
+        }
+
+
 
     });
 
-    //editing profile
+
+
+
+
+    });
+
+
+    // ---------- editing profile
 
     $('#edit_btn').click(function(){
        $('input').prop('disabled', false);
+       $('textarea').prop('disabled', false);
        $('#add_education').css('display', 'block');
        $('#add_experience').css('display', 'block');
        $('#save_btn').css('display', 'block');
        $('#cancel_btn').css('display', 'block');
-       $(' .delete_icon').css('display', 'inline');
+       $('.delete_icon').css('display', 'inline');
 
-       $('#save_btn').click(function(){
-
-
-           $.ajax({
-               url: '/profile',
-               method: "POST",
-               data:{id:id},
-               success: function(data){
-                   $('#show_msg').html(data);
-               }
-           });
-
+       var ed_ids=[];  //ids for education
+       $('.education').each(function () {
+           ed_ids.push($(this).attr('id').split('_')[1]);
        });
+
+       var exp_ids=[];
+        $('.experience').each(function () {
+            exp_ids.push($(this).attr('id').split('_')[1]);
+        });
+
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        var id=$('.personal_info').attr('id');
+
+        $('#profile_form').submit(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var form = $(this);
+
+
+            $.ajax({
+                url: '/profile/' + id,
+                type: 'POST',
+                data: form.serialize() + "&ed_ids=" + ed_ids + + "&exp_ids=" + exp_ids,
+                success: function (data) {
+
+                    $('#name').val(data.name);
+                    $('#email').val(data.email);
+                    $('#position').val(data.position);
+                    $('#sector').val(data.sector);
+                    $('#phone_num').val(data.phone_num);
+                    $('#bio_description').val(data.bio);
+
+
+
+                    $('input').prop('disabled', true);
+                    $('textarea').prop('disabled', true);
+
+                    $('#add_education').css('display', 'none');
+                    $('#add_experience').css('display', 'none');
+                    $('#save_btn').css('display', 'none');
+                    $('#cancel_btn').css('display', 'none');
+                    $('.delete_icon').css('display', 'none');
+
+                    $('#msg').css('display', 'block');
+                    $('#msg').text("Profile saved.").delay(2000).fadeOut(1000);
+
+                },
+                error: function(data) {
+                    $('#msg').css('display', 'block');
+                    $('#msg').text("Error occured!").delay(2000).fadeOut(1000);
+
+
+                }
+
+            });
+
+
+        });
 
 
 
@@ -98,6 +253,7 @@ $(document).ready(function(){
 
 
 // ------- slider ------
+
 var slideIndex = 1;
 showDivs(slideIndex);
 

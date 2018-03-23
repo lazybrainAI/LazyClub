@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class SystemRole extends Model
 {
-    protected $table = 'system_role';
 
 
 

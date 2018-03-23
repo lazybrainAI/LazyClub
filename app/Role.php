@@ -8,13 +8,13 @@ class Role extends Model
 {
     //
 
-    public function projects(){
-        return $this->belongsToMany('App\Project');
+    public function event_attendings(){
+
+        return $this->hasMany('App\Event_Attending');
     }
 
+    public function project_attendings(){
 
-
-    public function events(){
-        return $this->belongsToMany('App\Event');
+        return $this->hasMany('App\Project_Attending');
     }
 }

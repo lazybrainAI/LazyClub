@@ -1,13 +1,54 @@
-<div class="col-md-12 click_to_add experience">
+<div class="col-md-12 click_to_add experience" id="<?php if($company_count!=0) {
+    if(!is_null($company->id))
+        echo "experience_" . $company->id;
+    else echo "";
+}
+else
+    echo ""; ?>">
 
     <div class="experience_div">
-        <input id="position" value="<?php echo $user->name; ?>"  disabled="disabled"> <!--Position-->
-        <input id="company" value="Company"  disabled="disabled">
-        <input id="from_period_experience" type="text" placeholder="From" disabled="disabled"><input id="to_period_experience" type="text" placeholder="To" disabled="disabled">
+        <input name="company_position" id="position"
+               value="<?php if($company_count!=0) {
+                   if(!is_null($company->pivot->position))
+                       echo $company->pivot->position;
+                   else echo "Position";
+               }
+               else
+                   echo "Position"; ?>" disabled="disabled"  disabled="disabled"> <!--Position-->
+
+        <input name="company_name" id="company"  disabled="disabled" value="<?php if($company_count!=0) {
+            if(!is_null($company->name))
+                echo $company->name;
+            else echo "Company name";
+        }
+        else
+            echo "Company name"; ?>">
+
+        <input name="from_period_experience" id="from_period_experience" type="text"  value="<?php if($company_count!=0) {
+            if(!is_null($company->pivot->start_date))
+                echo $company->pivot->start_date;
+            else echo "From";
+        }
+        else
+            echo "From"; ?>"  disabled="disabled">
+
+        <input name="to_period_experience" id="to_period_experience" type="text"
+               value="<?php if($company_count!=0) {
+                   if(!is_null($company->pivot->end_date))
+                       echo $company->pivot->end_date;
+                   else echo "To";
+               }
+               else
+                   echo "To"; ?>" disabled="disabled">
+        <textarea name="description" rows="4" cols="100" id="position_description" disabled="disabled"><?php if($company_count!=0) {
+                if(!is_null($company->pivot->description))
+                    echo $company->pivot->description;
+                else echo "Description";
+            }
+            else
+                echo "Description"; ?></textarea>
+
         <a class="delete_icon delete_btn"><i class="far fa-trash-alt"></i></a>
-
-        <textarea rows="4" cols="100" id="position_description" disabled="disabled" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus enim fugit iure laboriosam nobis optio praesentium veritatis voluptatem.Asperiores consectetur culpa, debitis facilis maxime quae quam quibusdam situllam voluptatem</textarea>
-
 
     </div>
     <div class="read_more_btn">

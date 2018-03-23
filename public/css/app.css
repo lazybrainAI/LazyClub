@@ -3613,6 +3613,9 @@ body, html {
 #body_home #page_top_picture .profile_img {
   display: block !important;
 }
+#body_home #page_top_picture .edit_btn {
+  display: none;
+}
 
 #page_top_picture {
   background-image: url("/img/page_top.jpg");
@@ -4316,6 +4319,15 @@ body, html {
 }
 .home_section .left_section .event_date_right {
   text-align: right;
+}
+
+#msg {
+  bottom: -70px;
+  position: absolute;
+  right: 60px;
+  height: 30px;
+  width: 130px;
+  display: none;
 }
 
 @media (max-width: 1100px) {

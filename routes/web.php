@@ -18,13 +18,13 @@ Route::get('/home', 'HomeController@returnEventsAndProjects');
 Route::post('/home', 'HomeController@saveReview');
 
 
-Route::get('/profile/{id}', 'ProfileController@getProfileDetails')->middleware('auth');
+Route::get('/profile/{id}', 'UserController@getProfileDetails')->middleware('auth');
 
-Route::post('/profile', 'ProfileController@editProfile');
+Route::post('/profile/{id}', 'UserController@editProfile');
+Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 
-//Route::get('/profile', function(){
-//    return view('profile');
-//})->middleware('auth');
+
+
 Route::get('/events', function (){
     return view('events');
 })->middleware('auth');

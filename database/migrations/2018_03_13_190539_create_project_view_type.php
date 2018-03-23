@@ -18,8 +18,8 @@ class CreateProjectViewType extends Migration
             $table->primary(['type_id', 'project_id']);
             $table->integer('type_id')->unsigned();
             $table->integer('project_id')->unsigned();
-            $table->foreign('project_id')->references('id')->on('project');
-            $table->foreign('type_id')->references('id')->on('view_type');
+            $table->foreign('project_id')->references('id')->on('projects');
+            $table->foreign('type_id')->references('id')->on('view_types');
 
             $table->timestamps();
         });
