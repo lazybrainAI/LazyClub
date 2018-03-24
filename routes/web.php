@@ -24,8 +24,7 @@ Route::post('/profile/{id}', 'UserController@editProfile');
 Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 
 //Profile routes
-Route::get('/profile/{id}', 'ProfileController@getProfileDetails');
-Route::post('/profile', 'ProfileController@editProfile');
+Route::get('/profile/{id}', 'UserController@getProfileDetails');
 
 //Event routes
 Route::get('/events', function () {

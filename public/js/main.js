@@ -81,7 +81,7 @@ $(document).ready(function(){
 
         // deleting from DB with AJAX
         var parent=$(this).parent();
-        var inst_id=parent.attr('id').split("_")[1];
+        var education_id=parent.attr('id').split("_")[1];
         var id=$('.personal_info').attr('id');
 
 
@@ -89,7 +89,7 @@ $(document).ready(function(){
         $.ajax({
             type: 'DELETE',
             url: '/profile/' + id,
-            data: {inst_id:inst_id},
+            data: {education_id:education_id},
             success: function(){
 
                 parent.remove();
@@ -117,7 +117,7 @@ $(document).ready(function(){
     $('#experience_section').on('click', '.delete_icon' ,function () {
 
         var parent=$(this).parent().parent();
-        var comp_id=parent.attr('id').split("_")[1];
+        var experience_id=parent.attr('id').split("_")[1];
         var id=$('.personal_info').attr('id');
 
 
@@ -134,7 +134,7 @@ $(document).ready(function(){
         $.ajax({
             type: 'DELETE',
             url: '/profile/' + id,
-            data: {comp_id:comp_id},
+            data: {experience_id:experience_id},
             success: function(data){
 
             parent.remove();

@@ -53,12 +53,12 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Team');
     }
 
-    public function studies(){
-        return $this->hasMany('App\Study');
+    public function educations(){
+        return $this->hasMany('App\Education');
     }
 
-    public function employments(){
-        return $this->hasMany('App\Employment');
+    public function experiences(){
+        return $this->hasMany('App\Experience');
     }
 
     public function reviews(){

@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Title extends Model
 {
     //
-    public function studies(){
-        return $this->hasMany('App\Study');
+    public function educations(){
+        return $this->hasMany('App\Education');
     }
 
-    public function employments(){
-        return $this->hasMany('App\Employment');
-    }
+
 }

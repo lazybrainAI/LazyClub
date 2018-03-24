@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employment extends Model
+class Education extends Model
 {
     //
+
+    protected $table='educations';
 
     public function user(){
         return $this->belongsTo('App\User');
@@ -19,4 +21,7 @@ class Employment extends Model
     public function title(){
         return $this->belongsTo('App\Title');
     }
+
+
+
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Study extends Model
+class Experience extends Model
 {
     //
 
@@ -16,10 +16,7 @@ class Study extends Model
         return $this->belongsTo('App\Institution');
     }
 
-    public function title(){
-        return $this->belongsTo('App\Title');
+    public function position(){
+        return $this->belongsTo('App\Position');
     }
-
-
-
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmploymentsTable extends Migration
+class CreateExperiencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateEmploymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('employments', function (Blueprint $table) {
+        Schema::create('experiences', function (Blueprint $table) {
             $table->increments('id');
 
             $table->date('start_date');
             $table->date('end_date');
+            $table->text('description');
             $table->integer('user_id')->unsigned();
             $table->integer('company_id')->unsigned();
-            $table->integer('title_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('title_id')->references('id')->on('titles');
-
+            $table->integer('position_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('restrict');
+            $table->foreign('position_id')->references('id')->on('positions')->onDelete('restrict');
 
             $table->timestamps();
         });
@@ -37,6 +37,6 @@ class CreateEmploymentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employments');
+        Schema::dropIfExists('experiences');
     }
 }

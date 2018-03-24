@@ -43,21 +43,31 @@ class UserController extends Controller
 
         //user's projects
 
-        foreach ($user->teams as $team) {
-            $projects=$team->projects;
-           // dd($projects);
-        }
+            if($user->teams->isEmpty()){
+                $projects=null;
+            }
+            else{
+                foreach ($user->teams as $team){
+                    $projects=$team->projects;
+                }
+            }
+            //$projects=$team->projects;
+
+
 
 
         //user's company
-        $companies=$user->companies;
-        $company_count=$companies->count();
+        $experiences=$user->experiences;
+        $experience_count=$experiences->count();
+
+        $educations=$user->educations;
+        $education_count=$educations->count();
+        //dd($educations);
 
         //user's education
-        $institutions=$user->institutions;
-        $institution_count=$institutions->count();
 
-        //echo $institutions; */
+
+
 
         /*
         $institution_names  = array('FON', 'BG',  'ETF', 'MM'); //institution name
@@ -66,10 +76,6 @@ class UserController extends Controller
         $start_dates=array('2019-1-1', '2019-1-2', '2019-1-3', '2019-1-9');
         $end_dates=array('2019-3-1', '2019-3-2', '2019-3-3', '2019-3-9');
         $titles=array('mm', 'drr', 'msc','mst');
-
-
-
-
 
         $count = count($institution_names);
         for($i=0;  $i<$count; $i++){
@@ -106,7 +112,7 @@ class UserController extends Controller
         } */
 
 
-          return view('profile', compact('user', 'fb' , 'twitter', 'linked', 'projects', 'companies', 'institutions', 'institution_count', 'company_count'));
+           return view('profile', compact('user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'experience_count','educations', 'education_count'));
     }
     public function editProfile(Request $request, $id){
         $user = User::findOrFail($id);
@@ -165,13 +171,13 @@ class UserController extends Controller
     public function deleteExperienceandEducation(Request $request, $id){
         $user=User::findOrFail($id);
 
-        if($request['comp_id']!=null){
-            $comp_id=$request['comp_id'];
-            $user->companies()->detach($comp_id);
+        if($request['experience_id']!=null){ //delete experience
+            $experience_id=$request['experience_id'];
+            $user->experiences()->where('id',$experience_id)->delete();
         }
         else{
-            $inst_id=$request['inst_id'];
-            $user->institutions()->detach($inst_id);
+            $education_id=$request['education_id'];
+            $user->educations()->where('id', $education_id)->delete();
         }
     }
 
