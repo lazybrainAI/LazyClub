@@ -30,6 +30,6 @@ class SendInformationsToUser extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome to Lazy Brain!')->view('email.email');
+        return $this->subject('Welcome to the Club|Lazy Brain!')->view('email.email');
     }
 }

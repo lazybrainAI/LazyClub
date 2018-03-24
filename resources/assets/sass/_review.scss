@@ -1,4 +1,15 @@
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $blue;
+  opacity: 1; /* Firefox */
+}
 
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $blue;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $blue;
+}
 .review{
   height: 180px;
   background-color: $blue;
@@ -8,11 +19,16 @@
     right: 15px;
   }
   border-bottom-right-radius: 10%;
-
+  border-top-left-radius: 10px;
+width: 85%;
 
   .select_field{
     margin-bottom: 15px;
+
     select {
+      color: $blue;
+      padding-bottom: 2%;
+      width: 70%;
       list-style: none;
       border-bottom-right-radius: 10px;
       border-top-left-radius: 10px;
@@ -39,11 +55,15 @@
 
   .review_text{
 
-    input, .text{
+
+    textarea, .text{
+      color: $blue;
       background-color: white;
       border-bottom-right-radius: 10%;
       border-top-left-radius: 10%;
       height: 100px;
+      width: 90%;
+
     }
     .text{
       display: none;

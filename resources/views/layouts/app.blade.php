@@ -10,6 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href= {{ URL::asset('css/bootstrap.min.css') }}>
+    <link rel="icon" href="img/lazybrain.png" type="image/png">
 
 
     @section('include_css')

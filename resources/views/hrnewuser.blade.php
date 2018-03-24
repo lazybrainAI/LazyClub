@@ -50,23 +50,23 @@
                                             <div>
                                                 <label>First name: </label>
                                                 <input id="firstNameHR" type="text" placeholder="First name*"
-                                                       name="firstName" required>
+                                                       name="firstName" required autocomplete="off">
                                             </div>
 
                                             <div>
                                                 <label>Last name: </label>
                                                 <input id="lastNameHR" type="text" name="lastName"
-                                                       placeholder="Last name*" required>
+                                                       placeholder="Last name*" required autocomplete="off">
                                             </div>
                                             <div>
                                                 <label>Email: </label></br>
                                                 <input id="emailHR" type="email" name="email" placeholder="Email*"
-                                                       required>
+                                                       required autocomplete="off">
                                             </div>
                                             <div>
                                                 <label>Username: </label>
                                                 <input id="usernameHR" type="text" placeholder="Username*"
-                                                       name="username" required>
+                                                       name="username" required autocomplete="off">
                                             </div>
 
                                             <div id="hr_button">

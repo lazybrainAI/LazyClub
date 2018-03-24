@@ -242,6 +242,8 @@ $(document).ready(function(){
 
 
     });
+
+    //ajax for creating new user (HR panel)
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -262,8 +264,10 @@ $(document).ready(function(){
             type: 'POST',
             data: {name:name, lastname:last_name, mail: mail, username:username},
             success: function () {
-                $('#description').val('');
-                $('#project_event_select').val('selected');
+                $('#firstNameHR').val('');
+                $('#lastNameHR').val('');
+                $('#emailHR').val('');
+                $('#usernameHR').val('');
                 $('#email_sent').text('Your review has been saved!').show();
                 $('#email_sent').text('Your review has been saved!').delay(2000).fadeOut(1000);
             },
@@ -278,6 +282,8 @@ $(document).ready(function(){
 
 
     });
+
+    //ajax for saving new review
     $('#review_form').submit(function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -306,6 +312,9 @@ $(document).ready(function(){
 
     });
 
+    $('#password').bind('copy', function (e) {
+        e.preventDefault();
+    });
 
 
 
