@@ -47,11 +47,11 @@
                                     <img class=" profile_img" src={{ URL::asset('img/teo.jpeg') }} />
                                 </div>
                                 <div class="col-xs-6  personal_info" id="{{$user->id}}">
-                                    <input name="user_name" id="name" type="text" disabled="disabled" value="<?php if(is_null($user->name)) {echo "Name";} else { echo $user->name;} /*echo  $user->surname*/ ?>" >
-                                    <input name="user_sector" id="sector" type="text" disabled="disabled"  value="<?php if(is_null($user->sector)) {echo "Sector";} else{ echo $user->sector;} ?>" >
-                                    <input name="user_position" id="position" type="text" disabled="disabled" value="<?php if(is_null($user->position)) {echo "Position";} else{ echo $user->position;} ?>" >
-                                    <input name="user_email" id="email" type="email" disabled="disabled" value="<?php if(is_null($user->email)) {echo "Sector";} else{ echo $user->email;} ?>" >
-                                    <input name="phone_num" id="phone_num" type="text" disabled="disabled" value="<?php if(is_null($user->phone_num)) {echo "Phone number";} else{ echo $user->phone_num;} ?>" >
+                                    <input name="user_name" id="name" type="text" disabled="disabled" placeholder="Name" value="<?php if(!is_null($user->name)) {echo $user->name;} /*echo  $user->surname*/ ?>" >
+                                    <input name="user_sector" id="sector" type="text" disabled="disabled" placeholder="Sector" value="<?php if(!is_null($user->sector)) { echo $user->sector;} ?>" >
+                                    <input name="user_position" id="position" type="text" disabled="disabled" placeholder="Position" value="<?php if(!is_null($user->position)) {echo $user->position;} ?>" >
+                                    <input name="user_email" id="email" type="email" disabled="disabled" placeholder="Email" value="<?php if(!is_null($user->email)) { echo $user->email;} ?>" >
+                                    <input name="phone_num" id="phone_num" type="text" disabled="disabled" placeholder="Phone number" value="<?php if(is_null($user->phone_num)) {echo "Phone number";} else{ echo $user->phone_num;} ?>" >
                                     <h6><a class="social_form_btn" id="linkedin" href="<?php echo $linked ?>">LinkedIn |</a>
                                         <a class="social_form_btn" id="twitter" href="<?php echo $twitter ?>">Twitter |</a>
                                         <a href="<?php echo $fb ?>" class="social_form_btn" id="fb">Facebook</a>
@@ -87,7 +87,7 @@
              <div class="container description_section">
                  <div class="row">
                      <div class="col-md-12">
-                         <textarea name="bio" rows="4" cols="100" id="bio_description" disabled="disabled"><?php if(is_null($user->bio)) {echo "Write something about yourself. Don't be lazy.";} else{ echo $user->sector;} ?></textarea>
+                         <textarea name="bio" rows="4" cols="100" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy."><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
                          <div class="read_more_btn">
                             <h6>read more</h6>
                          </div>
@@ -159,7 +159,7 @@
                  <div class="container">
                      <div class="row">
                          @if($projects==null)
-                              "You don't have ongoing projects."
+                             <div><p>You don't have ongoing projects.</p></div>
                          @else
                              @foreach($projects as $project)
                              <div class="col-md-5">

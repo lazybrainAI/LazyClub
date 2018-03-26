@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Education extends Model
 {
     //
-
+    protected $guarded=[];
     protected $table='educations';
 
     public function user(){

@@ -8,7 +8,7 @@ class Institution extends Model
 {
     //
 
-    protected $guarded=[];
+    protected $fillable=['name', 'address'];
 
     public function educations(){
         return $this->hasMany('App\Education');

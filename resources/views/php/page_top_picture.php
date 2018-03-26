@@ -1,11 +1,7 @@
 <?php $user = \Illuminate\Support\Facades\Auth::user();?>
 <div id="page_top_picture">
     <div>
-        <img class="profile_img" src="">
 
-        <a href="/profile/<?php echo $user->id; ?>">
-            <img class="profile_img" src="img/teo.jpeg">
-        </a>
         <a href="/profile/<?php echo $user->id; ?>">
             <img class="profile_img" src="img/teo.jpeg">
         </a>

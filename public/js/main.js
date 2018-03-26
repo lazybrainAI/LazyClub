@@ -26,10 +26,11 @@ $(document).ready(function(){
 
 
         var el = $("<div class=\"col-sm-6 click_to_add education\" >\n" +
-            "    <input name=\"institution\" id=\"institution\" type=\"text\" value=\"Institution\"  required> <!-- institution -->\n" +
-            "    <input name=\"address\" id=\"address\" type=\"text\" value=\"Address\"  required>\n" +
-            "    <input name=\"from_period_education\" id=\"from_period_education\" type=\"text\" placeholder=\"From\" ><input namee=\"to_period_education\" id=\"to_period_education\" type=\"text\" placeholder=\"To\" disabled=\"disabled\" required>\n" +
-            "    <input name=\"title\" id=\"title\" type=\"text\" value=\"Title\" required>\n" +
+            "    <input name=\"institution\" id=\"institution\" type=\"text\" placeholder=\"Institution\"  required> <!-- institution -->\n" +
+            "    <input name=\"address\" id=\"address\" type=\"text\" placeholder=\"Address\"  required>\n" +
+            "    <input name=\"from_period_education\" id=\"from_period_education\" type=\"text\" placeholder=\"From\" >" +
+            "    <input name=\"to_period_education\" id=\"to_period_education\" type=\"text\" placeholder=\"To\"  required>\n" +
+            "    <input name=\"title\" id=\"title\" type=\"text\" placeholder=\"Title\" required>\n" +
             "    <a class=\"delete_icon delete_btn\" style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
             "</div>" ).attr('id', 'education_' + count);
 
@@ -50,15 +51,15 @@ $(document).ready(function(){
             "\n" +
             "    <div class=\"experience_div\">\n" +
             "        <input name=\"company_position\" id=\"position\"\n" +
-            "               value=\"Company position\" > <!--Position-->\n" +
+            "               placeholder=\"Position\" > <!--Position-->\n" +
             "\n" +
-            "        <input name=\"company_name\" id=\"company\"  value=\"Company name\">\n" +
+            "        <input name=\"company_name\" id=\"company\"  placeholder=\"Company\">\n" +
             "\n" +
-            "        <input name=\"from_period_experience\" id=\"from_period_experience\" type=\"text\"  value=\"From\" >\n" +
+            "        <input name=\"from_period_experience\" id=\"from_period_experience\" type=\"text\"  placeholder=\"From\" >\n" +
             "\n" +
             "        <input name=\"to_period_experience\" id=\"to_period_experience\" type=\"text\"\n" +
-            "               value=\"To\" >\n" +
-            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" >Description</textarea>\n" +
+            "               placeholder=\"To\" >\n" +
+            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" placeholder=\'Experience description\'></textarea>\n" +
             "\n" +
             "        <a class=\"delete_icon delete_btn\"  style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
             "\n" +
@@ -154,10 +155,6 @@ $(document).ready(function(){
 
     });
 
-
-
-
-
     });
 
 
@@ -172,17 +169,6 @@ $(document).ready(function(){
        $('#cancel_btn').css('display', 'block');
        $('.delete_icon').css('display', 'inline');
 
-       var ed_ids=[];  //ids for education
-       $('.education').each(function () {
-           ed_ids.push($(this).attr('id').split('_')[1]);
-       });
-
-       var exp_ids=[];
-        $('.experience').each(function () {
-            exp_ids.push($(this).attr('id').split('_')[1]);
-        });
-
-
 
         $.ajaxSetup({
             headers: {
@@ -193,24 +179,50 @@ $(document).ready(function(){
         var id=$('.personal_info').attr('id');
 
         $('#profile_form').submit(function (e) {
+
+// ------- experience and education data
+
+            var ed_ids=[];//ids for education
+
+            $('.education').each(function () {
+                var ed_id=$(this).attr('id').split('_')[1];
+                ed_ids.push(ed_id);
+
+            });
+
+            $('.education input').each(function(){
+                $(this).attr('name',  $(this).attr('name')+ "_" + $(this).parent().attr('id').split('_')[1]);
+            });
+
+            var exp_ids=[];
+            $('.experience').each(function () {
+                exp_ids.push($(this).attr('id').split('_')[1]);
+            });
+
+            $('.experience input').each(function(){
+                $(this).attr('name',  $(this).attr('name')+ "_" + $(this).parent().parent().attr('id').split('_')[1]);
+            });
+
+            $('.experience textarea').each(function () {
+                $(this).attr('name',  $(this).attr('name')+ "_" + $(this).parent().parent().attr('id').split('_')[1]);
+
+            });
+
+// ------------
+
             e.preventDefault();
             e.stopPropagation();
-            var form = $(this);
+
+            var data = $('#profile_form').serializeArray();
+            data.push({name: 'ed_ids', value: ed_ids});
+            data.push({name: 'exp_ids', value: exp_ids});
 
 
             $.ajax({
                 url: '/profile/' + id,
                 type: 'POST',
-                data: form.serialize() + "&ed_ids=" + ed_ids + + "&exp_ids=" + exp_ids,
+                data: data,
                 success: function (data) {
-
-                    $('#name').val(data.name);
-                    $('#email').val(data.email);
-                    $('#position').val(data.position);
-                    $('#sector').val(data.sector);
-                    $('#phone_num').val(data.phone_num);
-                    $('#bio_description').val(data.bio);
-
 
 
                     $('input').prop('disabled', true);
@@ -223,12 +235,12 @@ $(document).ready(function(){
                     $('.delete_icon').css('display', 'none');
 
                     $('#msg').css('display', 'block');
-                    $('#msg').text("Profile saved.").delay(2000).fadeOut(1000);
+                    $('#msg').text("Profile saved").delay(2000).fadeOut(1000);
 
                 },
                 error: function(data) {
                     $('#msg').css('display', 'block');
-                    $('#msg').text("Error occured!").delay(2000).fadeOut(1000);
+                    $('#msg').text("Error occured.").delay(2000).fadeOut(1000);
 
 
                 }

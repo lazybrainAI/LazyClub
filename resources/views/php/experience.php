@@ -7,46 +7,26 @@ else
     echo ""; ?>">
 
     <div class="experience_div">
-        <input name="company_position" id="position"
+        <input name="company_position" id="position" placeholder="Position"
                value="<?php if($experience_count!=0) {
-                   if(!is_null($experience->position))
-                       echo $experience->position;
-                   else echo "Position";
-               }
-               else
-                   echo "Position"; ?>" disabled="disabled"  disabled="disabled"> <!--Position-->
+                   if(!is_null($experience->position->name))
+                       echo $experience->position->name;} ?>" disabled="disabled" > <!--Position-->
 
-        <input name="company_name" id="company"  disabled="disabled" value="<?php if($experience_count!=0) {
-            if(!is_null($experience->company->name))
-                echo $experience->company->name;
-            else echo "Company name";
-        }
-        else
-            echo "Company name"; ?>">
+        <input name="company_name" id="company"  disabled="disabled" placeholder="Company" value="<?php if($experience_count!=0) {
+            if(!is_null($experience->company->company_name))
+                echo $experience->company->company_name;} ?>" >
 
-        <input name="from_period_experience" id="from_period_experience" type="text"  value="<?php if($experience_count!=0) {
+        <input name="from_period_experience" id="from_period_experience" type="text" placeholder="From" value="<?php if($experience_count!=0) {
             if(!is_null($experience->start_date))
-                echo $experience->start_date;
-            else echo "From";
-        }
-        else
-            echo "From"; ?>"  disabled="disabled">
+                echo $experience->start_date;} ?>"  disabled="disabled">
 
-        <input name="to_period_experience" id="to_period_experience" type="text"
+        <input name="to_period_experience" id="to_period_experience" type="text" placeholder="To"
                value="<?php if($experience_count!=0) {
                    if(!is_null($experience->end_date))
-                       echo $experience->end_date;
-                   else echo "To";
-               }
-               else
-                   echo "To"; ?>" disabled="disabled">
-        <textarea name="description" rows="4" cols="100" id="position_description" disabled="disabled"><?php if($experience_count!=0) {
+                       echo $experience->end_date;} ?>" disabled="disabled">
+        <textarea name="description" rows="2" cols="100" id="position_description" placeholder="Experience description" disabled="disabled"><?php if($experience_count!=0) {
                 if(!is_null($experience->description))
-                    echo $experience->description;
-                else echo "Description";
-            }
-            else
-                echo "Description"; ?></textarea>
+                    echo $experience->description;} ?></textarea>
 
         <a class="delete_icon delete_btn"><i class="far fa-trash-alt"></i></a>
 

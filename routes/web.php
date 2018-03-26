@@ -17,14 +17,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@returnEventsAndProjects');
 Route::post('/home', 'HomeController@saveReview');
 
-
+//Profile routes
 Route::get('/profile/{id}', 'UserController@getProfileDetails')->middleware('auth');
 
 Route::post('/profile/{id}', 'UserController@editProfile');
 Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 
-//Profile routes
-Route::get('/profile/{id}', 'UserController@getProfileDetails');
 
 //Event routes
 Route::get('/events', function () {

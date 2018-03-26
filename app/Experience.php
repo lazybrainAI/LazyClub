@@ -8,12 +8,14 @@ class Experience extends Model
 {
     //
 
+    protected $guarded = [];
+
     public function user(){
         return $this->belongsTo('App\User');
     }
 
-    public function institution(){
-        return $this->belongsTo('App\Institution');
+    public function company(){
+        return $this->belongsTo('App\Company');
     }
 
     public function position(){
