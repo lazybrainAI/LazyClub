@@ -1,17 +1,17 @@
 // ---- add content on click
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-    var i=1;
-    $('.education').each(function(){
-        if($(this).attr('id', '')){
+    var i = 1;
+    $('.education').each(function () {
+        if ($(this).attr('id', '')) {
             $(this).attr('id', 'education_' + i);
         }
         i++;
     });
-    var z=1;
-    $('.experience').each(function(){
-        if($(this).attr('id', '')){
+    var z = 1;
+    $('.experience').each(function () {
+        if ($(this).attr('id', '')) {
             $(this).attr('id', 'experience_' + z);
         }
         z++;
@@ -19,10 +19,10 @@ $(document).ready(function(){
 
 
     // adding education on button click
-    $('#add_education').click(function(){
+    $('#add_education').click(function () {
 
         var count = $('.education').length + 1;
-        var id = "education_" +count;
+        var id = "education_" + count;
 
 
         var el = $("<div class=\"col-sm-6 click_to_add education\" >\n" +
@@ -32,22 +32,22 @@ $(document).ready(function(){
             "    <input name=\"to_period_education\" id=\"to_period_education\" type=\"text\" placeholder=\"To\"  required>\n" +
             "    <input name=\"title\" id=\"title\" type=\"text\" placeholder=\"Title\" required>\n" +
             "    <a class=\"delete_icon delete_btn\" style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
-            "</div>" ).attr('id', 'education_' + count);
+            "</div>").attr('id', 'education_' + count);
 
 
-        $(el).appendTo( $('#education_section'));
+        $(el).appendTo($('#education_section'));
 
 
     });
 
     // adding experience on button click
-    $('#add_experience').click(function(){
+    $('#add_experience').click(function () {
 
 
         var count = $('.experience').length + 1;
-        var id = "experience_" +count;
+        var id = "experience_" + count;
 
-        var experience=$("<div class=\"col-md-12 click_to_add experience\" >\n" +
+        var experience = $("<div class=\"col-md-12 click_to_add experience\" >\n" +
             "\n" +
             "    <div class=\"experience_div\">\n" +
             "        <input name=\"company_position\" id=\"position\"\n" +
@@ -72,7 +72,7 @@ $(document).ready(function(){
             "</div>").attr('id', 'experience_' + count);
 
 
-        $(experience).appendTo( $('#experience_section'));
+        $(experience).appendTo($('#experience_section'));
 
 
     });
@@ -81,45 +81,42 @@ $(document).ready(function(){
     $('#education_section').on('click', '.delete_icon', function () {
 
         // deleting from DB with AJAX
-        var parent=$(this).parent();
-        var education_id=parent.attr('id').split("_")[1];
-        var id=$('.personal_info').attr('id');
-
+        var parent = $(this).parent();
+        var education_id = parent.attr('id').split("_")[1];
+        var id = $('.personal_info').attr('id');
 
 
         $.ajax({
             type: 'DELETE',
             url: '/profile/' + id,
-            data: {education_id:education_id},
-            success: function(){
+            data: {education_id: education_id},
+            success: function () {
 
                 parent.remove();
-                var j=1;
-                $('.education').each(function(){  //after removin one/more assign new id values
+                var j = 1;
+                $('.education').each(function () {  //after removin one/more assign new id values
                     $(this).attr('id', 'education_' + j);
                     j++;
                 });
 
             },
-            error:function(data){
+            error: function (data) {
 
             }
 
 
-
         });
-
 
 
     });
 
     // --------- deleting experience section
 
-    $('#experience_section').on('click', '.delete_icon' ,function () {
+    $('#experience_section').on('click', '.delete_icon', function () {
 
-        var parent=$(this).parent().parent();
-        var experience_id=parent.attr('id').split("_")[1];
-        var id=$('.personal_info').attr('id');
+        var parent = $(this).parent().parent();
+        var experience_id = parent.attr('id').split("_")[1];
+        var id = $('.personal_info').attr('id');
 
 
         $.ajaxSetup({
@@ -127,7 +124,6 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
 
 
         // deleting from DB with AJAX
@@ -135,39 +131,38 @@ $(document).ready(function(){
         $.ajax({
             type: 'DELETE',
             url: '/profile/' + id,
-            data: {experience_id:experience_id},
-            success: function(data){
+            data: {experience_id: experience_id},
+            success: function (data) {
 
-            parent.remove();
-            var j=1;
-            $('.experience').each(function(){  //after removin one/more assign new id values
-                $(this).attr('id', 'experience_' + j);
-                j++;
-            });
+                parent.remove();
+                var j = 1;
+                $('.experience').each(function () {  //after removin one/more assign new id values
+                    $(this).attr('id', 'experience_' + j);
+                    j++;
+                });
 
-        },
-        error:function(data){
-            $('#msg').css('display','block');
-            $('#msg').text('Error');
-        }
+            },
+            error: function (data) {
+                $('#msg').css('display', 'block');
+                $('#msg').text('Error');
+            }
 
 
-
-    });
+        });
 
     });
 
 
     // ---------- editing profile
 
-    $('#edit_btn').click(function(){
-       $('input').prop('disabled', false);
-       $('textarea').prop('disabled', false);
-       $('#add_education').css('display', 'block');
-       $('#add_experience').css('display', 'block');
-       $('#save_btn').css('display', 'block');
-       $('#cancel_btn').css('display', 'block');
-       $('.delete_icon').css('display', 'inline');
+    $('#edit_btn').click(function () {
+        $('input').prop('disabled', false);
+        $('textarea').prop('disabled', false);
+        $('#add_education').css('display', 'block');
+        $('#add_experience').css('display', 'block');
+        $('#save_btn').css('display', 'block');
+        $('#cancel_btn').css('display', 'block');
+        $('.delete_icon').css('display', 'inline');
 
 
         $.ajaxSetup({
@@ -176,35 +171,35 @@ $(document).ready(function(){
             }
         });
 
-        var id=$('.personal_info').attr('id');
+        var id = $('.personal_info').attr('id');
 
         $('#profile_form').submit(function (e) {
 
 // ------- experience and education data
 
-            var ed_ids=[];//ids for education
+            var ed_ids = [];//ids for education
 
             $('.education').each(function () {
-                var ed_id=$(this).attr('id').split('_')[1];
+                var ed_id = $(this).attr('id').split('_')[1];
                 ed_ids.push(ed_id);
 
             });
 
-            $('.education input').each(function(){
-                $(this).attr('name',  $(this).attr('name')+ "_" + $(this).parent().attr('id').split('_')[1]);
+            $('.education input').each(function () {
+                $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().attr('id').split('_')[1]);
             });
 
-            var exp_ids=[];
+            var exp_ids = [];
             $('.experience').each(function () {
                 exp_ids.push($(this).attr('id').split('_')[1]);
             });
 
-            $('.experience input').each(function(){
-                $(this).attr('name',  $(this).attr('name')+ "_" + $(this).parent().parent().attr('id').split('_')[1]);
+            $('.experience input').each(function () {
+                $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().attr('id').split('_')[1]);
             });
 
             $('.experience textarea').each(function () {
-                $(this).attr('name',  $(this).attr('name')+ "_" + $(this).parent().parent().attr('id').split('_')[1]);
+                $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().attr('id').split('_')[1]);
 
             });
 
@@ -238,7 +233,7 @@ $(document).ready(function(){
                     $('#msg').text("Profile saved").delay(2000).fadeOut(1000);
 
                 },
-                error: function(data) {
+                error: function (data) {
                     $('#msg').css('display', 'block');
                     $('#msg').text("Error occured.").delay(2000).fadeOut(1000);
 
@@ -249,8 +244,6 @@ $(document).ready(function(){
 
 
         });
-
-
 
 
     });
@@ -274,7 +267,7 @@ $(document).ready(function(){
         $.ajax({
             url: '/hrpanel',
             type: 'POST',
-            data: {name:name, lastname:last_name, mail: mail, username:username},
+            data: {name: name, lastname: last_name, mail: mail, username: username},
             success: function () {
                 $('#firstNameHR').val('');
                 $('#lastNameHR').val('');
@@ -283,7 +276,7 @@ $(document).ready(function(){
                 $('#email_sent').text('Your review has been saved!').show();
                 $('#email_sent').text('Your review has been saved!').delay(2000).fadeOut(1000);
             },
-            error: function(data) {
+            error: function (data) {
                 alert();
                 $('#email_not_sent').text(data).show();
                 $('#email_not_sent').text(data).delay(2000).fadeOut(1000);
@@ -306,14 +299,14 @@ $(document).ready(function(){
         $.ajax({
             url: '/home',
             type: 'POST',
-            data: {project_event_select: project_event_select, description:description},
+            data: {project_event_select: project_event_select, description: description},
             success: function () {
                 $('#description').val('');
                 $('#project_event_select').val('selected');
                 $('#uspesno_poslata').text('Your review has been saved!').show();
                 $('#uspesno_poslata').text('Your review has been saved!').delay(2000).fadeOut(1000);
             },
-            error: function(data) {
+            error: function (data) {
                 $('#neuspesno_poslata').text('You have to pick project/event and enter your note!').show();
                 $('#neuspesno_poslata').text('You have to pick project/event and enter your note!').delay(2000).fadeOut(1000);
 
@@ -328,12 +321,33 @@ $(document).ready(function(){
         e.preventDefault();
     });
 
+    $('#add_new_event_form').submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
 
+        var forma = $('#add_new_event_form');
+        alert("pre ajaksa");
+        $.ajax({
+            url: '/events',
+            type: 'POST',
+            data: forma.serialize(),
+
+            success: function (data) {
+                $('.event_saved').addClass('allgood').text('Event successfully created.').show().delay(2000).fadeOut(1000);
+                document.getElementById('add_new_event_form').reset();
+            },
+            error: function (data) {
+                $('.event_saved').addClass('notallgood').text('An error has occured.').show().delay(2000).fadeOut(1000);
+
+            }
+
+        });
+
+
+    });
 
 
 });
-
-
 
 
 // ------- slider ------
@@ -346,14 +360,19 @@ function plusDivs(n) {
 }
 
 function showDivs(n) {
-    var i=0;
+    var i = 0;
     var x = document.getElementsByClassName("mySlides");
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length} ;
+    if (n > x.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = x.length
+    }
+    ;
     for (i; i < x.length; i++) {
         x[i].style.display = "none";
     }
-    x[slideIndex-1].style.display = "block";
+    x[slideIndex - 1].style.display = "block";
 }
 
 

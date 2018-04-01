@@ -1,0 +1,107 @@
+.add_new_event {
+  border-radius: 5px;
+  color: white;
+  border:1px solid $blue;
+  width:auto;
+  height:30px;
+  background-color: $green;
+  display: inline-block;
+  border-color: white;
+  padding-left: 2%;
+  padding-right: 2%;
+  &:hover {
+    background-color: white;
+    border: 1px solid $green;
+    color: $green !important;
+
+
+  }
+}
+.events_all_section {
+
+  #events_all {
+    .section_title {
+      background-color: $green;
+    }
+    .see_more_btn {
+      background-color: $green;
+      display: inline-block;
+      border-color: white;
+      a {
+        text-decoration: none;
+      }
+      &:hover {
+        background-color: white;
+        border: 1px solid $green;
+        h6 {
+          color: $green !important;
+        }
+      }
+    }
+    .p_e_card{
+      border-color:$green;
+      margin: 15% 3%;
+      &:hover{
+        box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
+      }
+    }
+
+  }
+}
+
+.modal_class{
+margin-top: 2%;
+  display:inline-block;
+  color: $green;
+
+  input{
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: $login-borders;
+    font-size: $font-size-fields;
+    border: 1px solid $green;
+    margin-bottom: 5%;
+    color: $green;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+
+  }
+  textarea{
+    resize: none;
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: $login-borders;
+    font-size: $font-size-fields;
+    border: 1px solid $green;
+    margin-bottom: 5%;
+    color: $green;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+
+  }
+
+
+}
+#modal_heading{
+  color: white;
+  font-size: 2rem;
+  padding-left: 3%;
+
+
+}
+.modal-header {
+  background: url($page-top);
+  background-size: cover;
+
+}
+.modal-footer{
+  .allgood{
+    color: $green;
+
+  }
+  .notallgood{
+    color: red;
+  }
+}
