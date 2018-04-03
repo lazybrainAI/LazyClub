@@ -30,10 +30,9 @@ Route::post('/events', 'EventController@saveNewEvent');
 //Route::get('/events/{name}', 'EventController@showDetails');
 
 //Project routes
-Route::get('/projects', function () {
-    return view('projects');
-});
-Route::get('/projects/{project}', 'ProjectController@showDetails');
+Route::get('/projects','ProjectController@showDetails');
+Route::post('/projects','ProjectController@saveNewProject');
+//Route::get('/projects/{project}', 'ProjectController@showDetails');
 
 //HR panel
 Route::get('/hrpanel', 'HRController@returnView');

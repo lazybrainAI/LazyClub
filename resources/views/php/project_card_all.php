@@ -1,4 +1,4 @@
-<div class="col-sm-6 padding_left" >
+<div class="col-sm-4 padding_left" >
     <div class="p_e_card">
         <div class="p_e_img">
 
@@ -9,7 +9,6 @@
                 </li>
                 <li>
                     <img class="profile_img" src="" />
-
                 </li>
             </ul>
         </div>

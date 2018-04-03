@@ -12,7 +12,7 @@ use function MongoDB\BSON\toJSON;
 class EventController extends Controller
 {
     public function showDetails(){
-        $events = Event::all();
+        $events = Event::all()->sortByDesc('date');
         if(sizeof($events)>0){
             return view('events', compact('events'));
         }

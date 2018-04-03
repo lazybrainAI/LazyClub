@@ -4359,7 +4359,9 @@ body, html {
 .home_section .left_section .see_more_btn {
   background-color: #07dd85;
   border: 1px solid #07dd85;
-  width: 50px;
+  width: auto;
+  padding-left: 2%;
+  padding-right: 2%;
   display: inline-block;
 }
 .home_section .left_section .see_more_btn h6 {
@@ -4466,8 +4468,8 @@ body, html {
   background-color: #07dd85;
   display: inline-block;
   border-color: white;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 .add_new_event:hover {
   background-color: white;
@@ -4501,12 +4503,12 @@ body, html {
   box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
 }
 
-.modal_class {
+#event_modal {
   margin-top: 2%;
   display: inline-block;
   color: #07dd85;
 }
-.modal_class input {
+#event_modal input {
   margin-right: 5%;
   width: 85%;
   height: 8%;
@@ -4518,7 +4520,7 @@ body, html {
   color: #07dd85;
   box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
 }
-.modal_class textarea {
+#event_modal textarea {
   resize: none;
   margin-right: 5%;
   width: 85%;
@@ -4548,4 +4550,79 @@ body, html {
 }
 .modal-footer .notallgood {
   color: red;
+}
+
+.add_new_project {
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #025284;
+  width: auto;
+  height: 30px;
+  background-color: #025284;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.add_new_project:hover {
+  background-color: white;
+  border: 1px solid #025284;
+  color: #025284 !important;
+}
+
+#project_modal {
+  margin-top: 2%;
+  display: inline-block;
+  color: #025284;
+}
+#project_modal input {
+  margin-right: 5%;
+  width: 85%;
+  height: 8%;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #025284;
+  margin-bottom: 5%;
+  color: #025284;
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+}
+#project_modal textarea {
+  resize: none;
+  margin-right: 5%;
+  width: 85%;
+  height: 8%;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #025284;
+  margin-bottom: 5%;
+  color: #025284;
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+}
+
+.projects_all_section #projects_all .section_title {
+  background-color: #025284;
+}
+.projects_all_section #projects_all .see_more_btn {
+  background-color: #025284;
+  display: inline-block;
+  border-color: white;
+}
+.projects_all_section #projects_all .see_more_btn a {
+  text-decoration: none;
+}
+.projects_all_section #projects_all .see_more_btn:hover {
+  background-color: white;
+  border: 1px solid #025284;
+}
+.projects_all_section #projects_all .see_more_btn:hover h6 {
+  color: #025284 !important;
+}
+.projects_all_section #projects_all .p_e_card {
+  border-color: #025284;
+  margin: 15% 3%;
+}
+.projects_all_section #projects_all .p_e_card:hover {
+  box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
 }

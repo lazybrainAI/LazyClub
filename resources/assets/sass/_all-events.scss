@@ -7,8 +7,8 @@
   background-color: $green;
   display: inline-block;
   border-color: white;
-  padding-left: 2%;
-  padding-right: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
   &:hover {
     background-color: white;
     border: 1px solid $green;
@@ -49,7 +49,7 @@
   }
 }
 
-.modal_class{
+#event_modal{
 margin-top: 2%;
   display:inline-block;
   color: $green;

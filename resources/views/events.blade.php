@@ -22,7 +22,7 @@
 
                 <div class="container container-left-margin">
                     <div class="row">
-                        {{--Events header--}}
+                        {{--Event header--}}
                         <div class="col-sm-4">
                             <h4 class="section_title" id="all_events_section_title">All events</h4>
                         </div>
@@ -34,10 +34,10 @@
                     </div>
                 </div>
 
-                {{--Events section--}}
+                {{--Event section--}}
                 <div class="container" id="events_all">
                     <div class="row" id="all_events">
-                        @if(count($events)>0)
+                        @if(!empty($events))
                             @foreach($events as $event)
                                 @include('/php/event_card_all')
                             @endforeach
@@ -49,9 +49,8 @@
 
                     </div>
                 </div>
-                </div>
-
             </div>
+
         </div>
     </div>
 

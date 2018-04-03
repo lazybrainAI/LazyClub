@@ -7,6 +7,9 @@
             <p><?php echo $event->description;?></p>
 
             <div class="see_more_btn">
+                <a href="<?php echo '/events/'.$event->name?>" ><h6 class="h7" >View more</h6></a>
+            </div>
+            <div class="see_more_btn">
                 <a href="<?php echo '/events/'.$event->name?>" ><h6 class="h7" >Attend</h6></a>
             </div>
             <div class="see_more_btn" id="see_more_btn_location">

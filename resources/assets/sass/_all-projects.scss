@@ -1,0 +1,83 @@
+.add_new_project {
+  border-radius: 5px;
+  color: white;
+  border:1px solid $blue;
+  width:auto;
+  height:30px;
+  background-color: $blue;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  &:hover {
+    background-color: white;
+    border: 1px solid $blue;
+    color: $blue !important;
+
+
+  }
+}
+#project_modal{
+  margin-top: 2%;
+  display:inline-block;
+  color: $blue;
+  input{
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: $login-borders;
+    font-size: $font-size-fields;
+    border: 1px solid $blue;
+    margin-bottom: 5%;
+    color: $blue;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+
+  }
+  textarea{
+    resize: none;
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: $login-borders;
+    font-size: $font-size-fields;
+    border: 1px solid $blue;
+    margin-bottom: 5%;
+    color: $blue;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+
+  }
+
+}
+.projects_all_section {
+
+  #projects_all {
+    .section_title {
+      background-color: $blue;
+    }
+    .see_more_btn {
+      background-color: $blue;
+      display: inline-block;
+      border-color: white;
+      a {
+        text-decoration: none;
+      }
+      &:hover {
+        background-color: white;
+        border: 1px solid $blue;
+        h6 {
+          color: $blue !important;
+        }
+      }
+    }
+    .p_e_card{
+      border-color:$blue;
+      margin: 15% 3%;
+      &:hover{
+        box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
+      }
+    }
+
+  }
+}

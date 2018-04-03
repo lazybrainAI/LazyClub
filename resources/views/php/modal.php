@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
 
             </div>
-            <div class="modal_class">
+            <div class="modal_class" id="event_modal">
                 <div class="col-sm-12">
                     <label>Event name</label>
                 <input type="text" name="event_new_name">
