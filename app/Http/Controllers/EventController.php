@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Event;
+
 
 class EventController extends Controller
 {
     public function showDetails($name){
-        $event = DB::table('event')->where('name', '=', $name)->get();
+        $event = Event::where('name', '=', $name)->get();
         if(sizeof($event)>0){
             return view('event', compact('event'));
         }

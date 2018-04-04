@@ -3681,26 +3681,31 @@ body, html {
   text-decoration: none;
 }
 
-.read_more_btn, .see_more_btn, .submit_btn, #save_btn, #cancel_btn {
+.read_more_btn, .read_less_btn, .see_more_btn, .submit_btn, #save_btn, #cancel_btn {
   background-color: #025284;
   border-radius: 5px;
   border: 1px solid #025284;
   width: 100px;
   height: 30px;
+  cursor: pointer;
 }
-.read_more_btn h6, .see_more_btn h6, .submit_btn h6, #save_btn h6, #cancel_btn h6 {
+.read_more_btn h6, .read_less_btn h6, .see_more_btn h6, .submit_btn h6, #save_btn h6, #cancel_btn h6 {
   text-align: center;
   color: white !important;
   font-weight: 300;
   line-height: 25px;
 }
-.read_more_btn:hover, .see_more_btn:hover, .submit_btn:hover, #save_btn:hover, #cancel_btn:hover {
+.read_more_btn:hover, .read_less_btn:hover, .see_more_btn:hover, .submit_btn:hover, #save_btn:hover, #cancel_btn:hover {
   cursor: pointer;
   background-color: white;
   border: 1px solid #025284;
 }
-.read_more_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6, #save_btn:hover h6, #cancel_btn:hover h6 {
+.read_more_btn:hover h6, .read_less_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6, #save_btn:hover h6, #cancel_btn:hover h6 {
   color: #025284 !important;
+}
+
+.read_more_btn {
+  display: none;
 }
 
 #save_btn {
@@ -3775,6 +3780,10 @@ body, html {
 }
 .user_info_section .personal_info input:first-child, .user_info_section .personal_info input:nth-child(2), .user_info_section .personal_info input:nth-child(3), .user_info_section .personal_info input:nth-child(4), .user_info_section .personal_info input:nth-child(5) {
   font-size: 1.25rem;
+}
+.user_info_section .personal_info input:first-child, .user_info_section .personal_info input:nth-child(2) {
+  display: inline;
+  width: 150px;
 }
 .user_info_section .personal_info h6 a:hover {
   cursor: pointer;
@@ -3983,6 +3992,10 @@ body, html {
   color: black;
   background: none;
   border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  transition: all 0.9s ease;
 }
 
 .add_section {
@@ -4014,6 +4027,8 @@ body, html {
   margin-bottom: 10px;
   background: none;
   border: none;
+  resize: none;
+  overflow: hidden;
 }
 .add_section .click_to_add .delete_icon {
   display: none;

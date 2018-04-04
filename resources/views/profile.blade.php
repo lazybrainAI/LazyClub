@@ -47,7 +47,8 @@
                                     <img class=" profile_img" src={{ URL::asset('img/teo.jpeg') }} />
                                 </div>
                                 <div class="col-xs-6  personal_info" id="{{$user->id}}">
-                                    <input name="user_name" id="name" type="text" disabled="disabled" placeholder="Name" value="<?php if(!is_null($user->name)) {echo $user->name;} /*echo  $user->surname*/ ?>" >
+                                    <input name="user_name" id="name" type="text" disabled="disabled" placeholder="Name" value="<?php if(!is_null($user->name)) {echo $user->name;}  ?>" required>
+                                    <input name="surname" id="surname" type="text" disabled="disabled" placeholder="Surname" value="<?php if(!is_null($user->surname)) {echo $user->surname;}  ?>"  required>
                                     <input name="user_sector" id="sector" type="text" disabled="disabled" placeholder="Sector" value="<?php if(!is_null($user->sector)) { echo $user->sector;} ?>" >
                                     <input name="user_position" id="position" type="text" disabled="disabled" placeholder="Position" value="<?php if(!is_null($user->position)) {echo $user->position;} ?>" >
                                     <input name="user_email" id="email" type="email" disabled="disabled" placeholder="Email" value="<?php if(!is_null($user->email)) { echo $user->email;} ?>" >
@@ -87,7 +88,7 @@
              <div class="container description_section">
                  <div class="row">
                      <div class="col-md-12">
-                         <textarea name="bio" rows="4" cols="100" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy."><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
+                         <textarea name="bio" maxlength="450" cols="80" class="expand" maxlength="450" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy."><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
                          <div class="read_more_btn">
                             <h6>read more</h6>
                          </div>
@@ -206,9 +207,9 @@
              <button id="save_btn" type="submit">
                  <h6>Save changes</h6>
              </button>
-             <div id="cancel_btn">
+             <button id="cancel_btn" type="reset">
                  <h6>Cancel</h6>
-             </div>
+             </button>
              <div id="msg"></div>
 
              </form> <!--  end of form   -->

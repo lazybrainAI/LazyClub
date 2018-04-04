@@ -30,6 +30,10 @@ Route::get('/events', function () {
 });
 Route::get('/events/{name}', 'EventController@showDetails');
 
+Route::get('/events/{name}', 'EventController@showDetails');
+
+
+
 //Project routes
 Route::get('/projects', function () {
     return view('projects');
