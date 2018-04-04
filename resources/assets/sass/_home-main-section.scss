@@ -74,7 +74,9 @@
     .see_more_btn{
       background-color:$green;
       border:1px solid $green;
-      width:50px;
+      width:auto;
+      padding-left: 2%;
+      padding-right: 2%;
       display: inline-block;
       h6{
         margin-bottom: 0px!important;

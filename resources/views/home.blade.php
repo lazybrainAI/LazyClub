@@ -27,7 +27,7 @@
 
                 <div class="container">
 
-                    @if(count($events)>0)
+                    @if(!empty($events))
 
                         <div class="timeline_vertical">
                             @foreach($events as $event)
@@ -87,7 +87,7 @@
 
                 <div class="container">
                     <div class="row">
-                        @if(count($projects)>0)
+                        @if(!empty($projects))
                             @foreach($projects as $project)
                                 @include('/php/project_card_home')
                             @endforeach

@@ -30,8 +30,8 @@
     <div class="">
         <button type="submit" class="submit_btn" id="sacuvaj_review"><h6>Submit</h6></button>
     </div>
-    <div id="uspesno_poslata"></div>
-    <div id="neuspesno_poslata" style="color: red;"></div>
+    <div id="review_sent"></div>
+
 
 
 
