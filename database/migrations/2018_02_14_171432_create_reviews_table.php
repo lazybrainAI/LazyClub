@@ -20,9 +20,9 @@ class CreateReviewsTable extends Migration
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('event_id')->unsigned();
+            $table->integer('event_id')->unsigned()->nullable();
             $table->foreign('event_id')->references('id')->on('events');
-            $table->integer('project_id')->unsigned();
+            $table->integer('project_id')->unsigned()->nullable();
             $table->foreign('project_id')->references('id')->on('projects');
 
 

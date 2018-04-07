@@ -27,7 +27,7 @@
 
                 <div class="container">
 
-                    @if(!empty($events))
+                    @if(!empty($events) && count($events)>0)
 
                         <div class="timeline_vertical">
                             @foreach($events as $event)
@@ -61,7 +61,7 @@
                                 </div>
                             @endforeach
 
-                            <div class="see_more_btn" style="width:100px">
+                            <div class="see_more_btn">
                                 <a href="/events" style="text-decoration: none;"><h6>View more</h6></a>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                             @foreach($projects as $project)
                                 @include('/php/project_card_home')
                             @endforeach
-                            <div class="see_more_btn" style="margin-bottom:70px">
+                            <div class="see_more_btn" style="padding-left: 2%; padding-right: 2%; margin-bottom: 70px; width: auto;">
                                 <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
                             </div>
                         @else

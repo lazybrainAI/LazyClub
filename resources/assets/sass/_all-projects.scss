@@ -45,7 +45,7 @@
     border: 1px solid $blue;
     margin-bottom: 5%;
     color: $blue;
-    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+
 
   }
 
@@ -80,4 +80,25 @@
     }
 
   }
+}
+#project_new_footer{
+  .allgood{
+    color:$blue;
+  }
+}
+.checkbox-inline{
+  -webkit-appearance: checkbox!important;
+}
+#project_modal_all{
+  height: auto;
+}
+#project_new_checkbox{
+  input{
+    vertical-align:middle;
+    display: inline-block;
+    height: auto;
+    width: auto;
+    margin-bottom: auto;
+  }
+
 }

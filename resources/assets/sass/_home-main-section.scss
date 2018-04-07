@@ -125,4 +125,15 @@
   }
 
 }
+.left_section {
+  margin-bottom: 30px;
 
+  .see_more_btn {
+    background-color: $green;
+    border: 1px solid $green;
+    width: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: inline-block;
+  }
+}

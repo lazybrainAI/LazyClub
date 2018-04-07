@@ -14,7 +14,7 @@ class CreateProjectAttendingsTable extends Migration
     public function up()
     {
         Schema::create('project_attendings', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('project_id')->unsigned();
             $table->integer('role_id')->unsigned();
             $table->integer('user_id')->unsigned();

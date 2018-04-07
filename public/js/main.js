@@ -440,9 +440,13 @@ $(document).ready(function () {
                 delay(2000).
                 fadeOut(1000);
                 document.getElementById('add_new_project_form').reset();
+                console.log(data);
+
+
             },
             error: function (data) {
-                alert(data);
+
+                console.log(data);
                 $('.project_saved').addClass('notallgood').text('An error has occurred.').show().delay(2000).fadeOut(1000);
 
             }

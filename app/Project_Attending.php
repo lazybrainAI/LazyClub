@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Project_Attending extends Model
 {
     //
-
+    protected $fillable = ['id', 'project_id', 'user_id', 'role_id'];
+    protected $table = 'project_attendings';
 
     public function role(){
         return $this->belongsTo('App\Role');
@@ -17,7 +18,7 @@ class Project_Attending extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function event(){
-        return $this->belongsTo('App\Event');
+    public function project(){
+        return $this->belongsTo('App\Project');
     }
 }

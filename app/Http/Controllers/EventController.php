@@ -15,11 +15,8 @@ class EventController extends Controller
 {
     public function showDetails(){
         $events = Event::all()->sortByDesc('date');
-        if(sizeof($events)>0){
-            return view('events', compact('events'));
-        }
-        else
-            abort(404);
+                    return view('events', compact('events'));
+
     }
 
     public function saveNewEvent(Request $request){

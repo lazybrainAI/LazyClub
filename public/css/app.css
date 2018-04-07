@@ -4409,6 +4409,18 @@ body, html {
   text-align: right;
 }
 
+.left_section {
+  margin-bottom: 30px;
+}
+.left_section .see_more_btn {
+  background-color: #07dd85;
+  border: 1px solid #07dd85;
+  width: auto;
+  padding-left: 2%;
+  padding-right: 2%;
+  display: inline-block;
+}
+
 #msg {
   bottom: -70px;
   position: absolute;
@@ -4613,7 +4625,6 @@ body, html {
   border: 1px solid #025284;
   margin-bottom: 5%;
   color: #025284;
-  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
 }
 
 .projects_all_section #projects_all .section_title {
@@ -4640,4 +4651,24 @@ body, html {
 }
 .projects_all_section #projects_all .p_e_card:hover {
   box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
+}
+
+#project_new_footer .allgood {
+  color: #025284;
+}
+
+.checkbox-inline {
+  -webkit-appearance: checkbox !important;
+}
+
+#project_modal_all {
+  height: auto;
+}
+
+#project_new_checkbox input {
+  vertical-align: middle;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  margin-bottom: auto;
 }
