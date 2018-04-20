@@ -6,41 +6,41 @@
                 <div class="modal-header">
                     <h4 class="modal-title" id="modal_heading">Add new project</h4>
                     <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
-
                 </div>
-                <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token()?>">
+
+                <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token() ?>">
                 <div class="modal_class" id="project_modal">
                     <div class="col-sm-12">
                         <label>Project name</label>
-                        <input type="text" name="project_new_name">
+                        <input type="text" name="project_new_name" required autocomplete="off">
                     </div>
                     <div class="col-sm-12">
                         <label>Project description</label>
-                        <textarea name="project_new_description"></textarea>
+                        <textarea name="project_new_description" required autocomplete="off"></textarea>
                     </div>
                     <div class="col-sm-12">
                         <label>Project sector</label>
-                        <input type="text" name="project_new_sector">
+                        <input type="text" name="project_new_sector" required autocomplete="off">
                     </div>
                     <div class="col-sm-12">
                         <label>Project start date</label>
-                        <input type="date" name="project_new_start_date">
+                        <input type="date" name="project_new_start_date" required autocomplete="off">
                     </div>
                     <div class="col-sm-12">
                         <label>Project end date</label>
-                        <input type="date" name="project_new_end_date">
+                        <input type="date" name="project_new_end_date" required autocomplete="off">
                     </div>
                     <div class="col-sm-12">
                         <label>Project location</label>
-                        <input type="text" name="project_new_location">
+                        <input type="text" name="project_new_location" required autocomplete="off">
                     </div>
                     <div class="col-sm-12">
                         <label>Project language</label>
-                        <input type="text" name="project_new_language">
+                        <input type="text" name="project_new_language" required autocomplete="off">
                     </div>
                     <div class="col-sm-12">
                         <label>Team name for project</label>
-                        <input type="text" name="project_new_team">
+                        <input type="text" name="project_new_team" required autocomplete="off">
                     </div>
                     <div class="col-sm-12">
                         <label>Open positions</label>

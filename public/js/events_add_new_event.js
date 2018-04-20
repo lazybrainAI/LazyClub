@@ -1,0 +1,29 @@
+$(document).ready(function () {
+
+
+    $('#add_new_event_form').submit(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var forma = $('#add_new_event_form');
+
+        $.ajax({
+            url: '/events',
+            type: 'POST',
+            data: forma.serialize(),
+
+            success: function (data) {
+                $('.event_saved').addClass('allgood').text('Event successfully created.').show().delay(2000).fadeOut(1000);
+                document.getElementById('add_new_event_form').reset();
+
+            },
+            error: function (data) {
+                $('.event_saved').addClass('notallgood').text('An error has occurred.').show().delay(2000).fadeOut(1000);
+
+            }
+
+        });
+
+
+    });
+});

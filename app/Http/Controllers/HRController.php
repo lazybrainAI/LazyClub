@@ -14,6 +14,7 @@ class HRController extends Controller
     function returnView(){
         return view("hrnewuser");
     }
+
     function sendMail(Request $request){
 
         $user = new User();

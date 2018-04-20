@@ -92,3 +92,6 @@
         </div>
     </div>
 @endsection
+@section("include_js")
+    <script src={{ URL::asset('js/hrpanel_add_new_user.js') }}></script>
+@endsection

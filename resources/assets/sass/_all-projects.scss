@@ -1,9 +1,9 @@
 .add_new_project {
   border-radius: 5px;
   color: white;
-  border:1px solid $blue;
-  width:auto;
-  height:30px;
+  border: 1px solid $blue;
+  width: auto;
+  height: 30px;
   background-color: $blue;
   display: inline-block;
   border-color: white;
@@ -14,14 +14,14 @@
     border: 1px solid $blue;
     color: $blue !important;
 
-
   }
 }
-#project_modal{
+
+#project_modal {
   margin-top: 2%;
-  display:inline-block;
+  display: inline-block;
   color: $blue;
-  input{
+  input {
     margin-right: 5%;
     width: 85%;
     height: 8%;
@@ -34,7 +34,7 @@
     box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
 
   }
-  textarea{
+  textarea {
     resize: none;
     margin-right: 5%;
     width: 85%;
@@ -46,10 +46,10 @@
     margin-bottom: 5%;
     color: $blue;
 
-
   }
 
 }
+
 .projects_all_section {
 
   #projects_all {
@@ -71,30 +71,32 @@
         }
       }
     }
-    .p_e_card{
-      border-color:$blue;
+    .p_e_card {
+      border-color: $blue;
       margin: 15% 3%;
-      &:hover{
+      &:hover {
         box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
       }
     }
 
   }
 }
-#project_new_footer{
-  .allgood{
-    color:$blue;
-  }
+
+.allgood {
+  color: $blue;
 }
-.checkbox-inline{
-  -webkit-appearance: checkbox!important;
+
+.checkbox-inline {
+  -webkit-appearance: checkbox !important;
 }
-#project_modal_all{
+
+#project_modal_all {
   height: auto;
 }
-#project_new_checkbox{
-  input{
-    vertical-align:middle;
+
+#project_new_checkbox {
+  input {
+    vertical-align: middle;
     display: inline-block;
     height: auto;
     width: auto;

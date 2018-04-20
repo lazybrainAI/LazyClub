@@ -98,10 +98,11 @@ margin-top: 2%;
 }
 .modal-footer{
   .allgood{
-    color: $green;
+    color: $green!important;
 
   }
-  .notallgood{
-    color: red;
-  }
+
+}
+.notallgood{
+  color: red;
 }

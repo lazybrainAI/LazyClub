@@ -47,5 +47,6 @@ class EventController extends Controller
 
         $event->save();
 
+
     }
 }
