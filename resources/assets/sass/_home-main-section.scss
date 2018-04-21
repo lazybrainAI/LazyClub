@@ -92,6 +92,7 @@
       height: 200px;
       margin-bottom: 20px;
       display: table;
+      position: absolute;
 
       h6 {
         display: table-cell;
@@ -122,4 +123,8 @@
     padding-right: 2%;
     display: inline-block;
   }
+  .container{
+    position: relative;
+  }
+
 }
