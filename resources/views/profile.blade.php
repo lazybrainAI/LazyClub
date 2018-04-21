@@ -88,7 +88,7 @@
              <div class="container description_section">
                  <div class="row">
                      <div class="col-md-12">
-                         <textarea name="bio" maxlength="450" cols="80" class="expand" maxlength="450" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy."><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
+                         <textarea name="bio" cols="80" rows=6 class="expand" maxlength="450" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy."><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
                          <div class="read_more_btn">
                             <h6>read more</h6>
                          </div>

@@ -25,11 +25,11 @@ Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 
 
 //Event routes
-Route::get('/events', 'EventController@showDetails');
-Route::post('/events', 'EventController@saveNewEvent');
-//Route::get('/events/{name}', 'EventController@showDetails');
+Route::get('/events', 'EventsController@showDetails');
+Route::post('/events', 'EventsController@saveNewEvent');
+//Route::get('/events/{name}', 'EventsController@showDetails');
 
-Route::get('/events/{name}', 'EventController@showDetails');
+Route::get('/event/{name}', 'EventController@showDetails');
 
 
 

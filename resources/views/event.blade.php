@@ -30,24 +30,24 @@
                 <div class="container  container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
-                            <h5 class="section_title">{{$event->first()->name}}</h5>
+                            <h5 class="section_title">{{$event->name}}</h5>
                         </div>
                     </div>
                 </div>
                 <div class="container details_section" >
                     <div class="row justify-content-between no-gutters">
                         <div class="col-md-8 order-md-1 order-2">
-                            <p>{{$event->first()->description}}
-                            </p>
+                            <textarea name="event_description" maxlength="450" cols="80"  id="event_description" disabled="disabled" placeholder="Write something about event. Don't be lazy."><?php if(!is_null($event->description)){ echo $event->description;} ?></textarea>
                             <div class="read_more_btn">
                                 <h6>read more</h6>
                             </div>
+
                         </div>
                         <div class=" col-md-3 order-md-2 order-1 details_div">
                             <h6>Event details:</h6>
                             <br>
-                            <h6 class="h7" id="event_date">Date/   {{ \Carbon\Carbon::parse($event->first()->date)->format('d.m.Y') }}</h6>
-                            <h6 class="h7" id="event_time">Time/   {{\Carbon\Carbon::parse($event->first()->time)->format('H:i')}}</h6>
+                            <h6 class="h7" id="event_date">Date/   {{ \Carbon\Carbon::parse($event->date)->format('d.m.Y') }}</h6>
+                            <h6 class="h7" id="event_time">Time/   {{\Carbon\Carbon::parse($event->time)->format('H:i')}}</h6>
                             <h6 class="h7" id="=event_loc">Location/</h6>
                             <h6 class="h7" id="=event_lang">Language/</h6>
 

@@ -2,37 +2,9 @@
 
 $(document).ready(function () {
 
-    // ------- hide-show read more btn
-    var bio=$('#bio_description').val();
-    var bio_sentences=bio.split('.');
-    $('#bio_description').val(bio_sentences[0]+"."+bio_sentences[1]);
-    if(bio_sentences.length>2){
-        $('.description_section .read_more_btn').css('display', 'block');
-    }
-
-    var exp_sentences=$('#position_description').val().split('.');
-    if(exp_sentences.length>2){
-        $('.experience_div .read_more_btn').css('display', 'block');
-    }
-    // ---------
 
 
-    $('.description_section').on('click', '.read_more_btn', function(){
-        $('.expand').val(bio);
-        $('.read_more_btn h6').html('read less');
-        $(this).addClass('read_less_btn');
-        $(this).removeClass('read_more_btn');
 
-    });
-
-
-    $('.description_section').on('click', '.read_less_btn', function(){
-        $('.expand').val(bio_sentences[0]+"."+bio_sentences[1]+".");
-        $('.read_less_btn h6').html('read more');
-        $(this).addClass('read_more_btn');
-        $(this).removeClass('read_less_btn');
-
-    });
 
 
 
@@ -213,17 +185,7 @@ $(document).ready(function () {
 
     // ---------- editing profile
 
-<<<<<<< HEAD
-    $('#edit_btn').click(function(){
-       $('input').prop('disabled', false);
 
-       $('textarea').prop('disabled', false);
-       $('#add_education').css('display', 'block');
-       $('#add_experience').css('display', 'block');
-       $('#save_btn').css('display', 'block');
-       $('#cancel_btn').css('display', 'block');
-       $('.delete_icon').css('display', 'inline');
-=======
     $('#edit_btn').click(function () {
         $('input').prop('disabled', false);
         $('textarea').prop('disabled', false);
@@ -232,7 +194,6 @@ $(document).ready(function () {
         $('#save_btn').css('display', 'block');
         $('#cancel_btn').css('display', 'block');
         $('.delete_icon').css('display', 'inline');
->>>>>>> 7f2d34c9b82edd0271539e916e66af074712de35
 
 
         $.ajaxSetup({
