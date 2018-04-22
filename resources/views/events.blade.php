@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 
-@section('title', 'Documents')
+@section('title', 'Events')
 
 
 @section('page_top_picture')

@@ -35,7 +35,7 @@
                         <input type="text" name="event_new_language" required autocomplete="off">
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" id="footer_event">
                     <div class="event_saved"></div>
                     <button type="submit" class="add_new_event" form="add_new_event_form">Add event</button>
                     <button type="button" class="add_new_event" data-dismiss="modal">Close</button>

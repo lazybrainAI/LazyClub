@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
 
+    protected $fillable=['name', 'description', 'date', 'time', ''];
 
     public function event_attendings(){
 
