@@ -1,4 +1,3 @@
-
 @extends ('layouts.app')
 
 @section('title', 'Documents')
@@ -29,7 +28,8 @@
                         </div>
                         {{--Add new project button--}}
                         <div class="col-sm-4 offset-sm-2">
-                            <button class="add_new_project" data-toggle="modal" data-target="#projectModal">Add new project
+                            <button class="add_new_project" data-toggle="modal" data-target="#projectModal">Add new
+                                project
                             </button>
                         </div>
                     </div>
@@ -61,4 +61,7 @@
 
 
 
+@endsection
+@section('include_js')
+    <script src={{ URL::asset('js/projects_add_new_project.js') }}></script>
 @endsection

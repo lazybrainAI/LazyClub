@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event_Attending extends Model
 {
     //
+    protected $table='event_attendings';
 
 
     public function role(){

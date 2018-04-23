@@ -3820,6 +3820,7 @@ body, html {
   padding: 1%;
 }
 #login_form input {
+  display: inline-block;
   width: 70%;
   height: 8%;
   padding: 10px 10px 10px 25px;
@@ -3849,6 +3850,13 @@ body, html {
   color: #fff;
 }
 
+.invalid-feedback {
+  color: white !important;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: normal;
+}
+
 .section_title {
   background-color: #025284;
   color: white;
@@ -3873,14 +3881,28 @@ body, html {
 .main_content_section .details_section p {
   color: black;
 }
+.main_content_section .details_section textarea {
+  color: black;
+  background: none;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  transition: all 0.9s ease;
+}
 .main_content_section .details_section .details_div {
-  height: 150px;
+  height: 170px;
   background-color: #025284;
   color: white;
   padding-left: 10px !important;
 }
 .main_content_section .details_section .details_div h6:first-child {
   padding-top: 10px;
+}
+.main_content_section .details_section .details_div input {
+  background: none;
+  border: none;
+  color: white;
 }
 
 .profile_img {
@@ -4275,7 +4297,7 @@ body, html {
 }
 
 .timeline_vertical:before {
-  top: 50px;
+  top: 20px;
   bottom: 50px;
   position: absolute;
   content: " ";
@@ -4296,25 +4318,25 @@ body, html {
 }
 
 #tml_crcl_1 {
-  top: 145px;
+  top: 100px;
 }
 
 #tml_crcl_2 {
-  top: 365px;
+  top: 325px;
 }
 
 #tml_crcl_3 {
-  top: 585px;
+  top: 555px;
 }
 
 #tml_crcl_4 {
-  top: 805px;
+  top: 760px;
 }
 
 .horizontal_line_left, .horizontal_line_right {
   position: absolute;
   top: 50%;
-  border-top: 1px solid #07dd85;
+  border-top: 1.5px solid #07dd85;
   width: 60px;
 }
 
@@ -4324,6 +4346,13 @@ body, html {
 
 .horizontal_line_right {
   right: -40px;
+}
+
+.timeline_vertical .event_date_right {
+  margin-top: 3%;
+}
+.timeline_vertical .event_date_left {
+  margin-top: 3%;
 }
 
 .home_section {
@@ -4370,6 +4399,7 @@ body, html {
 }
 .home_section .left_section {
   margin-bottom: 30px;
+  position: relative;
 }
 .home_section .left_section .see_more_btn {
   background-color: #07dd85;
@@ -4397,6 +4427,7 @@ body, html {
   height: 200px;
   margin-bottom: 20px;
   display: table;
+  position: absolute;
 }
 .home_section .left_section .event_date_left h6, .home_section .left_section .event_date_right h6 {
   display: table-cell;
@@ -4419,6 +4450,9 @@ body, html {
   padding-left: 2%;
   padding-right: 2%;
   display: inline-block;
+}
+.left_section .container {
+  position: relative;
 }
 
 #msg {
@@ -4573,9 +4607,10 @@ body, html {
 }
 
 .modal-footer .allgood {
-  color: #07dd85;
+  color: #07dd85 !important;
 }
-.modal-footer .notallgood {
+
+.notallgood {
   color: red;
 }
 
@@ -4653,7 +4688,7 @@ body, html {
   box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
 }
 
-#project_new_footer .allgood {
+.allgood {
   color: #025284;
 }
 

@@ -85,7 +85,7 @@
                      </div>
                  </div>
              </div>
-             <div class="container description_section">
+             <div class="container description_section read_more_btn_parent">
                  <div class="row">
                      <div class="col-md-12">
                          <textarea name="bio" cols="80" rows=6 class="expand" maxlength="450" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy."><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
@@ -129,7 +129,7 @@
                  </div>
              </div>
              <div class="container add_section">
-                 <div class="row" id="experience_section">
+                 <div class="row read_more_btn_parent" id="experience_section">
                      @if($experience_count==0)
                          @include('/php/experience')
 
@@ -185,17 +185,7 @@
                      <div class="col-md-3 col-sm-6">
                          @include('/php/document')
                      </div>
-                     <div class="col-md-3 col-sm-6">
-                         @include('/php/document')
-                     </div>
-                     <div class="col-md-3 col-sm-6">
-                         @include('/php/document')
 
-                     </div>
-                     <div class="col-md-3 col-sm-6">
-                         @include('/php/document')
-
-                     </div>
                  </div>
              </div>
 

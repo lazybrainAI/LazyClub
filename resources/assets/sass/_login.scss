@@ -29,6 +29,7 @@
   padding: 1%;
 
   input{
+    display:inline-block;
     width:70%;
     height: 8%;
     padding: 10px 10px 10px 25px;
@@ -37,6 +38,7 @@
     border-color: $bck-color-with-opacity;
     margin-bottom: 4%;
     color:$text-color;
+
   }
 
 
@@ -51,6 +53,7 @@
 #login_button{
   text-align: center;
   padding-bottom: 3%;
+
   button{
     width:35%;
     border-radius: $login-borders;
@@ -61,3 +64,9 @@
   }
 }
 
+.invalid-feedback{
+  color: white !important;
+  font-size: $font-size-fields;
+  text-decoration: none;
+  font-weight: normal;
+}

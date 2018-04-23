@@ -63,3 +63,6 @@
 
 
 @endsection
+@section('include_js')
+    <script src={{ URL::asset('js/events_add_new_event.js') }}></script>
+@endsection

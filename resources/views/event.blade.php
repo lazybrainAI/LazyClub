@@ -30,7 +30,7 @@
                 <div class="container  container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
-                            <h5 class="section_title">{{$event->name}}</h5>
+                            <h5 class="section_title" id="event">{{$event->name}}</h5>
                         </div>
                     </div>
                 </div>
@@ -46,10 +46,10 @@
                         <div class=" col-md-3 order-md-2 order-1 details_div">
                             <h6>Event details:</h6>
                             <br>
-                            <h6 class="h7" id="event_date">Date/   {{ \Carbon\Carbon::parse($event->date)->format('d.m.Y') }}</h6>
-                            <h6 class="h7" id="event_time">Time/   {{\Carbon\Carbon::parse($event->time)->format('H:i')}}</h6>
-                            <h6 class="h7" id="=event_loc">Location/</h6>
-                            <h6 class="h7" id="=event_lang">Language/</h6>
+                            <h6 class="h7" id="event_date">Date/ <input name="event_date"  type="date" disabled="disabled" required value={{$event->date}}> </h6>
+                            <h6 class="h7" id="event_time">Time/ <input name="event_time"  type="time" disabled="disabled" required value= {{\Carbon\Carbon::parse($event->time)->format('H:i')}}> </h6>
+                            <h6 class="h7" id="=event_loc">Location/ <input name="event_location" type="text" value="{{$location_name}}"></h6>
+                            <h6 class="h7" id="=event_lang">Language/ <input name="event_language" type="text" value="{{$language_name}}"></h6>
 
 
                         </div>
@@ -90,8 +90,8 @@
                                         <img class="profile_img" src={{ URL::asset('img/teo.jpeg') }} />
                                     </div>
                                     <div class="col-xs-6  personal_info">
-                                        <h5>Person Person</h5>
-                                        <h6>Position</h6>
+                                        <h5>{{$organizer_name}} {{$organizer_surname}}</h5>
+                                        <h6>{{$organizer_position}}</h6>
                                 </div>
                                 </div>
                             </div>
@@ -101,89 +101,24 @@
                             <button onclick="plusDivs(+1)"><i class="fas fa-angle-right fa-2x"></i></button>
                             <div class="container mySlides">
                                 <div class="row">
-                                    <div class="col-6 col-sm-4">
-                                        <div  style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
+                                   @if($attendees==null)
+                                       <div><p>No attendees yet.</p></div>
+                                       @else
+                                        @foreach($attendees as $attendee)
+                                            <div class="col-6 col-sm-4">
+                                                <div  style="margin-bottom:20px">
+                                                    <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                                    <div class="attendee_info">
+                                                        <h6>{{$attendee->user->name}} {{$attendee->user->surname}}</h6>
+                                                        <h6 class="h7">{{$attendee->user->position}}</h6>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        @endforeach
+                                    @endif
 
 
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
 
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-6 col-sm-4 personal_info">
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-6 col-sm-4 personal_info">
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
                                 </div>
                             </div>
 
@@ -194,7 +129,7 @@
                 <div class="container" style="margin-left:25px">
                     <div class="row">
                         <div class="col-sm-5 col-md-3 col-xl-2">
-                            <div class="add_btn" style="margin-bottom: 10px">
+                            <div class="add_btn going_btn" style="margin-bottom: 10px">
                                 <h6>Going</h6>
                             </div>
                         </div>

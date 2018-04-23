@@ -26,52 +26,52 @@
 
 
                 <div class="container">
+                    <div class="tajmlajn">
+                        @if(!empty($events) && count($events)>0)
 
-                    @if(!empty($events) && count($events)>0)
-
-                        <div class="timeline_vertical">
-                            @foreach($events as $event)
-                                @if($loop->index%2==0)
-                                    <div class="row no-gutters justify-content-between">
-                                        <div class="col-sm-6 col-md-5">
-                                            <div class="event_date_right">
-                                                <h6>@include('/php/date')</h6>
-                                            </div>
-                                        </div>
-                                        @include('/php/event_card_right_home')
-                                    </div>
-                                @else
-                                    <div class="row no-gutters justify-content-between">
-                                        @include('/php/event_card_right_home')
-                                        <div class="col-sm-6 col-md-5 order-1 order-sm-2">
-                                            <div class="event_date_left">
-                                                <h6>@include('/php/date')</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                            @foreach($events as $event)
-                                <div class="timeline_circle" id="tml_crcl_{{$loop->index+1}}">
+                            <div class="timeline_vertical">
+                                @foreach($events as $event)
                                     @if($loop->index%2==0)
-                                        <div class="horizontal_line_right"></div>
+                                        <div class="row no-gutters justify-content-between">
+                                            <div class="col-sm-6 col-md-5">
+                                                <div class="event_date_right">
+                                                    <h6>@include('/php/date')</h6>
+                                                </div>
+                                            </div>
+                                            @include('/php/event_card_right_home')
+                                        </div>
                                     @else
-                                        <div class="horizontal_line_left"></div>
+                                        <div class="row no-gutters justify-content-between">
+                                            @include('/php/event_card_right_home')
+                                            <div class="col-sm-6 col-md-5 order-1 order-sm-2">
+                                                <div class="event_date_left">
+                                                    <h6>@include('/php/date')</h6>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endif
+                                @endforeach
+                                @foreach($events as $event)
+                                    <div class="timeline_circle" id="tml_crcl_{{$loop->index+1}}">
+                                        @if($loop->index%2==0)
+                                            <div class="horizontal_line_right"></div>
+                                        @else
+                                            <div class="horizontal_line_left"></div>
+                                        @endif
+                                    </div>
+                                @endforeach
+
+                                <div class="see_more_btn">
+                                    <a href="/events" style="text-decoration: none;"><h6>View more</h6></a>
                                 </div>
-                            @endforeach
-
-                            <div class="see_more_btn">
-                                <a href="/events" style="text-decoration: none;"><h6>View more</h6></a>
                             </div>
-                        </div>
-                    @else
-                        <div>
-                            There are no events at the moment.
-                        </div>
-                    @endif
+                        @else
+                            <div>
+                                There are no events at the moment.
+                            </div>
+                        @endif
 
-
+                    </div>
                 </div>
             </div>
 
@@ -91,7 +91,8 @@
                             @foreach($projects as $project)
                                 @include('/php/project_card_home')
                             @endforeach
-                            <div class="see_more_btn" style="padding-left: 2%; padding-right: 2%; margin-bottom: 70px; width: auto;">
+                            <div class="see_more_btn"
+                                 style="padding-left: 2%; padding-right: 2%; margin-bottom: 70px; width: auto;">
                                 <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
                             </div>
                         @else
@@ -160,4 +161,7 @@
         </div>
     </div>
 
+@endsection
+@section("include_js")
+    <script src={{ URL::asset('js/home_add_new_review.js') }}></script>
 @endsection

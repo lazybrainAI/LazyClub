@@ -16,11 +16,26 @@
                                 <h1 class="lazy_tittle" id="lazy_tittle">
                                     Club | LazyBrain
                                 </h1>
-                                <div>
-                                    <input  id="email"  type="text" name="email" placeholder="email" required autocomplete="off">
+                                <div >
+                                    <input  id="email"  type="text" name="email" placeholder="email" required autocomplete="off" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}">
+                                    @if ($errors->has('username'))
+                                        <span class="invalid-feedback">
+                                            <strong><h6> {{ $errors->first('username') }}</h6></strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div>
-                                    <input type="password" name="password" placeholder="password" id="password" required autocomplete="off">
+                                    <input type="password" name="password" placeholder="password" id="password" required autocomplete="off" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                    @if ($errors->has('username'))
+                                        <span class="invalid-feedback">
+                                            <strong><h6> {{ $errors->first('username') }}</h6></strong>
+                                    </span>
+                                    @endif
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback">
+                                            <strong><h6>{{ $errors->first('password') }}</h6></strong>
+                                    </span>
+                                    @endif
 
                                 </div>
                                 <div   id="login_button">
@@ -39,4 +54,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section("include_js")
+    <script src={{ URL::asset('js/login_password_prevent_default.js') }}></script>
 @endsection

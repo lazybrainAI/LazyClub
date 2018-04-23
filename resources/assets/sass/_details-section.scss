@@ -19,13 +19,29 @@
       color:black;
     }
 
+    textarea{
+      color: black;
+      background: none;
+      border: none;
+      outline: none;
+      resize: none;
+      overflow: hidden;
+      transition: all 0.9s ease;
+    }
+
     .details_div{
-      height:150px;
+      height:170px;
       background-color:$blue;
       color:white;
       padding-left: 10px!important;
       h6:first-child{
         padding-top:10px;
+
+      }
+      input{
+        background: none;
+        border:none;
+        color:white;
       }
     }
 

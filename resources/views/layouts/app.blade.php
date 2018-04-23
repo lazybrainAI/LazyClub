@@ -32,8 +32,11 @@
 <script src={{ URL::asset('js/jquery-3.3.1.min.js') }}></script>
 <script src={{ URL::asset('js/bootstrap.min.js') }}></script>
 <script src={{ URL::asset('js/main.js') }}></script>
-<script src={{URL::asset('js/read_more_btn.js')}}></script>
+<script src={{URL::asset('js/split_text.js')}}></script>
 
+{{--<script src={{ URL::asset('js/main.js') }}></script>--}}
+@section('include_js')
+@show
 
 
 </body>

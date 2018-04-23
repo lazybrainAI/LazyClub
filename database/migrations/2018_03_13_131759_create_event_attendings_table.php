@@ -20,9 +20,9 @@ class CreateEventAttendingsTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->integer('user_id')->unsigned();
 
-            $table->foreign('event_id')->references('id')->on('events');
-            $table->foreign('role_id')->references('id')->on('roles');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('restrict');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('restrict');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('restrict');
 
             $table->timestamps();
         });

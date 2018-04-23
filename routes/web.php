@@ -30,6 +30,11 @@ Route::post('/events', 'EventsController@saveNewEvent');
 //Route::get('/events/{name}', 'EventsController@showDetails');
 
 Route::get('/event/{name}', 'EventController@showDetails');
+Route::post('/event/{name}', 'EventController@editEvent');
+Route::put('/event/{name}', 'EventController@goingOnEvent');
+
+
+
 
 
 

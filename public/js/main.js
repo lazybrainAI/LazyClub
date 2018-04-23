@@ -280,142 +280,14 @@ $(document).ready(function () {
     });
 
     //ajax for creating new user (HR panel)
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
 
-    $('#hr_form').submit(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        var name = $('#firstNameHR').val();
-        var last_name = $('#lastNameHR').val();
-        var mail = $('#emailHR').val();
-        var username = $('#usernameHR').val();
-
-        $.ajax({
-            url: '/hrpanel',
-            type: 'POST',
-            data: {name: name, lastname: last_name, mail: mail, username: username},
-            success: function () {
-                $('#firstNameHR').val('');
-                $('#lastNameHR').val('');
-                $('#emailHR').val('');
-                $('#usernameHR').val('');
-                $('#email_sent').text('Your review has been saved!').show();
-                $('#email_sent').text('Your review has been saved!').delay(2000).fadeOut(1000);
-            },
-            error: function (data) {
-                alert();
-                $('#email_not_sent').text(data).show();
-                $('#email_not_sent').text(data).delay(2000).fadeOut(1000);
-
-            }
-
-        });
-
-
-    });
 
     //ajax for saving new review
-    $('#review_form').submit(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        var description = $('#description').val();
-        var project_event_select = $('#project_event_select').val();
-
-        $.ajax({
-            url: '/home',
-            type: 'POST',
-            data: {project_event_select: project_event_select, description: description},
-            success: function () {
-
-                $('#review_sent').addClass('allgood').text('Your review has been saved!').show().delay(2000).fadeOut(1000);
-
-            },
-            error: function (data) {
-                $('#review_sent').addClass('notallgood').text('You have to pick project/event and enter your note!').show().delay(2000).fadeOut(1000);
 
 
-            }
-
-        });
 
 
-    });
 
-    $('#password').bind('copy', function (e) {
-        e.preventDefault();
-    });
-
-    $('#add_new_event_form').submit(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        var forma = $('#add_new_event_form');
-
-        $.ajax({
-            url: '/events',
-            type: 'POST',
-            data: forma.serialize(),
-
-            success: function (data) {
-                $('.event_saved').
-                addClass('allgood').
-                text('Event successfully created.').
-                show().
-                delay(2000).
-                fadeOut(1000);
-                document.getElementById('add_new_event_form').reset();
-            },
-            error: function (data) {
-                $('.event_saved').addClass('notallgood').text('An error has occurred.').show().delay(2000).fadeOut(1000);
-
-            }
-
-        });
-
-
-    });
-
-    $('#add_new_project_form').submit(function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        var projektiforma = $('#add_new_project_form');
-
-        $.ajax({
-            url: '/projects',
-            type: 'POST',
-            data: projektiforma.serialize(),
-
-            success: function (data) {
-
-                $('.project_saved').
-                addClass('allgood').
-                text('Project successfully created.').
-                show().
-                delay(2000).
-                fadeOut(1000);
-                document.getElementById('add_new_project_form').reset();
-                console.log(data);
-
-
-            },
-            error: function (data) {
-
-                console.log(data);
-                $('.project_saved').addClass('notallgood').text('An error has occurred.').show().delay(2000).fadeOut(1000);
-
-            }
-
-        });
-
-
-    });
 
 
 });
