@@ -24,14 +24,15 @@ Route::post('/profile/{id}', 'UserController@editProfile');
 Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 
 
-//Event routes
+//Events routes
 Route::get('/events', 'EventsController@showDetails');
 Route::post('/events', 'EventsController@saveNewEvent');
-//Route::get('/events/{name}', 'EventsController@showDetails');
 
+
+//Event routes
 Route::get('/event/{name}', 'EventController@showDetails');
 Route::post('/event/{name}', 'EventController@editEvent');
-Route::put('/event/{name}', 'EventController@goingOnEvent');
+Route::delete('/event/{name}','EventController@ungoingEvent');
 
 
 
@@ -46,3 +47,5 @@ Route::post('/projects','ProjectController@saveNewProject');
 //HR panel
 Route::get('/hrpanel', 'HRController@returnView');
 Route::post('/hrpanel', 'HRController@sendMail');
+
+Route::get('/logout', 'Auth\LoginController@logout');

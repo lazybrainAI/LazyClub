@@ -4230,7 +4230,7 @@ body, html {
   padding-bottom: 3%;
 }
 #hr_button button {
-  width: 35%;
+  width: auto;
   border-radius: 15px;
   background-color: #025284;
   border-color: #025284;
@@ -4238,6 +4238,8 @@ body, html {
   color: #fff;
   margin-top: 5%;
   box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.9);
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .timeline_section {
@@ -4297,7 +4299,7 @@ body, html {
 }
 
 .timeline_vertical:before {
-  top: 20px;
+  top: 0px;
   bottom: 50px;
   position: absolute;
   content: " ";
@@ -4606,7 +4608,7 @@ body, html {
   background-size: cover;
 }
 
-.modal-footer .allgood {
+#footer_event .allgood {
   color: #07dd85 !important;
 }
 

@@ -8,7 +8,7 @@ class Event_Attending extends Model
 {
     //
     protected $table='event_attendings';
-
+    protected $guarded=[];
 
     public function role(){
         return $this->belongsTo('App\Role');

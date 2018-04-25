@@ -1,31 +1,32 @@
+<?php $user = \Illuminate\Support\Facades\Auth::user();?>
 <ul id="sidebar_menu">
     <li>
-        <a href="">
+        <a href="/home">
             <h5>Home</h5>
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="/events">
             <h5>Events</h5>
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="/projects">
             <h5>Projects</h5>
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="/documents">
             <h5>Documents</h5>
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="/profile/<?php echo $user->id; ?>">
             <h5>Profile</h5>
         </a>
     </li>
     <li>
-        <a href="">
+        <a href="/logout">
             <h5>Logout</h5>
         </a>
     </li>

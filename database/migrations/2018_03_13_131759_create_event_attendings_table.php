@@ -15,7 +15,7 @@ class CreateEventAttendingsTable extends Migration
     {
         Schema::create('event_attendings', function (Blueprint $table) {
 
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('event_id')->unsigned();
             $table->integer('role_id')->unsigned();
             $table->integer('user_id')->unsigned();

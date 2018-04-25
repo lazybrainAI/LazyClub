@@ -81,9 +81,10 @@
                         </div>
                     </div>
                 </div>
+                <?php $user = \Illuminate\Support\Facades\Auth::user();?>
                 <div class="container attendees_section">
                     <div class="row align-items-center">
-                        <div class="col-md-5 organizer">
+                        <div class="col-md-5 organizer" id="{{$user->id}}">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-xs-6 ">
@@ -99,13 +100,13 @@
                         <div class="col-md-7  attendees">
                             <button onclick="plusDivs(-1)"><i class="fas fa-angle-left fa-2x"></i></button>
                             <button onclick="plusDivs(+1)"><i class="fas fa-angle-right fa-2x"></i></button>
-                            <div class="container mySlides">
+                    <!--    <div class="container mySlides"> -->
                                 <div class="row">
-                                   @if($attendees==null)
-                                       <div><p>No attendees yet.</p></div>
-                                       @else
+                                   @if($attendees->isEmpty())
+                                       <div style="width:100%; text-align: center;" id="no_attendees_msg"><p>No attendees yet.</p></div>
+                                   @else
                                         @foreach($attendees as $attendee)
-                                            <div class="col-6 col-sm-4">
+                                            <div class="col-6 col-sm-4 event_attendee">
                                                 <div  style="margin-bottom:20px">
                                                     <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
                                                     <div class="attendee_info">
@@ -120,13 +121,13 @@
 
 
                                 </div>
-                            </div>
+                         <!--   </div> -->
 
                         </div>
                     </div>
 
                 </div>
-                <div class="container" style="margin-left:25px">
+                <div class="container event_btns" style="margin-left:25px" id="{{$user->id}}" >
                     <div class="row">
                         <div class="col-sm-5 col-md-3 col-xl-2">
                             <div class="add_btn going_btn" style="margin-bottom: 10px">
@@ -142,6 +143,8 @@
 
                     </div>
                 </div>
+
+                <div class="msg"></div>
 
 
 

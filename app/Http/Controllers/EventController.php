@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Location;
 use App\Role;
+use App\Education;
+use Illuminate\Validation\Rule;
+use \Illuminate\Support\Facades\Validator;
+
+
 
 
 class EventController extends Controller
@@ -35,7 +40,7 @@ class EventController extends Controller
 
         //organizer info
 
-        $organizer_roles=Role::where('title', 'organizer')->get(); /*where('project/event', 'event')->*/
+        $organizer_roles=Role::where('project/event', 'event')->where('title', 'organizer')->get(); /*where('project/event', 'event')->*/
         $organizer_role_id=null;
 
         foreach($organizer_roles as $organizer_role){
@@ -63,7 +68,7 @@ class EventController extends Controller
 
         // all event attendees
 
-        $attendee_roles=Role::where('title', 'attendee')->get(); /*where('project/event', 'event')->*/
+        $attendee_roles=Role::where('project/event', 'event')->where('title', 'attendee')->get(); /*where('project/event', 'event')->*/
         $attendee_role_id=null;
 
         foreach($attendee_roles as $attendee_role){
@@ -72,45 +77,124 @@ class EventController extends Controller
 
         $attendees=Event_Attending::where('event_id', $event->id)->where('role_id', $attendee_role_id)->get();
 
-
+       // dd($attendees->isEmpty());
         return view('event', compact('event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position', 'attendees'));
     }
 
-    public function editEvent(){
+
+
+    public function editEvent(Request $request, $name)
+    {
+        //going on event
+
+        if($request->has('id_going')) {
+            $user_id = $request['id_going'];
+            $event_name = $name;
+
+            $events = Event::where('name', $name)->get();
+            $event_id=null;
+            foreach ($events as $event) {
+                $event_id = $event->id;
+
+            }
+
+
+            $user = User::findOrFail($user_id);
+            $user_clicked_name = $user->name;
+            $user_clicked_surname = $user->surname;
+            $user_clicked_position = $user->position;
+            $user_photo=$user->photo_link;
+
+
+            $role = Role::where('title', 'attendee')->where('project/event', 'event')->get()->first();
+
+
+            // event attendings
+
+            $event_attendings = Event_Attending::where('user_id', $user_id)->where('event_id', $event_id)->get();
+
+
+
+            if ($event_attendings->isEmpty()) {
+                Event_Attending::create([ 'event_id' => $event_id, 'role_id' => $role->id, 'user_id' => $user->id]);
+
+            }
+
+            return response()->json(['name'=>$user_clicked_name, 'surname'=>$user_clicked_surname, 'position'=>$user_clicked_position, 'photo'=>$user_photo]);
+
+        }
+
+
+        // update event
+        else{
+
+        }
+
+
+
 
     }
 
-    public function goingOnEvent(Request $request){
 
-        $user_id=$request['id'];
-        $event_name = $request['event'];
 
-        $events=Event::where('name', $event_name)->get();
-        foreach ($events as $event) {
+    public function ungoingEvent(Request $request, $name){
 
-            $event_id=$event->id;
 
+        $role = Role::where('title', 'attendee')->where('project/event','event')->get()->first();
+        $event_id=Event::where('name', $name)->get()->first();
+
+        $event_attendings=Event_Attending::where('user_id', $request['id'])->where('event_id',$event_id->id)->where('role_id', $role->id)->get()->first();
+        $event_attendings->delete();
+
+
+
+
+
+    }
+
+
+
+
+
+
+    public function saveNewEvent(Request $request)
+    {
+        $validator = $request->validate(['event_new_name' => 'required|unique:events,name|max:191',
+            'event_new_description' => 'required|max:191',
+            'event_new_date' => 'required|date|after:yesterday',
+            'event_new_location'=>'required',
+            'event_new_language'=>'required',
+        ], [
+            'event_new_name.unique' => 'Event name already taken',
+            'event_new_date.after' => 'The event date must be today or a date after today.',
+        ]);
+
+
+        $event = new Event;
+        $event->name = $request['event_new_name'];
+        $event->description = $request['event_new_description'];
+        $event->date = $request['event_new_date'];
+        $event->time = $request['event_new_time'];
+        $location = Location::where('name', $request['event_new_location'])->get();
+        $language = Language::where('name', $request['event_new_language'])->get();
+        if ($location->first()) {
+            $event->loc_id = $location->first()->id;
+        } else {
+            $location = new Location;
+            $location->name = $request['event_new_location'];
+            $location->save();
+            $event->loc_id = $location->id;
+        }
+        if ($language->first()) {
+            $event->lang_id = $language->first()->id;
+        } else {
+            $language = new Language();
+            $language->name = $request['event_new_language'];
+            $language->save();
+            $event->lang_id = $language->id;
         }
 
-        $user=User::findOrFail($user_id);
-        $user_clicked_name=$user->name;
-        $user_clicked_surname=$user->surname;
-        $user_clicked_position=$user->position;
-
-
-        $role=Role::where('title', 'attendee')->get()->first();
-
-
-        // event attendings
-
-        $event_attendings=Event_Attending::where('user_id', $user_id)->where('event_id', $event_id)->get();
-
-        if($event_attendings->isEmpty()){
-            Education::create(['event_id' => $event_id, 'role_id'=> $role->id, 'user_id'=>$user->id]);
-
-        }
-
-
+        $event->save();
 
 
     }

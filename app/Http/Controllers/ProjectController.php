@@ -23,6 +23,21 @@ class ProjectController extends Controller
 
     public function saveNewProject(Request $request)
     {
+        $validator = $request->validate(['project_new_name' => 'required|unique:projects,name|max:191',
+            'project_new_description' => 'required|max:191',
+            'project_new_sector' => 'required|max:191',
+            'project_new_start_date' => 'required|date|after:yesterday',
+            'project_new_end_date'=>'required|date|after_or_equal:project_new_start_date',
+            'project_new_location'=>'required',
+            'project_new_language'=>'required',
+            'project_new_team'=>'required|max:191',
+        ], [
+            'project_new_name.unique' => 'Project name already taken',
+            'project_new_start_date.after' => 'The project start date must be today or a date after today.',
+            'project_new_end_date.after_or_equal'=>'The project end date must be equal to start date or later.',
+        ]);
+
+
         $project = new Project;
         $project->name = $request['project_new_name'];
         $project->description = $request['project_new_description'];

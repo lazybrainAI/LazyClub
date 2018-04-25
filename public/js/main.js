@@ -88,9 +88,9 @@ $(document).ready(function () {
     });
 
     // read more button
-    $('#experience_section').on('click', '.read_more_btn', function (){
+ /*   $('#experience_section').on('click', '.read_more_btn', function (){
         $('.expand').animate({rows: 4}, 500);
-    });
+    }); */
 
 
     // ---------- deleting education

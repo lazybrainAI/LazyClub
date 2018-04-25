@@ -16,6 +16,15 @@ class HRController extends Controller
     }
 
     function sendMail(Request $request){
+        $validator = $request->validate(['name' => 'required|max:191',
+            'lastname' => 'required|max:191',
+            'username' => 'required|unique:users,surname|max:191',
+            'mail' => 'required|unique:users,email|email|max:191',
+        ], [
+            'project_new_name.unique' => 'Project name already taken',
+            'project_new_start_date.after' => 'The project start date must be today or a date after today.',
+            'project_new_end_date.after_or_equal'=>'The project end date must be equal to start date or later.',
+        ]);
 
         $user = new User();
         $user->name = $request['name'];

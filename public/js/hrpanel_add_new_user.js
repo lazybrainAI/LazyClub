@@ -20,16 +20,13 @@ $(document).ready(function () {
             type: 'POST',
             data: {name: name, lastname: last_name, mail: mail, username: username},
             success: function () {
-                $('#firstNameHR').val('');
-                $('#lastNameHR').val('');
-                $('#emailHR').val('');
-                $('#usernameHR').val('');
+                
                 $('#email_sent').addClass('allgood').text('Your review has been saved!').show().delay(2000).fadeOut(1000);;
                 document.getElementById('hr_form').reset();
             },
             error: function (data) {
                 console.log(data);
-                $('#email_sent').addClass('notallgood').text(data).show().delay(2000).fadeOut(1000);
+                $('#email_sent').addClass('notallgood').text('Email or username already taken.').show().delay(2000).fadeOut(1000);
 
 
             }

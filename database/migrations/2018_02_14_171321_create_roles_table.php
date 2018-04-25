@@ -19,6 +19,21 @@ class CreateRolesTable extends Migration
             $table->string('project/event');
             $table->timestamps();
         });
+
+        DB::table('roles')->insert(
+            array(
+                'title' => 'organizer',
+                'project/event'=>'event'
+            )
+        );
+
+        DB::table('roles')->insert(
+            array(
+                'title' => 'attendee',
+                'project/event'=>'event'
+            )
+        );
+
     }
 
     /**
