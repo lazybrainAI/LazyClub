@@ -19,7 +19,6 @@ Route::post('/home', 'HomeController@saveReview');
 
 //Profile routes
 Route::get('/profile/{id}', 'UserController@getProfileDetails')->middleware('auth');
-
 Route::post('/profile/{id}', 'UserController@editProfile');
 Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 
@@ -35,10 +34,6 @@ Route::post('/event/{name}', 'EventController@editEvent');
 Route::delete('/event/{name}','EventController@ungoingEvent');
 
 
-
-
-
-
 //Project routes
 Route::get('/projects','ProjectController@showDetails');
 Route::post('/projects','ProjectController@saveNewProject');
@@ -48,4 +43,4 @@ Route::post('/projects','ProjectController@saveNewProject');
 Route::get('/hrpanel', 'HRController@returnView');
 Route::post('/hrpanel', 'HRController@sendMail');
 
-Route::get('/logout', 'Auth\LoginController@logout');
+
