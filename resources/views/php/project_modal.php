@@ -33,9 +33,14 @@
                         <label>Project location</label>
                         <input type="text" name="project_new_location" required autocomplete="off">
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 select_field">
                         <label>Project language</label>
-                        <input type="text" name="project_new_language" required autocomplete="off">
+                        <select name="project_new_language" title="project_new_language_select" >
+                            <option selected="selected" value="selected">Select language</option>
+                            <?php foreach ($project_language as $language) { ?>
+                                <option value="<?php echo $language['name'] ?>"><?php echo $language['name'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="col-sm-12">
                         <label>Team name for project</label>

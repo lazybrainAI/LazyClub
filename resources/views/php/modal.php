@@ -29,9 +29,14 @@
                         <label>Event location</label>
                         <input type="text" name="event_new_location" required autocomplete="off">
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 select_field">
                         <label>Event language</label>
-                        <input type="text" name="event_new_language" required autocomplete="off">
+                        <select name="event_new_language" title="event_new_language_select" >
+                            <option selected="selected" value="selected">Select language</option>
+                            <?php foreach ($events_language as $language) { ?>
+                                <option value="<?php echo $language['name'] ?>"><?php echo $language['name'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer" id="footer_event">

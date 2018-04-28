@@ -1,9 +1,9 @@
 .add_new_event {
   border-radius: 5px;
   color: white;
-  border:1px solid $blue;
-  width:auto;
-  height:30px;
+  border: 1px solid $blue;
+  width: auto;
+  height: 30px;
   background-color: $green;
   display: inline-block;
   border-color: white;
@@ -14,9 +14,9 @@
     border: 1px solid $green;
     color: $green !important;
 
-
   }
 }
+
 .events_all_section {
 
   #events_all {
@@ -38,10 +38,10 @@
         }
       }
     }
-    .p_e_card{
-      border-color:$green;
+    .p_e_card {
+      border-color: $green;
       margin: 15% 3%;
-      &:hover{
+      &:hover {
         box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
       }
     }
@@ -49,12 +49,12 @@
   }
 }
 
-#event_modal{
-margin-top: 2%;
-  display:inline-block;
+#event_modal {
+  margin-top: 2%;
+  display: inline-block;
   color: $green;
 
-  input{
+  input {
     margin-right: 5%;
     width: 85%;
     height: 8%;
@@ -67,7 +67,7 @@ margin-top: 2%;
     box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
 
   }
-  textarea{
+  textarea {
     resize: none;
     margin-right: 5%;
     width: 85%;
@@ -82,27 +82,62 @@ margin-top: 2%;
 
   }
 
+  .select_field {
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $green;
+      opacity: 1; /* Firefox */
+    }
 
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $green;
+    }
+
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: $green;
+    }
+    margin-bottom: 15px;
+
+    select {
+      color: $green;
+      width: 85%;
+      height: 8%;
+      padding: 10px;
+      list-style: none;
+      border-radius: $login-borders;
+      font-size: $font-size-fields;
+      border: 1px solid $green;
+      margin-bottom: 5%;
+
+      box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+      &:last-child(option) {
+        border-bottom: none;
+      }
+    }
+  }
 }
-#modal_heading{
+
+#modal_heading {
   color: white;
   font-size: 2rem;
   padding-left: 3%;
 
-
 }
+
 .modal-header {
   background: url($page-top);
   background-size: cover;
 
 }
-#footer_event{
-  .allgood{
-    color: $green!important;
+
+#footer_event {
+  .allgood {
+    color: $green !important;
 
   }
 
 }
-.notallgood{
+
+.notallgood {
   color: red;
 }
+
