@@ -3878,6 +3878,13 @@ body, html {
   line-height: 30px;
 }
 
+.people_img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
 .main_content_section {
   border-left: 1px solid #025284;
   padding-left: 0 !important;
@@ -4322,7 +4329,7 @@ body, html {
 .timeline_circle {
   position: absolute;
   left: 50%;
-  margin-left: -9px;
+  margin-left: -10px;
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -4345,11 +4352,13 @@ body, html {
   top: 760px;
 }
 
+/*
 .horizontal_line_left, .horizontal_line_right {
   position: absolute;
   top: 50%;
-  border-top: 1.5px solid #07dd85;
+  border-top: 1.5px solid $green;
   width: 60px;
+
 }
 
 .horizontal_line_left {
@@ -4358,8 +4367,9 @@ body, html {
 
 .horizontal_line_right {
   right: -40px;
-}
 
+
+} */
 .timeline_vertical .event_date_right {
   margin-top: 3%;
 }
@@ -4404,8 +4414,8 @@ body, html {
   height: 200px;
 }
 .home_section .right_section .review_ppl_section .people_home_section .people_img {
-  height: 40px;
-  width: 40px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   margin-bottom: 5px;
 }

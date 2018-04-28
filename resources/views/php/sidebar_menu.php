@@ -15,6 +15,12 @@
             <h5>Projects</h5>
         </a>
     </li>
+
+    <li>
+        <a href="/people">
+            <h5>People</h5>
+        </a>
+    </li>
 <!--    <li>
         <a href="/documents">
             <h5>Documents</h5>

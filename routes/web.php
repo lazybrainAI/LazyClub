@@ -35,6 +35,8 @@ Route::put('/event/{name}', 'EventController@editEvent');
 Route::delete('/event/{name}','EventController@ungoingEvent');
 
 
+//People routes
+Route::get('/people','PeopleController@showDetails');
 
 
 //Project routes

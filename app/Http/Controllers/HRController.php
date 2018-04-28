@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Mail;
 class HRController extends Controller
 {
     function returnView(){
-        return view("hrnewuser");
+        $button ="No button";
+        return view("hrnewuser", compact('button'));
     }
 
     function sendMail(Request $request){

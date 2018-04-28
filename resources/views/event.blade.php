@@ -53,7 +53,16 @@
                             <h6 class="h7" id="event_date">Date/ <input name="event_date"  type="date" disabled="disabled" required value={{$event->date}}> </h6>
                             <h6 class="h7" id="event_time">Time/ <input name="event_time"  type="time" disabled="disabled" required value= {{\Carbon\Carbon::parse($event->time)->format('H:i')}}> </h6>
                             <h6 class="h7" id="=event_loc">Location/ <input name="event_location" type="text" disabled="disabled" value="{{$location_name}}"></h6>
-                            <h6 class="h7" id="=event_lang">Language/ <input name="event_language" type="text" disabled="disabled" value="{{$language_name}}"></h6>
+                            <h6 class="h7" id="=event_lang">Language/ <select name="event_language" form="event_form" required disabled="disabled">
+                                    <option >{{$language_name}}</option>
+                                    @if($language_name=="serbian")
+                                        <option >english</option>
+                                    @else
+                                        <option >serbian</option>
+
+                                    @endif
+                                </select>
+                            </h6>
 
 
                         </div>

@@ -91,10 +91,10 @@
                             @foreach($projects as $project)
                                 @include('/php/project_card_home')
                             @endforeach
-                            <div class="see_more_btn"
-                                 style="padding-left: 2%; padding-right: 2%; margin-bottom: 70px; width: auto;">
-                                <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
-                            </div>
+                                <div class="see_more_btn"
+                                     style="padding-left: 2%; padding-right: 2%; margin-bottom: 70px; width: auto;">
+                                    <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
+                                </div>
                         @else
                             <div style="margin-bottom: 10%;">
                                 There are no projects at the moment.
@@ -106,6 +106,7 @@
 
                 <div class="container review_ppl_section">
                     <div class="row align-content-center">
+                        <!--
                         <div class="col-sm-6 padding_left">
                             <div class="container container-left-margin">
                                 <div class="row">
@@ -118,9 +119,9 @@
                             @include ('/php/review_card')
 
 
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="container container-left-margin">
+                        </div> -->
+                        <div class="col-sm-12">
+                            <div class="container">
                                 <div class="row">
                                     <div class="col-sm-5">
                                         <h5 class="section_title">People</h5>
@@ -130,23 +131,21 @@
 
                             <div class="container people_home_section">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    </div>
-                                    <div class="col-md-2">
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    </div>
+
+                                    @if($users->isEmpty())
+                                        <div>No members in organization at the moment.</div>
+                                    @else
+                                        @foreach($users as $user)
+                                            <div class="col-md-3">
+                                                <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="see_more_btn" style="margin-bottom:70px">
-                                <h6>View more</h6>
+                                <a href="/people"><h6>View more</h6></a>
                             </div>
 
 

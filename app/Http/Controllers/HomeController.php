@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Event;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 
 class HomeController extends Controller
@@ -32,11 +33,14 @@ class HomeController extends Controller
         return view('home', compact('button'));
     }
     public function returnEventsAndProjects(){
+
+        $users=User::take(12)->get();
+
         $events = Event::orderBy('date', 'desc')->take(4)->get();
         $projects = Project::orderBy('start_date', 'desc')->take(4)->get()->toArray();
         $button="No button";
 
-        return view('home', compact('projects', 'events','button'));
+        return view('home', compact('projects', 'events','button', 'users'));
 
 
     }
