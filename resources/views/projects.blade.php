@@ -36,24 +36,28 @@
                 </div>
 
                 {{--Project section--}}
-                <div class="container" id="projects_all">
-                    <div class="row" id="all_projects">
-                        @if(!empty($projects))
+
+
+                @if(!empty($projects) && count($projects)>0)
+                    <div class="container" id="projects_all">
+                        <div class="row" id="all_projects">
                             @foreach($projects as $project)
                                 @include('/php/project_card_all')
                             @endforeach
-                        @else
-                            <div style="margin-bottom: 10%;">
-                                There are no projects at the moment.
-                            </div>
-                        @endif
-
+                        </div>
                     </div>
-                </div>
-            </div>
+                @else
 
+                    <div style="margin-bottom: 10%; margin-left: 3%">
+                        There are no projects at the moment.
+                    </div>
+                @endif
+
+            </div>
         </div>
     </div>
+
+
 
     {{--Modal--}}
     @include('/php/project_modal')
