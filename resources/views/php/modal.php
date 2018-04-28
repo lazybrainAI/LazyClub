@@ -1,11 +1,10 @@
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <form method="post" name="add_new_event_form" id="add_new_event_form">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="modal_heading">Add new event</h4>
-                    <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token() ?>">

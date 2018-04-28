@@ -3865,6 +3865,20 @@ body, html {
 }
 #account_form #save_password, #account_form #cancel_password {
   display: block;
+  margin-right: 60%;
+  margin-top: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
+  width: auto;
+  max-width: 15%;
+}
+#account_form #cancel_password {
+  width: 7%;
+}
+
+#password_msg {
+  margin-top: 5%;
+  margin-left: 2%;
 }
 
 .section_title {
@@ -4467,6 +4481,42 @@ body, html {
   position: relative;
 }
 
+#projekti_home #view_all_pro_btn {
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-bottom: 5%;
+  width: auto;
+  max-width: 14%;
+  margin-left: -2%;
+}
+
+.no_projects {
+  margin-bottom: 10%;
+  margin-left: -10%;
+}
+
+.no_events {
+  color: #07dd85;
+  margin-bottom: 10%;
+  margin-left: -10%;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+#see_more_events_all {
+  margin-left: -2%;
+}
+
+.tajmlajn #no_home_events {
+  margin-left: -2%;
+}
+
+#no_home_projects {
+  margin-left: 0;
+}
+
 #msg {
   bottom: -70px;
   position: absolute;
@@ -4718,4 +4768,11 @@ body, html {
   height: auto;
   width: auto;
   margin-bottom: auto;
+}
+
+.close {
+  color: white;
+}
+.close:hover {
+  color: white;
 }

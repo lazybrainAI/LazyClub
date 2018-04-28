@@ -1,25 +1,19 @@
 @extends ('layouts.app')
-
 @section('title', 'Projects')
-
-
 @section('page_top_picture')
     @parent
     @include ('/php/page_top_picture')
 @endsection
-
-
 @section('main')
     @parent
-
     <div class="container-fluid sidebar_section">
         <div class="row">
+            {{--Side bar--}}
             <div class="col-sm-3 col-md-2 d-none d-sm-block">
                 @include ('/php/sidebar_menu')
             </div>
 
             <div class="col-sm-9 col-md-10 col-xs-12 main_content_section projects_all_section">
-
                 <div class="container container-left-margin">
                     <div class="row">
                         {{--Projects header--}}
@@ -38,12 +32,12 @@
                 {{--Project section--}}
                 <div class="container" id="projects_all">
                     <div class="row" id="all_projects">
-                        @if(!empty($projects))
+                        @if(!empty($projects) && count($projects)>0)
                             @foreach($projects as $project)
                                 @include('/php/project_card_all')
                             @endforeach
                         @else
-                            <div style="margin-bottom: 10%;">
+                            <div class="no_projects">
                                 There are no projects at the moment.
                             </div>
                         @endif
