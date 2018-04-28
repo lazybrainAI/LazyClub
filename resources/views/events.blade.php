@@ -35,20 +35,23 @@
                 </div>
 
                 {{--Event section--}}
-                <div class="container" id="events_all">
-                    <div class="row" id="all_events">
-                        @if(!empty($events))
+
+                @if(!empty($events) && count($events)>0)
+                    <div class="container" id="events_all">
+                        <div class="row" id="all_events">
                             @foreach($events as $event)
                                 @include('/php/event_card_all')
                             @endforeach
-                        @else
-                            <div style="margin-bottom: 10%;">
-                                There are no events at the moment.
-                            </div>
-                        @endif
-
+                        </div>
                     </div>
-                </div>
+                            @else
+                                <div style="margin-bottom: 10%; margin-left: 3%; color: #07dd85">
+                                    There are no events at the moment.
+                                </div>
+                            @endif
+
+                        </div>
+                    </div>
             </div>
 
         </div>
