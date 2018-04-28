@@ -1,4 +1,3 @@
-
 @extends ('layouts.app')
 
 @section('title', 'Account')
@@ -37,14 +36,14 @@
                 </div>
 
                 <form id="account_form" method="post" accept-charset="UTF-8">
-
+                    @csrf
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
                                 <label>Old password</label>
                             </div>
                             <div class="col-md-4">
-                                <input  type="password" required autocomplete="off">
+                                <input type="password" required autocomplete="off" name="current-password">
                             </div>
 
 
@@ -54,7 +53,7 @@
                                 <label>New password</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="password" required autocomplete="off">
+                                <input type="password" required autocomplete="off" name="new-password">
                             </div>
                         </div>
                         <div class="row">
@@ -62,21 +61,25 @@
                                 <label>Repeat new password</label>
                             </div>
                             <div class="col-md-4">
-                                <input  type="password" required autocomplete="off">
+                                <input type="password" required autocomplete="off" name="new-password_confirmation">
                             </div>
                         </div>
                     </div>
 
-
-                    <button class="save_btn" id="save_password" type="submit">
-                        <h6>Save changes</h6>
-                    </button>
-                    <button class="cancel_btn" id="cancel_password" type="reset">
-                        <h6>Cancel</h6>
-                    </button>
+                    <div>
+                        <button class="save_btn" id="save_password" type="submit"
+                                style="margin-right: 60%; margin-top: 3%; padding-left: 1%; padding-right: 1%; width: auto;">
+                            <h6>Save changes</h6>
+                        </button>
+                        <button class="cancel_btn" id="cancel_password" type="reset"
+                                style="margin-right: 60%; margin-top: 3%">
+                            <h6>Cancel</h6>
+                        </button>
+                    </div>
 
                 </form>
-
+                <div id="password_msg" style="margin-top: 5%; margin-left: 2%;">
+                </div>
 
             </div>
 
@@ -86,7 +89,9 @@
     </div>
 
 @endsection
-
+@section('include_js')
+    <script src={{ URL::asset('js/change_pass.js') }}></script>
+@endsection
 
 
 
