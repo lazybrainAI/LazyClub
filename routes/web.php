@@ -32,11 +32,12 @@ Route::post('/events', 'EventsController@saveNewEvent');
 Route::get('/event/{name}', 'EventController@showDetails');
 Route::post('/event/{name}', 'EventController@goingEvent');
 Route::put('/event/{name}', 'EventController@editEvent');
-
 Route::delete('/event/{name}','EventController@ungoingEvent');
 
 
-//Projects routes
+
+
+//Project routes
 Route::get('/projects','ProjectController@showDetails');
 Route::post('/projects','ProjectController@saveNewProject');
 //Route::get('/projects/{project}', 'ProjectController@showDetails');
@@ -49,3 +50,5 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 //Account
 Route::get('/account','AccountController@showDetails');
+
+

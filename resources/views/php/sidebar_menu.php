@@ -32,8 +32,13 @@
     </li>
     <li>
         <a href="/logout">
+        <a href="/logout" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
             <h5>Logout</h5>
         </a>
+        <form id="frm-logout" action="/logout" method="POST" style="display: none;">
+            <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token() ?>">
+        </form>
+
     </li>
 
 </ul>
