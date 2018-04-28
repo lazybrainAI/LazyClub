@@ -12,5 +12,6 @@ function loadFile(path, type){
 
 //loadFile("js/split_text.js", 'js');
 //loadFile("js/read_more_btn.js", 'js');
-loadFile("js/going_button.js", 'js');
-loadFile("js/ungoing_btn.js", 'js');
+loadFile("going_button.js", 'js');
+loadFile("ungoing_btn.js", 'js');
+loadFile("edit_event.js", 'js');

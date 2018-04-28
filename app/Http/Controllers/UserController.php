@@ -69,9 +69,9 @@ class UserController extends Controller
         $educations=$user->educations;
         $education_count=$educations->count();
 
-
-
-         return view('profile', compact('user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'experience_count','educations', 'education_count'));
+        $page_name="profile";
+        $button="";
+         return view('profile', compact('button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'experience_count','educations', 'education_count', 'page_name'));
     }
 
     /**

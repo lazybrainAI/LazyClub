@@ -34,6 +34,9 @@
 <script src={{ URL::asset('js/main.js') }}></script>
 <script src={{URL::asset('js/going_button.js')}}></script>
 <script src={{URL::asset('js/ungoing_btn.js')}}></script>
+<script src={{URL::asset('js/edit_event.js')}}></script>
+
+
 
 
 {{--<script src={{ URL::asset('js/main.js') }}></script>--}}

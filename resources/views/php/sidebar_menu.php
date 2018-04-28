@@ -15,14 +15,19 @@
             <h5>Projects</h5>
         </a>
     </li>
-    <li>
+<!--    <li>
         <a href="/documents">
             <h5>Documents</h5>
         </a>
-    </li>
+    </li> -->
     <li>
         <a href="/profile/<?php echo $user->id; ?>">
             <h5>Profile</h5>
+        </a>
+    </li>
+    <li>
+        <a href="/account">
+            <h5>Account</h5>
         </a>
     </li>
     <li>

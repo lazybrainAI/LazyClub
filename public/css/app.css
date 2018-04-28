@@ -3613,9 +3613,6 @@ body, html {
 #body_home #page_top_picture .profile_img {
   display: block !important;
 }
-#body_home #page_top_picture .edit_btn {
-  display: none;
-}
 
 #page_top_picture {
   background-image: url("/img/page_top.jpg");
@@ -3643,7 +3640,7 @@ body, html {
   border: 1px solid #025284;
   border-radius: 12px;
 }
-#page_top_picture #edit_btn {
+#page_top_picture .edit_btn {
   position: absolute;
   bottom: 0;
   right: 10px;
@@ -3681,7 +3678,7 @@ body, html {
   text-decoration: none;
 }
 
-.read_more_btn, .read_less_btn, .see_more_btn, .submit_btn, #save_btn, #cancel_btn {
+.read_more_btn, .read_less_btn, .see_more_btn, .submit_btn, .save_btn, .cancel_btn {
   background-color: #025284;
   border-radius: 5px;
   border: 1px solid #025284;
@@ -3689,18 +3686,18 @@ body, html {
   height: 30px;
   cursor: pointer;
 }
-.read_more_btn h6, .read_less_btn h6, .see_more_btn h6, .submit_btn h6, #save_btn h6, #cancel_btn h6 {
+.read_more_btn h6, .read_less_btn h6, .see_more_btn h6, .submit_btn h6, .save_btn h6, .cancel_btn h6 {
   text-align: center;
   color: white !important;
   font-weight: 300;
   line-height: 25px;
 }
-.read_more_btn:hover, .read_less_btn:hover, .see_more_btn:hover, .submit_btn:hover, #save_btn:hover, #cancel_btn:hover {
+.read_more_btn:hover, .read_less_btn:hover, .see_more_btn:hover, .submit_btn:hover, .save_btn:hover, .cancel_btn:hover {
   cursor: pointer;
   background-color: white;
   border: 1px solid #025284;
 }
-.read_more_btn:hover h6, .read_less_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6, #save_btn:hover h6, #cancel_btn:hover h6 {
+.read_more_btn:hover h6, .read_less_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6, .save_btn:hover h6, .cancel_btn:hover h6 {
   color: #025284 !important;
 }
 
@@ -3708,31 +3705,32 @@ body, html {
   display: none;
 }
 
-#save_btn {
+.save_btn {
   right: 130px;
 }
 
-#cancel_btn {
+.cancel_btn {
   right: 10px;
 }
 
-#save_btn, #cancel_btn {
+.save_btn, .cancel_btn {
   position: absolute;
   width: 110px;
+  margin-bottom: 10px;
   display: none;
 }
 
-#edit_btn {
+.edit_btn {
   background-color: #fff;
   opacity: 0.4;
 }
-#edit_btn h6 {
+.edit_btn h6 {
   color: #777 !important;
 }
-#edit_btn:hover {
+.edit_btn:hover {
   opacity: 0.7;
 }
-#edit_btn:hover h6 {
+.edit_btn:hover h6 {
   color: #777 !important;
 }
 
@@ -3855,6 +3853,18 @@ body, html {
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: normal;
+}
+
+#account_form input {
+  padding-left: 5px;
+  border-radius: 10px;
+  border: 1px solid #025284;
+  margin-bottom: 20px;
+  color: #025284;
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+}
+#account_form #save_password, #account_form #cancel_password {
+  display: block;
 }
 
 .section_title {

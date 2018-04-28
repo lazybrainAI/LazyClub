@@ -30,7 +30,6 @@ $(document).ready(function(){
                 $('.going_btn h6').html("Going");
                 $('.going_btn').removeClass('ungoing_btn');
 
-                $('.msg').text("Success");
 
 
             },

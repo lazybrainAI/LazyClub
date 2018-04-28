@@ -12,6 +12,7 @@ use App\Role;
 use App\Education;
 use Illuminate\Validation\Rule;
 use \Illuminate\Support\Facades\Validator;
+use \Illuminate\Support\Facades\Auth;
 
 
 
@@ -22,7 +23,24 @@ class EventController extends Controller
 
     public function showDetails($name){
 
+
+
+
         $event=Event::where('name', $name)->get()->first();
+
+//ungoing button check
+        $user_loggedin = Auth::user()->id;
+
+        $attendee_role=Role::where('project/event', 'event')->where('title', 'attendee')->get()->first();
+        $going=Event_Attending::where('user_id', $user_loggedin)->where('event_id', $event->id)->where('role_id', $attendee_role->id)->get()->first();
+
+        if($going==null){
+            $going="not_going"; //set going button
+        }
+        else{
+            $going="going"; //set ungoing button
+        }
+
 
         $loc_id=$event->loc_id;
         $locations=Location::where('id', $loc_id)->get();
@@ -78,16 +96,18 @@ class EventController extends Controller
         $attendees=Event_Attending::where('event_id', $event->id)->where('role_id', $attendee_role_id)->get();
 
        // dd($attendees->isEmpty());
-        return view('event', compact('event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position', 'attendees'));
+        $page_name="event";
+        $button="";
+        return view('event', compact('button','event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position', 'attendees', 'going', 'page_name'));
     }
 
 
 
-    public function editEvent(Request $request, $name)
+    public function goingEvent(Request $request, $name)
     {
         //going on event
 
-        if($request->has('id_going')) {
+
             $user_id = $request['id_going'];
             $event_name = $name;
 
@@ -117,19 +137,13 @@ class EventController extends Controller
 
             if ($event_attendings->isEmpty()) {
                 Event_Attending::create([ 'event_id' => $event_id, 'role_id' => $role->id, 'user_id' => $user->id]);
+                return response()->json(['name'=>$user_clicked_name, 'surname'=>$user_clicked_surname, 'position'=>$user_clicked_position, 'photo'=>$user_photo]);
 
             }
 
-            return response()->json(['name'=>$user_clicked_name, 'surname'=>$user_clicked_surname, 'position'=>$user_clicked_position, 'photo'=>$user_photo]);
-
-        }
-
-
-        // update event
-        else{
-
-        }
-
+            else {
+                return response()->json(['msg'=>already_checked]);
+            }
 
 
 
@@ -148,8 +162,24 @@ class EventController extends Controller
 
 
 
+    }
 
 
+    public function editEvent(Request $request, $name){
+
+        $event=Event::where('name', $name)->get()->first();
+
+        $event->description=$request['event_description'];
+        $event->date=$request['event_date'];
+        $event->time=$request['event_time'];
+        $lang=$request['event_language'];
+        $loc=$request['event_location'];
+
+
+
+
+
+        return response()->json(['name'=>"great"]);
     }
 
 

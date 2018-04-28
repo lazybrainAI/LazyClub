@@ -29,12 +29,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', compact('button'));
     }
     public function returnEventsAndProjects(){
         $events = Event::orderBy('date', 'desc')->take(4)->get();
         $projects = Project::orderBy('start_date', 'desc')->take(4)->get()->toArray();
-        return view('home', compact('projects', 'events'));
+        $button="No button";
+
+        return view('home', compact('projects', 'events','button'));
 
 
     }

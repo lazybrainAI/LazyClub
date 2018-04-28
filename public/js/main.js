@@ -170,14 +170,14 @@ $(document).ready(function () {
 
     // ------- cancel button
 
-    $('#cancel_btn').click(function ()  {
+    $('#cancel_profile').click(function ()  {
         $('input').prop('disabled', true);
         $('textarea').prop('disabled', true);
 
         $('#add_education').css('display', 'none');
         $('#add_experience').css('display', 'none');
-        $('#save_btn').css('display', 'none');
-        $('#cancel_btn').css('display', 'none');
+        $('#save_profile').css('display', 'none');
+        $('#cancel_profile').css('display', 'none');
         $('.delete_icon').css('display', 'none');
 
     });
@@ -186,13 +186,13 @@ $(document).ready(function () {
     // ---------- editing profile
 
 
-    $('#edit_btn').click(function () {
+    $('#profile_btn').click(function () {
         $('input').prop('disabled', false);
         $('textarea').prop('disabled', false);
         $('#add_education').css('display', 'block');
         $('#add_experience').css('display', 'block');
-        $('#save_btn').css('display', 'block');
-        $('#cancel_btn').css('display', 'block');
+        $('#save_profile').css('display', 'block');
+        $('#cancel_profile').css('display', 'block');
         $('.delete_icon').css('display', 'inline');
 
 
@@ -256,8 +256,8 @@ $(document).ready(function () {
 
                     $('#add_education').css('display', 'none');
                     $('#add_experience').css('display', 'none');
-                    $('#save_btn').css('display', 'none');
-                    $('#cancel_btn').css('display', 'none');
+                    $('#save_profile').css('display', 'none');
+                    $('#cancel_profile').css('display', 'none');
                     $('.delete_icon').css('display', 'none');
 
                     $('#msg').css('display', 'block');
