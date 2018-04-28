@@ -194,10 +194,10 @@
 
          </div> -->
 
-             <button id="save_btn" type="submit">
+             <button class="save_btn"  id="save_profile" type="submit">
                  <h6>Save changes</h6>
              </button>
-             <button id="cancel_btn" type="reset">
+             <button class="cancel_btn" id="cancel_profile" type="reset">
                  <h6>Cancel</h6>
              </button>
              <div id="msg"></div>

@@ -30,8 +30,11 @@ Route::post('/events', 'EventsController@saveNewEvent');
 
 //Event routes
 Route::get('/event/{name}', 'EventController@showDetails');
-Route::post('/event/{name}', 'EventController@editEvent');
+Route::post('/event/{name}', 'EventController@goingEvent');
+Route::put('/event/{name}', 'EventController@editEvent');
 Route::delete('/event/{name}','EventController@ungoingEvent');
+
+
 
 
 //Project routes
@@ -42,5 +45,10 @@ Route::post('/projects','ProjectController@saveNewProject');
 //HR panel
 Route::get('/hrpanel', 'HRController@returnView');
 Route::post('/hrpanel', 'HRController@sendMail');
+Route::get('/logout', 'Auth\LoginController@logout');
+
+
+//Account
+Route::get('/account','AccountController@showDetails');
 
 

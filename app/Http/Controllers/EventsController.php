@@ -17,8 +17,10 @@ use function MongoDB\BSON\toJSON;
 class EventsController extends Controller
 {
     public function showDetails(){
+
+        $button="No button";
         $events = Event::all()->sortByDesc('date');
-                    return view('events', compact('events'));
+                    return view('events', compact('events', 'button'));
 
     }
 

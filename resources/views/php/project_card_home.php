@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-md-5 padding_left" >
+<div class="col-sm-6 padding_left" >
 <div class="p_e_card">
     <div class="p_e_img">
 

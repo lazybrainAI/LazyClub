@@ -14,10 +14,11 @@ class ProjectController extends Controller
 {
     public function showDetails()
     {
+        $button="No button";
         $projects = Project::all()->sortByDesc('start_date');;
         $positions = Role::where('project/event', 'p')->get();
 
-        return view('projects', compact('projects', 'positions'));
+        return view('projects', compact('projects', 'positions', 'button'));
 
     }
 

@@ -61,16 +61,16 @@
                                     </div>
                                 @endforeach
 
-
+                                <div class="see_more_btn">
+                                    <a href="/events" style="text-decoration: none;"><h6>View more</h6></a>
+                                </div>
                             </div>
                         @else
-                            <div style="margin-bottom: 10%; margin-left: -1%; color: #07dd85">
+                            <div>
                                 There are no events at the moment.
                             </div>
                         @endif
-                        <div class="see_more_btn">
-                            <a href="/events" style="text-decoration: none;"><h6>View more</h6></a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -91,76 +91,74 @@
                             @foreach($projects as $project)
                                 @include('/php/project_card_home')
                             @endforeach
-                    </div>
-                    @else
-                        <div style="margin-bottom: 10%;">
-                            There are no projects at the moment.
-                        </div>
-                </div>
-                @endif
-                <div class="see_more_btn"
-                     style="margin-bottom: 70px; margin-top: 2%; width: auto; max-width: 13%; margin-left: -2%;">
-                    <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
-                </div>
-
-
-            </div>
-
-            <div class="container review_ppl_section">
-                <div class="row align-content-center">
-                    <div class="col-sm-6 padding_left">
-                        <div class="container container-left-margin">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <h5 class="section_title">Review</h5>
-                                </div>
+                            <div class="see_more_btn"
+                                 style="padding-left: 2%; padding-right: 2%; margin-bottom: 70px; width: auto;">
+                                <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
                             </div>
-                        </div>
-
-                        @include ('/php/review_card')
-
+                        @else
+                            <div style="margin-bottom: 10%;">
+                                There are no projects at the moment.
+                            </div>
+                        @endif
 
                     </div>
-                    <div class="col-sm-6">
-                        <div class="container container-left-margin">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    <h5 class="section_title">People</h5>
+                </div>
+
+                <div class="container review_ppl_section">
+                    <div class="row align-content-center">
+                        <div class="col-sm-6 padding_left">
+                            <div class="container container-left-margin">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h5 class="section_title">Review</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="container people_home_section">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                </div>
-                                <div class="col-md-2">
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                            @include ('/php/review_card')
+
+
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="container container-left-margin">
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <h5 class="section_title">People</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="see_more_btn" style="margin-bottom:70px">
-                            <h6>View more</h6>
+                            <div class="container people_home_section">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="see_more_btn" style="margin-bottom:70px">
+                                <h6>View more</h6>
+                            </div>
+
+
                         </div>
 
 
                     </div>
-
-
                 </div>
+
             </div>
 
         </div>
-
-    </div>
     </div>
 
 @endsection

@@ -27,6 +27,9 @@
                @include('/php/sidebar_menu')
             </div>
             <div class="col-sm-9 col-md-10  col-xs-12 main_content_section">
+
+                <form id="event_form" method="post" accept-charset="UTF-8">
+
                 <div class="container  container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
@@ -34,6 +37,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="container details_section" >
                     <div class="row justify-content-between no-gutters">
                         <div class="col-md-8 order-md-1 order-2">
@@ -48,8 +52,8 @@
                             <br>
                             <h6 class="h7" id="event_date">Date/ <input name="event_date"  type="date" disabled="disabled" required value={{$event->date}}> </h6>
                             <h6 class="h7" id="event_time">Time/ <input name="event_time"  type="time" disabled="disabled" required value= {{\Carbon\Carbon::parse($event->time)->format('H:i')}}> </h6>
-                            <h6 class="h7" id="=event_loc">Location/ <input name="event_location" type="text" value="{{$location_name}}"></h6>
-                            <h6 class="h7" id="=event_lang">Language/ <input name="event_language" type="text" value="{{$language_name}}"></h6>
+                            <h6 class="h7" id="=event_loc">Location/ <input name="event_location" type="text" disabled="disabled" value="{{$location_name}}"></h6>
+                            <h6 class="h7" id="=event_lang">Language/ <input name="event_language" type="text" disabled="disabled" value="{{$language_name}}"></h6>
 
 
                         </div>
@@ -57,8 +61,17 @@
                     </div>
                 </div>
 
+                <button class="save_btn" id="save_event" type="submit">
+                    <h6>Save changes</h6>
+                </button>
+                <button class="cancel_btn" id="cancel_event" type="reset">
+                    <h6>Cancel</h6>
+                </button>
 
-                <div class="container container-left-margin">
+                </form>
+
+
+                <div class="container container-left-margin" id="margin_top_80">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
                             <h5 class="section_title">Reviews</h5>
@@ -106,7 +119,7 @@
                                        <div style="width:100%; text-align: center;" id="no_attendees_msg"><p>No attendees yet.</p></div>
                                    @else
                                         @foreach($attendees as $attendee)
-                                            <div class="col-6 col-sm-4 event_attendee">
+                                            <div class="col-6 col-sm-4 event_attendee" id="attendee_{{$attendee->user->id}}">
                                                 <div  style="margin-bottom:20px">
                                                     <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
                                                     <div class="attendee_info">
@@ -129,11 +142,20 @@
                 </div>
                 <div class="container event_btns" style="margin-left:25px" id="{{$user->id}}" >
                     <div class="row">
-                        <div class="col-sm-5 col-md-3 col-xl-2">
-                            <div class="add_btn going_btn" style="margin-bottom: 10px">
-                                <h6>Going</h6>
+                        @if($going=="going")
+                            <div class="col-sm-5 col-md-3 col-xl-2">
+                                <div class="add_btn ungoing_btn" style="margin-bottom: 10px">
+                                    <h6>Not going</h6>
+                                </div>
                             </div>
-                        </div>
+                        @else
+                            <div class="col-sm-5 col-md-3 col-xl-2">
+                                <div class="add_btn going_btn" style="margin-bottom: 10px">
+                                    <h6>Going</h6>
+                                </div>
+                            </div>
+
+                            @endif
 
                         <div class="col-sm-5 col-md-3 col-xl-2">
                             <div class=" add_btn">
