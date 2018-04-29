@@ -70,17 +70,10 @@
                     </div>
                 </div>
 
-                <button class="save_btn" id="save_event" type="submit">
-                    <h6>Save changes</h6>
-                </button>
-                <button class="cancel_btn" id="cancel_event" type="reset">
-                    <h6>Cancel</h6>
-                </button>
-
-                </form>
 
 
-                <div class="container container-left-margin" id="margin_top_80">
+
+                <div class="container container-left-margin" >
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
                             <h5 class="section_title">Reviews</h5>
@@ -120,8 +113,10 @@
                             </div>
                         </div>
                         <div class="col-md-7  attendees">
-                            <button onclick="plusDivs(-1)"><i class="fas fa-angle-left fa-2x"></i></button>
-                            <button onclick="plusDivs(+1)"><i class="fas fa-angle-right fa-2x"></i></button>
+                            @if($num_attendees>9)
+                                <button onclick="plusDivs(-1)"><i class="fas fa-angle-left fa-2x"></i></button>
+                                <button onclick="plusDivs(+1)"><i class="fas fa-angle-right fa-2x"></i></button>
+                            @endif
                     <!--    <div class="container mySlides"> -->
                                 <div class="row">
                                    @if($attendees->isEmpty())
@@ -168,12 +163,21 @@
 
                         <div class="col-sm-5 col-md-3 col-xl-2">
                             <div class=" add_btn">
-                                <h6>Ask organizer</h6>
+                                <a href="mailto:{{$organizer_email}}"><h6>Ask organizer</h6></a>
                             </div>
                         </div>
 
                     </div>
                 </div>
+
+                    <button class="save_btn" id="save_event" type="submit">
+                        <h6>Save changes</h6>
+                    </button>
+                    <button class="cancel_btn" id="cancel_event" type="reset">
+                        <h6>Cancel</h6>
+                    </button>
+
+                </form>
 
                 <div class="msg"></div>
 

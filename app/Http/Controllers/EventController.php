@@ -81,12 +81,13 @@ class EventController extends Controller
             $organizer_name=$organiser->name;
             $organizer_surname=$organiser->surname;
             $organizer_position=$organiser->position;
+            $organizer_email=$organiser->email;
         }
 
 
         // all event attendees
 
-        $attendee_roles=Role::where('project/event', 'event')->where('title', 'attendee')->get(); /*where('project/event', 'event')->*/
+        $attendee_roles=Role::where('project/event', 'event')->where('title', 'attendee')->get();
         $attendee_role_id=null;
 
         foreach($attendee_roles as $attendee_role){
@@ -98,7 +99,10 @@ class EventController extends Controller
        // dd($attendees->isEmpty());
         $page_name="event";
         $button="";
-        return view('event', compact('button','event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position', 'attendees', 'going', 'page_name'));
+
+        $all_attendees=Event_Attending::where('event_id', $event_id)->where('role_id', $attendee_role_id)->get();
+        $num_attendees=$all_attendees->count();
+        return view('event', compact('num_attendees','button','event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position','organizer_email', 'attendees', 'going', 'page_name'));
     }
 
 
@@ -169,15 +173,16 @@ class EventController extends Controller
 
         $event=Event::where('name', $name)->get()->first();
 
-        $event->description=$request['event_description'];
-        $event->date=$request['event_date'];
-        $event->time=$request['event_time'];
+
+        $description=$request['event_description'];
+        $date=$request['event_date'];
+        $time=$request['event_time'];
         $lang=$request['event_language'];
         $loc=$request['event_location'];
+        $lang_id=Language::where('name', $lang)->get()->first()->id;
+        $loc_id=Location::where('name', $loc)->get()->first()->id;
 
-
-
-
+        Event::where('id', $event->id)->update(['description'=>$description, 'time'=>$time, 'date'=>$date, 'lang_id'=>$lang_id, 'loc_id'=>$loc_id]);
 
         return response()->json(['name'=>"great"]);
     }

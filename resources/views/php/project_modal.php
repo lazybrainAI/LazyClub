@@ -1,11 +1,10 @@
 <div id="projectModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <form method="post" name="add_new_project_form" id="add_new_project_form">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="modal_heading">Add new project</h4>
-                    <button type="button" class="close" data-dismiss="modal" style="color:white;">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token() ?>">
@@ -34,9 +33,14 @@
                         <label>Project location</label>
                         <input type="text" name="project_new_location" required autocomplete="off">
                     </div>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 select_field">
                         <label>Project language</label>
-                        <input type="text" name="project_new_language" required autocomplete="off">
+                        <select name="project_new_language" title="project_new_language_select" >
+                            <option selected="selected" value="selected">Select language</option>
+                            <?php foreach ($project_language as $language) { ?>
+                                <option value="<?php echo $language['name'] ?>"><?php echo $language['name'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="col-sm-12">
                         <label>Team name for project</label>
@@ -45,10 +49,9 @@
                     <div class="col-sm-12">
                         <label>Open positions</label>
                     </div>
-                    <div class="col-sm-12" id="project_new_checkbox" style="">
+                    <div class="col-sm-12" id="project_new_checkbox">
                         <?php if (!empty($positions) && count($positions) > 0) {
                             foreach ($positions
-
                                      as $position) {
                                 ?>
                                 <div class="col-sm-12">
@@ -57,14 +60,11 @@
                     <?php echo $position->title; ?>" id="<?php echo $position->title; ?>">
                                     <label for="<?php echo $position->title; ?>">
                                         <?php echo $position->title; ?></label>
-
-
                                 </div>
                             <?php }
                         } else {
                             echo "There are no open positions at the moment.";
                         } ?>
-
                     </div>
                 </div>
                 <div class="modal-footer" id="project_new_footer">

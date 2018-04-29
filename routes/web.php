@@ -47,10 +47,10 @@ Route::post('/projects','ProjectController@saveNewProject');
 //HR panel
 Route::get('/hrpanel', 'HRController@returnView');
 Route::post('/hrpanel', 'HRController@sendMail');
-Route::get('/logout', 'Auth\LoginController@logout');
+
 
 
 //Account
 Route::get('/account','AccountController@showDetails');
-
+Route::post('/account','AccountController@changePassword');
 

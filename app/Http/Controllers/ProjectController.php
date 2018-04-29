@@ -17,8 +17,9 @@ class ProjectController extends Controller
         $button="No button";
         $projects = Project::all()->sortByDesc('start_date');;
         $positions = Role::where('project/event', 'p')->get();
+        $project_language = Language::all();
 
-        return view('projects', compact('projects', 'positions', 'button'));
+        return view('projects', compact('projects', 'positions', 'button', 'project_language'));
 
     }
 

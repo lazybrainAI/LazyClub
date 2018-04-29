@@ -30,7 +30,7 @@
     }
 
     .details_div{
-      height:170px;
+      min-height:170px;
       background-color:$blue;
       color:white;
       padding-left: 10px!important;
@@ -41,6 +41,10 @@
       input{
         background: none;
         border:none;
+        color:white;
+      }
+      select{
+        background: $blue;
         color:white;
       }
     }

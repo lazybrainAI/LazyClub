@@ -46,9 +46,11 @@
                                 <div class="col-sm-4">
                                     <div class="container">
                                         <div class="row align-items-center">
-                                            <div class="col-xs-6 ">
-                                                <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            </div>
+                                            <a href="/profile/{{$user->id}}">
+                                                <div class="col-xs-6 ">
+                                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                                </div>
+                                            </a>
                                             <div class="col-xs-6  personal_info">
                                                 <h5>{{$user->name}} {{$user->surname}}</h5>
                                                 <h6>{{$user->position}}</h6>

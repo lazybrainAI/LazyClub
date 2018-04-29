@@ -43,11 +43,12 @@
     }
 
     .review_ppl_section {
+      margin-left:0;
+      padding-left: 0;
       .submit_btn {
         margin-top: 20px;
       }
       .people_home_section {
-        height: 200px;
 
         .people_img {
           height: 60px;
@@ -123,8 +124,49 @@
     padding-right: 2%;
     display: inline-block;
   }
-  .container{
+  .container {
     position: relative;
   }
 
+}
+
+#projekti_home {
+  #view_all_pro_btn {
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-bottom: 5%;
+    width: auto;
+    max-width: 14%;
+    margin-left: -2%;
+  }
+
+
+
+}
+.no_projects {
+  margin-bottom: 10%;
+  margin-left: -10%;
+}
+.no_events {
+  color: $green;
+  margin-bottom: 10%;
+  margin-left: -10%;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+#see_more_events_all {
+  margin-left: -2%;
+}
+
+.tajmlajn {
+  #no_home_events {
+    margin-left: -2%;
+  }
+}
+
+#no_home_projects{
+  margin-left: 0;
 }

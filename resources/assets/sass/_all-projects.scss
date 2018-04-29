@@ -47,6 +47,39 @@
     color: $blue;
 
   }
+  .select_field {
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: $blue;
+      opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: $blue;
+    }
+
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: $blue;
+    }
+    margin-bottom: 15px;
+
+    select {
+      color: $blue;
+
+      width: 85%;
+      height: 8%;
+      padding: 10px;
+      list-style: none;
+      border-radius: $login-borders;
+      font-size: $font-size-fields;
+      border: 1px solid $blue;
+      margin-bottom: 5%;
+
+      box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+      &:last-child(option) {
+        border-bottom: none;
+      }
+    }
+  }
 
 }
 
@@ -103,4 +136,10 @@
     margin-bottom: auto;
   }
 
+}
+.close{
+  color:white;
+  &:hover{
+    color: white;
+  }
 }

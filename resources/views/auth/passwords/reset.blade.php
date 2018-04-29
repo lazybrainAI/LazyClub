@@ -1,70 +1,82 @@
-@extends('layouts.app')
+@extends ('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card card-default">
-                <div class="card-header">Reset Password</div>
+@section('title', 'Account')
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.request') }}">
-                        @csrf
 
-                        <input type="hidden" name="token" value="{{ $token }}">
+@section('include_css')
+    @parent
+    <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+@endsection
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email or old('email') }}" required autofocus>
 
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+@section('page_top_picture')
+    @parent
+    @include('/php/page_top_picture')
+@endsection
+
+
+
+@section('main')
+    @parent
+    <div class="container-fluid sidebar_section">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 d-none d-sm-block">
+                @include('/php/sidebar_menu')
+            </div>
+            <div class="col-sm-9 col-md-10  col-xs-12 main_content_section">
+
+                <div class="container container-left-margin">
+                    <div class="row">
+                        <div class="col-5 col-sm-4 col-md-3  col-lg-2">
+                            <h5 class="section_title">Account</h5>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" required>
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
+                <form method="POST" action="{{ route('password.request') }}">
+                    @csrf
+
+                    <input type="hidden" name="token" value="{{ $token }}">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Old password</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="password" required autocomplete="off">
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>New password</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="password" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Repeat new password</label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="password" required autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button class="save_btn" id="save_password" type="submit">
+                        <h6>Save changes</h6>
+                    </button>
+                    <button class="cancel_btn" id="cancel_password" type="reset">
+                        <h6>Cancel</h6>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-</div>
+
 @endsection
