@@ -70,6 +70,7 @@ class ProjectController extends Controller
         }
         $project->save();
         $openPositions = $request->input('project_new_cbox');
+
         foreach ($openPositions as $openPosition) {
             $project_att = new Project_Attending;
             $role = Role::where('title', $openPosition)->get();

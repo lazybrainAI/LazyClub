@@ -58,14 +58,20 @@
                                     </div>
                                 @endforeach
                             </div>
+                            <div class="see_more_btn no_home_events">
+                                <a href="/events" ><h6>View more</h6></a>
+                            </div>
                         @else
-                            <div class="no_events" id="no_home_events">
+
+                            <div style="margin-bottom: 10%; margin-left: -1%; color: #07dd85">
                                 There are no events at the moment.
                             </div>
+                            <div class="see_more_btn no_home_events">
+                                <a href="/events"><h6>Add new</h6></a>
+                            </div>
                         @endif
-                        <div class="see_more_btn" id="see_more_events_all">
-                            <a href="/events"><h6>View more</h6></a>
-                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -81,82 +87,68 @@
 
                 <div class="container" id="projects_home">
                     <div class="row">
-                        @if(!empty($projects))
+                        @if(!empty($projects) && count($projects)>0)
                             @foreach($projects as $project)
                                 @include('/php/project_card_home')
                             @endforeach
-                                <div class="see_more_btn"
-                                     style="padding-left: 2%; padding-right: 2%; margin-bottom: 70px; width: auto;">
-                                    <a href="/projects" style="text-decoration: none;"><h6>View more</h6></a>
-                                </div>
-                        @else
-                            <div class="no_projects" id="no_home_projects">
-                                There are no projects at the moment.
-                            </div>
-                        @endif
-
                     </div>
-
+                    <div class="see_more_btn view_all_pro_btn">
+                        <a href="/projects"><h6>View more</h6></a>
+                    </div>
+                    @else
+                        <div class="no_projects" id="no_home_projects">
+                            There are no projects at the moment.
+                        </div>
+                </div>
+                <div class="see_more_btn view_all_pro_btn">
+                    <a href="/projects"><h6>Add new</h6></a>
+                </div>
+                @endif
 
             </div>
 
 
-                <div class="container review_ppl_section">
-                    <div class="row align-content-center">
-                        <!--
-                        <div class="col-sm-6 padding_left">
-                            <div class="container container-left-margin">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <h5 class="section_title">Review</h5>
-                                    </div>
+            <div class="container review_ppl_section">
+                <div class="row align-content-center">
+                    <div class="col-sm-12">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h5 class="section_title">People</h5>
                                 </div>
                             </div>
+                        </div>
 
-                            @include ('/php/review_card')
+                        <div class="container people_home_section">
+                            <div class="row">
 
-
-                        </div> -->
-                        <div class="col-sm-12">
-
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <h5 class="section_title">People</h5>
-                                    </div>
-                                </div>
+                                @if($users->isEmpty())
+                                    <div>No members in organization at the moment.</div>
+                                @else
+                                    @foreach($users as $user)
+                                        <a href="/profile/{{$user->id}}">
+                                            <div class="col-md-3">
+                                                <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                @endif
                             </div>
+                        </div>
 
-                            <div class="container people_home_section">
-                                <div class="row">
-
-                                    @if($users->isEmpty())
-                                        <div>No members in organization at the moment.</div>
-                                    @else
-                                        @foreach($users as $user)
-                                            <a href="/profile/{{$user->id}}">
-                                                <div class="col-md-3">
-                                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                                </div>
-                                            </a>
-                                        @endforeach
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="see_more_btn" style="margin-bottom:10px; margin-top:10px">
-                                <a href="/people"><h6>View more</h6></a>
-                            </div>
-
-
+                        <div class="see_more_btn" style="margin-bottom:10px; margin-top:10px">
+                            <a href="/people"><h6>View more</h6></a>
                         </div>
 
 
                     </div>
-                </div>
 
+
+                </div>
             </div>
+
         </div>
+    </div>
     </div>
 @endsection
 @section("include_js")
