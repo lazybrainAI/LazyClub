@@ -27,7 +27,7 @@
                             <h4 class="section_title" id="all_events_section_title">All events</h4>
                         </div>
                         {{--Add new event button--}}
-                        <div class="col-sm-4 offset-sm-2">
+                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
                             <button class="add_new_event" data-toggle="modal" data-target="#myModal">Add new event
                             </button>
                         </div>

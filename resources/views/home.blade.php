@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="container">
-                    <div class="tajmlajn">
+                    <div class="timeline_home_page">
                         @if(!empty($events) && count($events)>0)
                             <div class="timeline_vertical">
                                 @foreach($events as $event)
@@ -79,7 +79,7 @@
                     </div>
                 </div>
 
-                <div class="container" id="projekti_home">
+                <div class="container" id="projects_home">
                     <div class="row">
                         @if(!empty($projects))
                             @foreach($projects as $project)

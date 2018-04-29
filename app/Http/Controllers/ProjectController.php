@@ -14,7 +14,7 @@ class ProjectController extends Controller
 {
     public function showDetails()
     {
-        $button="No button";
+        $button = "No button";
         $projects = Project::all()->sortByDesc('start_date');;
         $positions = Role::where('project/event', 'p')->get();
         $project_language = Language::all();
@@ -29,14 +29,14 @@ class ProjectController extends Controller
             'project_new_description' => 'required|max:191',
             'project_new_sector' => 'required|max:191',
             'project_new_start_date' => 'required|date|after:yesterday',
-            'project_new_end_date'=>'required|date|after_or_equal:project_new_start_date',
-            'project_new_location'=>'required',
-            'project_new_language'=>'required',
-            'project_new_team'=>'required|max:191',
+            'project_new_end_date' => 'required|date|after_or_equal:project_new_start_date',
+            'project_new_location' => 'required',
+            'project_new_language' => 'required',
+            'project_new_team' => 'required|max:191',
         ], [
             'project_new_name.unique' => 'Project name already taken',
             'project_new_start_date.after' => 'The project start date must be today or a date after today.',
-            'project_new_end_date.after_or_equal'=>'The project end date must be equal to start date or later.',
+            'project_new_end_date.after_or_equal' => 'The project end date must be equal to start date or later.',
         ]);
 
 
@@ -57,14 +57,9 @@ class ProjectController extends Controller
             $location->save();
             $project->loc_id = $location->id;
         }
-        if ($language->first()) {
-            $project->lang_id = $language->first()->id;
-        } else {
-            $language = new Language();
-            $language->name = $request['project_new_language'];
-            $language->save();
-            $project->lang_id = $language->id;
-        }
+
+        $project->lang_id = $language->first()->id;
+
         if ($team->first()) {
             $project->team_id = $team->first()->id;
         } else {
@@ -75,24 +70,13 @@ class ProjectController extends Controller
         }
         $project->save();
         $openPositions = $request->input('project_new_cbox');
-        $stringic = '';
         foreach ($openPositions as $openPosition) {
-        $project_att = new Project_Attending;
+            $project_att = new Project_Attending;
             $role = Role::where('title', $openPosition)->get();
-
-        $project_att->project_id = $project->id;
-        $project_att->role_id = $role->first()->id;
-
-        $project_att->user_id = '1';
-
-//            $stringic=$stringic." ".$project_att;
-        $project_att->save();
-
+            $project_att->project_id = $project->id;
+            $project_att->role_id = $role->first()->id;
+            $project_att->user_id = '1';
+            $project_att->save();
+        }
     }
-
-//        return $stringic;
-
-
-    }
-
 }

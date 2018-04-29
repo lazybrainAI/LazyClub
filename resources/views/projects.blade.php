@@ -21,7 +21,7 @@
                             <h4 class="section_title" id="all_projects_section_title">All projects</h4>
                         </div>
                         {{--Add new project button--}}
-                        <div class="col-sm-4 offset-sm-2">
+                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
                             <button class="add_new_project" data-toggle="modal" data-target="#projectModal">Add new
                                 project
                             </button>

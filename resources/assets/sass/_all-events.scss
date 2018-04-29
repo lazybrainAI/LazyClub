@@ -9,6 +9,8 @@
   border-color: white;
   padding-left: 3%;
   padding-right: 3%;
+  float: right;
+
   &:hover {
     background-color: white;
     border: 1px solid $green;
@@ -141,3 +143,6 @@
   color: red;
 }
 
+.div_btn_event_project{
+  text-align: right;
+}

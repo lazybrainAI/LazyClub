@@ -4494,7 +4494,7 @@ body, html {
   position: relative;
 }
 
-#projekti_home #view_all_pro_btn {
+#projects_home #view_all_pro_btn {
   padding-left: 2%;
   padding-right: 2%;
   margin-bottom: 5%;
@@ -4522,7 +4522,7 @@ a {
   margin-left: -2%;
 }
 
-.tajmlajn #no_home_events {
+.timeline_home_page #no_home_events {
   margin-left: -2%;
 }
 
@@ -4606,6 +4606,7 @@ a {
   border-color: white;
   padding-left: 3%;
   padding-right: 3%;
+  float: right;
 }
 .add_new_event:hover {
   background-color: white;
@@ -4721,6 +4722,10 @@ a {
   color: red;
 }
 
+.div_btn_event_project {
+  text-align: right;
+}
+
 .add_new_project {
   border-radius: 5px;
   color: white;
@@ -4732,6 +4737,7 @@ a {
   border-color: white;
   padding-left: 3%;
   padding-right: 3%;
+  float: right;
 }
 .add_new_project:hover {
   background-color: white;
