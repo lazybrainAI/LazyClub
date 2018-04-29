@@ -3963,6 +3963,7 @@ body, html {
 }
 .attendees_section .attendees {
   position: relative;
+  width: 100px;
 }
 .attendees_section .attendees:hover button {
   display: block;
@@ -4221,16 +4222,13 @@ body, html {
   margin-top: 30px;
   margin-left: 25px;
 }
-.review_section .review .select_field {
-  display: none;
+.review_section #add_review {
+  float: right;
 }
 .review_section .review .profile_img {
   display: block;
   margin: auto;
   margin-bottom: 10px;
-}
-.review_section .review .review_text input {
-  display: none;
 }
 .review_section .review .review_text .text {
   display: block;

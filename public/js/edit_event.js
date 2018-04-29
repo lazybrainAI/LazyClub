@@ -35,6 +35,8 @@ $(document).ready(function () {
                     $('select').prop('disabled', true);
                     $('textarea').prop('disabled', true);
 
+
+
                   //  $('.msg').text(data.name);
                 },
                 error:function(data){

@@ -21,14 +21,18 @@ class EventController extends Controller
 {
     //
 
-    public function showDetails($name){
 
+    public function getColumnName($row_id, $table_name){
+        $id=$row_id;
+        $names=$table_name::where('id', $id)->get();
+        $col_name=null;
+        foreach($names as $name){
+            $col_name=$name;
+        }
+        return $col_name->name;
+    }
 
-
-
-        $event=Event::where('name', $name)->get()->first();
-
-//ungoing button check
+    public function isUserAttending($event){
         $user_loggedin = Auth::user()->id;
 
         $attendee_role=Role::where('project/event', 'event')->where('title', 'attendee')->get()->first();
@@ -40,116 +44,124 @@ class EventController extends Controller
         else{
             $going="going"; //set ungoing button
         }
+        return $going;
+    }
 
+    public function getOrganizerInfo($event){
 
-        $loc_id=$event->loc_id;
-        $locations=Location::where('id', $loc_id)->get();
-
-        foreach($locations as $location){
-            $location_name=$location->name;
-        }
-
-        $lang_id=$event->lang_id;
-        $languages=Language::where('id', $lang_id)->get();
-
-        foreach($languages as $language){
-            $language_name=$language->name;
-        }
-
-        //organizer info
-
-        $organizer_roles=Role::where('project/event', 'event')->where('title', 'organizer')->get(); /*where('project/event', 'event')->*/
-        $organizer_role_id=null;
-
-        foreach($organizer_roles as $organizer_role){
-            $organizer_role_id=$organizer_role->id;
-        }
+        $organizer_role=Role::where('project/event', 'event')->where('title', 'organizer')->get()->first();
+        $organizer_role_id=$organizer_role->id;
 
         $event_id=$event->id;
 
-        $event_attendings=Event_Attending::where('event_id', $event_id)->get();
+        $event_attending=Event_Attending::where('event_id', $event_id)->where('role_id', $organizer_role_id)->get()->first();
 
-        foreach($event_attendings as $event_attending){
-            if($event_attending->role_id==$organizer_role_id){
-                $organizer_id=$event_attending->user_id;
-            }
-        }
+        $organizer_id=$event_attending->user_id;
 
-        $organizers=User::where('id', $organizer_id)->get();
+        $organizer=User::where('id', $organizer_id)->get()->first();
 
-        foreach ($organizers as $organiser){
-            $organizer_name=$organiser->name;
-            $organizer_surname=$organiser->surname;
-            $organizer_position=$organiser->position;
-            $organizer_email=$organiser->email;
-        }
+        return $organizer;
+
+    }
 
 
-        // all event attendees
+    public function getAllAttendees($event_id){
+        $attendee_role=Role::where('project/event', 'event')->where('title', 'attendee')->get()->first();
+        $attendee_role_id=$attendee_role->id;
 
-        $attendee_roles=Role::where('project/event', 'event')->where('title', 'attendee')->get();
-        $attendee_role_id=null;
+        $attendees=Event_Attending::where('event_id', $event_id)->where('role_id', $attendee_role_id)->get();
 
-        foreach($attendee_roles as $attendee_role){
-            $attendee_role_id=$attendee_role->id;
-        }
+        return $attendees;
+    }
 
-        $attendees=Event_Attending::where('event_id', $event->id)->where('role_id', $attendee_role_id)->get();
+    public function numberOfAttendees($event_id){
 
-       // dd($attendees->isEmpty());
+        $attendees=$this->getAllAttendees($event_id);
+        return $attendees->count();
+
+    }
+
+
+    public function showDetails($name){
+
+        // event info
+
+        $event=Event::where('name', $name)->get()->first();
+        $event_id=$event->id;
+
+        //check for current user attendance
+
+        $going=$this->isUserAttending($event);
+
+        // reviews
+        $reviews=$event->reviews;
+
+
+        //location and language
+
+        $location_name=$this->getColumnName($event->loc_id, Location::class);
+        $language_name=$this->getColumnName($event->lang_id, Language::class);
+
+
+        //organizer info
+
+        $organizer=$this->getOrganizerInfo($event);
+
+        $organizer_name=$organizer->name;
+        $organizer_surname=$organizer->surname;
+        $organizer_position=$organizer->position;
+        $organizer_email=$organizer->email;
+
+        // get all attendees
+        $attendees=$this->getAllAttendees($event_id);
+        $num_attendees=$attendees->count();
+
+        //
         $page_name="event";
+
+        // page-top button
         $button="";
 
-        $all_attendees=Event_Attending::where('event_id', $event_id)->where('role_id', $attendee_role_id)->get();
-        $num_attendees=$all_attendees->count();
-        return view('event', compact('num_attendees','button','event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position','organizer_email', 'attendees', 'going', 'page_name'));
+
+        //setting slider
+
+        //$this->setSlider($num_attendees);
+
+        return view('event', compact('reviews','num_attendees','button','event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position','organizer_email', 'attendees', 'going', 'page_name'));
     }
+
 
 
 
     public function goingEvent(Request $request, $name)
     {
-        //going on event
+
+        //event ifo
+        $event= Event::where('name', $name)->get()->first();
+        $event_id = $event->id;
+
+        //user info
+        $user_id = $request['id_going'];
+        $user = User::findOrFail($user_id);
+        $user_clicked_name = $user->name;
+        $user_clicked_surname = $user->surname;
+        $user_clicked_position = $user->position;
+        $user_photo=$user->photo_link;
 
 
-            $user_id = $request['id_going'];
-            $event_name = $name;
+        // event attending
+        $role = Role::where('title', 'attendee')->where('project/event', 'event')->get()->first();
 
-            $events = Event::where('name', $name)->get();
-            $event_id=null;
-            foreach ($events as $event) {
-                $event_id = $event->id;
+        $event_attendings = Event_Attending::where('user_id', $user_id)->where('event_id', $event_id)->get();
 
-            }
+        if ($event_attendings->isEmpty()) {
+            Event_Attending::create([ 'event_id' => $event_id, 'role_id' => $role->id, 'user_id' => $user->id]);
+            return response()->json(['name'=>$user_clicked_name, 'surname'=>$user_clicked_surname, 'position'=>$user_clicked_position, 'photo'=>$user_photo]);
 
-
-            $user = User::findOrFail($user_id);
-            $user_clicked_name = $user->name;
-            $user_clicked_surname = $user->surname;
-            $user_clicked_position = $user->position;
-            $user_photo=$user->photo_link;
-
-
-            $role = Role::where('title', 'attendee')->where('project/event', 'event')->get()->first();
-
-
-            // event attendings
-
-            $event_attendings = Event_Attending::where('user_id', $user_id)->where('event_id', $event_id)->get();
-
-
-
-            if ($event_attendings->isEmpty()) {
-                Event_Attending::create([ 'event_id' => $event_id, 'role_id' => $role->id, 'user_id' => $user->id]);
-                return response()->json(['name'=>$user_clicked_name, 'surname'=>$user_clicked_surname, 'position'=>$user_clicked_position, 'photo'=>$user_photo]);
-
-            }
-
-            else {
-                return response()->json(['msg'=>already_checked]);
-            }
-
-
+        }
+        else {
+            return response()->json(['msg'=>already_checked]);
+        }
 
     }
 
@@ -157,13 +169,14 @@ class EventController extends Controller
 
     public function ungoingEvent(Request $request, $name){
 
-
         $role = Role::where('title', 'attendee')->where('project/event','event')->get()->first();
         $event_id=Event::where('name', $name)->get()->first();
-
         $event_attendings=Event_Attending::where('user_id', $request['id'])->where('event_id',$event_id->id)->where('role_id', $role->id)->get()->first();
         $event_attendings->delete();
 
+        $num_attendees=$this->numberOfAttendees($event_id);
+
+        return response()->json(['num_attendees'=>$num_attendees]);
 
 
     }

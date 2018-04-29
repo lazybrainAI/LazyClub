@@ -82,9 +82,19 @@
                 </div>
                 <div class="container review_section">
                     <div class="row align-items-center">
-                        <div class="col-md-4 col-sm-6">
-                            {{--@include('/php/review_card')--}}
-                        </div>
+                        @if($reviews->isEmpty())
+                            <div><p>No reviews for this event yet.</p></div>
+                        @else
+                            @foreach($reviews as $review)
+                                <div class="col-md-4 col-sm-6">
+                                    @include('/php/review_card')
+                                </div>
+                            @endforeach
+                        @endif
+
+                    </div>
+                    <div class="add_btn" id="add_review">
+                        <h6>Add review</h6>
                     </div>
                 </div>
 
@@ -112,13 +122,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7  attendees">
+                        <div class="col-md-7 attendees">
                             @if($num_attendees>9)
                                 <button onclick="plusDivs(-1)"><i class="fas fa-angle-left fa-2x"></i></button>
                                 <button onclick="plusDivs(+1)"><i class="fas fa-angle-right fa-2x"></i></button>
                             @endif
                     <!--    <div class="container mySlides"> -->
-                                <div class="row">
+                                <div class="row ">
                                    @if($attendees->isEmpty())
                                        <div style="width:100%; text-align: center;" id="no_attendees_msg"><p>No attendees yet.</p></div>
                                    @else

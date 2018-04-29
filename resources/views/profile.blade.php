@@ -66,7 +66,7 @@
                         <h6>Profile details:</h6>
                         <br>
                         <h6 class="h7" id="join_date">Join date / {{$user->join_date}}</h6>
-                        <h6 class="h7" id="status">Status / {{$user->status}}</h6>
+                        <h6 class="h7" id="status">Status / <input value="{{$user->status}}" type="text" required disabled="disabled"></h6>
 
                         <h6 class="h7" id="strength">Strength / {{$user->strength}}</h6>
 

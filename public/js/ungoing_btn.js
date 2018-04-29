@@ -20,7 +20,7 @@ $(document).ready(function(){
             type:'DELETE',
             data:{id:user_clicked},
 
-            success: function(){
+            success: function(data){
 
                 var attendee="#attendee_"+user_clicked;
                 $(attendee).remove();
@@ -29,6 +29,11 @@ $(document).ready(function(){
                 $('.ungoing_btn').addClass('going_btn');
                 $('.going_btn h6').html("Going");
                 $('.going_btn').removeClass('ungoing_btn');
+
+                if(data.num_attendees==0){
+                   $('#no_attendees_msg').css('display', 'block');
+                }
+
 
 
 

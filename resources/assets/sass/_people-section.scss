@@ -34,12 +34,16 @@
 
   .attendees{
     position:relative;
+    width:100px;
 
     &:hover{
       button{
         display: block;
       }
     }
+
+
+
     button{
       display:none;
       position:absolute;

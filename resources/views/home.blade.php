@@ -160,5 +160,5 @@
     </div>
 @endsection
 @section("include_js")
-    <script src={{ URL::asset('js/home_add_new_review.js') }}></script>
+    <script src={{ URL::asset('js/submit_review.js') }}></script>
 @endsection

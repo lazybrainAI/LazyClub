@@ -5,21 +5,20 @@
     left:25px;
   }
 
+  #add_review{
+    float:right;
+  }
+
   .review{
-    .select_field{
-      display: none;
-    }
+
     .profile_img{
       display:block;
       margin:auto;
       margin-bottom:10px;
 
     }
-
     .review_text{
-      input{
-        display: none;
-      }
+
       .text{
         display: block;
       }
