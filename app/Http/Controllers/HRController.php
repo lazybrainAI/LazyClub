@@ -12,26 +12,27 @@ use Illuminate\Support\Facades\Mail;
 class HRController extends Controller
 {
     function returnView(){
-        $button ="No button";
-        return view("hrnewuser", compact('button'));
+
+        $button = "No button";
+        return view('hrnewuser', compact('button'));
+
     }
 
     function sendMail(Request $request){
-        $validator = $request->validate(['name' => 'required|max:191',
-            'lastname' => 'required|max:191',
+        $validator = $request->validate(['firstName' => 'required|max:191',
+            'lastName' => 'required|max:191',
             'username' => 'required|unique:users,surname|max:191',
-            'mail' => 'required|unique:users,email|email|max:191',
+            'email' => 'required|unique:users,email|email|max:191',
         ], [
-            'project_new_name.unique' => 'Project name already taken',
-            'project_new_start_date.after' => 'The project start date must be today or a date after today.',
-            'project_new_end_date.after_or_equal'=>'The project end date must be equal to start date or later.',
+            'username.unique' => 'Username already taken.',
+            'email.unique' => 'Email already taken.',
         ]);
 
         $user = new User();
-        $user->name = $request['name'];
-        $user->surname = $request['lastname'];
+        $user->name = $request['firstName'];
+        $user->surname = $request['lastName'];
         $user->username = $request['username'];
-        $user->email = $request['mail'];
+        $user->email = $request['email'];
         $password = str_random(8);
         $user->password = Hash::make($password);
         $user->join_date = Carbon::today();
