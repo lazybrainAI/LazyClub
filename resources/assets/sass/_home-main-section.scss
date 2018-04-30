@@ -43,7 +43,7 @@
     }
 
     .review_ppl_section {
-      margin-left:0;
+      margin-left: 0;
       padding-left: 0;
       .submit_btn {
         margin-top: 20px;
@@ -71,6 +71,7 @@
       padding-left: 2%;
       padding-right: 2%;
       display: inline-block;
+
       h6 {
         margin-bottom: 0px !important;
       }
@@ -127,30 +128,34 @@
   .container {
     position: relative;
   }
-
 }
 
-#projekti_home {
-  #view_all_pro_btn {
+#projects_home {
+  .view_all_pro_btn {
+
+    margin-bottom: 5%;
+
+    margin-left: -2%;
+
+    width: auto;
     padding-left: 2%;
     padding-right: 2%;
-    margin-bottom: 5%;
-    width: auto;
-    max-width: 14%;
-    margin-left: -2%;
+    display: inline-block;
   }
-
-
-
 }
+
 .no_projects {
   margin-bottom: 10%;
-  margin-left: -10%;
+  float: left;
+  padding-left: 2%;
 }
+
 .no_events {
+  padding-left: 2%;
   color: $green;
   margin-bottom: 10%;
-  margin-left: -10%;
+  float: left;
+
 }
 
 a {
@@ -158,15 +163,15 @@ a {
 }
 
 #see_more_events_all {
-  margin-left: -2%;
+  margin-left: 0;
 }
 
-.tajmlajn {
-  #no_home_events {
+.timeline_home_page {
+  .no_home_events {
     margin-left: -2%;
   }
 }
 
-#no_home_projects{
+#no_home_projects {
   margin-left: 0;
 }

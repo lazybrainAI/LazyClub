@@ -27,7 +27,7 @@
                             <h4 class="section_title" id="all_events_section_title">All events</h4>
                         </div>
                         {{--Add new event button--}}
-                        <div class="col-sm-4 offset-sm-2">
+                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
                             <button class="add_new_event" data-toggle="modal" data-target="#myModal">Add new event
                             </button>
                         </div>
@@ -35,23 +35,25 @@
                 </div>
 
                 {{--Event section--}}
-                <div class="container" id="events_all">
-                    <div class="row" id="all_events">
-                        @if(!empty($events) && count($events)>0)
+
+                @if(!empty($events) && count($events)>0)
+                    <div class="container" id="events_all">
+                        <div class="row" id="all_events">
                             @foreach($events as $event)
                                 @include('/php/event_card_all')
                             @endforeach
-                        @else
-                            <div class="no_events">
-                                There are no events at the moment.
-                            </div>
-                        @endif
-
+                        </div>
                     </div>
-                </div>
-            </div>
+                @else
 
+                    <div class="no_events" style="">
+                        There are no events at the moment.
+                    </div>
+                @endif
+            </div>
         </div>
+    </div>
+    </div>
     </div>
 
     {{--Modal--}}

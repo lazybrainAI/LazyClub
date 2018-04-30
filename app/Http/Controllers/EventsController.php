@@ -52,17 +52,8 @@ class EventsController extends Controller
             $location->save();
             $event->loc_id = $location->id;
         }
-        if ($language->first()) {
-            $event->lang_id = $language->first()->id;
-        } else {
-            $language = new Language();
-            $language->name = $request['event_new_language'];
-            $language->save();
-            $event->lang_id = $language->id;
-        }
-
+        $event->lang_id = $language->first()->id;
         $event->save();
-
         $user_id = Auth::id();
         $role = Role::where('project/event', 'event')->where('title', 'organizer')->first();
         $role_id = $role->id;
@@ -70,7 +61,7 @@ class EventsController extends Controller
         $event_att->event_id = $event->id;
         $event_att->role_id = $role_id;
         $event_att->user_id = $user_id;
-        $event_att->id = $event_att->event_id + $event_att->role_id + $event_att->user_id;
+
         $event_att->save();
 
 

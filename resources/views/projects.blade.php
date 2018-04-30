@@ -21,7 +21,7 @@
                             <h4 class="section_title" id="all_projects_section_title">All projects</h4>
                         </div>
                         {{--Add new project button--}}
-                        <div class="col-sm-4 offset-sm-2">
+                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
                             <button class="add_new_project" data-toggle="modal" data-target="#projectModal">Add new
                                 project
                             </button>
@@ -30,23 +30,26 @@
                 </div>
 
                 {{--Project section--}}
-                <div class="container" id="projects_all">
-                    <div class="row" id="all_projects">
-                        @if(!empty($projects) && count($projects)>0)
+
+                @if(!empty($projects) && count($projects)>0)
+                    <div class="container" id="projects_all">
+                        <div class="row" id="all_projects">
                             @foreach($projects as $project)
                                 @include('/php/project_card_all')
                             @endforeach
-                        @else
-                            <div class="no_projects">
-                                There are no projects at the moment.
-                            </div>
-                        @endif
-
+                        </div>
                     </div>
-                </div>
-            </div>
+                @else
+                    <div class="no_projects">
+                        There are no projects at the moment.
+                    </div>
+                @endif
 
+            </div>
         </div>
+    </div>
+
+    </div>
     </div>
 
     {{--Modal--}}

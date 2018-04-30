@@ -10,7 +10,9 @@
   border-color: white;
   padding-left: 3%;
   padding-right: 3%;
-  &:hover {
+  float: right;
+
+    &:hover {
     background-color: white;
     border: 1px solid $blue;
     color: $blue !important;
@@ -138,9 +140,10 @@
   }
 
 }
-.close{
-  color:white;
-  &:hover{
+
+.close {
+  color: white;
+  &:hover {
     color: white;
   }
 }

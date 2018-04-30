@@ -20,6 +20,7 @@ class HomeController extends Controller
      *
      * @return void
      */
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -97,6 +98,7 @@ class HomeController extends Controller
         else {
             $msg="You have already attended this event!";
         }
+
 
         return response()->json(['msg'=>$msg]);
 
