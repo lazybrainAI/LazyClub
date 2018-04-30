@@ -4234,6 +4234,62 @@ body, html {
   display: block;
 }
 
+#review_modal {
+  color: #025284;
+}
+#review_modal #review_form {
+  padding: 10px;
+}
+#review_modal #review_form input, #review_modal #review_form textarea {
+  display: block;
+}
+#review_modal #review_form textarea {
+  resize: none;
+  margin-right: 5%;
+  width: 85%;
+  height: 8%;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #025284;
+  margin-bottom: 5%;
+  color: #025284;
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+}
+#review_modal #review_form input {
+  margin-right: 5%;
+  width: 85%;
+  height: 8%;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #025284;
+  margin-bottom: 5%;
+  color: #025284;
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+}
+#review_modal #review_form .modal-footer {
+  margin-top: 10px;
+}
+#review_modal #review_form .modal-footer .add_new_review {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #025284;
+  width: auto;
+  height: 30px;
+  background-color: #025284;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+#review_modal #review_form .modal-footer .add_new_review:hover {
+  background-color: white;
+  border: 1px solid #025284;
+  color: #025284 !important;
+}
+
 #hr_form {
   text-align: center;
 }
@@ -4596,6 +4652,7 @@ a {
   }
 }
 .add_new_event {
+  cursor: pointer;
   border-radius: 5px;
   color: white;
   border: 1px solid #025284;
@@ -4722,6 +4779,7 @@ a {
 }
 
 .add_new_project {
+  cursor: pointer;
   border-radius: 5px;
   color: white;
   border: 1px solid #025284;

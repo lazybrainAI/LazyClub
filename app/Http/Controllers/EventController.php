@@ -10,6 +10,7 @@ use App\Event;
 use App\Location;
 use App\Role;
 use App\Education;
+use App\Review;
 use Illuminate\Validation\Rule;
 use \Illuminate\Support\Facades\Validator;
 use \Illuminate\Support\Facades\Auth;
@@ -200,6 +201,31 @@ class EventController extends Controller
         return response()->json(['name'=>"great"]);
     }
 
+// this
+    public function saveReview(Request $request){
+        $review = new Review();
+        $review->description = $request['description'];
+        $review->user_id = Auth::id();
+        $review->created_at = Carbon::now();
+        $review->updated_at = Carbon::now();
+        $review->date_posted = Carbon::now();
+        $event = Event::where('name', $request['project_event_select'])->get()->toArray();
+        $project = Project::where('name', $request['project_event_select'])->get()->toArray();
+        if(count($event)>0 && count($project)==0){
+            $review->event_id = $event[0]['id'];
+            $review->save();
+        }
+        else if(count($project)>0 && count($event)==0){
+            $review->project_id = $project[0]['id'];
+            $review->save();
+        }
+        else
+            return false;
+
+
+
+
+    }
 
 
 

@@ -1,0 +1,68 @@
+#review_modal{
+
+  color:$blue;
+
+ #review_form{
+
+   padding:10px;
+   input, textarea{
+     display:block;
+   }
+
+   textarea{
+     resize: none;
+     margin-right: 5%;
+     width: 85%;
+     height: 8%;
+     padding: 10px;
+     border-radius: $login-borders;
+     font-size: $font-size-fields;
+     border: 1px solid $blue;
+     margin-bottom: 5%;
+     color: $blue;
+     box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+   }
+
+   input{
+     margin-right: 5%;
+     width: 85%;
+     height: 8%;
+     padding: 10px;
+     border-radius: $login-borders;
+     font-size: $font-size-fields;
+     border: 1px solid $blue;
+     margin-bottom: 5%;
+     color: $blue;
+     box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+   }
+
+   .modal-footer{
+     margin-top: 10px;
+
+     .add_new_review{
+       cursor: pointer;
+       border-radius: 5px;
+       color: white;
+       border: 1px solid $blue;
+       width: auto;
+       height: 30px;
+       background-color: $blue;
+       display: inline-block;
+       border-color: white;
+       padding-left: 3%;
+       padding-right: 3%;
+       &:hover {
+         background-color: white;
+         border: 1px solid $blue;
+         color: $blue !important;
+
+       }
+     }
+
+
+
+   }
+
+ }
+
+}

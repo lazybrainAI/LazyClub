@@ -5,19 +5,20 @@ $(document).ready(function () {
         }
     });
     $('#review_form').submit(function (e) {
+        var name=$('#event').text();
         e.preventDefault();
         e.stopPropagation();
         var form = $(this).serialize();
         $.ajax({
-            url: '/home',
+            url: '/event/'+name,
             type: 'POST',
             data: form,
             success: function (data) {
-                $('#review_sent').addClass('allgood').text('Your review has been saved!').show().delay(2000).fadeOut(1000);
-                document.getElementById('review_form').reset();
+                $('#review_sent').text('Your review has been saved!').show().delay(2000).fadeOut(1000);
+                $('#review_form').reset();
             },
             error: function (data) {
-                $('#review_sent').addClass('notallgood').text('You have to pick project/event and enter your note!').show().delay(2000).fadeOut(1000);
+                $('#review_sent').text('You have enter title and your note!').show().delay(2000).fadeOut(1000);
             }
         });
     });

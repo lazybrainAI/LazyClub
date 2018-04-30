@@ -103,20 +103,7 @@
 
                 <div class="container review_ppl_section">
                     <div class="row align-content-center">
-                        <!--
-                        <div class="col-sm-6 padding_left">
-                            <div class="container container-left-margin">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <h5 class="section_title">Review</h5>
-                                    </div>
-                                </div>
-                            </div>
 
-                            @include ('/php/review_card')
-
-
-                        </div> -->
                         <div class="col-sm-12">
 
                             <div class="container">

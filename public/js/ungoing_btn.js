@@ -33,8 +33,7 @@ $(document).ready(function(){
                 if(data.num_attendees==0){
                    $('#no_attendees_msg').css('display', 'block');
                 }
-
-
+                
 
 
             },

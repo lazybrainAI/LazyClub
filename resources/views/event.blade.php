@@ -93,9 +93,9 @@
                         @endif
 
                     </div>
-                    <div class="add_btn" id="add_review">
+                    <button type="button" class="add_btn" id="add_review" data-toggle="modal" data-target="#review_modal">
                         <h6>Add review</h6>
-                    </div>
+                    </button>
                 </div>
 
 
@@ -202,6 +202,10 @@
 
         </div>
     </div>
+
+
+    {{--Modal--}}
+    @include('/php/review_modal')
 
 @endsection
 

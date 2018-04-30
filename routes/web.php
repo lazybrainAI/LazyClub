@@ -15,7 +15,8 @@ Auth::routes();
 
 //Home routes
 Route::get('/home', 'HomeController@returnEventsAndProjects');
-Route::post('/home', 'HomeController@saveReview');
+Route::put('/home', 'HomeController@attendEvent');
+Route::delete('/home', 'HomeController@unattendEvent');
 
 //Profile routes
 Route::get('/profile/{id}', 'UserController@getProfileDetails')->middleware('auth');
@@ -31,6 +32,9 @@ Route::post('/events', 'EventsController@saveNewEvent');
 //Event routes
 Route::get('/event/{name}', 'EventController@showDetails');
 Route::post('/event/{name}', 'EventController@goingEvent');
+
+//Route::post('/event/{name}', 'EventController@saveReview');
+
 Route::put('/event/{name}', 'EventController@editEvent');
 Route::delete('/event/{name}','EventController@ungoingEvent');
 
@@ -39,10 +43,12 @@ Route::delete('/event/{name}','EventController@ungoingEvent');
 Route::get('/people','PeopleController@showDetails');
 
 
-//Project routes
-Route::get('/projects','ProjectController@showDetails');
-Route::post('/projects','ProjectController@saveNewProject');
-//Route::get('/projects/{project}', 'ProjectController@showDetails');
+//Projects routes
+Route::get('/projects','ProjectsController@showDetails');
+Route::post('/projects','ProjectsController@saveNewProject');
+
+//Project
+Route::get('/project/{name}', 'ProjectController@showDetails');
 
 //HR panel
 Route::get('/hrpanel', 'HRController@returnView');

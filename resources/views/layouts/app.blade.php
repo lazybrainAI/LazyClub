@@ -35,6 +35,10 @@
 <script src={{URL::asset('js/going_button.js')}}></script>
 <script src={{URL::asset('js/ungoing_btn.js')}}></script>
 <script src={{URL::asset('js/edit_event.js')}}></script>
+<script src={{URL::asset('js/home_attend_event.js')}}></script>
+<script src={{URL::asset('js/home_unattend_event.js')}}></script>
+
+
 
 
 
