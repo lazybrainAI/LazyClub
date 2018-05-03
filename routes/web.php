@@ -28,6 +28,7 @@ Route::delete('/event/{name}','EventController@ungoingEvent');
 
 //People routes
 Route::get('/people','PeopleController@showDetails');
+Route::post('/people', 'HRController@sendMail');
 
 //Project routes
 Route::get('/projects','ProjectsController@showDetails');
@@ -37,7 +38,7 @@ Route::post('/projects','ProjectsController@saveNewProject');
 
 //HR panel
 Route::get('/hrpanel', 'HRController@returnView');
-Route::post('/hrpanel', 'HRController@sendMail');
+
 
 //Account
 Route::get('/account','AccountController@showDetails');

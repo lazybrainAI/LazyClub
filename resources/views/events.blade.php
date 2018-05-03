@@ -53,8 +53,6 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
 
     {{--Modal--}}
     @include('/php/modal')

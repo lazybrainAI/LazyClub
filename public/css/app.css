@@ -4290,45 +4290,52 @@ body, html {
   color: #025284 !important;
 }
 
-#hr_form {
-  text-align: center;
+.hr_button {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #025284;
+  width: auto;
+  height: 30px;
+  background-color: #025284;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  float: right;
 }
-#hr_form label {
-  font-size: 1.1rem;
+.hr_button:hover {
+  background-color: white;
+  border: 1px solid #025284;
+  color: #025284 !important;
 }
-#hr_form input {
+
+#user_modal {
+  margin-top: 2%;
+  display: inline-block;
+}
+#user_modal input {
+  margin-right: 5%;
   width: 85%;
   height: 8%;
   padding: 10px;
   border-radius: 15px;
   font-size: 1.1rem;
-  border: 1px solid;
+  border: 1px solid #025284;
   margin-bottom: 5%;
   color: #025284;
-  box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.2);
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
 }
 
-.hr_tittle {
-  margin-top: 30px;
-  padding-bottom: 1.5%;
-  color: #fff !important;
-}
-
-#hr_button {
-  text-align: center;
-  padding-bottom: 3%;
-}
-#hr_button button {
-  width: auto;
-  border-radius: 15px;
-  background-color: #025284;
-  border-color: #025284;
-  font-size: 1.1rem;
-  color: #fff;
-  margin-top: 5%;
-  box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.9);
+#modal_heading_event {
+  color: white;
+  font-size: 2rem;
   padding-left: 3%;
-  padding-right: 3%;
+}
+
+.modal-header {
+  background: url("/img/page_top.jpg");
+  background-size: cover;
 }
 
 .timeline_section {

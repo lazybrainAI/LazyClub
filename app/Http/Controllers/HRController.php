@@ -43,5 +43,7 @@ class HRController extends Controller
         $user->status = 'active';
         $user->save();
         Mail::to($user->email)->send(new SendInformationsToUser($password, $user->username));
+
+        return response()->json((['name'=>$user->name, 'surname'=>$user->surname]));
     }
 }
