@@ -2,12 +2,14 @@
 
 <div class="review">
 
-    <div class="profile_img">
-        <img src="<?php  echo $review->user->photo_link?>">
+    <div id="review_posted">
+        <p><?php  echo $review->user->name . " " .$review->user->surname ?></p>
     </div>
     <div class="review_text">
-        <textarea placeholder="Your note" id="description" name="description"><?php echo $review->description ?></textarea>
-
+        <textarea placeholder="Your note" id="description" name="description">"<?php echo $review->description ?>"</textarea>
+    </div>
+    <div id="review_date">
+        <p><?php echo $review->date_posted?></p>
     </div>
 
 </div>

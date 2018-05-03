@@ -15,13 +15,41 @@ use function MongoDB\BSON\toJSON;
 
 class EventsController extends Controller
 {
+
+
+    public function isUserAttending($event, $user){
+        $user_loggedin = $user->id;
+
+        $event_attending=Event_Attending::where('user_id', $user_loggedin)->where('event_id', $event->id)->get();
+
+        if($event_attending->isEmpty()){
+            $going="not going";
+        }
+
+        else{
+            $going="going"; //set ungoing button
+        }
+
+        return $going;
+    }
+
     public function showDetails()
     {
 
-        $button = "No button";
         $events = Event::all()->sortByDesc('date');
+        $user=Auth::user();
+
+        //foreach event check the user's going/not going status
+        $goings=array();
+        foreach ($events as $event){
+            $goings[$event->name]=$this->isUserAttending($event, $user);
+        }
+
+
+
+        $button = "No button";
         $events_language = Language::all();
-        return view('events', compact('events', 'button', 'events_language'));
+        return view('events', compact('events', 'button', 'events_language', 'goings'));
 
     }
 
@@ -66,4 +94,41 @@ class EventsController extends Controller
 
 
     }
+
+
+
+    public function attendEvent(Request $request){
+
+        $msg="";
+        $event_id=$request['id'];
+        $user_id=Auth::id();
+        $role = Role::where('title', 'attendee')->where('project/event', 'event')->get()->first();
+        $event_attendings = Event_Attending::where('user_id', $user_id)->where('event_id', $event_id)->get();
+        if($event_attendings->isEmpty()){
+            Event_Attending::create([ 'event_id' => $event_id, 'role_id' => $role->id, 'user_id' => $user_id]);
+
+        }
+
+        else {
+            $msg="You have already attended this event!";
+        }
+
+
+        return response()->json(['msg'=>$msg]);
+
+
+    }
+
+    public function unattendEvent(Request $request){
+
+        $user_id=Auth::id();
+        $role = Role::where('title', 'attendee')->where('project/event','event')->get()->first();
+        $event_id=$request['id'];
+        $event_attendings=Event_Attending::where('user_id', $user_id)->where('event_id',$event_id)->where('role_id', $role->id)->get()->first();
+        $event_attendings->delete();
+
+
+
+    }
+
 }

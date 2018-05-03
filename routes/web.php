@@ -27,15 +27,19 @@ Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 //Events routes
 Route::get('/events', 'EventsController@showDetails');
 Route::post('/events', 'EventsController@saveNewEvent');
+Route::put('/events', 'EventsController@attendEvent');
+Route::delete('/events', 'EventsController@unattendEvent');
+
+
+
 
 
 //Event routes
 Route::get('/event/{name}', 'EventController@showDetails');
-Route::post('/event/{name}', 'EventController@goingEvent');
+Route::post('/event/{name}', 'EventController@editEventOrSaveReview');
 
-//Route::post('/event/{name}', 'EventController@saveReview');
 
-Route::put('/event/{name}', 'EventController@editEvent');
+Route::put('/event/{name}', 'EventController@goingEvent');
 Route::delete('/event/{name}','EventController@ungoingEvent');
 
 

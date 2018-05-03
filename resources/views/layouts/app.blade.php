@@ -36,6 +36,12 @@
 <script src={{URL::asset('js/edit_event.js')}}></script>
 <script src={{URL::asset('js/home_attend_event.js')}}></script>
 <script src={{URL::asset('js/home_unattend_event.js')}}></script>
+<script src={{URL::asset('js/events_unattend_event.js')}}></script>
+<script src={{URL::asset('js/events_attend_event.js')}}></script>
+
+
+<script src={{URL::asset('js/submit_review.js')}}></script>
+
 
 
 

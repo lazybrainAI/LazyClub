@@ -15,6 +15,10 @@ use Illuminate\Validation\Rule;
 use \Illuminate\Support\Facades\Validator;
 use \Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Input;
+
+use Illuminate\Support\Carbon;
+
 
 
 
@@ -182,6 +186,24 @@ class EventController extends Controller
 
     }
 
+    public function editEventOrSaveReview(Request $request, $name){
+
+        $action = Input::get('action');
+
+
+        if ($action === 'event') {
+            return $this->editEvent($request, $name);
+
+
+        } elseif ($action === 'review') {
+            return $this->saveReview($request, $name);
+
+        } else {
+            return 1;
+        }
+
+    }
+
 
     public function editEvent(Request $request, $name){
 
@@ -202,25 +224,16 @@ class EventController extends Controller
     }
 
 // this
-    public function saveReview(Request $request){
+    public function saveReview(Request $request, $name){
+
+
         $review = new Review();
-        $review->description = $request['description'];
+        $review->description = $request['review_new_description'];
         $review->user_id = Auth::id();
-        $review->created_at = Carbon::now();
-        $review->updated_at = Carbon::now();
         $review->date_posted = Carbon::now();
-        $event = Event::where('name', $request['project_event_select'])->get()->toArray();
-        $project = Project::where('name', $request['project_event_select'])->get()->toArray();
-        if(count($event)>0 && count($project)==0){
-            $review->event_id = $event[0]['id'];
-            $review->save();
-        }
-        else if(count($project)>0 && count($event)==0){
-            $review->project_id = $project[0]['id'];
-            $review->save();
-        }
-        else
-            return false;
+        $review->event_id = Event::where('name', $name)->get()->first()->id;
+
+        $review->save();
 
 
 

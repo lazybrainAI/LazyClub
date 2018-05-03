@@ -28,9 +28,11 @@
             </div>
             <div class="col-sm-9 col-md-10  col-xs-12 main_content_section">
 
-                <form id="event_form" method="post" accept-charset="UTF-8">
+                <form id="event_form" method="post"  accept-charset="UTF-8">
+                    <input type="hidden" name="action" value="event">
 
-                <div class="container  container-left-margin">
+
+                    <div class="container  container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
                             <h5 class="section_title" id="event">{{$event->name}}</h5>

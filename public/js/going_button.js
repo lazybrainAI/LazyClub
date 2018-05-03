@@ -12,7 +12,7 @@ $(document).ready(function(){
         var user_clicked=$('.event_btns').attr('id');
         $.ajax({
             url:'/event/' +event_name  ,
-            type:"POST",
+            type:"PUT",
             data:{id_going:user_clicked},
 
             success: function (data) {

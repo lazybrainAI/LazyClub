@@ -11,9 +11,15 @@
             <div class="see_more_btn">
                 <a href="<?php echo '/event/'.$event->name?>" ><h6 class="h7" >View more</h6></a>
             </div>
-            <div class="see_more_btn">
-                <a href="<?php echo '/event/'.$event->name?>" ><h6 class="h7" >Attend</h6></a>
-            </div>
+            <?php if($goings[$event->name]=="going") {?>
+                <div class="see_more_btn attended_event" id="attend_<?php echo $event->id?>" >
+                    <h6 class="h7">Attended</h6>
+                </div>
+            <?php } else { ?>
+                <div class="see_more_btn attend_event" id="attend_<?php echo $event->id?>" >
+                    <h6 class="h7">Attend</h6>
+                </div>
+            <?php } ?>
             <div class="see_more_btn" id="see_more_btn_location">
                 <h6 class="h7"><i class="fa fa-map-marker"></i> <?php echo $event->location->name;?></h6>
             </div>

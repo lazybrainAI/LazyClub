@@ -14,11 +14,11 @@ $(document).ready(function () {
             type: 'POST',
             data: form,
             success: function (data) {
-                $('#review_sent').text('Your review has been saved!').show().delay(2000).fadeOut(1000);
-                $('#review_form').reset();
+
+              console.log('sucess');
             },
             error: function (data) {
-                $('#review_sent').text('You have enter title and your note!').show().delay(2000).fadeOut(1000);
+                console.log('error');
             }
         });
     });

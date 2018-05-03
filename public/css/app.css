@@ -4225,13 +4225,13 @@ body, html {
 .review_section #add_review {
   float: right;
 }
-.review_section .review .profile_img {
-  display: block;
-  margin: auto;
-  margin-bottom: 10px;
+.review_section .review #review_posted, .review_section .review #review_date {
+  color: white;
 }
-.review_section .review .review_text .text {
+.review_section .review .review_text textarea {
   display: block;
+  outline: none;
+  resize: none;
 }
 
 #review_modal {

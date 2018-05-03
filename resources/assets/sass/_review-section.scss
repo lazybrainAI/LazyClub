@@ -10,17 +10,15 @@
   }
 
   .review{
-
-    .profile_img{
-      display:block;
-      margin:auto;
-      margin-bottom:10px;
-
+    #review_posted, #review_date{
+      color:white;
     }
     .review_text{
+      textarea{
 
-      .text{
         display: block;
+        outline: none;
+        resize: none;
       }
     }
   }
