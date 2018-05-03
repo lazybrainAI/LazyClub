@@ -1,4 +1,3 @@
-
 @extends ('layouts.app')
 
 @section('title', 'People')
@@ -28,17 +27,24 @@
             </div>
             <div class="col-sm-9 col-md-10  col-xs-12 main_content_section">
 
+
                 <div class="container container-left-margin">
                     <div class="row">
-                        <div class="col-5 col-sm-4 col-md-3  col-lg-2">
-                            <h5 class="section_title">People</h5>
+                        {{--Event header--}}
+                        <div class="col-sm-4">
+                            <h4 class="section_title" id="all_people_section_title">People</h4>
+                        </div>
+                        {{--Add new event button--}}
+                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
+                            <button class="add_new_project" data-toggle="modal" data-target="#userModal">Add new user
+                            </button>
                         </div>
                     </div>
                 </div>
 
 
                 <div class="container">
-                    <div class="row">
+                    <div class="row" id="all_users">
                         @if($users->isEmpty())
                             <div>No people in organization yet.</div>
                         @else
@@ -58,23 +64,23 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
+                            @endforeach
 
-                                @endif
+                        @endif
 
                     </div>
                 </div>
 
 
-
-
             </div>
-
 
 
         </div>
     </div>
-
+    @include('/php/hr_modal')
+@endsection
+@section('include_js')
+    <script src={{ URL::asset('js/hrpanel_add_new_user.js') }}></script>
 @endsection
 
 

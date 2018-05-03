@@ -1,51 +1,56 @@
-
 // ------------------------------------------------
 
+.hr_button {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid $blue;
+  width: auto;
+  height: 30px;
+  background-color: $blue;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  float: right;
 
+  &:hover {
+    background-color: white;
+    border: 1px solid $blue;
+    color: $blue !important;
 
-#hr_form {
-text-align: center;
-  label{
-    font-size: $font-size-fields;
   }
+}
+
+#user_modal{
+  margin-top: 2%;
+  display: inline-block;
   input {
+    margin-right: 5%;
     width: 85%;
     height: 8%;
     padding: 10px;
     border-radius: $login-borders;
     font-size: $font-size-fields;
-    border: 1px solid;
+    border: 1px solid $blue;
     margin-bottom: 5%;
-    color: $text-color;
-    box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.2);
+    color: $blue;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
 
   }
+}
 
+#modal_heading_event {
+  color: white;
+  font-size: 2rem;
+  padding-left: 3%;
 
 }
 
+.modal-header {
+  background: url($page-top);
+  background-size: cover;
 
-.hr_tittle{
-  margin-top:30px;
-  padding-bottom: 1.5%;
-  color: $text-color-headings !important;
 }
 
-
-#hr_button{
-  text-align: center;
-  padding-bottom: 3%;
-  button{
-    width:auto;
-    border-radius: $login-borders;
-    background-color: $blue;
-    border-color: $blue;
-    font-size: $font-size-fields;
-    color:$login-button;
-    margin-top: 5%;
-    box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.9);
-    padding-left: 3%;
-    padding-right: 3%;
-  }
-}
 

@@ -11,15 +11,9 @@ use Illuminate\Support\Facades\Mail;
 
 class HRController extends Controller
 {
-    function returnView(){
-
-        $button = "No button";
-        return view('hrnewuser', compact('button'));
-
-    }
-
-    function sendMail(Request $request){
-        $validator = $request->validate(['firstName' => 'required|max:191',
+    private function validateNewUser($request)
+    {
+        $request->validate(['firstName' => 'required|max:191',
             'lastName' => 'required|max:191',
             'username' => 'required|unique:users,surname|max:191',
             'email' => 'required|unique:users,email|email|max:191',
@@ -27,7 +21,17 @@ class HRController extends Controller
             'username.unique' => 'Username already taken.',
             'email.unique' => 'Email already taken.',
         ]);
+    }
 
+    function returnView()
+    {
+        $button = "No button";
+        return view('hrnewuser', compact('button'));
+    }
+
+    function sendMail(Request $request)
+    {
+        $this->validateNewUser($request);
         $user = new User();
         $user->name = $request['firstName'];
         $user->surname = $request['lastName'];
@@ -40,7 +44,6 @@ class HRController extends Controller
         $user->save();
         Mail::to($user->email)->send(new SendInformationsToUser($password, $user->username));
 
-
-
+        return response()->json((['name'=>$user->name, 'surname'=>$user->surname]));
     }
 }

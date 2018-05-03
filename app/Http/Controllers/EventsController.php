@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-use App\Event_Attending;
 use App\Language;
-use App\Location;
-use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use function MongoDB\BSON\toJSON;
-
 
 class EventsController extends Controller
 {
@@ -53,9 +47,9 @@ class EventsController extends Controller
 
     }
 
-    public function saveNewEvent(Request $request)
+    private function validateNewEvent($request)
     {
-        $validator = $request->validate(['event_new_name' => 'required|unique:events,name|max:191',
+        $request->validate(['event_new_name' => 'required|unique:events,name|max:191',
             'event_new_description' => 'required|max:191',
             'event_new_date' => 'required|date|after:yesterday',
             'event_new_location' => 'required',
@@ -64,35 +58,33 @@ class EventsController extends Controller
             'event_new_name.unique' => 'Event name already taken',
             'event_new_date.after' => 'The event date must be today or a date after today.',
         ]);
+    }
 
+
+    public function saveNewEvent(Request $request)
+    {
+        $this->validateNewEvent($request);
         $event = new Event;
         $event->name = $request['event_new_name'];
         $event->description = $request['event_new_description'];
         $event->date = $request['event_new_date'];
         $event->time = $request['event_new_time'];
-        $location = Location::where('name', $request['event_new_location'])->get();
-        $language = Language::where('name', $request['event_new_language'])->get();
-        if ($location->first()) {
-            $event->loc_id = $location->first()->id;
-        } else {
-            $location = new Location;
-            $location->name = $request['event_new_location'];
-            $location->save();
-            $event->loc_id = $location->id;
-        }
-        $event->lang_id = $language->first()->id;
+        $event->loc_id = $event->findOrCreateLocation($request['event_new_location']);
+        $event->lang_id = $event->addLanguage($request['event_new_language']);
         $event->save();
+
         $user_id = Auth::id();
-        $role = Role::where('project/event', 'event')->where('title', 'organizer')->first();
-        $role_id = $role->id;
-        $event_att = new Event_Attending();
-        $event_att->event_id = $event->id;
-        $event_att->role_id = $role_id;
-        $event_att->user_id = $user_id;
+        $event->addEventOrganizer($user_id, $event->id);
 
-        $event_att->save();
+        return response()->json(['name'=>$event->name, 'description'=>$event->description, 'location'=>$event->location->name]);
+    }
 
 
+    public function returnVariables($event){
+        $name = $event->name;
+        $description = $event->description;
+        $location = $event->location;
+        return view('event', compact('name','description', 'location'));
     }
 
 
