@@ -37,12 +37,11 @@ $(document).ready(function () {
     </div>
 </a>`;
 
-                $(div).appendTo($('#all_projects'));
+                $(div).appendTo($('.row #all_projects'));
 
 
             },
             error: function (data) {
-                console.log(data);
                 $('.project_saved').addClass('notallgood').text('Project name already taken or start/end date is invalid.').show().delay(2000).fadeOut(1000);
             }
         });
