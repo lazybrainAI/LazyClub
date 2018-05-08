@@ -36,20 +36,22 @@
 
                 {{--Event section--}}
 
-                @if(!empty($events) && count($events)>0)
-                    <div class="container" id="events_all">
-                        <div class="row" id="all_events">
+
+                <div class="container" id="events_all">
+                    <div class="row all_events" id="all_events_div">
+                        @if(!empty($events) && count($events)>0)
                             @foreach($events as $event)
                                 @include('/php/event_card_all')
                             @endforeach
-                        </div>
+                        @else
+                            <div class="no_events" id="no_events_at_the_moment" style="width:150%">
+                                There are no events at the moment.
+                            </div>
+                        @endif
                     </div>
-                @else
+                </div>
 
-                    <div class="no_events" style="">
-                        There are no events at the moment.
-                    </div>
-                @endif
+
             </div>
         </div>
     </div>
@@ -64,5 +66,6 @@
 
 @endsection
 @section('include_js')
+    <script src={{ URL::asset('js/events_delete_event.js') }}></script>
     <script src={{ URL::asset('js/events_add_new_event.js') }}></script>
 @endsection

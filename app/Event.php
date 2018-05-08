@@ -59,4 +59,5 @@ class Event extends Model
         $event_att->user_id = $organizer;
         $event_att->save();
     }
+
 }

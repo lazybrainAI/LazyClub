@@ -3,12 +3,13 @@ $(document).ready(function(){
     $('#events_all').on('click', '.attended_event', function(){
 
         var id=$(this).attr('id').split('_')[1];
+        var attend="event";
 
         $.ajax({
 
             url:'/events',
             type:'DELETE',
-            data:{id:id},
+            data:{id:id, attend:attend},
             success:function(data){
 
                 $(".attended_event h6").text("Attend");

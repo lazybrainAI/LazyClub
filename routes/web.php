@@ -17,22 +17,20 @@ Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 Route::get('/events', 'EventsController@showDetails');
 Route::post('/events', 'EventsController@saveNewEvent');
 Route::put('/events', 'EventsController@attendEvent');
-Route::delete('/events', 'EventsController@unattendEvent');
+Route::delete('/events', 'EventsController@deleteOrUnattendEvent');
 
 
-
+//Route::delete('/events', 'EventsController@deleteEvent');
 
 //Event routes
 Route::get('/event/{name}', 'EventController@showDetails');
 Route::post('/event/{name}', 'EventController@editEventOrSaveReview');
-
-
 Route::put('/event/{name}', 'EventController@goingEvent');
 Route::delete('/event/{name}','EventController@ungoingEvent');
 
 //People routes
 Route::get('/people','PeopleController@showDetails');
-Route::post('/people', 'HRController@sendMail');
+Route::post('/people', 'PeopleController@sendMail');
 
 //Projects routes
 Route::get('/projects','ProjectsController@showDetails');
@@ -40,12 +38,7 @@ Route::post('/projects','ProjectsController@saveNewProject');
 
 
 //Project route
-
 Route::get('/project/{name}', 'ProjectController@showDetails');
-
-
-//HR panel
-Route::get('/hrpanel', 'HRController@returnView');
 
 
 //Account

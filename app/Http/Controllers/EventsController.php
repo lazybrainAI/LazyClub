@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Event_Attending;
 use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Event_Attending;
+use function MongoDB\BSON\toJSON;
 
 class EventsController extends Controller
 {
@@ -62,6 +63,8 @@ class EventsController extends Controller
     }
 
 
+
+
     public function saveNewEvent(Request $request)
     {
         $this->validateNewEvent($request);
@@ -74,18 +77,35 @@ class EventsController extends Controller
         $event->lang_id = $event->addLanguage($request['event_new_language']);
         $event->save();
 
+        $token = csrf_token();
+
         $user_id = Auth::id();
         $event->addEventOrganizer($user_id, $event->id);
 
-        return response()->json(['name'=>$event->name, 'description'=>$event->description, 'location'=>$event->location->name]);
+        return response()->json(['event_id' => $event->id, 'name' => $event->name, 'description' => $event->description, 'location' => $event->location->name, 'token'=> $token]);
     }
 
 
-    public function returnVariables($event){
-        $name = $event->name;
-        $description = $event->description;
-        $location = $event->location;
-        return view('event', compact('name','description', 'location'));
+
+    public function deleteOrUnattendEvent(Request $request){
+
+        if($request->has('attend')){
+            return $this->unattendEvent($request);
+        }
+        else{
+            return $this->deleteEvent($request);
+        }
+
+    }
+
+
+    public function deleteEvent(Request $request)
+    {
+        $attendings = Event_Attending::where('event_id', $request['event_id']);
+        $attendings->forceDelete();
+        $event = Event::where('id', $request['event_id']);
+        $event->forceDelete();
+
     }
 
 

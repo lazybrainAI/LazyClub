@@ -3899,6 +3899,10 @@ body, html {
   margin-bottom: 5px;
 }
 
+.personal_info {
+  margin-left: 2%;
+}
+
 .main_content_section {
   border-left: 1px solid #025284;
   padding-left: 0 !important;
@@ -4572,7 +4576,7 @@ body, html {
   padding-left: 2%;
 }
 
-.no_events {
+#no_events_at_the_moment {
   padding-left: 2%;
   color: #07dd85;
   margin-bottom: 10%;
