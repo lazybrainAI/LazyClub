@@ -35,10 +35,10 @@
                                 @include('/php/project_card_all')
                             @endforeach
                         @endif
-                        <div class="no_projects" id="no_projects_at_the_moment" style="width:150%">
-                            There are no projects at the moment.
-                        </div>
                     </div>
+                </div>
+                <div class="no_projects" id="no_projects_at_the_moment" style="width:150%; display: none;">
+                    There are no projects at the moment.
                 </div>
             </div>
         </div>
@@ -47,6 +47,7 @@
     @include('/php/project_modal')
 @endsection
 @section('include_js')
+    <script src={{ URL::asset('js/show_no_events_projects_div.js') }}></script>
     <script src={{ URL::asset('js/projects_add_new_project.js') }}></script>
     <script src={{ URL::asset('js/projects_delete_project.js') }}></script>
 @endsection
