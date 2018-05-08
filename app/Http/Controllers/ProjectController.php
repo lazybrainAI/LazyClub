@@ -12,6 +12,7 @@ class ProjectController extends Controller
         $button="";
         $page_name="project";
 
+
         return view('project', compact('button', 'page_name'));
     }
 

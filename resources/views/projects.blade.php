@@ -49,8 +49,8 @@
         </div>
     </div>
 
-    </div>
-    </div>
+
+
 
     {{--Modal--}}
     @include('/php/project_modal')

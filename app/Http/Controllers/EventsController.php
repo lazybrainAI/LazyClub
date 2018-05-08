@@ -6,6 +6,7 @@ use App\Event;
 use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Event_Attending;
 
 class EventsController extends Controller
 {

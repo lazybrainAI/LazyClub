@@ -34,10 +34,14 @@ Route::delete('/event/{name}','EventController@ungoingEvent');
 Route::get('/people','PeopleController@showDetails');
 Route::post('/people', 'HRController@sendMail');
 
-//Project routes
+//Projects routes
 Route::get('/projects','ProjectsController@showDetails');
 Route::post('/projects','ProjectsController@saveNewProject');
-//Route::get('/project/{name}', 'ProjectController@showDetails');
+
+
+//Project route
+
+Route::get('/project/{name}', 'ProjectController@showDetails');
 
 
 //HR panel
