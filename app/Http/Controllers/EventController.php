@@ -132,6 +132,7 @@ class EventController extends Controller
 
         //$this->setSlider($num_attendees);
 
+
         return view('event', compact('reviews','num_attendees','button','event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position','organizer_email', 'attendees', 'going', 'page_name'));
     }
 

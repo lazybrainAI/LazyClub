@@ -36,24 +36,34 @@
                     <div class="row justify-content-between no-gutters">
                         <div class="col-md-8 order-md-1 order-2">
 
-                                <p>{{$project->description}}
-                                </p>
-                                <div class="read_more_btn">
-                                    <h6>read more</h6>
-                                </div>
+                            <textarea name="project_description" maxlength="450" cols="80"  id="project_description" disabled="disabled" placeholder="This is a place for project descripton, but MO is lazy."><?php if(!is_null($project->description)){ echo $project->description;} ?></textarea>
+
+                            <!--       <div class="read_more_btn">
+                                       <h6>read more</h6>
+                                   </div> -->
 
                         </div>
-                        <div class=" col-md-3  order-md-2 order-1 details_div" style="height:300px">
+
+                        <div class=" col-md-3  order-md-2 order-1 details_div" >
                             <h6>Project details:</h6>
                             <br>
                             <h6 class="h7" id="project_lead">Lead/</h6>
-                            <h6 class="h7" id="project_sector">Sector/</h6>
+                            <h6 class="h7" id="project_sector">Sector/ <input name="project_sector" type="text" disabled value="{{$project->sector}}"> </h6>
                             <br>
-                            <h6 class="h7" id="project_start_date">Start date/  {{ \Carbon\Carbon::parse($project->start_date)->format('d.m.Y')}}</h6>
-                            <h6 class="h7" id="project_end_date">End date/  {{ \Carbon\Carbon::parse($project->end_date)->format('d.m.Y')}}</h6>
+                            <h6 class="h7" id="project_start_date">Start date/  <input name="project_start_date"  type="date" disabled="disabled" required value={{ \Carbon\Carbon::parse($project->start_date)->format('d.m.Y')}}> </h6>
+
+                            <h6 class="h7" id="project_end_date">End date/  <input name="project_end_date"  type="date" disabled="disabled" required value={{ \Carbon\Carbon::parse($project->end_date)->format('d.m.Y')}}>  </h6>
                             <br>
-                            <h6 class="h7" id="=project_loc">Location/</h6>
-                            <h6 class="h7" id="=project_lang">Language/</h6>
+                            <h6 class="h7" id="=project_loc">Location/  <input name="project_location" type="text" disabled="disabled" value="{{$location_name}}"></h6>
+                            <h6 class="h7" id="=project_lang">Language/ <select name="project_language" form="project_form" required disabled="disabled">
+                                    <option >{{$language_name}}</option>
+                                    @if($language_name=="serbian")
+                                        <option >english</option>
+                                    @else
+                                        <option >serbian</option>
+
+                                    @endif
+                                </select></h6>
                             <br>
                             <h6 class="h7" id="=project_positions">Open positions/</h6>
 
@@ -113,15 +123,21 @@
                 </div>
                 <div class="container review_section">
                     <div class="row align-items-center">
-                        <div class="col-md-4 col-sm-6">
-                            {{--@include('/php/review_card')--}}
-                        </div>
+                        @if($reviews->isEmpty())
+                            <div><p>No reviews for this project yet.</p></div>
+                        @else
+                            @foreach($reviews as $review)
+                                <div class="col-md-4 col-sm-6">
+                                    @include('/php/review_card')
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
 
 
 
-
+<!--
 
                 <div class="container container-left-margin">
                     <div class="row">
@@ -149,9 +165,8 @@
 
                         </div>
                     </div>
-                </div>
+                </div>   -->
 
-                <h5 class="section_title">Team</h5>
 
                 <div class="container container-left-margin">
                     <div class="row">
