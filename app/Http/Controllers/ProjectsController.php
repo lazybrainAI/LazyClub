@@ -35,9 +35,7 @@ class ProjectsController extends Controller
         $projects = Project::all()->sortByDesc('start_date');;
         $positions = Role::where('project/event', 'p')->get();
         $project_language = Language::all();
-
         return view('projects', compact('projects', 'positions', 'button', 'project_language'));
-
     }
 
     public function saveNewProject(Request $request)
@@ -57,6 +55,16 @@ class ProjectsController extends Controller
         foreach ($openPositions as $openPosition) {
             $project->addNewRole($openPosition, $project->id);
         }
-        return response()->json((['name'=>$project->name, 'description'=>$project->description]));
+        return response()->json((['id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
+    }
+
+    public function deleteProject(Request $request)
+    {
+        $attendings = Project_Attending::where('project_id', $request['id']);
+        $attendings->forceDelete();
+        $project = Project::where('id', $request['id']);
+        $project->forceDelete();
+        $num_of_projects = Project::count();
+        return response()->json(['num_of_projects' => $num_of_projects]);
     }
 }

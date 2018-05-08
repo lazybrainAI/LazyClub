@@ -19,7 +19,6 @@
             </div>
 
             <div class="col-sm-9 col-md-10 col-xs-12 main_content_section events_all_section">
-
                 <div class="container container-left-margin">
                     <div class="row">
                         {{--Event header--}}
@@ -33,37 +32,25 @@
                         </div>
                     </div>
                 </div>
-
                 {{--Event section--}}
-
-
                 <div class="container" id="events_all">
                     <div class="row all_events" id="all_events_div">
                         @if(!empty($events) && count($events)>0)
                             @foreach($events as $event)
                                 @include('/php/event_card_all')
                             @endforeach
-                        @else
-                            <div class="no_events" id="no_events_at_the_moment" style="width:150%">
-                                There are no events at the moment.
-                            </div>
                         @endif
+                        <div class="no_events" id="no_events_at_the_moment" style="width:150%">
+                            There are no events at the moment.
+                        </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 
     {{--Modal--}}
     @include('/php/modal')
-
-
-
-
-
-
 @endsection
 @section('include_js')
     <script src={{ URL::asset('js/events_delete_event.js') }}></script>
