@@ -17,7 +17,7 @@ $(document).ready(function () {
                 document.getElementById('account_form').reset();
             },
             error: function (data) {
-                $('#password_msg').addClass('notallgood').text('Your current password is wrong, or your new passwords do not match.').show().delay(2000).fadeOut(1000);
+                $('#password_msg').addClass('notallgood').text('Your current password is wrong, your new password is too short or passwords do not match.').show().delay(2000).fadeOut(1000);
             }
         });
     });

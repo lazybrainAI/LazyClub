@@ -27,7 +27,7 @@
                                 <label>Old password</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="password" required autocomplete="off" name="current-password">
+                                <input type="password" required autocomplete="off" name="current-password" minlength="6">
                             </div>
                         </div>
                         <div class="row">
@@ -35,7 +35,7 @@
                                 <label>New password</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="password" required autocomplete="off" name="new-password">
+                                <input type="password" required autocomplete="off" name="new-password" minlength="6">
                             </div>
                         </div>
                         <div class="row">
@@ -43,7 +43,7 @@
                                 <label>Repeat new password</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="password" required autocomplete="off" name="new-password_confirmation">
+                                <input type="password" required autocomplete="off" name="new-password_confirmation" minlength="6">
                             </div>
                         </div>
                     </div>
