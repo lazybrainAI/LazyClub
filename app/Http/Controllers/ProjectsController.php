@@ -41,20 +41,9 @@ class ProjectsController extends Controller
     public function saveNewProject(Request $request)
     {
         $this->validateNewProject($request);
-        $project = new Project;
-        $project->name = $request['project_new_name'];
-        $project->description = $request['project_new_description'];
-        $project->sector = $request['project_new_sector'];
-        $project->start_date = $request['project_new_start_date'];
-        $project->end_date = $request['project_new_end_date'];
-        $project->loc_id = $project->findOrCreateLocation($request['project_new_location']);
-        $project->lang_id = $project->addLanguage($request['project_new_language']);
-        $project->team_id = $project->findOrCreateTeam($request['project_new_team']);
-        $project->save();
-        $openPositions = $request->input('project_new_cbox');
-        foreach ($openPositions as $openPosition) {
-            $project->addNewRole($openPosition, $project->id);
-        }
+        $project = new Project();
+        $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language'], $request['project_new_team']);
+        $project->addOpenPositions($request->input('project_new_cbox'), $project->id);
         return response()->json((['id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
     }
 

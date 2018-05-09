@@ -43,7 +43,7 @@
 
                     </div>
                 </div>
-                <div class="no_events" id="no_events_at_the_moment" style="width:150%; display: none;">
+                <div class="no_events" id="no_events_at_the_moment" style="width:150%; display: none">
                     There are no events at the moment.
                 </div>
             </div>
@@ -54,8 +54,7 @@
     @include('/php/modal')
 @endsection
 @section('include_js')
-    <script src={{ URL::asset('js/show_no_events_projects_div.js') }}></script>
+    <script src={{ URL::asset('js/show_no_events_div.js') }}></script>
     <script src={{ URL::asset('js/events_delete_event.js') }}></script>
     <script src={{ URL::asset('js/events_add_new_event.js') }}></script>
-
 @endsection
