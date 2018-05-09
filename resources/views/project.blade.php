@@ -50,9 +50,9 @@
                             <h6 class="h7" id="project_lead">Lead/</h6>
                             <h6 class="h7" id="project_sector">Sector/ <input name="project_sector" type="text" disabled value="{{$project->sector}}"> </h6>
                             <br>
-                            <h6 class="h7" id="project_start_date">Start date/  <input name="project_start_date"  type="date" disabled="disabled" required value={{ \Carbon\Carbon::parse($project->start_date)->format('d.m.Y')}}> </h6>
+                            <h6 class="h7" id="project_start_date">Start date/  <input name="project_start_date"  type="date" disabled="disabled" required value="{{ $project->start_date }}"> </h6>
 
-                            <h6 class="h7" id="project_end_date">End date/  <input name="project_end_date"  type="date" disabled="disabled" required value={{ \Carbon\Carbon::parse($project->end_date)->format('d.m.Y')}}>  </h6>
+                            <h6 class="h7" id="project_end_date">End date/  <input name="project_end_date"  type="date" disabled="disabled" required value="{{ $project->end_date}}">  </h6>
                             <br>
                             <h6 class="h7" id="=project_loc">Location/  <input name="project_location" type="text" disabled="disabled" value="{{$location_name}}"></h6>
                             <h6 class="h7" id="=project_lang">Language/ <select name="project_language" form="project_form" required disabled="disabled">

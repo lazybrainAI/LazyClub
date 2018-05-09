@@ -53,6 +53,7 @@
                         <?php if (!empty($positions) && count($positions) > 0) {
                             foreach ($positions
                                      as $position) {
+                                if($position->title!="lead") {
                                 ?>
                                 <div class="col-sm-12">
                                     <input type="checkbox" name="project_new_cbox[]"
@@ -62,6 +63,7 @@
                                         <?php echo $position->title; ?></label>
                                 </div>
                             <?php }
+                            }
                         } else {
                             echo "There are no open positions at the moment.";
                         } ?>

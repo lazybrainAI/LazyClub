@@ -18,7 +18,7 @@ class Project_Attending extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function project(){
-        return $this->belongsTo('App\Project');
+    public function team(){
+        return $this->belongsTo('App\Team');
     }
 }

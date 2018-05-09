@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Project_Attending;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\User;
@@ -20,6 +21,23 @@ class UserController extends Controller
 {
     //
 
+    public function getUserProjects($user){
+
+        $project_attendings=Project_Attending::where('user_id', $user->id)->get();
+        $user_teams=array();
+        foreach ($project_attendings as $project_attending){
+            array_push($user_teams, $project_attending->team_id);
+        }
+
+        $projects=array();
+
+        foreach ($user_teams as $user_team){
+            array_push($projects, $user_team->projects);
+        }
+
+        return $projects;
+
+    }
 
     public function getProfileDetails($id)
     {
@@ -31,6 +49,7 @@ class UserController extends Controller
         $fb="#";
         $linked="#";
         $twitter="#";
+
         foreach ($socials as $social){
             if ($social->sn_name == 'facebook') {
                 $fb = $social->URL;
@@ -48,15 +67,7 @@ class UserController extends Controller
 
         //user's projects
 
-            if($user->teams->isEmpty()){
-                $projects=null;
-            }
-            else{
-                foreach ($user->teams as $team){
-                    $projects=$team->projects;
-                }
-            }
-            //$projects=$team->projects;
+            $projects=$this->getUserProjects($user);
 
 
 

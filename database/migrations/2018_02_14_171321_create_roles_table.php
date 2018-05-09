@@ -34,6 +34,45 @@ class CreateRolesTable extends Migration
             )
         );
 
+        DB::table('roles')->insert(
+            array(
+                'title' => 'lead',
+                'project/event'=>'project'
+            )
+        );
+
+
+        DB::table('roles')->insert(
+            array(
+                'title' => 'PR',
+                'project/event'=>'project'
+            )
+        );
+
+        DB::table('roles')->insert(
+            array(
+                'title' => 'FR',
+                'project/event'=>'project'
+            )
+        );
+
+        DB::table('roles')->insert(
+            array(
+                'title' => 'IT',
+                'project/event'=>'project'
+            )
+        );
+
+        DB::table('roles')->insert(
+            array(
+                'title' => 'HR',
+                'project/event'=>'project'
+            )
+        );
+
+
+
+
     }
 
     /**

@@ -18,6 +18,22 @@ class CreateLanguagesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        DB::table('languages')->insert(
+            array(
+                'name' => 'serbian',
+
+            )
+        );
+
+        DB::table('languages')->insert(
+            array(
+                'name' => 'english',
+
+            )
+        );
+
+
     }
 
     /**

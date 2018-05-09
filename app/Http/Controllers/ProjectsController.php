@@ -33,7 +33,7 @@ class ProjectsController extends Controller
     {
         $button = "No button";
         $projects = Project::all()->sortByDesc('start_date');;
-        $positions = Role::where('project/event', 'p')->get();
+        $positions = Role::where('project/event', 'project')->get();
         $project_language = Language::all();
 
         return view('projects', compact('projects', 'positions', 'button', 'project_language'));

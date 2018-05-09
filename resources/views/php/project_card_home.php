@@ -16,7 +16,7 @@
         <div class="p_e_info">
             <p><?php echo $project['description']; ?> </p>
             <div class="see_more_btn">
-                <a href="/<?php echo $project['name']; ?>"><h6 class="h7">view
+                <a href="<?php echo '/project/' . $project['name'] ?>" ><h6 class="h7">view
                         project</h6></a>
             </div>
         </div>

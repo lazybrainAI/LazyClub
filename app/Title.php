@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Title extends Model
 {
-    //
+    // education title
+
     protected $fillable=['name'];
 
     public function educations(){

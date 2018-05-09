@@ -50,9 +50,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\SystemRole');
     }
 
-    public function teams(){
-        return $this->belongsToMany('App\Team');
-    }
+
 
     public function educations(){
         return $this->hasMany('App\Education');
