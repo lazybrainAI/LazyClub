@@ -12,7 +12,6 @@
             <div class="col-sm-3 col-md-2 d-none d-sm-block">
                 @include ('/php/sidebar_menu')
             </div>
-
             <div class="col-sm-9 col-md-10 col-xs-12 main_content_section projects_all_section">
                 <div class="container container-left-margin">
                     <div class="row">
@@ -28,37 +27,27 @@
                         </div>
                     </div>
                 </div>
-
                 {{--Project section--}}
-
-                @if(!empty($projects) && count($projects)>0)
-                    <div class="container" id="projects_all">
-                        <div class="row" id="all_projects">
+                <div class="container" id="projects_all">
+                    <div class="row" id="all_projects">
+                        @if(!empty($projects) && count($projects)>0)
                             @foreach($projects as $project)
                                 @include('/php/project_card_all')
                             @endforeach
-                        </div>
+                        @endif
                     </div>
-                @else
-                    <div class="no_projects">
-                        There are no projects at the moment.
-                    </div>
-                @endif
-
+                </div>
+                <div class="no_projects" id="no_projects_at_the_moment" style="width:150%; display: none">
+                    There are no projects at the moment.
+                </div>
             </div>
         </div>
     </div>
-
-
-
-
     {{--Modal--}}
     @include('/php/project_modal')
-
-
-
-
 @endsection
 @section('include_js')
+    <script src={{ URL::asset('js/show_no_projects_div.js')}}></script>
     <script src={{ URL::asset('js/projects_add_new_project.js') }}></script>
+    <script src={{ URL::asset('js/projects_delete_project.js') }}></script>
 @endsection

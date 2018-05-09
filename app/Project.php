@@ -81,6 +81,26 @@ class Project extends Model
 
     }
 
+    public function createNewProject($project, $name, $description, $sector, $start_date, $end_date, $location, $language, $team){
+
+        $project->name = $name;
+        $project->description = $description;
+        $project->sector = $sector;
+        $project->start_date = $start_date;
+        $project->end_date = $end_date;
+        $project->loc_id = $this->findOrCreateLocation($location);
+        $project->lang_id = $this->addLanguage($language);
+        $project->team_id = $this->findOrCreateTeam($team);
+        $project->save();
+
+    }
+    public function addOpenPositions($openPositions, $project_id){
+        foreach ($openPositions as $openPosition) {
+            $this->addNewRole($openPosition, $project_id);
+        }
+
+    }
+
     
 
 }

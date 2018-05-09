@@ -40,9 +40,7 @@
                                 <div id="login_button">
                                     <button type="submit" class="btn btn-primary">log in</button>
                                 </div>
-                                <div>
 
-                                </div>
 
                             </div>
                         </div>
