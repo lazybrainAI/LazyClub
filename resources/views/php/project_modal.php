@@ -53,7 +53,7 @@
                         <?php if (!empty($positions) && count($positions) > 0) {
                             foreach ($positions
                                      as $position) {
-                                if($position->title!="lead") {
+                                if($position->title!="Lead") {
                                 ?>
                                 <div class="col-sm-12">
                                     <input type="checkbox" name="project_new_cbox[]"

@@ -47,7 +47,7 @@
                         <div class=" col-md-3  order-md-2 order-1 details_div" >
                             <h6>Project details:</h6>
                             <br>
-                            <h6 class="h7" id="project_lead">Lead/</h6>
+                            <h6 class="h7" id="project_lead">Lead/ {{$lead->name . " " . $lead->surname}}</h6>
                             <h6 class="h7" id="project_sector">Sector/ <input name="project_sector" type="text" disabled value="{{$project->sector}}"> </h6>
                             <br>
                             <h6 class="h7" id="project_start_date">Start date/  <input name="project_start_date"  type="date" disabled="disabled" required value="{{ $project->start_date }}"> </h6>
@@ -65,7 +65,9 @@
                                     @endif
                                 </select></h6>
                             <br>
-                            <h6 class="h7" id="=project_positions">Open positions/</h6>
+                            <h6 class="h7" id="=project_positions">Open positions/ @foreach($open_positions as $open_position)
+                                                                                       <input type="text" disabled="disabled" name="{{"open_position". $open_position->title}}" value="{{$open_position->title}}">
+                                                                                    @endforeach</h6>
 
 
                         </div>
@@ -184,8 +186,8 @@
                                         <img class=" profile_img" src={{ URL::asset('img/teo.jpeg') }} />
                                     </div>
                                     <div class="col-xs-6  personal_info">
-                                        <h5>Person Person</h5>
-                                        <h6>Position</h6>
+                                        <h5>{{$lead->name . " ". $lead->surname}}</h5>
+                                        <h6>Lead</h6>
                                     </div>
                                 </div>
                             </div>
@@ -193,48 +195,18 @@
                         <div class="col-md-7  attendees">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm-6 col-6 ">
-                                        <div  style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
+                                    @foreach($existing_positions as $existing_position=>$user)
+                                        <div class="col-sm-6 col-6 "> <!-- personal_info -->
+                                            <div style="margin-bottom:20px">
+                                                <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                                <div class="attendee_info">
+                                                    <h6>{{$user->name . " " . $user->surname}}</h6>
+                                                    <h6 class="h7">{{$existing_position}}</h6>
+                                                </div>
                                             </div>
                                         </div>
+                                        @endforeach
 
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
-                                    <div class="col-sm-6 col-6 personal_info">
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div style="margin-bottom:20px">
-                                            <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
-                                            <div class="attendee_info">
-                                                <h6>Person Person</h6>
-                                                <h6 class="h7">Position</h6>
-                                            </div>
-                                        </div>
-
-                                    </div>
 
                                 </div>
                             </div>
@@ -242,6 +214,7 @@
                     </div>
 
                 </div>
+
                 <div class="container" style="margin-left:25px">
                     <div class="row">
                         <div class="col-sm-5 col-md-3 col-xl-2">
@@ -252,7 +225,7 @@
 
                         <div class="col-sm-5 col-md-3 col-xl-2">
                             <div class=" add_btn">
-                                <h6>Contact us</h6>
+                                <a href="mailto: {{$lead->email}}"><h6>Contact us</h6></a>
 
                             </div>
                         </div>

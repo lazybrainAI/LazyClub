@@ -48,8 +48,7 @@ class ProjectsController extends Controller
         $project = new Project();
         $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language']);
         $project->findOrCreateTeam($request['project_new_team'], $project);
-        $project->addOpenPositions($request->input('project_new_cbox'), $project);
-        $project->addProjectLead(1, $project);
+        $project->addOpenPositions($request->input('project_new_cbox'), $project, $project_lead_id);
 
 
         return response()->json((['id' => $project->id, 'name' => $project->name, 'description' => $project->description]));

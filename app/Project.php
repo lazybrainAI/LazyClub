@@ -71,27 +71,19 @@ class Project extends Model
 
     }
 
-    public function addNewRole($openPosition, $project){
+    public function addNewRole($openPosition, $project, $project_lead){
         $project_att = new Project_Attending;
         $role = Role::where('title', $openPosition)->get();
         $project_att->team_id = $project->team->id;
         $project_att->role_id = $role->first()->id;
-        $project_att->user_id = '1';
+        $project_att->user_id = $project_lead;
         $project_att->save();
 
 
 
     }
 
-    public function addProjectLead($project_lead_id, $project){
-        $project_att = new Project_Attending;
-        $role=Role::where('title', 'lead')->get();
-        $project_att->team_id = $project->team->id;
-        $project_att->role_id = $role->first()->id;
-        $project_att->user_id = $project_lead_id;
 
-
-    }
 
     public function createNewProject($project, $name, $description, $sector, $start_date, $end_date, $location, $language){
 
@@ -106,10 +98,14 @@ class Project extends Model
         $this->save();
 
     }
-    public function addOpenPositions($openPositions, $project){
+    public function addOpenPositions($openPositions, $project, $project_lead){
+
+        $this->addNewRole("Lead", $project, $project_lead);
+
         foreach ($openPositions as $openPosition) {
-            $this->addNewRole($openPosition, $project);
+            $this->addNewRole($openPosition, $project, $project_lead);
         }
+
 
     }
 
