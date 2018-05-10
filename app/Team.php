@@ -9,8 +9,8 @@ class Team extends Model
     //
 
 
-    public function projects(){
-        return $this->hasMany('App\Project');
+    public function project(){
+        return $this->belongsTo('App\Project');
     }
 
 

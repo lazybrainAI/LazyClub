@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Project_Attending extends Model
 {
     //
-    protected $fillable = ['id', 'project_id', 'user_id', 'role_id'];
+    protected $fillable = ['id', 'team_id', 'user_id', 'role_id'];
+
     protected $table = 'project_attendings';
 
     public function role(){

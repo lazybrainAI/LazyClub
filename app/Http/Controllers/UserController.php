@@ -32,7 +32,7 @@ class UserController extends Controller
         $projects=array();
 
         foreach ($user_teams as $user_team){
-            array_push($projects, $user_team->projects);
+            array_push($projects, $user_team->project);
         }
 
         return $projects;

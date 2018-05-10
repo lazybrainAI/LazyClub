@@ -24,10 +24,8 @@ class CreateProjectsTable extends Migration
 
             $table->integer('loc_id')->unsigned();
             $table->integer('lang_id')->unsigned();
-            $table->integer('team_id')->unsigned()->nullable();
             $table->foreign('lang_id')->references('id')->on('languages');
             $table->foreign('loc_id')->references('id')->on('locations');
-            $table->foreign('team_id')->references('id')->on('teams');
 
             $table->timestamps();
         });

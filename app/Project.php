@@ -31,7 +31,7 @@ class Project extends Model
 
 
     public function team(){
-        return $this->belongsTo('App\Team');
+        return $this->hasOne('App\Team');
     }
 
 
@@ -52,18 +52,18 @@ class Project extends Model
         return $id;
     }
 
-    public function findOrCreateTeam($name){
+    public function findOrCreateTeam($name, $project){
         $team = Team::where('name', $name)->get();
         if ($team->first()) {
             $id = $team->first()->id;
         } else {
             $team = new Team();
             $team->name = $name;
+            $team->project_id=$project->id;
             $team->save();
             $id = $team->id;
         }
 
-        return $id;
     }
     public function addLanguage($name){
         $lang = Language::where('name', $name)->get();
@@ -71,17 +71,29 @@ class Project extends Model
 
     }
 
-    public function addNewRole($openPosition, $project_id){
+    public function addNewRole($openPosition, $project){
         $project_att = new Project_Attending;
         $role = Role::where('title', $openPosition)->get();
-        $project_att->project_id = $project_id;
+        $project_att->team_id = $project->team->id;
         $project_att->role_id = $role->first()->id;
         $project_att->user_id = '1';
         $project_att->save();
 
+
+
     }
 
-    public function createNewProject($project, $name, $description, $sector, $start_date, $end_date, $location, $language, $team){
+    public function addProjectLead($project_lead_id, $project){
+        $project_att = new Project_Attending;
+        $role=Role::where('title', 'lead')->get();
+        $project_att->team_id = $project->team->id;
+        $project_att->role_id = $role->first()->id;
+        $project_att->user_id = $project_lead_id;
+
+
+    }
+
+    public function createNewProject($project, $name, $description, $sector, $start_date, $end_date, $location, $language){
 
         $project->name = $name;
         $project->description = $description;
@@ -90,13 +102,13 @@ class Project extends Model
         $project->end_date = $end_date;
         $project->loc_id = $this->findOrCreateLocation($location);
         $project->lang_id = $this->addLanguage($language);
-        $project->team_id = $this->findOrCreateTeam($team);
-        $project->save();
+
+        $this->save();
 
     }
-    public function addOpenPositions($openPositions, $project_id){
+    public function addOpenPositions($openPositions, $project){
         foreach ($openPositions as $openPosition) {
-            $this->addNewRole($openPosition, $project_id);
+            $this->addNewRole($openPosition, $project);
         }
 
     }

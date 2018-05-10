@@ -37,6 +37,9 @@ class ProjectController extends Controller
         $location_name=$this->getColumnName($project->loc_id, Location::class);
         $language_name=$this->getColumnName($project->lang_id, Language::class);
 
+        //project's team info
+
+
 
 
 

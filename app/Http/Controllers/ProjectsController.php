@@ -9,6 +9,8 @@ use App\Role;
 use App\Team;
 use Illuminate\Http\Request;
 use App\Project;
+use \Illuminate\Support\Facades\Auth;
+
 
 class ProjectsController extends Controller
 {
@@ -40,19 +42,32 @@ class ProjectsController extends Controller
 
     public function saveNewProject(Request $request)
     {
+        $project_lead_id=Auth::user()->id;
+
         $this->validateNewProject($request);
         $project = new Project();
-        $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language'], $request['project_new_team']);
-        $project->addOpenPositions($request->input('project_new_cbox'), $project->id);
+        $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language']);
+        $project->findOrCreateTeam($request['project_new_team'], $project);
+        $project->addOpenPositions($request->input('project_new_cbox'), $project);
+        $project->addProjectLead(1, $project);
+
+
         return response()->json((['id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
     }
 
     public function deleteProject(Request $request)
     {
-        $attendings = Project_Attending::where('project_id', $request['id']);
-        $attendings->forceDelete();
-        $project = Project::where('id', $request['id']);
-        $project->forceDelete();
+        $project = Project::where('id', $request['id'])->get()->first();
+        $team=$project->team;
+
+        $attendings = Project_Attending::where('team_id', $team->id)->get();
+        foreach ($attendings as $attending){
+            $attending->delete();
+        }
+
+        $team->delete();
+
+        $project->delete();
         $num_of_projects = Project::count();
         return response()->json(['num_of_projects' => $num_of_projects]);
     }
