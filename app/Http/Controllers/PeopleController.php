@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SystemRole;
 use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
@@ -36,6 +37,7 @@ class PeopleController extends Controller
 
     function sendMail(Request $request)
     {
+
         $this->validateNewUser($request);
         $user = new User();
         $user->name = $request['firstName'];
@@ -46,7 +48,11 @@ class PeopleController extends Controller
         $user->password = Hash::make($password);
         $user->join_date = Carbon::today();
         $user->status = 'active';
+
+        $sys_role=SystemRole::where('role_name', 'user')->get()->first()->id;
+        $user->SystemRole_id=$sys_role;
         $user->save();
+
         Mail::to($user->email)->send(new SendInformationsToUser($password, $user->username));
 
         return response()->json((['name' => $user->name, 'surname' => $user->surname]));

@@ -34,21 +34,20 @@
 <script src={{URL::asset('js/going_button.js')}}></script>
 <script src={{URL::asset('js/ungoing_btn.js')}}></script>
 <script src={{URL::asset('js/edit_event.js')}}></script>
+<!--<script src={{URL::asset('js/script.js')}}></script>-->
+
 <script src={{URL::asset('js/home_attend_event.js')}}></script>
 <script src={{URL::asset('js/home_unattend_event.js')}}></script>
 <script src={{URL::asset('js/events_unattend_event.js')}}></script>
 <script src={{URL::asset('js/events_attend_event.js')}}></script>
-
-
+<script src={{URL::asset('js/edit_project.js')}}></script>
 <script src={{URL::asset('js/submit_review.js')}}></script>
+<script src={{URL::asset('js/submit_project_review.js')}}></script>
+<script src={{URL::asset('js/project_submit_application.js')}}></script>
 
 
 
 
-
-
-
-{{--<script src={{ URL::asset('js/main.js') }}></script>--}}
 @section('include_js')
 @show
 

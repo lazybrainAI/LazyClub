@@ -35,6 +35,12 @@ class Project extends Model
     }
 
 
+    public function project_applications(){
+        return $this->hasMany('App\ApplicationProject');
+
+    }
+
+
 
 
 
@@ -54,15 +60,17 @@ class Project extends Model
 
     public function findOrCreateTeam($name, $project){
         $team = Team::where('name', $name)->get();
+        $msg="";
         if ($team->first()) {
-            $id = $team->first()->id;
+            $msg="Team allready exists";
         } else {
             $team = new Team();
             $team->name = $name;
             $team->project_id=$project->id;
             $team->save();
-            $id = $team->id;
+
         }
+        return $msg;
 
     }
     public function addLanguage($name){

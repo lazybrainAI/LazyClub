@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ApplicationProject;
+use App\Mail\ProjectPositionApplicationReceived;
 use App\Project_Attending;
 use Illuminate\Http\Request;
 use App\Project;
@@ -9,6 +11,13 @@ use App\Language;
 use App\Location;
 use App\Role;
 use App\User;
+use \Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
+use App\Review;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class ProjectController extends Controller
 {
@@ -114,6 +123,91 @@ class ProjectController extends Controller
 
        // dd($existing_positions);
         return view('project', compact('button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions'));
+    }
+
+    public function editProject(Request $request, $name){
+
+        $project=Project::where('name', $name)->get()->first();
+
+
+        $description=$request['project_description'];
+        $sector=$request['project_sector'];
+        $start_date=$request['project_start_date'];
+        $end_date=$request['project_end_date'];
+        $lang=$request['project_language'];
+        $loc=$request['project_location'];
+        $lang_id=Language::where('name', $lang)->get()->first()->id;
+        $loc_id=Location::where('name', $loc)->get()->first()->id;
+
+        Project::where('id', $project->id)->update(['description'=>$description, 'sector'=>$sector, 'start_date'=>$start_date, 'end_date'=>$end_date, 'lang_id'=>$lang_id, 'loc_id'=>$loc_id]);
+
+
+    }
+
+    public function saveReview(Request $request, $name, $user){
+
+        $review = new Review();
+        $review->description = $request['review_new_description'];
+        $review->user_id = $user->id;
+        $review->date_posted = Carbon::now();
+        $review->project_id = Project::where('name', $name)->get()->first()->id;
+        $review->save();
+
+        $user=User::where('id', $review->user_id)->get()->first();
+
+        return response()->json(['description'=>$review->description, 'name'=>$user->name, 'surname'=>$user->surname]);
+
+
+    }
+
+
+    public function saveUserApplication(Request $request, $name, $user){
+
+        $user_id=$user->id;
+
+        $role_name=$request['open_positions'];
+        $role_id=Role::where('title', $role_name)->get()->first()->id;
+        $project=Project::where('name', $name)->get()->first();
+
+        $lead_mail="teodora.mitrovic.best@gmail.com";
+
+        $application=ApplicationProject::where('user_id', $user_id)->where('project_id', $project->id)->where('role_id', $role_id)->get();
+        if($application->isEmpty()){
+            $application=new ApplicationProject();
+            $application->user_id=$user_id;
+            $application->role_id=$role_id;
+            $application->project_id=$project->id;
+            $application->motivational_letter=$request['motivational_letter'];
+            $application->save();
+            $msg="Your application have been saved.";
+
+            Mail::to($user->email)->send(new ProjectPositionApplicationReceived($lead_mail, $project->name, $role_name, $user->name, $user->surname));
+        }
+
+        else{
+            $msg="You have already sent an application for this position.";
+
+
+        }
+
+
+        return response()->json(['msg'=>$msg]);
+
+    }
+
+    public function saveReviewOrSaveApplication(Request $request, $name){
+
+        $action = Input::get('action');
+        $user=Auth::user();
+
+        if($action=="review"){
+            return $this->saveReview($request, $name, $user);
+        }
+        else{
+            return $this->saveUserApplication($request, $name, $user);
+        }
+
+
     }
 
 }

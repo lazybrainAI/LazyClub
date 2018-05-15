@@ -31,7 +31,7 @@ $(document).ready(function () {
             <div class="p_e_info">
                 <p>${data.description}</p>
                 <div class="see_more_btn">
-                    <a href="/${data.name}" style="text-decoration: none;"><h6 class="h7">view
+                    <a href="/project_${data.name}" style="text-decoration: none;"><h6 class="h7">view
                             project</h6></a>
                 </div>
             </div>
@@ -42,6 +42,10 @@ $(document).ready(function () {
             },
             error: function (data) {
                 $('.project_saved').addClass('notallgood').text('Project name already taken or start/end date is invalid.').show().delay(2000).fadeOut(1000);
+                if(data.msg!=""){
+                    $('.project_saved').addClass('notallgood').text('Team name is already taken.').show().delay(2000).fadeOut(1000);
+
+                }
             }
         });
     });

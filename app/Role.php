@@ -17,4 +17,10 @@ class Role extends Model
 
         return $this->hasMany('App\Project_Attending');
     }
+
+
+    public function project_applications(){
+        return $this->belongsTo('App\ApplicationProject');
+    }
+
 }

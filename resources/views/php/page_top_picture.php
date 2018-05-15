@@ -16,7 +16,7 @@
     </div>
     <?php
         if($button!="No button"){ ?>
-    <div class="add_btn edit_btn" id="<?php echo $page_name?>_btn">
+    <div class=" edit_btn" id="<?php echo $page_name?>_btn">
         <h6><?php echo "Edit " .$page_name?></h6>
     </div>
        <?php } ?>

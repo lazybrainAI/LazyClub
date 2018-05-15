@@ -4,24 +4,24 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('#review_form').submit(function (e) {
-        var name=$('#event').text();
+    $('#project_review_form').submit(function (e) {
+        var name=$('#project').text();
         e.preventDefault();
         e.stopPropagation();
         var form = $(this).serialize();
         $.ajax({
-            url: '/event/'+name,
+            url: '/project/'+name,
             type: 'POST',
             data: form,
             success: function (data) {
-                form.reset();
 
-                var review=document.createElement('div');
-                review.setAttribute('class', 'col-md-4 col-sm-6');
+                var name=data.name + " "+data.surname;
 
-                review.innerHTML=`<div class="review">
+               var review=document.createElement('div');
+               review.setAttribute('class', 'col-md-4 col-sm-6');
+               review.innerHTML=`<div class="review">
                                     <div id="review_posted">                  
-                                    <p>${data.name}</p> 
+                                    <p>${name} </p> 
                                     </div>
                                       <div class="review_text">
                                          <textarea placeholder="Your note" id="description" name="description">${data.description}</textarea>
@@ -30,6 +30,8 @@ $(document).ready(function () {
 
                 $(review).appendTo($('.review_section .row'));
 
+
+                $('#project_review_form').reset();
 
                 console.log('sucess');
             },

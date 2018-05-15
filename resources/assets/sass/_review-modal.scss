@@ -1,16 +1,15 @@
-#review_modal{
+#review_modal, #project_review_modal, #signup_modal{
 
   color:$blue;
 
- #review_form{
+ #review_form, #project_review_form, #signup_form{
 
    padding:10px;
    input, textarea{
      display:block;
    }
 
-   textarea{
-     resize: none;
+   textarea, input, select{
      margin-right: 5%;
      width: 85%;
      height: 8%;
@@ -21,25 +20,18 @@
      margin-bottom: 5%;
      color: $blue;
      box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+     outline: none;
    }
 
-   input{
-     margin-right: 5%;
-     width: 85%;
-     height: 8%;
-     padding: 10px;
-     border-radius: $login-borders;
-     font-size: $font-size-fields;
-     border: 1px solid $blue;
-     margin-bottom: 5%;
-     color: $blue;
-     box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+   textarea{
+     resize:none;
+     outline: none;
    }
 
    .modal-footer{
      margin-top: 10px;
 
-     .add_new_review{
+     .add_new_review, .add_application{
        cursor: pointer;
        border-radius: 5px;
        color: white;

@@ -32,7 +32,7 @@
 
                     <div class="modal-footer" >
                         <div id="email_sent"></div>
-                        <button type="submit" class="hr_button" form="hr_form">Add project</button>
+                        <button type="submit" class="hr_button" form="hr_form">Add user</button>
                         <button type="button" class="hr_button" data-dismiss="modal">Close</button>
                     </div>
                 </div>

@@ -60,10 +60,19 @@
 
 
 .edit_btn{
+  border-radius: 5px;
+  width: 150px;
+  height:35px;
+  margin:{
+    bottom:10px;
+    left:10px;
+  }
   background-color: #fff;
   opacity:0.4;
   h6{
     color: #777 !important;
+    text-align: center;
+    line-height: 30px;
   }
   &:hover{
     opacity:0.7;
@@ -82,12 +91,14 @@
 }
 
 .add_btn{
+  background: transparent;
   border:1px solid $blue;
   border-radius: 5px;
   width: 150px;
   height:35px;
   margin:{
     bottom:10px;
+    left:10px;
   }
 
   h6{
@@ -97,7 +108,7 @@
   }
 
   &:hover{
-    background-color: $blue;
+    background-color: $blue!important;
     cursor:pointer;
     h6{
       color:white!important;

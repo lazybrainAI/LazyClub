@@ -35,7 +35,6 @@ $(document).ready(function () {
 
                 $(div).appendTo($('.row #all_users'));
 
-
                 document.getElementById('hr_form').reset();
             },
             error: function (data) {

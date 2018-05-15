@@ -23,11 +23,16 @@
             <div class="col-sm-3 col-md-2 d-none d-sm-block">
               @include('/php/sidebar_menu')
             </div>
+
+
+
             <div class="col-sm-9 col-md-10  col-xs-12 main_content_section">
+                <form id="project_form" method="post"  accept-charset="UTF-8">
+
                 <div class="container container-left-margin">
                     <div class="row no-gutters">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
-                            <h5 class="section_title">{{$project->name}}</h5>
+                            <h5 class="section_title" id="project">{{$project->name}}</h5>
                         </div>
                     </div>
                 </div>
@@ -58,15 +63,15 @@
                             <h6 class="h7" id="=project_lang">Language/ <select name="project_language" form="project_form" required disabled="disabled">
                                     <option >{{$language_name}}</option>
                                     @if($language_name=="serbian")
-                                        <option >english</option>
+                                        <option>english</option>
                                     @else
-                                        <option >serbian</option>
+                                        <option>serbian</option>
 
                                     @endif
                                 </select></h6>
                             <br>
                             <h6 class="h7" id="=project_positions">Open positions/ @foreach($open_positions as $open_position)
-                                                                                       <input type="text" disabled="disabled" name="{{"open_position". $open_position->title}}" value="{{$open_position->title}}">
+                                    <div id="{{"open_position". $open_position->title}}" >{{$open_position->title}}</div>
                                                                                     @endforeach</h6>
 
 
@@ -76,7 +81,7 @@
                 </div>
 
 
-
+{{--
                 <div class="container container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
@@ -96,24 +101,9 @@
                       </div>
 
 
-                      <div class="project_action">
-                          <h6 id="action_name">Action name</h6>
-                          <h6 class="h7" id="action_responsible">Responsible</h6>
-                          <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
-                          <div class="vertical_line"></div>
-
-                      </div>
-
-                      <div class="project_action">
-                          <h6 id="action_name">Action name</h6>
-                          <h6 class="h7" id="action_responsible">Responsible</h6>
-                          <img class="action_responsible_img" src={{ URL::asset('img/teo.jpeg') }}>
-                          <div class="vertical_line"></div>
-
-                      </div>
 
                   </div>
-              </div>
+              </div> --}}
 
 
                 <div class="container container-left-margin">
@@ -135,6 +125,9 @@
                             @endforeach
                         @endif
                     </div>
+                    <button type="button" class="add_btn" id="add_review" data-toggle="modal" data-target="#project_review_modal">
+                        <h6>Add review</h6>
+                    </button>
                 </div>
 
 
@@ -154,18 +147,7 @@
                             @include('/php/document')
 
                         </div>
-                        <div class="col-md-3 col-sm-6">
-                            @include('/php/document')
 
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            @include('/php/document')
-
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            @include('/php/document')
-
-                        </div>
                     </div>
                 </div>   -->
 
@@ -217,26 +199,29 @@
 
                 <div class="container" style="margin-left:25px">
                     <div class="row">
-                        <div class="col-sm-5 col-md-3 col-xl-2">
-                            <div class=" add_btn">
-                                <h6>Join us</h6>
-                            </div>
-                        </div>
 
-                        <div class="col-sm-5 col-md-3 col-xl-2">
-                            <div class=" add_btn">
-                                <a href="mailto: {{$lead->email}}"><h6>Contact us</h6></a>
+                        <button type="button" class="add_btn" id="join_us" data-toggle="modal" data-target="#signup_modal" style="background: transparent">
+                            <h6>Join us</h6>
+                        </button>
 
-                            </div>
-                        </div>
+                        <button type="button" class="add_btn" id="contact_us" style="background: transparent">
+                            <a href="mailto: {{$lead->email}}"><h6>Contact us</h6></a>
+                        </button>
+
+
 
                     </div>
                 </div>
 
 
+                    <button class="save_btn" id="save_project" type="submit">
+                        <h6>Save changes</h6>
+                    </button>
+                    <button class="cancel_btn" id="cancel_project" type="reset">
+                        <h6>Cancel</h6>
+                    </button>
 
-
-
+                </form>
 
             </div>
 
@@ -244,6 +229,11 @@
 
         </div>
     </div>
+
+
+    {{--Modal--}}
+    @include('/php/project_review_modal')
+    @include('/php/project_team_signup_form')
 
 @endsection
 

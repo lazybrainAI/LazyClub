@@ -46,12 +46,12 @@ class ProjectsController extends Controller
 
         $this->validateNewProject($request);
         $project = new Project();
+        $msg=$project->findOrCreateTeam($request['project_new_team'], $project);
         $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language']);
-        $project->findOrCreateTeam($request['project_new_team'], $project);
         $project->addOpenPositions($request->input('project_new_cbox'), $project, $project_lead_id);
 
 
-        return response()->json((['id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
+        return response()->json((['msg'=>$msg,'id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
     }
 
     public function deleteProject(Request $request)

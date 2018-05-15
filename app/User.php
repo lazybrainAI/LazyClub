@@ -45,7 +45,6 @@ class User extends Authenticatable
     }
 
 
-
     public function system_role(){
         return $this->belongsTo('App\SystemRole');
     }
@@ -82,6 +81,10 @@ class User extends Authenticatable
     public function project_attendings(){
 
         return $this->hasMany('App\Project_Attending');
+    }
+
+    public function project_applications(){
+        return $this->hasMany('App\ApplicationProject');
     }
 
 }

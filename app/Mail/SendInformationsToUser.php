@@ -17,10 +17,11 @@ class SendInformationsToUser extends Mailable
      *
      * @return void
      */
-    public function __construct($password, $username)
+    public function __construct($password, $username, $email)
     {
         $this->password = $password;
         $this->username = $username;
+        $this->email=$email;
     }
 
     /**
@@ -30,6 +31,6 @@ class SendInformationsToUser extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome to the Club|Lazy Brain!')->view('email.email');
+        return $this->from('teodora.mitrovic.best@gmail.com')->subject('Welcome to the Club|Lazy Brain!')->view('email.email');
     }
 }

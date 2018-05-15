@@ -14,11 +14,8 @@ use App\Review;
 use Illuminate\Validation\Rule;
 use \Illuminate\Support\Facades\Validator;
 use \Illuminate\Support\Facades\Auth;
-
-use Illuminate\Support\Facades\Input;
-
 use Illuminate\Support\Carbon;
-
+use Illuminate\Support\Facades\Input;
 
 
 
@@ -236,6 +233,9 @@ class EventController extends Controller
 
         $review->save();
 
+        $user=User::where('id', $review->user_id)->get()->first();
+
+        return response()->json(['description'=>$review->description, 'name'=>$user->name, 'surname'=>$user->surname]);
 
 
 

@@ -16,10 +16,22 @@ use App\Project;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use App\Team;
 
 class UserController extends Controller
 {
     //
+
+    public function elementExists($array, $element){
+
+        foreach ($array as $el){
+            if($el==$element){
+                return true;
+            }
+        }
+        return false;
+
+    }
 
     public function getUserProjects($user){
 
@@ -30,9 +42,17 @@ class UserController extends Controller
         }
 
         $projects=array();
-
+        $teams=array();
         foreach ($user_teams as $user_team){
-            array_push($projects, $user_team->project);
+            if(!$this->elementExists($teams, $user_team)){
+                $team=Team::where('id', $user_team)->get()->first();
+                array_push($projects, $team->project);
+                array_push($teams, $user_team);
+            }
+            else{
+                continue;
+            }
+
         }
 
         return $projects;

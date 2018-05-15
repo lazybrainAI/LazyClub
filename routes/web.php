@@ -17,12 +17,9 @@ Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
 Route::get('/events', 'EventsController@showDetails');
 Route::post('/events', 'EventsController@saveNewEvent');
 Route::put('/events', 'EventsController@attendEvent');
-
 Route::delete('/events', 'EventsController@deleteOrUnattendEvent');
 
 
-Route::delete('/events', 'EventsController@unattendEvent');
-Route::delete('/events', 'EventsController@deleteEvent');
 
 //Event routes
 Route::get('/event/{name}', 'EventController@showDetails');
@@ -42,6 +39,9 @@ Route::delete('/projects', 'ProjectsController@deleteProject');
 
 //Project route
 Route::get('/project/{name}', 'ProjectController@showDetails');
+Route::put('/project/{name}', 'ProjectController@editProject');
+Route::post('/project/{name}', 'ProjectController@saveReviewOrSaveApplication');
+
 
 
 //Account

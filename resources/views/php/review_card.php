@@ -8,9 +8,7 @@
     <div class="review_text">
         <textarea placeholder="Your note" id="description" name="description">"<?php echo $review->description ?>"</textarea>
     </div>
-    <div id="review_date">
-        <p><?php echo $review->date_posted?></p>
-    </div>
+
 
 </div>
 <!--
