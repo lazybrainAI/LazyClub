@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'lazybrain.noreplay@gmail.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'teodora.mitrovic@lazybrain.org'),
         'name' => env('MAIL_FROM_NAME', 'Lazy brain'),
     ],
 

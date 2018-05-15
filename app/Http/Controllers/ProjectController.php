@@ -169,7 +169,6 @@ class ProjectController extends Controller
         $role_id=Role::where('title', $role_name)->get()->first()->id;
         $project=Project::where('name', $name)->get()->first();
 
-        $lead_mail="teodora.mitrovic.best@gmail.com";
 
         $application=ApplicationProject::where('user_id', $user_id)->where('project_id', $project->id)->where('role_id', $role_id)->get();
         if($application->isEmpty()){
@@ -179,9 +178,10 @@ class ProjectController extends Controller
             $application->project_id=$project->id;
             $application->motivational_letter=$request['motivational_letter'];
             $application->save();
+
+            Mail::to($user->email)->send(new ProjectPositionApplicationReceived($project->name, $role_name, $user->name, $user->surname));
             $msg="Your application have been saved.";
 
-            Mail::to($user->email)->send(new ProjectPositionApplicationReceived($lead_mail, $project->name, $role_name, $user->name, $user->surname));
         }
 
         else{

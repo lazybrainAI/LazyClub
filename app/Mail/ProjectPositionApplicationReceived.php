@@ -16,10 +16,9 @@ class ProjectPositionApplicationReceived extends Mailable
      *
      * @return void
      */
-    public function __construct($lead_mail, $project, $position, $name, $surname)
+    public function __construct( $project, $position, $name, $surname)
     {
         //
-        $this->sender_mail=$lead_mail;
         $this->project_name=$project;
         $this->project_position=$position;
         $this->receiver_name=$name;
@@ -33,6 +32,6 @@ class ProjectPositionApplicationReceived extends Mailable
      */
     public function build()
     {
-        return $this->from('teodora.mitrovic.best@gmail.com')->subject('Application received')->view('mail.application_received');
+        return $this->subject('Application received')->view('mail.application_received');
     }
 }

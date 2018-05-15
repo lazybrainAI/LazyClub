@@ -31,6 +31,6 @@ class SendInformationsToUser extends Mailable
      */
     public function build()
     {
-        return $this->from('teodora.mitrovic.best@gmail.com')->subject('Welcome to the Club|Lazy Brain!')->view('email.email');
+        return $this->subject('Welcome to the Club|Lazy Brain!')->view('email.email');
     }
 }
