@@ -80,10 +80,10 @@ class ProjectController extends Controller
 
         $existing_positions=array();
         $positions=array();
-        $positions["pr"]=$this->getPositionInfo("PR", $project);
-        $positions["fr"]=$this->getPositionInfo("FR", $project);
-        $positions["hr"]=$this->getPositionInfo("HR", $project);
-        $positions["it"]=$this->getPositionInfo("IT", $project);
+        $positions["PR"]=$this->getPositionInfo("PR", $project);
+        $positions["FR"]=$this->getPositionInfo("FR", $project);
+        $positions["HR"]=$this->getPositionInfo("HR", $project);
+        $positions["IT"]=$this->getPositionInfo("IT", $project);
 
         foreach ($positions as $position=>$user){
             if($user!=null){
@@ -92,6 +92,30 @@ class ProjectController extends Controller
         }
 
         return $existing_positions;
+
+    }
+
+    public function getAllApplications($project, $position){
+
+        $users=array();
+        $role=Role::where('title', $position)->get()->first();
+        $applications=ApplicationProject::where('role_id', $role->id)->where('project_id', $project->id)->get();
+
+        if(!$applications->isEmpty()){
+            foreach ($applications as $application){
+                $user=User::where('id', $application->user_id)->get()->first();
+                array_push($users, $user);
+
+            }
+        }
+
+        else{
+            $users=null;
+        }
+
+        return $users;
+
+
 
     }
 
@@ -121,8 +145,17 @@ class ProjectController extends Controller
 
         $existing_positions=$this->getExistingPositions($project);
 
-       // dd($existing_positions);
-        return view('project', compact('button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions'));
+        //applications
+        $applications=array();
+        $applications["PR"]=$this->getAllApplications($project, "PR");
+        $applications["FR"]=$this->getAllApplications($project, "FR");
+        $applications["HR"]=$this->getAllApplications($project, "HR");
+        $applications["IT"]=$this->getAllApplications($project, "IT");
+
+
+
+        // dd($existing_positions);
+        return view('project', compact('button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications'));
     }
 
     public function editProject(Request $request, $name){

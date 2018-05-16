@@ -180,11 +180,21 @@
                                     @foreach($existing_positions as $existing_position=>$user)
                                         <div class="col-sm-6 col-6 "> <!-- personal_info -->
                                             <div style="margin-bottom:20px">
-                                                <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                                <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} id="attendee_{{$existing_position}}"/>
                                                 <div class="attendee_info">
                                                     <h6>{{$user->name . " " . $user->surname}}</h6>
                                                     <h6 class="h7">{{$existing_position}}</h6>
                                                 </div>
+                                            </div>
+                                            <div id="application_{{$existing_position}}" class="applications">
+                                              @if($applications[$existing_position]!=null)
+
+                                                    @foreach($applications[$existing_position] as $user)
+                                                        <div id="{{$existing_position."_".$user->id}}">{{$user->name." ".$user->surname}}</div>
+                                                    @endforeach
+                                                  @else
+                                                  <p>No applications for this position yet!</p>
+                                                  @endif
                                             </div>
                                         </div>
                                         @endforeach

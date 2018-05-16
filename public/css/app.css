@@ -3971,6 +3971,9 @@ body, html {
 .attendees_section .organizer .personal_info {
   margin-left: 15px;
 }
+.attendees_section .applications {
+  display: none;
+}
 .attendees_section .personal_info h5 {
   font-weight: 500 !important;
 }

@@ -44,6 +44,8 @@
 <script src={{URL::asset('js/submit_review.js')}}></script>
 <script src={{URL::asset('js/submit_project_review.js')}}></script>
 <script src={{URL::asset('js/project_submit_application.js')}}></script>
+<script src={{URL::asset('js/add_team_member.js')}}></script>
+
 
 
 
