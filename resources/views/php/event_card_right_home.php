@@ -1,3 +1,4 @@
+
 <div class="col-sm-6 col-md-5 order-2 order-sm-1">
     <div class="p_e_card" id="p_e_card_">
         <div class="p_e_img">
@@ -5,7 +6,9 @@
         </div>
 
         <div class="p_e_info">
-            <p><?php echo $event->description; ?></p>
+            <?php  $word_cut = explode('.', $event->description."");
+            $word= $word_cut[0].".";?>
+            <p><?php echo $word;?></p>
             <div class="see_more_btn">
                 <a href="<?php echo '/event/' . $event->name ?>"><h6 class="h7">View more</h6></a>
             </div>
