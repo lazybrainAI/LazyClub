@@ -281,4 +281,17 @@ class UserController extends Controller
         }
     }
 
+
+
+    public function uploadProfileImage(Request $request, $name){
+
+        $user=Auth::user();
+
+        $request['profile_img']->storeAs($user->id.'.profile' , $user.'.png');
+
+
+    }
+
+
+
 }

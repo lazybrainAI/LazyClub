@@ -1,5 +1,6 @@
 #review_modal, #project_review_modal, #signup_modal{
 
+
   color:$blue;
 
  #review_form, #project_review_form, #signup_form{
@@ -31,7 +32,7 @@
    .modal-footer{
      margin-top: 10px;
 
-     .add_new_review, .add_application{
+     .add_new_review, .add_application, .add_image{
        cursor: pointer;
        border-radius: 5px;
        color: white;
@@ -58,3 +59,45 @@
  }
 
 }
+
+
+#image_upload_modal {
+
+  color:$blue;
+
+
+  #image_upload_form {
+
+      input{
+
+        margin-top:40px;
+        margin-bottom:40px;
+
+      }
+
+     .add_image {
+      cursor: pointer;
+      border-radius: 5px;
+      color: white;
+      border: 1px solid $blue;
+      width: auto;
+      height: 30px;
+      background-color: $blue;
+      display: inline-block;
+      border-color: white;
+      padding-left: 3%;
+      padding-right: 3%;
+      &:hover {
+        background-color: white;
+        border: 1px solid $blue;
+        color: $blue !important;
+
+      }
+
+    }
+
+  }
+}
+
+
+

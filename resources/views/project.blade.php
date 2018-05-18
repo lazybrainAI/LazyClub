@@ -180,7 +180,7 @@
                                     @foreach($existing_positions as $existing_position=>$user)
                                         <div class="col-sm-6 col-6 "> <!-- personal_info -->
                                             <div style="margin-bottom:20px">
-                                                <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} id="attendee_{{$existing_position}}"/>
+                                                <img class="attendees_img not_clicked" src={{ URL::asset('img/teo.jpeg') }} id="attendee_{{$existing_position}}"/>
                                                 <div class="attendee_info">
                                                     <h6>{{$user->name . " " . $user->surname}}</h6>
                                                     <h6 class="h7">{{$existing_position}}</h6>

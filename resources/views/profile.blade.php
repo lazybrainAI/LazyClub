@@ -43,8 +43,9 @@
                     <div class="col-md-8 order-md-1 order-2">
                         <div class="container user_info_section">
                             <div class="row align-items-center">
-                                <div class="col-xs-6 ">
-                                    <img class=" profile_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                <div class="col-xs-6 profile_img_div">
+                                    <img class="profile_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                    <button type="button" data-toggle="modal" data-target="#image_upload_modal"><i class="fas fa-camera fa-3x"></i></button>
                                 </div>
                                 <div class="col-xs-6  personal_info" id="{{$user->id}}">
                                     <input name="user_name" id="name" type="text" disabled="disabled" placeholder="Name" value="<?php if(!is_null($user->name)) {echo $user->name;}  ?>" required>
@@ -209,6 +210,9 @@
          </div>
 
      </div>
+
+ @include('/php/image_upload_modal')
+
 
 @endsection
 

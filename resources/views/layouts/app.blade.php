@@ -41,10 +41,18 @@
 <script src={{URL::asset('js/events_unattend_event.js')}}></script>
 <script src={{URL::asset('js/events_attend_event.js')}}></script>
 <script src={{URL::asset('js/edit_project.js')}}></script>
+<script src={{URL::asset('js/edit_profile.js')}}></script>
 <script src={{URL::asset('js/submit_review.js')}}></script>
 <script src={{URL::asset('js/submit_project_review.js')}}></script>
 <script src={{URL::asset('js/project_submit_application.js')}}></script>
 <script src={{URL::asset('js/add_team_member.js')}}></script>
+<script src={{URL::asset('js/hide_team_applications.js')}}></script>
+<script src={{URL::asset('js/add_delete_education.js')}}></script>
+<script src={{URL::asset('js/add_delete_experience.js')}}></script>
+<script src={{URL::asset('js/upload_image.js')}}></script>
+
+
+
 
 
 

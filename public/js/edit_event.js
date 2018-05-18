@@ -25,7 +25,7 @@ $(document).ready(function () {
             $.ajax({
 
                 url:'/event/'+name,
-                type:'PUT',
+                type:'POST',
                 data:form.serialize(),
 
                 success:function (data) {

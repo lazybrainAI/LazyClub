@@ -3770,11 +3770,34 @@ body, html {
 .user_info_section {
   margin-bottom: 30px;
 }
-.user_info_section .profile_img {
+.user_info_section .profile_img_div {
+  position: relative;
+}
+.user_info_section .profile_img_div .profile_img {
   border-radius: 50%;
   border: 1px solid black;
   height: 150px;
   width: 150px;
+  transition: .5s ease;
+  opacity: 1;
+}
+.user_info_section .profile_img_div button {
+  border: none;
+  background: transparent;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.user_info_section .profile_img_div:hover .profile_img {
+  opacity: 0.4;
+}
+.user_info_section .profile_img_div:hover button {
+  display: block;
+}
+.user_info_section .profile_img_div:hover button i {
+  cursor: pointer;
 }
 .user_info_section .personal_info {
   margin-left: 25px;
@@ -4280,7 +4303,7 @@ body, html {
 #review_modal #review_form .modal-footer, #review_modal #project_review_form .modal-footer, #review_modal #signup_form .modal-footer, #project_review_modal #review_form .modal-footer, #project_review_modal #project_review_form .modal-footer, #project_review_modal #signup_form .modal-footer, #signup_modal #review_form .modal-footer, #signup_modal #project_review_form .modal-footer, #signup_modal #signup_form .modal-footer {
   margin-top: 10px;
 }
-#review_modal #review_form .modal-footer .add_new_review, #review_modal #review_form .modal-footer .add_application, #review_modal #project_review_form .modal-footer .add_new_review, #review_modal #project_review_form .modal-footer .add_application, #review_modal #signup_form .modal-footer .add_new_review, #review_modal #signup_form .modal-footer .add_application, #project_review_modal #review_form .modal-footer .add_new_review, #project_review_modal #review_form .modal-footer .add_application, #project_review_modal #project_review_form .modal-footer .add_new_review, #project_review_modal #project_review_form .modal-footer .add_application, #project_review_modal #signup_form .modal-footer .add_new_review, #project_review_modal #signup_form .modal-footer .add_application, #signup_modal #review_form .modal-footer .add_new_review, #signup_modal #review_form .modal-footer .add_application, #signup_modal #project_review_form .modal-footer .add_new_review, #signup_modal #project_review_form .modal-footer .add_application, #signup_modal #signup_form .modal-footer .add_new_review, #signup_modal #signup_form .modal-footer .add_application {
+#review_modal #review_form .modal-footer .add_new_review, #review_modal #review_form .modal-footer .add_application, #review_modal #review_form .modal-footer .add_image, #review_modal #project_review_form .modal-footer .add_new_review, #review_modal #project_review_form .modal-footer .add_application, #review_modal #project_review_form .modal-footer .add_image, #review_modal #signup_form .modal-footer .add_new_review, #review_modal #signup_form .modal-footer .add_application, #review_modal #signup_form .modal-footer .add_image, #project_review_modal #review_form .modal-footer .add_new_review, #project_review_modal #review_form .modal-footer .add_application, #project_review_modal #review_form .modal-footer .add_image, #project_review_modal #project_review_form .modal-footer .add_new_review, #project_review_modal #project_review_form .modal-footer .add_application, #project_review_modal #project_review_form .modal-footer .add_image, #project_review_modal #signup_form .modal-footer .add_new_review, #project_review_modal #signup_form .modal-footer .add_application, #project_review_modal #signup_form .modal-footer .add_image, #signup_modal #review_form .modal-footer .add_new_review, #signup_modal #review_form .modal-footer .add_application, #signup_modal #review_form .modal-footer .add_image, #signup_modal #project_review_form .modal-footer .add_new_review, #signup_modal #project_review_form .modal-footer .add_application, #signup_modal #project_review_form .modal-footer .add_image, #signup_modal #signup_form .modal-footer .add_new_review, #signup_modal #signup_form .modal-footer .add_application, #signup_modal #signup_form .modal-footer .add_image {
   cursor: pointer;
   border-radius: 5px;
   color: white;
@@ -4293,7 +4316,33 @@ body, html {
   padding-left: 3%;
   padding-right: 3%;
 }
-#review_modal #review_form .modal-footer .add_new_review:hover, #review_modal #review_form .modal-footer .add_application:hover, #review_modal #project_review_form .modal-footer .add_new_review:hover, #review_modal #project_review_form .modal-footer .add_application:hover, #review_modal #signup_form .modal-footer .add_new_review:hover, #review_modal #signup_form .modal-footer .add_application:hover, #project_review_modal #review_form .modal-footer .add_new_review:hover, #project_review_modal #review_form .modal-footer .add_application:hover, #project_review_modal #project_review_form .modal-footer .add_new_review:hover, #project_review_modal #project_review_form .modal-footer .add_application:hover, #project_review_modal #signup_form .modal-footer .add_new_review:hover, #project_review_modal #signup_form .modal-footer .add_application:hover, #signup_modal #review_form .modal-footer .add_new_review:hover, #signup_modal #review_form .modal-footer .add_application:hover, #signup_modal #project_review_form .modal-footer .add_new_review:hover, #signup_modal #project_review_form .modal-footer .add_application:hover, #signup_modal #signup_form .modal-footer .add_new_review:hover, #signup_modal #signup_form .modal-footer .add_application:hover {
+#review_modal #review_form .modal-footer .add_new_review:hover, #review_modal #review_form .modal-footer .add_application:hover, #review_modal #review_form .modal-footer .add_image:hover, #review_modal #project_review_form .modal-footer .add_new_review:hover, #review_modal #project_review_form .modal-footer .add_application:hover, #review_modal #project_review_form .modal-footer .add_image:hover, #review_modal #signup_form .modal-footer .add_new_review:hover, #review_modal #signup_form .modal-footer .add_application:hover, #review_modal #signup_form .modal-footer .add_image:hover, #project_review_modal #review_form .modal-footer .add_new_review:hover, #project_review_modal #review_form .modal-footer .add_application:hover, #project_review_modal #review_form .modal-footer .add_image:hover, #project_review_modal #project_review_form .modal-footer .add_new_review:hover, #project_review_modal #project_review_form .modal-footer .add_application:hover, #project_review_modal #project_review_form .modal-footer .add_image:hover, #project_review_modal #signup_form .modal-footer .add_new_review:hover, #project_review_modal #signup_form .modal-footer .add_application:hover, #project_review_modal #signup_form .modal-footer .add_image:hover, #signup_modal #review_form .modal-footer .add_new_review:hover, #signup_modal #review_form .modal-footer .add_application:hover, #signup_modal #review_form .modal-footer .add_image:hover, #signup_modal #project_review_form .modal-footer .add_new_review:hover, #signup_modal #project_review_form .modal-footer .add_application:hover, #signup_modal #project_review_form .modal-footer .add_image:hover, #signup_modal #signup_form .modal-footer .add_new_review:hover, #signup_modal #signup_form .modal-footer .add_application:hover, #signup_modal #signup_form .modal-footer .add_image:hover {
+  background-color: white;
+  border: 1px solid #025284;
+  color: #025284 !important;
+}
+
+#image_upload_modal {
+  color: #025284;
+}
+#image_upload_modal #image_upload_form input {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+#image_upload_modal #image_upload_form .add_image {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #025284;
+  width: auto;
+  height: 30px;
+  background-color: #025284;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+#image_upload_modal #image_upload_form .add_image:hover {
   background-color: white;
   border: 1px solid #025284;
   color: #025284 !important;
