@@ -4,47 +4,47 @@
 Auth::routes();
 
 //Home routes
-Route::get('/home', 'HomeController@returnEventsAndProjects');
-Route::put('/home', 'HomeController@attendEvent');
-Route::delete('/home', 'HomeController@unattendEvent');
+Route::get('/home', 'HomeController@returnEventsAndProjects')->middleware('auth');
+Route::put('/home', 'HomeController@attendEvent')->middleware('auth');
+Route::delete('/home', 'HomeController@unattendEvent')->middleware('auth');
 
 //Profile routes
 Route::get('/profile/{id}', 'UserController@getProfileDetails')->middleware('auth');
-Route::post('/profile/{id}', 'UserController@editProfile');
-Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation');
+Route::post('/profile/{id}', 'UserController@editProfile')->middleware('auth');
+Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation')->middleware('auth');
 
 //Events routes
-Route::get('/events', 'EventsController@showDetails');
-Route::post('/events', 'EventsController@saveNewEvent');
-Route::put('/events', 'EventsController@attendEvent');
-Route::delete('/events', 'EventsController@deleteOrUnattendEvent');
+Route::get('/events', 'EventsController@showDetails')->middleware('auth');
+Route::post('/events', 'EventsController@saveNewEvent')->middleware('auth');
+Route::put('/events', 'EventsController@attendEvent')->middleware('auth');
+Route::delete('/events', 'EventsController@deleteOrUnattendEvent')->middleware('auth');
 
 
 
 //Event routes
-Route::get('/event/{name}', 'EventController@showDetails');
-Route::post('/event/{name}', 'EventController@editEventOrSaveReview');
-Route::put('/event/{name}', 'EventController@goingEvent');
-Route::delete('/event/{name}','EventController@ungoingEvent');
+Route::get('/event/{name}', 'EventController@showDetails')->middleware('auth');
+Route::post('/event/{name}', 'EventController@editEventOrSaveReview')->middleware('auth');
+Route::put('/event/{name}', 'EventController@goingEvent')->middleware('auth');
+Route::delete('/event/{name}','EventController@ungoingEvent')->middleware('auth');
 
 //People routes
-Route::get('/people','PeopleController@showDetails');
-Route::post('/people', 'PeopleController@sendMail');
+Route::get('/people','PeopleController@showDetails')->middleware('auth');
+Route::post('/people', 'PeopleController@sendMail')->middleware('auth');
 
 //Projects routes
-Route::get('/projects','ProjectsController@showDetails');
-Route::post('/projects','ProjectsController@saveNewProject');
-Route::delete('/projects', 'ProjectsController@deleteProject');
+Route::get('/projects','ProjectsController@showDetails')->middleware('auth');
+Route::post('/projects','ProjectsController@saveNewProject')->middleware('auth');
+Route::delete('/projects', 'ProjectsController@deleteProject')->middleware('auth');
 
 
 //Project route
-Route::get('/project/{name}', 'ProjectController@showDetails');
-Route::put('/project/{name}', 'ProjectController@editProject');
-Route::post('/project/{name}', 'ProjectController@saveReviewOrSaveApplication');
+Route::get('/project/{name}', 'ProjectController@showDetails')->middleware('auth');
+Route::put('/project/{name}', 'ProjectController@editProject')->middleware('auth');
+Route::post('/project/{name}', 'ProjectController@saveReviewOrSaveApplication')->middleware('auth');
 
 
 
 //Account
-Route::get('/account','AccountController@showDetails');
-Route::post('/account','AccountController@changePassword');
+Route::get('/account','AccountController@showDetails')->middleware('auth');
+Route::post('/account','AccountController@changePassword')->middleware('auth');
 

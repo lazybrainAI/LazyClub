@@ -1,3 +1,4 @@
+<?php include "project_event_description.php";?>
 <div class="col-sm-6 col-md-5 order-2 order-sm-1 padding_left">
     <div class="p_e_card">
         <div class="p_e_img">
@@ -14,7 +15,7 @@
         </div>
 
         <div class="p_e_info">
-            <p><?php echo $project['description']; ?> </p>
+            <p><?php echo length_of_description($project['description']); ?> </p>
             <div class="see_more_btn">
                 <a href="<?php echo '/project/' . $project['name'] ?>" ><h6 class="h7">view
                         project</h6></a>
