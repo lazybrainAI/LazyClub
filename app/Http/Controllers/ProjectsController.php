@@ -84,7 +84,7 @@ class ProjectsController extends Controller
             $attending->delete();
         }
 
-        //$team->delete();
+        $team->delete();
 
         $project->delete();
         $num_of_projects = Project::count();

@@ -1,7 +1,7 @@
 
 <div class="col-sm-4 padding_left" id="<?php echo $event->id; ?>">
     <div class="p_e_card" id="p_e_card_<?php echo $event->id; ?>">
-        <div class="p_e_img">
+        <div class="p_e_img" id="p_e_img_<?php echo $event->id; ?>">
             <button type="button" class="delete_event close" id="delete_event">&times;</button>
             <h5 class="section_title"><?php echo $event->name; ?></h5>
         </div>

@@ -1,7 +1,7 @@
 
 <div class="col-sm-4 padding_left" id="<?php echo $project['id']; ?>">
     <div class="p_e_card" id="p_e_card_<?php echo $project['id']; ?>">
-        <div class="p_e_img">
+        <div class="p_e_img" id="p_e_img_<?php echo $project['id']; ?>">
             <button type="button" class="delete_project close" id="delete_project">&times;</button>
             <h5 class="section_title"><?php echo $project['name']; ?></h5>
             <ul>

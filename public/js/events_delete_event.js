@@ -8,7 +8,7 @@ $(document).ready(function () {
         if (confirm('Do you really want to delete this event?')) {
             e.preventDefault();
             e.stopPropagation();
-            var deleteDiv =$('.p_e_card').attr('id').split('_')[3];
+            var deleteDiv =$(e.target).parent('div').attr('id').split('_')[3];
             console.log(deleteDiv);
             $.ajax({
                 url: '/events',

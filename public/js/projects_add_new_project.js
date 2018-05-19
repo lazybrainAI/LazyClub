@@ -16,7 +16,7 @@ $(document).ready(function () {
                 div.setAttribute('id', id);
                 div.innerHTML = `
         <div class="p_e_card" id="p_e_card_${data.id}">
-            <div class="p_e_img">
+            <div class="p_e_img" id="p_e_img_${data.id}">
                 <button type="button" class="delete_project close" id="delete_project_${data.id}">&times;</button>
                 <h5 class="section_title">${data.name}</h5>
                 <ul>
