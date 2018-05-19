@@ -118,6 +118,23 @@ class ProjectController extends Controller
 
     }
 
+
+    public function getProjectsTeams($projects){
+
+        $teams=array();
+        foreach($projects as $project){
+
+            $team=$project->team;
+            $teams[$project->name]=Project_Attending::where('team_id', $team->id)->get();
+
+        }
+
+        return $teams;
+
+
+    }
+
+
     public function showDetails($name)
     {
 
@@ -125,36 +142,42 @@ class ProjectController extends Controller
         $page_name = "project";
         $open_positions = array();
 
-        $project = Project::where('name', $name)->get()->first();
+        $project = Project::where('name', $name)->get();
 
 
         // reviews
-        $reviews = $project->reviews;
+        $reviews = $project->first()->reviews;
 
 
         //location and language
 
-        $location_name = $this->getColumnName($project->loc_id, Location::class);
-        $language_name = $this->getColumnName($project->lang_id, Language::class);
+        $location_name = $this->getColumnName($project->first()->loc_id, Location::class);
+        $language_name = $this->getColumnName($project->first()->lang_id, Language::class);
 
         //project's open positions
-        $open_positions = $this->getOpenPositions($project);
+        $open_positions = $this->getOpenPositions($project->first());
 
         //team info
-        $lead = $this->getPositionInfo("Lead", $project);
+        $lead = $this->getPositionInfo("Lead", $project->first());
 
-        $existing_positions = $this->getExistingPositions($project);
+        $existing_positions = $this->getExistingPositions($project->first());
 
         //applications
         $applications = array();
-        $applications["PR"] = $this->getAllApplications($project, "PR");
-        $applications["FR"] = $this->getAllApplications($project, "FR");
-        $applications["HR"] = $this->getAllApplications($project, "HR");
-        $applications["IT"] = $this->getAllApplications($project, "IT");
+        $applications["PR"] = $this->getAllApplications($project->first(), "PR");
+        $applications["FR"] = $this->getAllApplications($project->first(), "FR");
+        $applications["HR"] = $this->getAllApplications($project->first(), "HR");
+        $applications["IT"] = $this->getAllApplications($project->first(), "IT");
 
+
+        //project's team
+
+        $teams=$this->getProjectsTeams($project);
+
+        $project=$project->first();
 
         // dd($existing_positions);
-        return view('project', compact('button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications'));
+        return view('project', compact('button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications', 'teams'));
     }
 
 

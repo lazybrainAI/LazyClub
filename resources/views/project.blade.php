@@ -165,7 +165,7 @@
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-xs-6 ">
-                                        <img class=" profile_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class=" profile_img" src={{ URL::asset($lead->photo_link) }} />
                                     </div>
                                     <div class="col-xs-6  personal_info">
                                         <h5>{{$lead->name . " ". $lead->surname}}</h5>
@@ -180,7 +180,7 @@
                                     @foreach($existing_positions as $existing_position=>$user)
                                         <div class="col-sm-6 col-6 "> <!-- personal_info -->
                                             <div style="margin-bottom:20px">
-                                                <img class="attendees_img not_clicked" src={{ URL::asset('img/teo.jpeg') }} id="attendee_{{$existing_position}}"/>
+                                                <img class="attendees_img not_clicked" src={{ URL::asset($user->photo_link) }} id="attendee_{{$existing_position}}"/>
                                                 <div class="attendee_info">
                                                     <h6>{{$user->name . " " . $user->surname}}</h6>
                                                     <h6 class="h7">{{$existing_position}}</h6>

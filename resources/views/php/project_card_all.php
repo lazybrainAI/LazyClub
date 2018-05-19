@@ -5,12 +5,13 @@
             <button type="button" class="delete_project close" id="delete_project">&times;</button>
             <h5 class="section_title"><?php echo $project['name']; ?></h5>
             <ul>
-                <li>
-                    <img class="profile_img" src=""/>
-                </li>
-                <li>
-                    <img class="profile_img" src=""/>
-                </li>
+                <?php foreach($teams as $project->name=>$team) {
+                    foreach($team as $attending){?>
+                        <li>
+                            <img class="profile_img" src="<?php echo $attending->user->photo_link?>"/>
+                        </li>
+
+                    <?php } }?>
             </ul>
         </div>
         <div class="p_e_info">

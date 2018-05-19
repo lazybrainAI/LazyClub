@@ -129,7 +129,9 @@
                                     @foreach($users as $user)
                                         <a href="/profile/{{$user->id}}">
                                             <div class="col-md-3">
-                                                <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+
+                                                <img class="people_img" src={{ URL::asset($user->photo_link) }} />
+
                                             </div>
                                         </a>
                                     @endforeach
@@ -150,8 +152,4 @@
 
         </div>
     </div>
-    </div>
-@endsection
-@section("include_js")
-    <script src={{ URL::asset('js/submit_review.js') }}></script>
 @endsection

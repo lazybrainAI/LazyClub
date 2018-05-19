@@ -13,10 +13,10 @@ use App\Experience;
 use App\Position;
 use App\Company;
 use App\Project;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Team;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -283,11 +283,31 @@ class UserController extends Controller
 
 
 
-    public function uploadProfileImage(Request $request, $name){
+    public function uploadProfileImage(Request $request){
 
         $user=Auth::user();
 
-        $request['profile_img']->storeAs($user->id.'.profile' , $user.'.png');
+        if($request->hasFile('image')){
+
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $dir = 'img/'.$user->id.'/profile/';
+            $filename=time().'.'.$extension;
+
+            $request->file('image')->move($dir, $filename);
+
+            $user->photo_link=$dir.$filename;
+            $user->save();
+
+            $msg="Saved";
+
+        }
+        else{
+            $msg="Not an image";
+        }
+
+
+
+        return response()->json(['msg'=>$msg]);
 
 
     }

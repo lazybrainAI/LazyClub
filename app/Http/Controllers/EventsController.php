@@ -40,7 +40,8 @@ class EventsController extends Controller
 
     private function validateNewEvent($request)
     {
-        $request->validate(['event_new_name' => 'required|unique:events,name|max:191',
+        $request->validate([
+            'event_new_name' => 'required|unique:events,name|max:191',
             'event_new_description' => 'required|max:191',
             'event_new_date' => 'required|date|after:yesterday',
             'event_new_location' => 'required',

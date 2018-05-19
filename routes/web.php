@@ -10,8 +10,9 @@ Route::delete('/home', 'HomeController@unattendEvent')->middleware('auth');
 
 //Profile routes
 Route::get('/profile/{id}', 'UserController@getProfileDetails')->middleware('auth');
-Route::post('/profile/{id}', 'UserController@editProfile')->middleware('auth');
+Route::put('/profile/{id}', 'UserController@editProfile')->middleware('auth');
 Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation')->middleware('auth');
+Route::post('/profile/{id}', 'UserController@uploadProfileImage')->middleware('auth');
 
 //Events routes
 Route::get('/events', 'EventsController@showDetails')->middleware('auth');

@@ -1,4 +1,4 @@
-$(documen).ready(function(){
+$(document).ready(function(){
 
     
     // edit profile
@@ -64,7 +64,7 @@ $(documen).ready(function(){
 
             $.ajax({
                 url: '/profile/' + id,
-                type: 'POST',
+                type: 'PUT',
                 data: data,
                 success: function (data) {
 

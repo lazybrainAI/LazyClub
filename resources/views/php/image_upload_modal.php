@@ -1,6 +1,6 @@
 <div class="modal fade" role="dialog" id="image_upload_modal">
     <div class="modal-dialog">
-        <form id="image_upload_form" method="post" >
+        <form id="image_upload_form" method="post" enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modal_heading">Upload image</h5>
@@ -9,7 +9,7 @@
 
 
                 <div class="col-sm-12">
-                    <input name="profile_img" type="file" required>
+                    <input name="profile_image" id="profile_img" type="file" required>
                 </div>
 
                 <div class="modal-footer" id="footer_review">

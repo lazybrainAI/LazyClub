@@ -3,7 +3,7 @@
     <div>
 
         <a href="/profile/<?php echo $user->id; ?>">
-            <img class="profile_img" src="img/teo.jpeg">
+            <img class="profile_img" src=" <?php echo $user->photo_link;?> ">
         </a>
 
     </div>

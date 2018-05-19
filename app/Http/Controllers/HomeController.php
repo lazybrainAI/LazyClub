@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Project_Attending;
 use App\Review;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -54,11 +55,20 @@ class HomeController extends Controller
 
 
 
-    public function index()
-    {
-        return view('home', compact('button'));
-    }
+    public function getProjectsTeams($projects){
 
+        $teams=array();
+        foreach($projects as $project){
+
+            $team=$project->team;
+            $teams[$project->name]=Project_Attending::where('team_id', $team->id)->get();
+
+        }
+
+        return $teams;
+
+
+    }
 
     public function returnEventsAndProjects(){
 
@@ -67,7 +77,7 @@ class HomeController extends Controller
         $users=User::take(12)->get();
 
         $events = Event::orderBy('date', 'desc')->take(4)->get();
-        $projects = Project::orderBy('start_date', 'desc')->take(4)->get()->toArray();
+        $projects = Project::orderBy('start_date', 'desc')->take(4)->get();
         $button="No button";
 
 
@@ -78,7 +88,10 @@ class HomeController extends Controller
         }
 
 
-        return view('home', compact('projects', 'events','button', 'users', 'goings'));
+        $teams=$this->getProjectsTeams($projects);
+
+
+        return view('home', compact('projects', 'events','button', 'users', 'goings', 'teams'));
 
 
     }

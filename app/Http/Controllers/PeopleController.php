@@ -44,6 +44,7 @@ class PeopleController extends Controller
         $user->surname = $request['lastName'];
         $user->username = $request['username'];
         $user->email = $request['email'];
+        $user->photo_link='img/user_icon.png';
         $password = str_random(8);
         $user->password = Hash::make($password);
         $user->join_date = Carbon::today();

@@ -31,13 +31,33 @@ class ProjectsController extends Controller
         ]);
     }
 
+
+    public function getProjectsTeams($projects){
+
+        $teams=array();
+        foreach($projects as $project){
+
+            $team=$project->team;
+            $teams[$project->name]=Project_Attending::where('team_id', $team->id)->get();
+
+        }
+
+        return $teams;
+
+
+    }
+
     public function showDetails()
     {
         $button = "No button";
         $projects = Project::all()->sortByDesc('start_date');;
         $positions = Role::where('project/event', 'project')->get();
         $project_language = Language::all();
-        return view('projects', compact('projects', 'positions', 'button', 'project_language'));
+
+        $teams=$this->getProjectsTeams($projects);
+
+
+        return view('projects', compact('projects', 'positions', 'button', 'project_language', 'teams'));
     }
 
     public function saveNewProject(Request $request)
