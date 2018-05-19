@@ -17,7 +17,7 @@ $(document).ready(function () {
                 div.innerHTML = `
         <div class="p_e_card" id="p_e_card_${data.id}">
             <div class="p_e_img">
-                <button type="button" class="delete_project close" id="delete_project">&times;</button>
+                <button type="button" class="delete_project close" id="delete_project_${data.id}">&times;</button>
                 <h5 class="section_title">${data.name}</h5>
                 <ul>
                     <li>
@@ -41,6 +41,7 @@ $(document).ready(function () {
                 $(div).appendTo($('.row #all_projects'));
             },
             error: function (data) {
+                console.log(data);
                 $('.project_saved').addClass('notallgood').text('Project name already taken or start/end date is invalid.').show().delay(2000).fadeOut(1000);
                 if(data.msg!=""){
                     $('.project_saved').addClass('notallgood').text('Team name is already taken.').show().delay(2000).fadeOut(1000);

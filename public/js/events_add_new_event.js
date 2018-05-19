@@ -38,6 +38,7 @@ $(document).ready(function () {
             },
             error:
                 function (data) {
+                console.log(data);
                     $('.event_saved').addClass('notallgood').text('Event name already taken or date is invalid').show().delay(2000).fadeOut(1000);
                 }
         });

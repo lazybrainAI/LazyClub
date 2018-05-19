@@ -9,6 +9,7 @@ $(document).ready(function () {
             e.preventDefault();
             e.stopPropagation();
             var deleteDiv =$('.p_e_card').attr('id').split('_')[3];
+            console.log(deleteDiv);
             $.ajax({
                 url: '/events',
                 type: 'DELETE',

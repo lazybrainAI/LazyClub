@@ -66,7 +66,7 @@ class Project extends Model
         } else {
             $team = new Team();
             $team->name = $name;
-            $team->project_id=$project->id;
+            $team->project_id=$project;
             $team->save();
 
         }

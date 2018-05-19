@@ -66,8 +66,8 @@ class ProjectsController extends Controller
 
         $this->validateNewProject($request);
         $project = new Project();
-        $msg=$project->findOrCreateTeam($request['project_new_team'], $project);
         $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language']);
+        $msg=$project->findOrCreateTeam($request['project_new_team'], $project->id);
         $project->addOpenPositions($request->input('project_new_cbox'), $project, $project_lead_id);
 
 
@@ -84,7 +84,7 @@ class ProjectsController extends Controller
             $attending->delete();
         }
 
-        $team->delete();
+        //$team->delete();
 
         $project->delete();
         $num_of_projects = Project::count();

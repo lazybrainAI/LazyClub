@@ -8,7 +8,8 @@ $(document).ready(function () {
         if (confirm('Do you really want to delete this project?')) {
             e.preventDefault();
             e.stopPropagation();
-            var deleteDiv =$('.p_e_card').attr('id').split('_')[3];
+            var deleteDiv =$('.delete_project').attr('id').split('_')[2];
+            console.log(deleteDiv);
             $.ajax({
                 url: '/projects',
                 type: 'DELETE',
@@ -21,6 +22,7 @@ $(document).ready(function () {
                 },
                 error:
                     function (data) {
+                    console.log(data);
                         alert("Something went wrong.");
                     }
             });
