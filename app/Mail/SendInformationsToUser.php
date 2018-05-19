@@ -17,11 +17,10 @@ class SendInformationsToUser extends Mailable
      *
      * @return void
      */
-    public function __construct($password, $username, $email)
+    public function __construct($password, $username)
     {
         $this->password = $password;
         $this->username = $username;
-        $this->email=$email;
     }
 
     /**

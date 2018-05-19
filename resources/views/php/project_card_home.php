@@ -1,4 +1,4 @@
-<?php include "project_event_description.php";?>
+<?php include_once 'project_event_description.php'?>
 <div class="col-sm-6 col-md-5 order-2 order-sm-1 padding_left">
     <div class="p_e_card">
         <div class="p_e_img">

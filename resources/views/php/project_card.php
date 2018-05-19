@@ -14,7 +14,7 @@
     </div>
     <div class="p_e_info">
         <h5>About</h5>
-        <p><?php if (is_null($project->description)) echo "About"; else {echo length_of_description($project->description);} ?></p>
+        <p><?php if (is_null($project->description)) echo "About"; else {echo $project->description;} ?></p>
         <div class="read_more_btn">
             <a href="<?php echo '/project/' . $project->name ?>" > <h6>view project</h6></a>
             </div>

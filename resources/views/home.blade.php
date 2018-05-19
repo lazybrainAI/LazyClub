@@ -96,7 +96,7 @@
                         <a href="/projects"><h6>View more</h6></a>
                     </div>
                     @else
-                        <div class="no_projects" id="no_home_projects">
+                        <div class="no_projects" id="no_home_projects" style="width: 100%; margin-left: -2%">
                             There are no projects at the moment.
                         </div>
                 </div>

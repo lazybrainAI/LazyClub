@@ -8,9 +8,10 @@ $(document).ready(function () {
             type: 'POST',
             data: formEvents.serialize(),
             success: function (data) {
-                $('.event_saved').addClass('allgood').text('Event successfully created.').show().delay(2000).fadeOut(1000);
+                $('.event_saved').addClass('allgood').removeClass('notallgood').text('Event successfully created.').show().delay(2000).fadeOut(1000);
                 var div = document.createElement('div');
                 var id = data.event_id;
+                var sliced_description = data.description.split('.')[0]+'.';
                 div.setAttribute('class', 'col-sm-4 padding_left');
                 div.setAttribute('id', id);
                 div.innerHTML = `
@@ -20,7 +21,7 @@ $(document).ready(function () {
                 <h5 class="section_title">${data.name}</h5>
             </div>
             <div class="p_e_info">
-                <p>${data.description}</p>
+                <p>${sliced_description}</p>
                 <div class="see_more_btn">
                     <a href="/event/${data.name}"><h6 class="h7">View more</h6></a>
                 </div>
@@ -39,7 +40,7 @@ $(document).ready(function () {
             error:
                 function (data) {
                 console.log(data);
-                    $('.event_saved').addClass('notallgood').text('Event name already taken or date is invalid').show().delay(2000).fadeOut(1000);
+                    $('.event_saved').addClass('notallgood').removeClass('allgood').text('Event name already taken or date is invalid').show().delay(2000).fadeOut(1000);
                 }
         });
     });

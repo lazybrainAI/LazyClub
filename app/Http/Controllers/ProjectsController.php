@@ -23,11 +23,12 @@ class ProjectsController extends Controller
             'project_new_end_date' => 'required|date|after_or_equal:project_new_start_date',
             'project_new_location' => 'required',
             'project_new_language' => 'required',
-            'project_new_team' => 'required|max:191',
+            'project_new_team' => 'required|unique:teams,name|max:191',
         ], [
             'project_new_name.unique' => 'Project name already taken',
             'project_new_start_date.after' => 'The project start date must be today or a date after today.',
             'project_new_end_date.after_or_equal' => 'The project end date must be equal to start date or later.',
+            'project_new_team.unique'=>'Team name must be unique.',
         ]);
     }
 
