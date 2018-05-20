@@ -2753,7 +2753,7 @@ body, html {
       background-color: white;
       border: 1px solid #025284;
       border-radius: 12px; }
-  #page_top_picture #edit_btn {
+  #page_top_picture .edit_btn {
     position: absolute;
     bottom: 0;
     right: 10px; }
@@ -2782,71 +2782,103 @@ body, html {
       .sidebar_section .row #sidebar_menu li a:hover {
         text-decoration: none; }
 
-.read_more_btn, .see_more_btn, .submit_btn, #save_btn, #cancel_btn {
+.read_more_btn, .read_less_btn, .see_more_btn, .submit_btn, .save_btn, .cancel_btn {
   background-color: #025284;
   border-radius: 5px;
   border: 1px solid #025284;
   width: 100px;
-  height: 30px; }
-  .read_more_btn h6, .see_more_btn h6, .submit_btn h6, #save_btn h6, #cancel_btn h6 {
+  height: 30px;
+  cursor: pointer; }
+  .read_more_btn h6, .read_less_btn h6, .see_more_btn h6, .submit_btn h6, .save_btn h6, .cancel_btn h6 {
     text-align: center;
     color: white !important;
     font-weight: 300;
     line-height: 25px; }
-  .read_more_btn:hover, .see_more_btn:hover, .submit_btn:hover, #save_btn:hover, #cancel_btn:hover {
+  .read_more_btn:hover, .read_less_btn:hover, .see_more_btn:hover, .submit_btn:hover, .save_btn:hover, .cancel_btn:hover {
     cursor: pointer;
     background-color: white;
     border: 1px solid #025284; }
-    .read_more_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6, #save_btn:hover h6, #cancel_btn:hover h6 {
+    .read_more_btn:hover h6, .read_less_btn:hover h6, .see_more_btn:hover h6, .submit_btn:hover h6, .save_btn:hover h6, .cancel_btn:hover h6 {
       color: #025284 !important; }
 
-#save_btn {
-  right: 130px; }
-
-#cancel_btn {
-  right: 10px; }
-
-#save_btn, #cancel_btn {
-  position: absolute;
-  width: 110px;
+.read_more_btn {
   display: none; }
 
-#edit_btn {
+.save_btn {
+  right: 130px; }
+
+.cancel_btn {
+  right: 10px; }
+
+.save_btn, .cancel_btn {
+  position: absolute;
+  width: 110px;
+  margin-bottom: 10px;
+  display: none; }
+
+.edit_btn {
+  border-radius: 5px;
+  width: 150px;
+  height: 35px;
+  margin-bottom: 10px;
+  margin-left: 10px;
   background-color: #fff;
   opacity: 0.4; }
-  #edit_btn h6 {
-    color: #777 !important; }
-  #edit_btn:hover {
+  .edit_btn h6 {
+    color: #777 !important;
+    text-align: center;
+    line-height: 30px; }
+  .edit_btn:hover {
     opacity: 0.7; }
-    #edit_btn:hover h6 {
+    .edit_btn:hover h6 {
       color: #777 !important; }
 
 #add_education, #add_experience {
   display: none; }
 
 .add_btn {
+  background: transparent;
   border: 1px solid #025284;
   border-radius: 5px;
   width: 150px;
   height: 35px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  margin-left: 10px; }
   .add_btn h6 {
     color: #025284 !important;
     text-align: center;
     line-height: 30px; }
   .add_btn:hover {
-    background-color: #025284;
+    background-color: #025284 !important;
     cursor: pointer; }
     .add_btn:hover h6 {
       color: white !important; }
 
 .user_info_section {
   margin-bottom: 30px; }
-  .user_info_section .profile_img {
-    border-radius: 50%;
-    border: 1px solid black;
-    height: 150px;
-    width: 150px; }
+  .user_info_section .profile_img_div {
+    position: relative; }
+    .user_info_section .profile_img_div .profile_img {
+      border-radius: 50%;
+      border: 1px solid black;
+      height: 150px;
+      width: 150px;
+      transition: .5s ease;
+      opacity: 1; }
+    .user_info_section .profile_img_div button {
+      border: none;
+      background: transparent;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+    .user_info_section .profile_img_div:hover .profile_img {
+      opacity: 0.4; }
+    .user_info_section .profile_img_div:hover button {
+      display: block; }
+      .user_info_section .profile_img_div:hover button i {
+        cursor: pointer; }
   .user_info_section .personal_info {
     margin-left: 25px; }
     .user_info_section .personal_info input {
@@ -2856,6 +2888,9 @@ body, html {
       display: block; }
       .user_info_section .personal_info input:first-child, .user_info_section .personal_info input:nth-child(2), .user_info_section .personal_info input:nth-child(3), .user_info_section .personal_info input:nth-child(4), .user_info_section .personal_info input:nth-child(5) {
         font-size: 1.25rem; }
+      .user_info_section .personal_info input:first-child, .user_info_section .personal_info input:nth-child(2) {
+        display: inline;
+        width: 150px; }
     .user_info_section .personal_info h6 a:hover {
       cursor: pointer; }
     .user_info_section .personal_info input, .user_info_section .personal_info h6 {
@@ -2885,6 +2920,7 @@ body, html {
   height: 100%;
   padding: 1%; }
   #login_form input {
+    display: inline-block;
     width: 70%;
     height: 8%;
     padding: 10px 10px 10px 25px;
@@ -2910,6 +2946,34 @@ body, html {
     font-size: 1.1rem;
     color: #fff; }
 
+.invalid-feedback {
+  color: white !important;
+  font-size: 1.1rem;
+  text-decoration: none;
+  font-weight: normal; }
+
+#account_form input {
+  padding-left: 5px;
+  border-radius: 10px;
+  border: 1px solid #025284;
+  margin-bottom: 20px;
+  color: #025284;
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2); }
+#account_form #save_password, #account_form #cancel_password {
+  display: block;
+  margin-right: 60%;
+  margin-top: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
+  width: auto;
+  max-width: 15%; }
+#account_form #cancel_password {
+  width: 7%; }
+
+#password_msg {
+  margin-top: 5%;
+  margin-left: 2%; }
+
 .section_title {
   background-color: #025284;
   color: white;
@@ -2919,6 +2983,15 @@ body, html {
   margin-bottom: 20px;
   margin-left: -15px;
   line-height: 30px; }
+
+.people_img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 5px; }
+
+.personal_info {
+  margin-left: 2%; }
 
 .main_content_section {
   border-left: 1px solid #025284;
@@ -2930,13 +3003,28 @@ body, html {
     margin-top: 30px; }
     .main_content_section .details_section p {
       color: black; }
+    .main_content_section .details_section textarea {
+      color: black;
+      background: none;
+      border: none;
+      outline: none;
+      resize: none;
+      overflow: hidden;
+      transition: all 0.9s ease; }
     .main_content_section .details_section .details_div {
-      height: 150px;
+      min-height: 170px;
       background-color: #025284;
       color: white;
       padding-left: 10px !important; }
       .main_content_section .details_section .details_div h6:first-child {
         padding-top: 10px; }
+      .main_content_section .details_section .details_div input {
+        background: none;
+        border: none;
+        color: white; }
+      .main_content_section .details_section .details_div select {
+        background: #025284;
+        color: white; }
 
 .profile_img {
   border-radius: 50%;
@@ -2952,10 +3040,15 @@ body, html {
     margin-bottom: 10px; }
     .attendees_section .organizer .personal_info {
       margin-left: 15px; }
+  .attendees_section .applications {
+    display: none; }
+    .attendees_section .applications .applicant:hover {
+      cursor: pointer; }
   .attendees_section .personal_info h5 {
     font-weight: 500 !important; }
   .attendees_section .attendees {
-    position: relative; }
+    position: relative;
+    width: 100px; }
     .attendees_section .attendees:hover button {
       display: block; }
     .attendees_section .attendees button {
@@ -3023,7 +3116,11 @@ body, html {
   .description_section #bio_description {
     color: black;
     background: none;
-    border: none; }
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    transition: all 0.9s ease; }
 
 .add_section {
   margin-left: 35px;
@@ -3048,7 +3145,9 @@ body, html {
       color: black;
       margin-bottom: 10px;
       background: none;
-      border: none; }
+      border: none;
+      resize: none;
+      overflow: hidden; }
     .add_section .click_to_add .delete_icon {
       display: none;
       color: #025284;
@@ -3126,7 +3225,8 @@ body, html {
   padding-right: 15px;
   border-bottom-right-radius: 10%;
   border-top-left-radius: 10px;
-  width: 85%; }
+  width: 85%;
+  margin-bottom: 10px; }
   .review .select_field {
     margin-bottom: 15px; }
     .review .select_field select {
@@ -3159,55 +3259,124 @@ body, html {
   margin-bottom: 30px;
   margin-top: 30px;
   margin-left: 25px; }
-  .review_section .review .select_field {
-    display: none; }
-  .review_section .review .profile_img {
+  .review_section #add_review {
+    float: right; }
+  .review_section .review #review_posted, .review_section .review #review_date {
+    color: white; }
+  .review_section .review .review_text textarea {
     display: block;
-    margin: auto;
-    margin-bottom: 10px; }
-  .review_section .review .review_text input {
-    display: none; }
-  .review_section .review .review_text .text {
-    display: block; }
+    outline: none;
+    resize: none; }
 
-#hr_form {
-  text-align: center; }
-  #hr_form label {
-    font-size: 1.1rem; }
-  #hr_form input {
+#review_modal, #project_review_modal, #signup_modal {
+  color: #025284; }
+  #review_modal #review_form, #review_modal #project_review_form, #review_modal #signup_form, #project_review_modal #review_form, #project_review_modal #project_review_form, #project_review_modal #signup_form, #signup_modal #review_form, #signup_modal #project_review_form, #signup_modal #signup_form {
+    padding: 10px; }
+    #review_modal #review_form input, #review_modal #review_form textarea, #review_modal #project_review_form input, #review_modal #project_review_form textarea, #review_modal #signup_form input, #review_modal #signup_form textarea, #project_review_modal #review_form input, #project_review_modal #review_form textarea, #project_review_modal #project_review_form input, #project_review_modal #project_review_form textarea, #project_review_modal #signup_form input, #project_review_modal #signup_form textarea, #signup_modal #review_form input, #signup_modal #review_form textarea, #signup_modal #project_review_form input, #signup_modal #project_review_form textarea, #signup_modal #signup_form input, #signup_modal #signup_form textarea {
+      display: block; }
+    #review_modal #review_form textarea, #review_modal #review_form input, #review_modal #review_form select, #review_modal #project_review_form textarea, #review_modal #project_review_form input, #review_modal #project_review_form select, #review_modal #signup_form textarea, #review_modal #signup_form input, #review_modal #signup_form select, #project_review_modal #review_form textarea, #project_review_modal #review_form input, #project_review_modal #review_form select, #project_review_modal #project_review_form textarea, #project_review_modal #project_review_form input, #project_review_modal #project_review_form select, #project_review_modal #signup_form textarea, #project_review_modal #signup_form input, #project_review_modal #signup_form select, #signup_modal #review_form textarea, #signup_modal #review_form input, #signup_modal #review_form select, #signup_modal #project_review_form textarea, #signup_modal #project_review_form input, #signup_modal #project_review_form select, #signup_modal #signup_form textarea, #signup_modal #signup_form input, #signup_modal #signup_form select {
+      margin-right: 5%;
+      width: 85%;
+      height: 8%;
+      padding: 10px;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      border: 1px solid #025284;
+      margin-bottom: 5%;
+      color: #025284;
+      box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+      outline: none; }
+    #review_modal #review_form textarea, #review_modal #project_review_form textarea, #review_modal #signup_form textarea, #project_review_modal #review_form textarea, #project_review_modal #project_review_form textarea, #project_review_modal #signup_form textarea, #signup_modal #review_form textarea, #signup_modal #project_review_form textarea, #signup_modal #signup_form textarea {
+      resize: none;
+      outline: none; }
+    #review_modal #review_form .modal-footer, #review_modal #project_review_form .modal-footer, #review_modal #signup_form .modal-footer, #project_review_modal #review_form .modal-footer, #project_review_modal #project_review_form .modal-footer, #project_review_modal #signup_form .modal-footer, #signup_modal #review_form .modal-footer, #signup_modal #project_review_form .modal-footer, #signup_modal #signup_form .modal-footer {
+      margin-top: 10px; }
+      #review_modal #review_form .modal-footer .add_new_review, #review_modal #review_form .modal-footer .add_application, #review_modal #review_form .modal-footer .add_image, #review_modal #project_review_form .modal-footer .add_new_review, #review_modal #project_review_form .modal-footer .add_application, #review_modal #project_review_form .modal-footer .add_image, #review_modal #signup_form .modal-footer .add_new_review, #review_modal #signup_form .modal-footer .add_application, #review_modal #signup_form .modal-footer .add_image, #project_review_modal #review_form .modal-footer .add_new_review, #project_review_modal #review_form .modal-footer .add_application, #project_review_modal #review_form .modal-footer .add_image, #project_review_modal #project_review_form .modal-footer .add_new_review, #project_review_modal #project_review_form .modal-footer .add_application, #project_review_modal #project_review_form .modal-footer .add_image, #project_review_modal #signup_form .modal-footer .add_new_review, #project_review_modal #signup_form .modal-footer .add_application, #project_review_modal #signup_form .modal-footer .add_image, #signup_modal #review_form .modal-footer .add_new_review, #signup_modal #review_form .modal-footer .add_application, #signup_modal #review_form .modal-footer .add_image, #signup_modal #project_review_form .modal-footer .add_new_review, #signup_modal #project_review_form .modal-footer .add_application, #signup_modal #project_review_form .modal-footer .add_image, #signup_modal #signup_form .modal-footer .add_new_review, #signup_modal #signup_form .modal-footer .add_application, #signup_modal #signup_form .modal-footer .add_image {
+        cursor: pointer;
+        border-radius: 5px;
+        color: white;
+        border: 1px solid #025284;
+        width: auto;
+        height: 30px;
+        background-color: #025284;
+        display: inline-block;
+        border-color: white;
+        padding-left: 3%;
+        padding-right: 3%; }
+        #review_modal #review_form .modal-footer .add_new_review:hover, #review_modal #review_form .modal-footer .add_application:hover, #review_modal #review_form .modal-footer .add_image:hover, #review_modal #project_review_form .modal-footer .add_new_review:hover, #review_modal #project_review_form .modal-footer .add_application:hover, #review_modal #project_review_form .modal-footer .add_image:hover, #review_modal #signup_form .modal-footer .add_new_review:hover, #review_modal #signup_form .modal-footer .add_application:hover, #review_modal #signup_form .modal-footer .add_image:hover, #project_review_modal #review_form .modal-footer .add_new_review:hover, #project_review_modal #review_form .modal-footer .add_application:hover, #project_review_modal #review_form .modal-footer .add_image:hover, #project_review_modal #project_review_form .modal-footer .add_new_review:hover, #project_review_modal #project_review_form .modal-footer .add_application:hover, #project_review_modal #project_review_form .modal-footer .add_image:hover, #project_review_modal #signup_form .modal-footer .add_new_review:hover, #project_review_modal #signup_form .modal-footer .add_application:hover, #project_review_modal #signup_form .modal-footer .add_image:hover, #signup_modal #review_form .modal-footer .add_new_review:hover, #signup_modal #review_form .modal-footer .add_application:hover, #signup_modal #review_form .modal-footer .add_image:hover, #signup_modal #project_review_form .modal-footer .add_new_review:hover, #signup_modal #project_review_form .modal-footer .add_application:hover, #signup_modal #project_review_form .modal-footer .add_image:hover, #signup_modal #signup_form .modal-footer .add_new_review:hover, #signup_modal #signup_form .modal-footer .add_application:hover, #signup_modal #signup_form .modal-footer .add_image:hover {
+          background-color: white;
+          border: 1px solid #025284;
+          color: #025284 !important; }
+
+#image_upload_modal {
+  color: #025284; }
+  #image_upload_modal #image_upload_form input {
+    margin-top: 40px;
+    margin-bottom: 40px; }
+  #image_upload_modal #image_upload_form .add_image {
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    border: 1px solid #025284;
+    width: auto;
+    height: 30px;
+    background-color: #025284;
+    display: inline-block;
+    border-color: white;
+    padding-left: 3%;
+    padding-right: 3%; }
+    #image_upload_modal #image_upload_form .add_image:hover {
+      background-color: white;
+      border: 1px solid #025284;
+      color: #025284 !important; }
+
+.hr_button {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #025284;
+  width: auto;
+  height: 30px;
+  background-color: #025284;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  float: right; }
+  .hr_button:hover {
+    background-color: white;
+    border: 1px solid #025284;
+    color: #025284 !important; }
+
+#user_modal {
+  margin-top: 2%;
+  display: inline-block; }
+  #user_modal input {
+    margin-right: 5%;
     width: 85%;
     height: 8%;
     padding: 10px;
     border-radius: 15px;
     font-size: 1.1rem;
-    border: 1px solid;
+    border: 1px solid #025284;
     margin-bottom: 5%;
     color: #025284;
-    box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.2); }
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2); }
 
-.hr_tittle {
-  margin-top: 30px;
-  padding-bottom: 1.5%;
-  color: #fff !important; }
+#modal_heading_event {
+  color: white;
+  font-size: 2rem;
+  padding-left: 3%; }
 
-#hr_button {
-  text-align: center;
-  padding-bottom: 3%; }
-  #hr_button button {
-    width: 35%;
-    border-radius: 15px;
-    background-color: #025284;
-    border-color: #025284;
-    font-size: 1.1rem;
-    color: #fff;
-    margin-top: 5%;
-    box-shadow: 0 3px 15px 0px rgba(46, 61, 73, 0.9); }
+.modal-header {
+  background: url("/img/page_top.jpg");
+  background-size: cover; }
 
 .timeline_section {
   margin-top: 40px;
   margin-bottom: 40px;
   margin-left: 0;
-  height: 100%; }
+  min-height: 200px; }
   .timeline_section .horizontal_line {
     padding-bottom: 25px;
     border-bottom: 1px solid #025284; }
@@ -3251,7 +3420,7 @@ body, html {
         right: -20px; }
 
 .timeline_vertical:before {
-  top: 50px;
+  top: 0px;
   bottom: 50px;
   position: absolute;
   content: " ";
@@ -3263,35 +3432,46 @@ body, html {
 .timeline_circle {
   position: absolute;
   left: 50%;
-  margin-left: -9px;
+  margin-left: -10px;
   border-radius: 50%;
   width: 20px;
   height: 20px;
   background-color: #07dd85; }
 
 #tml_crcl_1 {
-  top: 145px; }
+  top: 100px; }
 
 #tml_crcl_2 {
-  top: 365px; }
+  top: 325px; }
 
 #tml_crcl_3 {
-  top: 585px; }
+  top: 555px; }
 
 #tml_crcl_4 {
-  top: 805px; }
+  top: 760px; }
 
+/*
 .horizontal_line_left, .horizontal_line_right {
   position: absolute;
   top: 50%;
-  border-top: 1px solid #07dd85;
-  width: 60px; }
+  border-top: 1.5px solid $green;
+  width: 60px;
+
+}
 
 .horizontal_line_left {
-  left: -40px; }
+  left: -40px;
+}
 
 .horizontal_line_right {
-  right: -40px; }
+  right: -40px;
+
+
+} */
+.timeline_vertical .event_date_right {
+  margin-top: 3%; }
+.timeline_vertical .event_date_left {
+  margin-top: 3%; }
 
 .home_section {
   margin-top: 80px;
@@ -3315,21 +3495,25 @@ body, html {
     padding-left: 0 !important; }
   .home_section .right_section .see_more_btn h6 {
     margin-bottom: 0px !important; }
-  .home_section .right_section .review_ppl_section .submit_btn {
-    margin-top: 20px; }
-  .home_section .right_section .review_ppl_section .people_home_section {
-    height: 200px; }
+  .home_section .right_section .review_ppl_section {
+    margin-left: 0;
+    padding-left: 0; }
+    .home_section .right_section .review_ppl_section .submit_btn {
+      margin-top: 20px; }
     .home_section .right_section .review_ppl_section .people_home_section .people_img {
-      height: 40px;
-      width: 40px;
+      height: 60px;
+      width: 60px;
       border-radius: 50%;
       margin-bottom: 5px; }
   .home_section .left_section {
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    position: relative; }
     .home_section .left_section .see_more_btn {
       background-color: #07dd85;
       border: 1px solid #07dd85;
-      width: 50px;
+      width: auto;
+      padding-left: 2%;
+      padding-right: 2%;
       display: inline-block; }
       .home_section .left_section .see_more_btn h6 {
         margin-bottom: 0px !important; }
@@ -3344,7 +3528,8 @@ body, html {
       width: 100%;
       height: 200px;
       margin-bottom: 20px;
-      display: table; }
+      display: table;
+      position: absolute; }
       .home_section .left_section .event_date_left h6, .home_section .left_section .event_date_right h6 {
         display: table-cell;
         vertical-align: middle; }
@@ -3353,10 +3538,66 @@ body, html {
     .home_section .left_section .event_date_right {
       text-align: right; }
 
+.left_section {
+  margin-bottom: 30px; }
+  .left_section .see_more_btn {
+    background-color: #07dd85;
+    border: 1px solid #07dd85;
+    width: auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    display: inline-block; }
+  .left_section .container {
+    position: relative; }
+
+#projects_home .view_all_pro_btn {
+  margin-bottom: 5%;
+  margin-left: -2%;
+  width: auto;
+  padding-left: 2%;
+  padding-right: 2%;
+  display: inline-block; }
+
+.no_projects {
+  margin-bottom: 10%;
+  float: left;
+  padding-left: 2%; }
+
+#no_events_at_the_moment {
+  padding-left: 2%;
+  color: #07dd85;
+  margin-bottom: 10%;
+  float: left; }
+
+a {
+  text-decoration: none !important; }
+
+#see_more_events_all {
+  margin-left: 0; }
+
+.timeline_home_page .no_home_events {
+  margin-left: -2%; }
+
+#no_home_projects {
+  margin-left: 0;
+  margin-bottom: 10%;
+  width: auto; }
+
+#msg {
+  bottom: -70px;
+  position: absolute;
+  right: 60px;
+  height: 30px;
+  width: 130px;
+  display: none; }
+
 @media (max-width: 1100px) {
   #sidebar_menu {
     padding-left: 0; } }
 @media (max-width: 767px) {
+  #sidebar_menu {
+    margin-top: -50%; }
+
   .description_section {
     margin-top: 0 !important; }
 
@@ -3379,7 +3620,7 @@ body, html {
     margin-left: 10px; }
 
   #sidebar_menu {
-    display: none; }
+    margin-top: -50%; }
 
   .document {
     width: 60%; } }
@@ -3392,5 +3633,230 @@ body, html {
 
   .event_date_left, .event_date_right {
     text-align: center !important; } }
+@media (min-width: 768px) {
+  .navbar-collapse {
+    display: block; }
+
+  .navbar button {
+    display: none; } }
+.add_new_event {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #025284;
+  width: auto;
+  height: 30px;
+  background-color: #07dd85;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  float: right; }
+  .add_new_event:hover {
+    background-color: white;
+    border: 1px solid #07dd85;
+    color: #07dd85 !important; }
+
+.events_all_section #events_all .section_title {
+  background-color: #07dd85; }
+.events_all_section #events_all .see_more_btn {
+  background-color: #07dd85;
+  display: inline-block;
+  border-color: white; }
+  .events_all_section #events_all .see_more_btn a {
+    text-decoration: none; }
+  .events_all_section #events_all .see_more_btn:hover {
+    background-color: white;
+    border: 1px solid #07dd85; }
+    .events_all_section #events_all .see_more_btn:hover h6 {
+      color: #07dd85 !important; }
+.events_all_section #events_all .p_e_card {
+  border-color: #07dd85;
+  margin: 15% 3%; }
+  .events_all_section #events_all .p_e_card:hover {
+    box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8); }
+
+#event_modal {
+  margin-top: 2%;
+  display: inline-block;
+  color: #07dd85; }
+  #event_modal input {
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #07dd85;
+    margin-bottom: 5%;
+    color: #07dd85;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2); }
+  #event_modal textarea {
+    resize: none;
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #07dd85;
+    margin-bottom: 5%;
+    color: #07dd85;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2); }
+  #event_modal .select_field {
+    margin-bottom: 15px; }
+    #event_modal .select_field ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #07dd85;
+      opacity: 1;
+      /* Firefox */ }
+    #event_modal .select_field :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #07dd85; }
+    #event_modal .select_field ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #07dd85; }
+    #event_modal .select_field select {
+      color: #07dd85;
+      width: 85%;
+      height: 8%;
+      padding: 10px;
+      list-style: none;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      border: 1px solid #07dd85;
+      margin-bottom: 5%;
+      box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2); }
+      #event_modal .select_field select:last-child(option) {
+        border-bottom: none; }
+
+#modal_heading {
+  color: white;
+  font-size: 2rem;
+  padding-left: 3%; }
+
+.modal-header {
+  background: url("/img/page_top.jpg");
+  background-size: cover; }
+
+#footer_event .allgood {
+  color: #07dd85 !important; }
+
+.notallgood {
+  color: red; }
+
+.div_btn_event_project {
+  text-align: right; }
+
+.add_new_project {
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  border: 1px solid #025284;
+  width: auto;
+  height: 30px;
+  background-color: #025284;
+  display: inline-block;
+  border-color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  float: right; }
+  .add_new_project:hover {
+    background-color: white;
+    border: 1px solid #025284;
+    color: #025284 !important; }
+
+#project_modal {
+  margin-top: 2%;
+  display: inline-block;
+  color: #025284; }
+  #project_modal input {
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #025284;
+    margin-bottom: 5%;
+    color: #025284;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2); }
+  #project_modal textarea {
+    resize: none;
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #025284;
+    margin-bottom: 5%;
+    color: #025284; }
+  #project_modal .select_field {
+    margin-bottom: 15px; }
+    #project_modal .select_field ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: #025284;
+      opacity: 1;
+      /* Firefox */ }
+    #project_modal .select_field :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: #025284; }
+    #project_modal .select_field ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: #025284; }
+    #project_modal .select_field select {
+      color: #025284;
+      width: 85%;
+      height: 8%;
+      padding: 10px;
+      list-style: none;
+      border-radius: 15px;
+      font-size: 1.1rem;
+      border: 1px solid #025284;
+      margin-bottom: 5%;
+      box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2); }
+      #project_modal .select_field select:last-child(option) {
+        border-bottom: none; }
+
+.projects_all_section #projects_all .section_title {
+  background-color: #025284; }
+.projects_all_section #projects_all .see_more_btn {
+  background-color: #025284;
+  display: inline-block;
+  border-color: white; }
+  .projects_all_section #projects_all .see_more_btn a {
+    text-decoration: none; }
+  .projects_all_section #projects_all .see_more_btn:hover {
+    background-color: white;
+    border: 1px solid #025284; }
+    .projects_all_section #projects_all .see_more_btn:hover h6 {
+      color: #025284 !important; }
+.projects_all_section #projects_all .p_e_card {
+  border-color: #025284;
+  margin: 15% 3%; }
+  .projects_all_section #projects_all .p_e_card:hover {
+    box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8); }
+
+.allgood {
+  color: #025284; }
+
+.checkbox-inline {
+  -webkit-appearance: checkbox !important; }
+
+#project_modal_all {
+  height: auto; }
+
+#project_new_checkbox input {
+  vertical-align: middle;
+  display: inline-block;
+  height: auto;
+  width: auto;
+  margin-bottom: auto; }
+
+.close {
+  color: white; }
+  .close:hover {
+    color: white; }
 
 /*# sourceMappingURL=main.css.map */

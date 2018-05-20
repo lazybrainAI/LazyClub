@@ -4673,6 +4673,10 @@ a {
   }
 }
 @media (max-width: 767px) {
+  #sidebar_menu {
+    margin-top: -50%;
+  }
+
   .description_section {
     margin-top: 0 !important;
   }
@@ -4703,7 +4707,7 @@ a {
   }
 
   #sidebar_menu {
-    display: none;
+    margin-top: -50%;
   }
 
   .document {
@@ -4721,6 +4725,15 @@ a {
 
   .event_date_left, .event_date_right {
     text-align: center !important;
+  }
+}
+@media (min-width: 768px) {
+  .navbar-collapse {
+    display: block;
+  }
+
+  .navbar button {
+    display: none;
   }
 }
 .add_new_event {
