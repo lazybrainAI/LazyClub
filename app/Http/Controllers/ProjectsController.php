@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Language;
-use App\Location;
 use App\Project_Attending;
 use App\Role;
 use App\Team;
+use App\User;
 use Illuminate\Http\Request;
 use App\Project;
 use \Illuminate\Support\Facades\Auth;
@@ -77,9 +77,15 @@ class ProjectsController extends Controller
         $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language']);
         $msg=$project->findOrCreateTeam($request['project_new_team'], $project->id);
         $project->addOpenPositions($request->input('project_new_cbox'), $project, $project_lead_id);
-
-
-        return response()->json((['msg'=>$msg,'id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
+        $team = Team::where('project_id', $project->id)->first();
+        $attendies = Project_Attending::where('team_id', $team->id)->get();
+        //$attendies = $attendies->user();
+        $users = array();
+        foreach ($attendies as $attendy){
+            $user = User::where('id', $attendy->user_id)->first();
+            array_push($users, $user);
+        }
+        return response()->json((['msg'=>$msg,'id' => $project->id, 'name' => $project->name, 'description' => $project->description, 'team'=>$users]));
     }
 
     public function deleteProject(Request $request)

@@ -10,8 +10,10 @@ $(document).ready(function () {
             success: function (data) {
                 $('.project_saved').addClass('allgood').removeClass('notallgood').text('Project successfully created.').show().delay(2000).fadeOut(1000);
                 document.getElementById('add_new_project_form').reset();
+
                 var div = document.createElement('div');
                 var id = data.id;
+                console.log(id);
                 var sliced_description = data.description.split('.')[0]+'.';
                 div.setAttribute('class', 'col-sm-4 padding_left');
                 div.setAttribute('id', id);
@@ -20,14 +22,7 @@ $(document).ready(function () {
             <div class="p_e_img" id="p_e_img_${data.id}">
                 <button type="button" class="delete_project close" id="delete_project_${data.id}">&times;</button>
                 <h5 class="section_title">${data.name}</h5>
-                <ul>
-                    <li>
-                        <img class="profile_img" src=""/>
-                    </li>
-                    <li>
-                        <img class="profile_img" src=""/>
-                    </li>
-                </ul>
+                <ul class="users" id="users_${data.id}"></ul>
             </div>
             <div class="p_e_info">
                 <p>${sliced_description}</p>
@@ -38,8 +33,16 @@ $(document).ready(function () {
             </div>
         </div>
     </div>`;
+
                 $('#no_projects_at_the_moment').hide();
                 $(div).appendTo($('.row #all_projects'));
+                $.each(data.team, function (i) {
+                    var li = document.createElement('li');
+                    li.innerHTML = `<img class="profile_img" src="${data.team[i].photo_link}"/>`;
+                    $(li).appendTo($('#users_'+id));
+
+
+                })
             },
             error: function (data) {
                 console.log(data);
