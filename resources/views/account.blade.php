@@ -27,7 +27,8 @@
                                 <label>Old password</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="password" required autocomplete="off" name="current-password" minlength="6">
+                                <input type="password" required autocomplete="off" name="current-password"
+                                       minlength="6">
                             </div>
                         </div>
                         <div class="row">
@@ -43,17 +44,21 @@
                                 <label>Repeat new password</label>
                             </div>
                             <div class="col-md-4">
-                                <input type="password" required autocomplete="off" name="new-password_confirmation" minlength="6">
+                                <input type="password" required autocomplete="off" name="new-password_confirmation"
+                                       minlength="6">
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <button class="save_btn" id="save_password" type="submit">
-                            <h6>Save changes</h6>
-                        </button>
-                        <button class="cancel_btn" id="cancel_password" type="reset">
-                            <h6>Cancel</h6>
-                        </button>
+
+                        <div class="row" style="text-align: center;">
+                            <div class="col-md-2 offset-md-4 col-2 offset-10" >
+                                <button class="save_btn" id="save_password" type="submit" style="width: auto; min-width: 130px;">
+                                    <h6>Save changes</h6>
+                                </button>
+                                <button class="cancel_btn" id="cancel_password" type="reset" style="width: auto; min-width: 90px;">
+                                    <h6>Cancel</h6>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </form>
                 <div id="password_msg">

@@ -1,4 +1,4 @@
-<?php include "project_event_description.php";?>
+<?php include_once "project_event_description.php";?>
 <div class="p_e_card">
     <div class="p_e_img">
         <h5 class="section_title"><?php if (is_null($project->name)) echo "Project name"; else {echo $project->name;} ?></h5>
