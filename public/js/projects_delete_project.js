@@ -9,6 +9,7 @@ $(document).ready(function () {
             e.preventDefault();
             e.stopPropagation();
             var deleteDiv =$(e.target).parent('div').attr('id').split('_')[3];
+
             console.log(deleteDiv);
             $.ajax({
                 url: '/projects',

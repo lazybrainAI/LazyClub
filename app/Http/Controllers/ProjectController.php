@@ -231,14 +231,19 @@ class ProjectController extends Controller
         $position=$request['position'];
         $user_id=$request['id'];
 
-        $role=Role::where('title', $position)->where('project/event', 'event')->get()->first();
+        $role=Role::where('title', $position)->where('project/event', 'project')->get()->first();
         Project_Attending::where('team_id', $team->id)->where('role_id', $role->id)->update(['user_id'=>$user_id]);
 
+        //delete all applications
+        $applications=ApplicationProject::where('project_id', $project->id)->where('role_id', $role->id)->get();
+        foreach($applications as $application){
+            $application->delete();
+        }
 
+        $user=User::where('id', $user_id)->get()->first();
+        $photo=$user->photo_link;
 
-        $msg="Team member has been saved.";
-
-        return $msg;
+        return $photo;
 
 
     }
@@ -248,15 +253,18 @@ class ProjectController extends Controller
 
 
         if($request->has('team')){
-            $msg= $this->addTeamMember($request, $name);
+            $photo= $this->addTeamMember($request, $name);
+            $msg="Team member has been saved";
+            return response()->json(['photo'=>$photo, 'msg'=>$msg]);
 
         }
 
         else{
             $msg=$this->editProject($request, $name);
+            return response()->json(['msg'=>$msg]);
+
         }
 
-        return response()->json(['msg'=>$msg]);
 
 
     }
@@ -309,7 +317,7 @@ class ProjectController extends Controller
             $application->save();
 
            // Mail::to($user->email)->send(new ProjectPositionApplicationReceived($project->name, $role_name, $user->name, $user->surname));
-            $msg = "Your application have been saved.";
+            $msg = "Your application has been saved.";
 
         } else {
             $msg = "You have already sent an application for this position.";

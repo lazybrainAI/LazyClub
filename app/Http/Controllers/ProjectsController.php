@@ -93,13 +93,20 @@ class ProjectsController extends Controller
         }
 
         $team->delete();
+
         $reviews=$project->reviews;
-        if(!$reviews->isEmpty()){
-            $reviews->delete();
+        if(!$reviews==null){
+            foreach($reviews as $review){
+                $review ->delete();
+
+            }
         }
         $applications=$project->project_applications;
-        if(!$applications->isEmpty()){
-            $applications->delete();
+        if($applications!=null){
+            foreach($applications as $application){
+                $application->delete();
+
+            }
         }
 
         $project->delete();

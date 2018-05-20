@@ -27,9 +27,16 @@ $(document).ready(function(){
                 data:{id:user_id, position:position, team:team},
 
                 success:function(data){
+
+                    var id='#application_'+position;
+                    $(id).remove();
+                    var img="#attendee_"+position;
+                    $(img).attr("src", data.photo);
+
                     alert(data.msg);
 
-                    $('.attendees').removeChild($('.applications'));
+
+
 
                 },
                 error:function(data){

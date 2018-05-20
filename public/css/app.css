@@ -3997,6 +3997,9 @@ body, html {
 .attendees_section .applications {
   display: none;
 }
+.attendees_section .applications .applicant:hover {
+  cursor: pointer;
+}
 .attendees_section .personal_info h5 {
   font-weight: 500 !important;
 }
