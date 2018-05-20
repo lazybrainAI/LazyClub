@@ -117,6 +117,7 @@ class EventController extends Controller
         $organizer_surname = $organizer->surname;
         $organizer_position = $organizer->position;
         $organizer_email = $organizer->email;
+        $organizer_photo=$organizer->photo_link;
 
         // get all attendees
         $attendees = $this->getAllAttendees($event_id);
@@ -134,7 +135,7 @@ class EventController extends Controller
         //$this->setSlider($num_attendees);
 
 
-        return view('event', compact('reviews', 'num_attendees', 'button', 'event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position', 'organizer_email', 'attendees', 'going', 'page_name'));
+        return view('event', compact('reviews', 'num_attendees', 'button', 'event', 'location_name', 'language_name', 'organizer_name', 'organizer_surname', 'organizer_position', 'organizer_email', 'organizer_photo', 'attendees', 'going', 'page_name'));
     }
 
 

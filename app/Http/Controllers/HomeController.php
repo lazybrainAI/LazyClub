@@ -55,17 +55,12 @@ class HomeController extends Controller
 
 
 
-    public function getProjectsTeams($projects){
+    public function getProjectsTeams($project){
 
-        $teams=array();
-        foreach($projects as $project){
+        $team_id=$project->team->id;
+        $team=Project_Attending::where('team_id', $team_id)->get();
 
-            $team=$project->team;
-            $teams[$project->name]=Project_Attending::where('team_id', $team->id)->get();
-
-        }
-
-        return $teams;
+        return $team;
 
 
     }
@@ -88,7 +83,11 @@ class HomeController extends Controller
         }
 
 
-        $teams=$this->getProjectsTeams($projects);
+        $teams=array();
+        foreach ($projects as $project){
+            $teams[$project->name]= $this->getProjectsTeams($project);
+        }
+
 
 
         return view('home', compact('projects', 'events','button', 'users', 'goings', 'teams'));

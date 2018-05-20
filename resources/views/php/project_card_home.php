@@ -5,13 +5,15 @@
             <h5 class="section_title"><?php echo $project['name']; ?></h5>
 
             <ul>
-                <?php foreach($teams as $project->name=>$team) {
-                    foreach($team as $attending){?>
+                <?php
+                $team=$teams[$project->name];
+
+                foreach($team as $attending){?>
                         <li>
                             <img class="profile_img" src="<?php echo $attending->user->photo_link?>"/>
                         </li>
 
-                <?php } }?>
+                <?php } ?>
             </ul>
         </div>
 

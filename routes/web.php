@@ -3,6 +3,7 @@
 //Login, logout routes
 Auth::routes();
 
+
 //Home routes
 Route::get('/home', 'HomeController@returnEventsAndProjects')->middleware('auth');
 Route::put('/home', 'HomeController@attendEvent')->middleware('auth');
@@ -40,7 +41,7 @@ Route::delete('/projects', 'ProjectsController@deleteProject')->middleware('auth
 
 //Project route
 Route::get('/project/{name}', 'ProjectController@showDetails')->middleware('auth');
-Route::put('/project/{name}', 'ProjectController@editProject')->middleware('auth');
+Route::put('/project/{name}', 'ProjectController@editProjectorAddTeamMember')->middleware('auth');
 Route::post('/project/{name}', 'ProjectController@saveReviewOrSaveApplication')->middleware('auth');
 
 

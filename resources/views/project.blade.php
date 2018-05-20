@@ -190,7 +190,7 @@
                                               @if($applications[$existing_position]!=null)
 
                                                     @foreach($applications[$existing_position] as $user)
-                                                        <div id="{{$existing_position."_".$user->id}}">{{$user->name." ".$user->surname}}</div>
+                                                        <div class="applicant" id="{{$existing_position."_".$user->id}}">{{$user->name." ".$user->surname}}</div>
                                                     @endforeach
                                                   @else
                                                   <p>No applications for this position yet!</p>

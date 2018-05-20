@@ -197,7 +197,9 @@ class ProjectController extends Controller
 
     }
 
-    public function editProject(Request $request, $name)
+
+
+    function editProject(Request $request, $name)
     {
         $this->validateEditedProject($request);
         $project = Project::where('name', $name)->get()->first();
@@ -213,6 +215,48 @@ class ProjectController extends Controller
         $loc_id = Location::where('name', $loc)->get()->first()->id;
 
         Project::where('id', $project->id)->update(['description' => $description, 'sector' => $sector, 'start_date' => $start_date, 'end_date' => $end_date, 'lang_id' => $lang_id, 'loc_id' => $loc_id]);
+
+        $msg="Project has been saved";
+
+        return $msg;
+
+    }
+
+
+    function addTeamMember(Request $request, $name){
+
+        $project=Project::where('name', $name)->get()->first();
+
+        $team=$project->team;
+        $position=$request['position'];
+        $user_id=$request['id'];
+
+        $role=Role::where('title', $position)->where('project/event', 'event')->get()->first();
+        Project_Attending::where('team_id', $team->id)->where('role_id', $role->id)->update(['user_id'=>$user_id]);
+
+
+
+        $msg="Team member has been saved.";
+
+        return $msg;
+
+
+    }
+
+
+    public function editProjectorAddTeamMember(Request $request, $name){
+
+
+        if($request->has('team')){
+            $msg= $this->addTeamMember($request, $name);
+
+        }
+
+        else{
+            $msg=$this->editProject($request, $name);
+        }
+
+        return response()->json(['msg'=>$msg]);
 
 
     }
@@ -264,7 +308,7 @@ class ProjectController extends Controller
             $application->motivational_letter = $request['motivational_letter'];
             $application->save();
 
-            Mail::to($user->email)->send(new ProjectPositionApplicationReceived($project->name, $role_name, $user->name, $user->surname));
+           // Mail::to($user->email)->send(new ProjectPositionApplicationReceived($project->name, $role_name, $user->name, $user->surname));
             $msg = "Your application have been saved.";
 
         } else {

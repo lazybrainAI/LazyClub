@@ -59,6 +59,17 @@ class UserController extends Controller
 
     }
 
+
+    public function getProjectsTeams($project){
+
+        $team_id=$project->team->id;
+        $team=Project_Attending::where('team_id', $team_id)->get();
+
+        return $team;
+
+
+    }
+
     public function getProfileDetails($id)
     {
 
@@ -89,6 +100,12 @@ class UserController extends Controller
 
             $projects=$this->getUserProjects($user);
 
+        //teams
+        $teams=array();
+        foreach ($projects as $project){
+            $teams[$project->name]= $this->getProjectsTeams($project);
+        }
+
 
 
 
@@ -102,7 +119,7 @@ class UserController extends Controller
 
         $page_name="profile";
         $button="";
-         return view('profile', compact('button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'experience_count','educations', 'education_count', 'page_name'));
+         return view('profile', compact('button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'teams','experience_count','educations', 'education_count', 'page_name'));
     }
 
     /**

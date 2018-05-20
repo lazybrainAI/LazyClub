@@ -8,6 +8,7 @@ use App\Language;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function MongoDB\BSON\toJSON;
+use App\Role;
 
 class EventsController extends Controller
 {

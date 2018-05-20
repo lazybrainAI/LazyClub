@@ -115,7 +115,7 @@
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-xs-6 ">
-                                        <img class="profile_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                        <img class="profile_img" src={{ URL::asset($organizer_photo) }} />
                                     </div>
                                     <div class="col-xs-6  personal_info">
                                         <h5>{{$organizer_name}} {{$organizer_surname}}</h5>
@@ -137,7 +137,7 @@
                                         @foreach($attendees as $attendee)
                                             <div class="col-6 col-sm-4 event_attendee" id="attendee_{{$attendee->user->id}}">
                                                 <div  style="margin-bottom:20px">
-                                                    <img class="attendees_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                                    <img class="attendees_img" src={{ URL::asset($attendee->user->photo_link) }} />
                                                     <div class="attendee_info">
                                                         <h6>{{$attendee->user->name}} {{$attendee->user->surname}}</h6>
                                                         <h6 class="h7">{{$attendee->user->position}}</h6>

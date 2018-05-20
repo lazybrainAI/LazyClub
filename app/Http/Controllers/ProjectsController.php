@@ -33,17 +33,12 @@ class ProjectsController extends Controller
     }
 
 
-    public function getProjectsTeams($projects){
+    public function getProjectsTeams($project){
 
-        $teams=array();
-        foreach($projects as $project){
+        $team_id=$project->team->id;
+        $team=Project_Attending::where('team_id', $team_id)->get();
 
-            $team=$project->team;
-            $teams[$project->name]=Project_Attending::where('team_id', $team->id)->get();
-
-        }
-
-        return $teams;
+        return $team;
 
 
     }
@@ -55,10 +50,22 @@ class ProjectsController extends Controller
         $positions = Role::where('project/event', 'project')->get();
         $project_language = Language::all();
 
-        $teams=$this->getProjectsTeams($projects);
+        if(!$projects->isEmpty()) {
+            $teams=array();
+            foreach ($projects as $project){
+                $teams[$project->name]= $this->getProjectsTeams($project);
+            }
+            return view('projects', compact('projects', 'positions', 'button', 'project_language', 'teams'));
+
+        }
+
+        else {
+            return view('projects', compact('projects', 'positions', 'button', 'project_language'));
+
+        }
 
 
-        return view('projects', compact('projects', 'positions', 'button', 'project_language', 'teams'));
+
     }
 
     public function saveNewProject(Request $request)
@@ -86,6 +93,14 @@ class ProjectsController extends Controller
         }
 
         $team->delete();
+        $reviews=$project->reviews;
+        if(!$reviews->isEmpty()){
+            $reviews->delete();
+        }
+        $applications=$project->project_applications;
+        if(!$applications->isEmpty()){
+            $applications->delete();
+        }
 
         $project->delete();
         $num_of_projects = Project::count();

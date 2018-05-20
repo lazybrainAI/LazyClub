@@ -54,7 +54,7 @@
                                         <div class="row align-items-center">
                                             <a href="/profile/{{$user->id}}">
                                                 <div class="col-xs-6 ">
-                                                    <img class="people_img" src={{ URL::asset('img/teo.jpeg') }} />
+                                                    <img class="people_img" src={{ URL::asset($user->photo_link) }} />
                                                 </div>
                                             </a>
                                             <div class="col-xs-6  personal_info">
