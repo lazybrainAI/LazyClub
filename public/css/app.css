@@ -4674,7 +4674,7 @@ a {
 }
 @media (max-width: 767px) {
   #sidebar_menu {
-    margin-top: -50%;
+    margin-top: -30%;
   }
 
   .description_section {
@@ -4707,11 +4707,16 @@ a {
   }
 
   #sidebar_menu {
-    margin-top: -50%;
+    margin-top: -40%;
   }
 
   .document {
     width: 60%;
+  }
+}
+@media (max-width: 450px) {
+  #sidebar_menu {
+    margin-top: -50%;
   }
 }
 @media (max-width: 575px) {
