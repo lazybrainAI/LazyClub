@@ -46,6 +46,7 @@
             <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token() ?>">
         </form>
 
+
     </li>
 
 </ul>
