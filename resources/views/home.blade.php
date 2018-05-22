@@ -127,13 +127,15 @@
                                     <div>No members in organization at the moment.</div>
                                 @else
                                     @foreach($users as $user)
-                                        <a href="/profile/{{$user->id}}">
-                                            <div class="col-md-3">
+                                       @if($user->id!=1)
+                                            <a href="/profile/{{$user->id}}">
+                                                <div class="col-md-3">
 
-                                                <img class="people_img" src={{ URL::asset($user->photo_link) }} />
+                                                    <img class="people_img" src={{ URL::asset($user->photo_link) }} />
 
-                                            </div>
-                                        </a>
+                                                </div>
+                                            </a>
+                                        @endif
                                     @endforeach
                                 @endif
                             </div>

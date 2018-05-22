@@ -54,9 +54,9 @@
                                     <input name="user_position" id="position" type="text" disabled="disabled" placeholder="Position" value="<?php if(!is_null($user->position)) {echo $user->position;} ?>" >
                                     <input name="user_email" id="email" type="email" disabled="disabled" placeholder="Email" value="<?php if(!is_null($user->email)) { echo $user->email;} ?>" >
                                     <input name="phone_num" id="phone_num" type="text" disabled="disabled" placeholder="Phone number" value="<?php if(is_null($user->phone_num)) {echo "Phone number";} else{ echo $user->phone_num;} ?>" >
-                                    <h6><a class="social_form_btn" id="linkedin" href="<?php echo $linked ?>">LinkedIn |</a>
-                                        <a class="social_form_btn" id="twitter" href="<?php echo $twitter ?>">Twitter |</a>
-                                        <a href="<?php echo $fb ?>" class="social_form_btn" id="fb">Facebook</a>
+                                    <h6><a class="social_form_btn" id="linkedin" href="<?php if($linked!=null) echo $linked; else echo "#";?>"><input autocomplete="off" name="linkedin" id="ln_input" placeholder="LinkedIn |" disabled="disabled"></a>
+                                        <a class="social_form_btn" id="twitter" href="<?php if($twitter!=null) echo $twitter; else echo "#";?>"><input autocomplete="off" name="twitter" id="twitter_input"  placeholder="Twitter |" disabled="disabled"></a>
+                                        <a class="social_form_btn" id="fb" href="<?php if($fb!=null) echo $fb; else echo "#";?>"><input autocomplete="off" name="facebook" id="fb_input" placeholder="Facebook" disabled="disabled"></a>
                                     </h6>
 
                                 </div>

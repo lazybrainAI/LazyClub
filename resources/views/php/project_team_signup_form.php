@@ -10,7 +10,7 @@
 
                 <div class="col-sm-12">
                     <label>Select position</label>
-                    <select required autocomplete="off" name="open_positions" form="signup_form">
+                    <select required autocomplete="off" name="open_positions" id="team_apply" form="signup_form">
                         <?php foreach($open_positions as $open_position) {?>
                         <option><?php echo $open_position->title ?></option>
                         <?php } ?>
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="modal-footer" id="footer_review">
-                    <button type="submit" class="add_application" form="signup_form">Submit application</button>
+                    <button type="submit" class="add_application" form="signup_form">Submit</button>
                     <button type="button" class="add_application" data-dismiss="modal">Close</button>
                     <input type="hidden" name="action" value="application">
 

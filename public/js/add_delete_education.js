@@ -22,8 +22,8 @@ $(document).ready(function(){
         var el = $("<div class=\"col-sm-6 click_to_add education\" >\n" +
             "    <input name=\"institution\" id=\"institution\" type=\"text\" placeholder=\"Institution\"  required> <!-- institution -->\n" +
             "    <input name=\"address\" id=\"address\" type=\"text\" placeholder=\"Address\"  required>\n" +
-            "    <input name=\"from_period_education\" id=\"from_period_education\" type=\"text\" placeholder=\"From\" >" +
-            "    <input name=\"to_period_education\" id=\"to_period_education\" type=\"text\" placeholder=\"To\"  required>\n" +
+            "    <input name=\"from_period_education\" class=\"from_period_education\" type=\"text\" placeholder=\"From\" required>" +
+            "    <input name=\"to_period_education\" class=\"to_period_education\" type=\"text\" placeholder=\"To\"  required>\n" +
             "    <input name=\"title\" id=\"title\" type=\"text\" placeholder=\"Title\" required>\n" +
             "    <a class=\"delete_icon delete_btn\" style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
             "</div>").attr('id', 'education_' + count);

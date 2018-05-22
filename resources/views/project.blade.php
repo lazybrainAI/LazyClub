@@ -181,7 +181,7 @@
                                         <div class="col-sm-6 col-6 "> <!-- personal_info -->
                                             <div style="margin-bottom:20px">
                                                 <img class="attendees_img not_clicked" src={{ URL::asset($user->photo_link) }} id="attendee_{{$existing_position}}"/>
-                                                <div class="attendee_info">
+                                                <div class="attendee_info" id="info_{{$existing_position}}">
                                                     <h6>{{$user->name . " " . $user->surname}}</h6>
                                                     <h6 class="h7">{{$existing_position}}</h6>
                                                 </div>

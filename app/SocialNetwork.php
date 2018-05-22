@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class SocialNetwork extends Model
 {
     //
-    public function user(){
+    public function social_users(){
 
-        return $this->belongsTo('App\User');
+        return $this->hasMany('App\SocialUser'); //looks for a foreign key in SocialUser Model
     }
 }

@@ -14,15 +14,37 @@ class CreateSocialNetworksTable extends Migration
     public function up()
     {
         Schema::create('social_networks', function (Blueprint $table) {
-            $table->primary(['sn_id', 'user_id']);
-            $table->integer('sn_id');
-            $table->string('sn_name');
-            $table->string('URL');
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->increments('id');
+            $table->string('name');
+
             $table->timestamps();
         });
+
+
+        DB::table('social_networks')->insert(
+            array(
+                'name' => 'facebook'
+
+            )
+        );
+
+        DB::table('social_networks')->insert(
+            array(
+                'name' => 'linkedin'
+
+            )
+        );
+        DB::table('social_networks')->insert(
+            array(
+                'name' => 'twitter'
+
+            )
+        );
+
+
+
+
     }
 
     /**

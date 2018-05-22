@@ -39,9 +39,9 @@ class User extends Authenticatable
     }
 
     //return user social network
-    public function social_network(){
+    public function social_users(){
 
-        return $this->hasMany('App\SocialNetwork'); //looks for a foreign key in SocialNetwork Model
+        return $this->hasMany('App\SocialUser'); //looks for a foreign key in SocialUser Model
     }
 
 

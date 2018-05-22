@@ -24,15 +24,15 @@ $(document).ready(function(){
             "\n" +
             "    <div class=\"experience_div\">\n" +
             "        <input name=\"company_position\" id=\"position\"\n" +
-            "               placeholder=\"Position\" > <!--Position-->\n" +
+            "               placeholder=\"Position\" required> <!--Position-->\n" +
             "\n" +
-            "        <input name=\"company_name\" id=\"company\"  placeholder=\"Company\">\n" +
+            "        <input name=\"company_name\" id=\"company\"  placeholder=\"Company\" required>\n" +
             "\n" +
-            "        <input name=\"from_period_experience\" id=\"from_period_experience\" type=\"text\"  placeholder=\"From\" >\n" +
+            "        <input name=\"from_period_experience\" class=\"from_period_experience\" type=\"text\"  placeholder=\"From\" required>\n" +
             "\n" +
-            "        <input name=\"to_period_experience\" id=\"to_period_experience\" type=\"text\"\n" +
-            "               placeholder=\"To\" >\n" +
-            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" placeholder=\'Experience description\'></textarea>\n" +
+            "        <input name=\"to_period_experience\" class=\"to_period_experience\" type=\"text\"\n" +
+            "               placeholder=\"To\" required>\n" +
+            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" placeholder=\'Experience description\' required></textarea>\n" +
             "\n" +
             "        <a class=\"delete_icon delete_btn\"  style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
             "\n" +

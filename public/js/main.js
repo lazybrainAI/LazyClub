@@ -14,6 +14,12 @@ $(document).ready(function () {
         $('#cancel_profile').css('display', 'none');
         $('.delete_icon').css('display', 'none');
 
+
+
+        $('#ln_input').val("");
+        $('#twitter_input').val("");
+        $('#fb_input').val("");
+
     });
 
 });

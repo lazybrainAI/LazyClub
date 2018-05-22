@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateUsersTable extends Migration
 {
@@ -35,6 +36,24 @@ class CreateUsersTable extends Migration
             $table->foreign('SystemRole_id')->references('id')->on('system_roles');
             $table->rememberToken();
         });
+
+
+        DB::table('users')->insert(
+            array(
+                'name' => 'Lazy',
+                'surname'=>'Member',
+                'username'=>'lazybot',
+                'password'=>'lazybot',
+                'email'=>'lazy@bot',
+                'photo_link'=>'img/user_icon.png',
+                'join_date'=>Carbon::now(),
+                'status'=>'active',
+                'SystemRole_id'=>4
+
+
+            )
+        );
+
     }
 
     /**

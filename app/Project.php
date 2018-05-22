@@ -106,12 +106,12 @@ class Project extends Model
         $this->save();
 
     }
-    public function addOpenPositions($openPositions, $project, $project_lead){
+    public function addOpenPositions($openPositions, $project, $project_lead, $lazybot){
 
         $this->addNewRole("Lead", $project, $project_lead);
 
         foreach ($openPositions as $openPosition) {
-            $this->addNewRole($openPosition, $project, $project_lead);
+            $this->addNewRole($openPosition, $project, $lazybot);
         }
 
 

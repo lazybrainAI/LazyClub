@@ -49,21 +49,23 @@
                             <div>No people in organization yet.</div>
                         @else
                             @foreach($users as $user)
-                                <div class="col-sm-4">
-                                    <div class="container">
-                                        <div class="row align-items-center">
-                                            <a href="/profile/{{$user->id}}">
-                                                <div class="col-xs-6 ">
-                                                    <img class="people_img" src={{ URL::asset($user->photo_link) }} />
+                                @if($user->id!=1)
+                                    <div class="col-sm-4">
+                                        <div class="container">
+                                            <div class="row align-items-center">
+                                                <a href="/profile/{{$user->id}}">
+                                                    <div class="col-xs-6 ">
+                                                        <img class="people_img" src={{ URL::asset($user->photo_link) }} />
+                                                    </div>
+                                                </a>
+                                                <div class="col-xs-6  personal_info">
+                                                    <h5>{{$user->name}} {{$user->surname}}</h5>
+                                                    <h6>{{$user->position}}</h6>
                                                 </div>
-                                            </a>
-                                            <div class="col-xs-6  personal_info">
-                                                <h5>{{$user->name}} {{$user->surname}}</h5>
-                                                <h6>{{$user->position}}</h6>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach
 
                         @endif

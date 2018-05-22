@@ -28,12 +28,41 @@ $(document).ready(function(){
 
                 success:function(data){
 
-                    var id='#application_'+position;
+                    //remove applicants
+                    var id='#application_'+position;   //----radi
                     $(id).remove();
-                    var img="#attendee_"+position;
+
+                    //add info and image about team member
+
+                    var info_id="#info_"+position;
+                    $(info_id).text(data.name+" "+data.surname);
+
+                    var img="#attendee_"+position; //radi
                     $(img).attr("src", data.photo);
 
-                    alert(data.msg);
+
+                    //delete position from select
+
+                    var sel = $("select#team_apply");
+                    sel.find("option[value=position]").remove();
+
+
+                    //delete application for position
+                    $('.applications').each(function(){
+                        var user=data.name+" "+data.surname;
+                        $('.applicant').each(function (){
+                            if($(this).text()==user){
+                                $(this).remove();
+                            }
+                        });
+
+                    });
+
+                    //delete open positions
+
+
+
+                 //   alert(data.msg);
 
 
 

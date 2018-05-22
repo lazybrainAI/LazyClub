@@ -32,7 +32,7 @@ $(document).ready(function () {
             <div class="p_e_info">
                 <p>${sliced_description}</p>
                 <div class="see_more_btn">
-                    <a href="/project_${data.name}" style="text-decoration: none;"><h6 class="h7">view
+                    <a href="/project/${data.name}" style="text-decoration: none;"><h6 class="h7">view
                             project</h6></a>
                 </div>
             </div>

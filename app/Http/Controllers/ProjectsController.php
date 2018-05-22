@@ -10,6 +10,7 @@ use App\Team;
 use Illuminate\Http\Request;
 use App\Project;
 use \Illuminate\Support\Facades\Auth;
+use App\User;
 
 
 class ProjectsController extends Controller
@@ -71,12 +72,13 @@ class ProjectsController extends Controller
     public function saveNewProject(Request $request)
     {
         $project_lead_id=Auth::user()->id;
+        $lazybot_id=User::where('username', 'lazybot')->get()->first()->id;
 
         $this->validateNewProject($request);
         $project = new Project();
         $project->createNewProject($project, $request['project_new_name'], $request['project_new_description'], $request['project_new_sector'], $request['project_new_start_date'], $request['project_new_end_date'], $request['project_new_location'], $request['project_new_language']);
         $msg=$project->findOrCreateTeam($request['project_new_team'], $project->id);
-        $project->addOpenPositions($request->input('project_new_cbox'), $project, $project_lead_id);
+        $project->addOpenPositions($request->input('project_new_cbox'), $project, $project_lead_id, $lazybot_id);
 
 
         return response()->json((['msg'=>$msg,'id' => $project->id, 'name' => $project->name, 'description' => $project->description]));

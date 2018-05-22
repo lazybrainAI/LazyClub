@@ -7,24 +7,24 @@ else
     echo ""; ?>">
 
     <div class="experience_div">
-        <input name="company_position" id="position" placeholder="Position"
+        <input name="company_position" id="position" placeholder="Position" autocomplete="off" required
                value="<?php if($experience_count!=0) {
                    if(!is_null($experience->position->name))
                        echo $experience->position->name;} ?>" disabled="disabled" > <!--Position-->
 
-        <input name="company_name" id="company"  disabled="disabled" placeholder="Company" value="<?php if($experience_count!=0) {
+        <input name="company_name" id="company"  disabled="disabled" placeholder="Company" autocomplete="off" required value="<?php if($experience_count!=0) {
             if(!is_null($experience->company->company_name))
                 echo $experience->company->company_name;} ?>" >
 
-        <input name="from_period_experience" id="from_period_experience" type="text" placeholder="From" value="<?php if($experience_count!=0) {
+        <input name="from_period_experience" class="from_period_experience" type="text" placeholder="From" autocomplete="off" required value="<?php if($experience_count!=0) {
             if(!is_null($experience->start_date))
                 echo $experience->start_date;} ?>"  disabled="disabled">
 
-        <input name="to_period_experience" id="to_period_experience" type="text" placeholder="To"
+        <input name="to_period_experience" class="to_period_experience" type="text" placeholder="To" autocomplete="off" required
                value="<?php if($experience_count!=0) {
                    if(!is_null($experience->end_date))
                        echo $experience->end_date;} ?>" disabled="disabled">
-        <textarea name="description" rows="1" cols="80" maxlength="450" id="position_description" class="expand" placeholder="Experience description" disabled="disabled"><?php if($experience_count!=0) {
+        <textarea name="description" rows="1" cols="80" maxlength="450" id="position_description" class="expand" required placeholder="Experience description" disabled="disabled"><?php if($experience_count!=0) {
                 if(!is_null($experience->description))
                     echo $experience->description;} ?></textarea>
 

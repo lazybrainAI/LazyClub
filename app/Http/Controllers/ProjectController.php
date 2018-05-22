@@ -55,6 +55,7 @@ class ProjectController extends Controller
         $team = $project->team;
 
         $lead_role_id = Role::where('title', 'Lead')->get()->first()->id;
+        $lazybot=User::where('username', 'lazybot')->get()->first();
 
         $lead_id = $this->getPositionInfo("Lead", $project);
 
@@ -63,7 +64,7 @@ class ProjectController extends Controller
         $project_attendings = Project_Attending::where('team_id', $team->id)->get();
         foreach ($project_attendings as $project_attending) {
 
-            if ($project_attending->role_id != $lead_role_id && $project_attending->user_id == $lead_id->id) {
+            if ($project_attending->role_id != $lead_role_id && $project_attending->user_id == $lazybot->id) {
 
                 $role = Role::where('id', $project_attending->role_id)->get()->first();
                 array_push($openPositions, $role);
@@ -241,9 +242,9 @@ class ProjectController extends Controller
         }
 
         $user=User::where('id', $user_id)->get()->first();
-        $photo=$user->photo_link;
 
-        return $photo;
+
+        return $user;
 
 
     }
@@ -253,9 +254,9 @@ class ProjectController extends Controller
 
 
         if($request->has('team')){
-            $photo= $this->addTeamMember($request, $name);
+            $user= $this->addTeamMember($request, $name);
             $msg="Team member has been saved";
-            return response()->json(['photo'=>$photo, 'msg'=>$msg]);
+            return response()->json(['photo'=>$user->photo_link, 'msg'=>$msg, 'name'=>$user->name, 'surname'=>$user->surname]);
 
         }
 

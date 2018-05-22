@@ -3958,7 +3958,7 @@ body, html {
   transition: all 0.9s ease;
 }
 .main_content_section .details_section .details_div {
-  min-height: 170px;
+  min-height: 100px;
   background-color: #025284;
   color: white;
   padding-left: 10px !important;

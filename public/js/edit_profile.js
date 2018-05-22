@@ -6,12 +6,36 @@ $(document).ready(function(){
 
     $('#profile_btn').click(function () {
         $('input').prop('disabled', false);
+
         $('textarea').prop('disabled', false);
         $('#add_education').css('display', 'block');
         $('#add_experience').css('display', 'block');
         $('#save_profile').css('display', 'block');
         $('#cancel_profile').css('display', 'block');
         $('.delete_icon').css('display', 'inline');
+
+        $('#education_section').on('focus', 'input.from_period_education', function(){
+           $(this).attr('type', 'date');
+        });
+
+        $('#education_section').on('focus', 'input.to_period_education', function(){
+            $(this).attr('type', 'date');
+        });
+
+        $('#experience_section').on('focus', 'input.from_period_experience', function(){
+            $(this).attr('type', 'date');
+        });
+
+        $('#experience_section').on('focus', 'input.to_period_experience', function(){
+            $(this).attr('type', 'date');
+        });
+
+
+
+        $('#linkedin').off('click');
+
+
+
 
 
         $.ajaxSetup({
@@ -68,6 +92,38 @@ $(document).ready(function(){
                 data: data,
                 success: function (data) {
 
+                    if($('#twitter_input').val()==""){
+                        $('#twitter').attr('href', '#');
+
+                    }
+                    else{
+                        $('#twitter').attr('href', $('#twitter_input').val());
+
+                    }
+                    if($('#fb_input').val()==""){
+                        $('#fb').attr('href', '#');
+
+                    }
+                    else{
+                        $('#fb').attr('href', $('#fb_input').val());
+
+                    }
+
+                    if($('#ln_input').val()==""){
+                        $('#linkedin').attr('href', '#');
+
+                    }
+                    else{
+                        $('#linkedin').attr('href', $('#ln_input').val());
+
+                    }
+
+
+
+                    $('#ln_input').val("");
+                    $('#twitter_input').val("");
+                    $('#fb_input').val("");
+
 
                     $('input').prop('disabled', true);
                     $('textarea').prop('disabled', true);
@@ -85,6 +141,11 @@ $(document).ready(function(){
                 error: function (data) {
                     $('#msg').css('display', 'block');
                     $('#msg').text("Error occured.").delay(2000).fadeOut(1000);
+
+
+                    $('#ln_input').val("");
+                    $('#twitter_input').val("");
+                    $('#fb_input').val("");
 
 
                 }
