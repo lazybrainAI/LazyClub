@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-sm-12 select_field">
                         <label>Project language</label>
-                        <select name="project_new_language" title="project_new_language_select" >
+                        <select name="project_new_language" title="project_new_language_select">
                             <option selected="selected" value="selected">Select language</option>
                             <?php foreach ($project_language as $language) { ?>
                                 <option value="<?php echo $language['name'] ?>"><?php echo $language['name'] ?></option>

@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Language;
-use App\Location;
 use App\Project_Attending;
 use App\Role;
 use App\Team;
+use App\User;
 use Illuminate\Http\Request;
 use App\Project;
 use \Illuminate\Support\Facades\Auth;
-use App\User;
 
 
 class ProjectsController extends Controller
@@ -82,7 +81,20 @@ class ProjectsController extends Controller
 
 
         return response()->json((['msg'=>$msg,'id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
+
+        $team = Team::where('project_id', $project->id)->first();
+        $attendies = Project_Attending::where('team_id', $team->id)->get();
+        //$attendies = $attendies->user();
+        $users = array();
+
+        foreach ($attendies as $attendy){
+            $user = User::where('id', $attendy->user_id)->first();
+            array_push($users, $user);
+        }
+        return response()->json((['msg'=>$msg,'id' => $project->id, 'name' => $project->name, 'description' => $project->description, 'team'=>$users]));
     }
+
+
 
     public function deleteProject(Request $request)
     {

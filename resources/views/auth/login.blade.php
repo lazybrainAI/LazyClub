@@ -17,7 +17,7 @@
                                     Club | LazyBrain
                                 </h1>
                                 <div>
-                                    <input id="email" type="text" name="email" placeholder="email" required
+                                    <input id="email" type="text" name="email" placeholder="username or email" required
                                            autocomplete="off"
                                            class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}">
                                     @if ($errors->has('username'))
