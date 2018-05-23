@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href= {{ URL::asset('css/bootstrap.min.css') }}>
-    <link rel="icon" href="img/lazybrain.png" type="image/png">
+    <link rel="icon" href="{{URL::asset('img/lazybrain.png')}}" type="image/png">
 
 
     @section('include_css')
@@ -35,7 +35,6 @@
 <script src={{URL::asset('js/ungoing_btn.js')}}></script>
 <script src={{URL::asset('js/edit_event.js')}}></script>
 <!--<script src={{URL::asset('js/script.js')}}></script>-->
-
 <script src={{URL::asset('js/home_attend_event.js')}}></script>
 <script src={{URL::asset('js/home_unattend_event.js')}}></script>
 <script src={{URL::asset('js/events_unattend_event.js')}}></script>

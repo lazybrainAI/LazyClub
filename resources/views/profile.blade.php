@@ -47,8 +47,11 @@
                                     <img class="profile_img" src={{ URL::asset($user->photo_link) }} />
                                     <button type="button" data-toggle="modal" data-target="#image_upload_modal"><i class="fas fa-camera fa-3x"></i></button>
                                 </div>
+
                                 <div class="col-xs-6  personal_info" id="{{$user->username}}">
                                     <input name="user_name" id="name" type="text" disabled="disabled" placeholder="Name" value="<?php if(!is_null($user->name)) {echo $user->name;}  ?>" required style="width: auto; max-width: 110px;">
+
+
                                     <input name="surname" id="surname" type="text" disabled="disabled" placeholder="Surname" value="<?php if(!is_null($user->surname)) {echo $user->surname;}  ?>"  required style="width: auto; max-width: 110px;">
                                     <input name="user_sector" id="sector" type="text" disabled="disabled" placeholder="Sector" value="<?php if(!is_null($user->sector)) { echo $user->sector;} ?>" >
                                     <input name="user_position" id="position" type="text" disabled="disabled" placeholder="Position" value="<?php if(!is_null($user->position)) {echo $user->position;} ?>" >

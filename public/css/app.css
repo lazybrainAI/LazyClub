@@ -4688,13 +4688,11 @@ a {
 @media (max-width: 1100px) {
   #sidebar_menu {
     padding-left: 0;
+    display: block;
+    width: 15%;
   }
 }
 @media (max-width: 767px) {
-  #sidebar_menu {
-    margin-top: -30%;
-  }
-
   .description_section {
     margin-top: 0 !important;
   }
@@ -4724,17 +4722,8 @@ a {
     margin-left: 10px;
   }
 
-  #sidebar_menu {
-    margin-top: -40%;
-  }
-
   .document {
     width: 60%;
-  }
-}
-@media (max-width: 450px) {
-  #sidebar_menu {
-    margin-top: -50%;
   }
 }
 @media (max-width: 575px) {
@@ -4748,15 +4737,6 @@ a {
 
   .event_date_left, .event_date_right {
     text-align: center !important;
-  }
-}
-@media (min-width: 768px) {
-  .navbar-collapse {
-    display: block;
-  }
-
-  .navbar button {
-    display: none;
   }
 }
 .add_new_event {
