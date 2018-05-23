@@ -4417,6 +4417,13 @@ body, html {
   background-size: cover;
 }
 
+.resizeable_field {
+  min-width: 55px !important;
+  max-width: 350px !important;
+  transition: width 0.1s;
+  text-align: left;
+}
+
 .timeline_section {
   margin-top: 40px;
   margin-bottom: 40px;
