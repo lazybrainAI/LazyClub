@@ -61,21 +61,38 @@
 }
 
 
-#image_upload_modal {
+#image_upload_modal, #document_upload_modal {
 
   color:$blue;
 
 
-  #image_upload_form {
+  #image_upload_form, #document_upload_form {
 
-      input{
-
-        margin-top:40px;
-        margin-bottom:40px;
-
+      label{
+        margin-top:20px;
+        margin-bottom:-10px;
+      }
+      input, select{
+        margin-top:20px;
+        margin-bottom:20px;
+        outline: none;
       }
 
-     .add_image {
+        input#title, select{
+        margin-right: 5%;
+        width: 85%;
+        height: 8%;
+        padding: 10px;
+        border-radius: $login-borders;
+        font-size: $font-size-fields;
+        border: 1px solid $blue;
+        margin-bottom: 5%;
+        color: $blue;
+        box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+        outline: none;
+      }
+
+     .add_image, .add_document {
       cursor: pointer;
       border-radius: 5px;
       color: white;

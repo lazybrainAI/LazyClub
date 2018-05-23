@@ -16,7 +16,8 @@ class ProjectsController extends Controller
 {
     private function validateNewProject($request)
     {
-        $request->validate(['project_new_name' => 'required|unique:projects,name|max:191',
+        $request->validate([
+            'project_new_name' => 'required|unique:projects,name|max:191',
             'project_new_description' => 'required|max:191',
             'project_new_sector' => 'required|max:191',
             'project_new_start_date' => 'required|date|after:yesterday',

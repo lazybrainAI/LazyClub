@@ -1,4 +1,4 @@
-.add_new_project {
+.add_new_project, .add_new_document {
   cursor: pointer;
   border-radius: 5px;
   color: white;
@@ -60,7 +60,7 @@
       color: $blue;
     }
 
-    ::-ms-input-placeholder { /* Microsoft Edge */
+    :-ms-input-placeholder { /* Microsoft Edge */
       color: $blue;
     }
     margin-bottom: 15px;

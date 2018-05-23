@@ -30,13 +30,18 @@ $(document).ready(function () {
 
                 $(review).appendTo($('.review_section .row'));
 
+                var elementExists = document.getElementById("reviews_msg");
+                if(elementExists){
+                    $('#reviews_msg').remove();
+                }
 
-                $('#project_review_form').reset();
+                document.getElementById('project_review_form').reset();
+                $('#review_sent').text("Review has been saved.").show().delay(2000).fadeOut(1000);
 
-                console.log('sucess');
             },
             error: function (data) {
-                console.log('error');
+                $('#review_sent').text("Error!").show().delay(2000).fadeOut(1000);
+
             }
         });
     });

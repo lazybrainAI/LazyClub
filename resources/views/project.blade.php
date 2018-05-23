@@ -116,7 +116,7 @@
                 <div class="container review_section">
                     <div class="row align-items-center">
                         @if($reviews->isEmpty())
-                            <div><p>No reviews for this project yet.</p></div>
+                            <div id="reviews_msg"><p>No reviews for this project yet.</p></div>
                         @else
                             @foreach($reviews as $review)
                                 <div class="col-md-4 col-sm-6">
@@ -132,7 +132,7 @@
 
 
 
-<!--
+
 
                 <div class="container container-left-margin">
                     <div class="row">
@@ -143,13 +143,20 @@
                 </div>
                 <div class="container documents_section">
                     <div class="row align-items-center">
-                        <div class="col-md-3 col-sm-6">
-                            @include('/php/document')
+                        @if(!$documents->isEmpty())
+                            @foreach($documents as $document)
+                                <div class="col-md-3 col-sm-6">
+                                    @include('/php/document')
+                                </div>
+                            @endforeach
+                        @else
 
-                        </div>
+                            <p>No documents at the moment!</p>
+
+                        @endif
 
                     </div>
-                </div>   -->
+                </div>
 
 
                 <div class="container container-left-margin">

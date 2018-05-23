@@ -14,7 +14,7 @@ $(document).ready(function () {
             type: 'POST',
             data: form,
             success: function (data) {
-                form.reset();
+                document.getElementById('review_form').reset();
 
                 var review=document.createElement('div');
                 review.setAttribute('class', 'col-md-4 col-sm-6');

@@ -4325,14 +4325,32 @@ body, html {
   color: #025284 !important;
 }
 
-#image_upload_modal {
+#image_upload_modal, #document_upload_modal {
   color: #025284;
 }
-#image_upload_modal #image_upload_form input {
-  margin-top: 40px;
-  margin-bottom: 40px;
+#image_upload_modal #image_upload_form label, #image_upload_modal #document_upload_form label, #document_upload_modal #image_upload_form label, #document_upload_modal #document_upload_form label {
+  margin-top: 20px;
+  margin-bottom: -10px;
 }
-#image_upload_modal #image_upload_form .add_image {
+#image_upload_modal #image_upload_form input, #image_upload_modal #image_upload_form select, #image_upload_modal #document_upload_form input, #image_upload_modal #document_upload_form select, #document_upload_modal #image_upload_form input, #document_upload_modal #image_upload_form select, #document_upload_modal #document_upload_form input, #document_upload_modal #document_upload_form select {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  outline: none;
+}
+#image_upload_modal #image_upload_form input#title, #image_upload_modal #image_upload_form select, #image_upload_modal #document_upload_form input#title, #image_upload_modal #document_upload_form select, #document_upload_modal #image_upload_form input#title, #document_upload_modal #image_upload_form select, #document_upload_modal #document_upload_form input#title, #document_upload_modal #document_upload_form select {
+  margin-right: 5%;
+  width: 85%;
+  height: 8%;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  border: 1px solid #025284;
+  margin-bottom: 5%;
+  color: #025284;
+  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+  outline: none;
+}
+#image_upload_modal #image_upload_form .add_image, #image_upload_modal #image_upload_form .add_document, #image_upload_modal #document_upload_form .add_image, #image_upload_modal #document_upload_form .add_document, #document_upload_modal #image_upload_form .add_image, #document_upload_modal #image_upload_form .add_document, #document_upload_modal #document_upload_form .add_image, #document_upload_modal #document_upload_form .add_document {
   cursor: pointer;
   border-radius: 5px;
   color: white;
@@ -4345,7 +4363,7 @@ body, html {
   padding-left: 3%;
   padding-right: 3%;
 }
-#image_upload_modal #image_upload_form .add_image:hover {
+#image_upload_modal #image_upload_form .add_image:hover, #image_upload_modal #image_upload_form .add_document:hover, #image_upload_modal #document_upload_form .add_image:hover, #image_upload_modal #document_upload_form .add_document:hover, #document_upload_modal #image_upload_form .add_image:hover, #document_upload_modal #image_upload_form .add_document:hover, #document_upload_modal #document_upload_form .add_image:hover, #document_upload_modal #document_upload_form .add_document:hover {
   background-color: white;
   border: 1px solid #025284;
   color: #025284 !important;
@@ -4873,7 +4891,7 @@ a {
   text-align: right;
 }
 
-.add_new_project {
+.add_new_project, .add_new_document {
   cursor: pointer;
   border-radius: 5px;
   color: white;
@@ -4887,7 +4905,7 @@ a {
   padding-right: 3%;
   float: right;
 }
-.add_new_project:hover {
+.add_new_project:hover, .add_new_document:hover {
   background-color: white;
   border: 1px solid #025284;
   color: #025284 !important;
@@ -4935,7 +4953,7 @@ a {
   /* Internet Explorer 10-11 */
   color: #025284;
 }
-#project_modal .select_field ::-ms-input-placeholder {
+#project_modal .select_field :-ms-input-placeholder {
   /* Microsoft Edge */
   color: #025284;
 }

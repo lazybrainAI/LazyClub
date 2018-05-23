@@ -47,7 +47,7 @@
                                     <img class="profile_img" src={{ URL::asset($user->photo_link) }} />
                                     <button type="button" data-toggle="modal" data-target="#image_upload_modal"><i class="fas fa-camera fa-3x"></i></button>
                                 </div>
-                                <div class="col-xs-6  personal_info" id="{{$user->id}}">
+                                <div class="col-xs-6  personal_info" id="{{$user->username}}">
                                     <input name="user_name" id="name" type="text" disabled="disabled" placeholder="Name" value="<?php if(!is_null($user->name)) {echo $user->name;}  ?>" required style="width: auto; max-width: 110px;">
                                     <input name="surname" id="surname" type="text" disabled="disabled" placeholder="Surname" value="<?php if(!is_null($user->surname)) {echo $user->surname;}  ?>"  required style="width: auto; max-width: 110px;">
                                     <input name="user_sector" id="sector" type="text" disabled="disabled" placeholder="Sector" value="<?php if(!is_null($user->sector)) { echo $user->sector;} ?>" >
@@ -173,7 +173,7 @@
                  </div>
              </div>
 
-<!--
+
              <div class="container container-left-margin">
                  <div class="row">
                      <div class="col-5 col-sm-4 col-md-3  col-lg-2">
@@ -183,17 +183,25 @@
              </div>
              <div class="container documents_section">
                  <div class="row align-items-center">
-                     <div class="col-md-3 col-sm-6">
-                         @include('/php/document')
+                     @if(!$documents->isEmpty())
+                         @foreach($documents as $document)
+                             <div class="col-md-3 col-sm-6">
+                                 @include('/php/document')
+                             </div>
+                         @endforeach
+                     @else
+
+                         <p>No documents at the moment!</p>
+
+                     @endif
+
                      </div>
-
                  </div>
+
+
+
+
              </div>
-
-
-
-
-         </div> -->
 
              <button class="save_btn"  id="save_profile" type="submit">
                  <h6>Save changes</h6>

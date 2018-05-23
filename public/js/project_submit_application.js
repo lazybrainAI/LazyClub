@@ -12,7 +12,7 @@ $(document).ready(function () {
             success: function (data) {
 
             $('#application_sent').text(data.msg).show().delay(2000).fadeOut(1000);
-            //form.reset();
+            document.getElementById('signup_form').reset();
 
             },
             error: function (data) {

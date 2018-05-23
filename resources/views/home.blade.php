@@ -128,7 +128,7 @@
                                 @else
                                     @foreach($users as $user)
                                        @if($user->id!=1)
-                                            <a href="/profile/{{$user->id}}">
+                                            <a href="/profile/{{$user->username}}">
                                                 <div class="col-md-3">
 
                                                     <img class="people_img" src={{ URL::asset($user->photo_link) }} />

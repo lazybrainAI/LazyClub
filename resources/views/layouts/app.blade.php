@@ -50,6 +50,8 @@
 <script src={{URL::asset('js/add_delete_education.js')}}></script>
 <script src={{URL::asset('js/add_delete_experience.js')}}></script>
 <script src={{URL::asset('js/upload_image.js')}}></script>
+<script src={{URL::asset('js/upload_document.js')}}></script>
+
 
 
 

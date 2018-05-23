@@ -10,10 +10,10 @@ Route::put('/home', 'HomeController@attendEvent')->middleware('auth');
 Route::delete('/home', 'HomeController@unattendEvent')->middleware('auth');
 
 //Profile routes
-Route::get('/profile/{id}', 'UserController@getProfileDetails')->middleware('auth');
-Route::put('/profile/{id}', 'UserController@editProfile')->middleware('auth');
-Route::delete('/profile/{id}', 'UserController@deleteExperienceandEducation')->middleware('auth');
-Route::post('/profile/{id}', 'UserController@uploadProfileImage')->middleware('auth');
+Route::get('/profile/{username}', 'UserController@getProfileDetails')->middleware('auth');
+Route::put('/profile/{username}', 'UserController@editProfile')->middleware('auth');
+Route::delete('/profile/{username}', 'UserController@deleteExperienceandEducation')->middleware('auth');
+Route::post('/profile/{username}', 'UserController@uploadProfileImage')->middleware('auth');
 
 //Events routes
 Route::get('/events', 'EventsController@showDetails')->middleware('auth');
@@ -45,8 +45,13 @@ Route::put('/project/{name}', 'ProjectController@editProjectorAddTeamMember')->m
 Route::post('/project/{name}', 'ProjectController@saveReviewOrSaveApplication')->middleware('auth');
 
 
-
 //Account
 Route::get('/account','AccountController@showDetails')->middleware('auth');
 Route::post('/account','AccountController@changePassword')->middleware('auth');
+
+//Documents
+
+Route::get('/documents', 'DocumentsController@showDetails')->middleware('auth');
+Route::post('/documents', 'DocumentsController@uploadDocument')->middleware('auth');
+
 

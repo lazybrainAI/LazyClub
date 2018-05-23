@@ -2,7 +2,7 @@
 <div id="page_top_picture">
     <div>
 
-        <a href="/profile/<?php echo $user->id; ?>">
+        <a href="/profile/<?php echo $user->username; ?>">
             <img class="profile_img" src=" <?php echo $user->photo_link;?> ">
         </a>
 

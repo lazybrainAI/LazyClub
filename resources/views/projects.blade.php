@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                {{--Project section--}}
+                {{--Projects section--}}
                 <div class="container" id="projects_all">
                     <div class="row" id="all_projects">
                         @if(!empty($projects) && count($projects)>0)

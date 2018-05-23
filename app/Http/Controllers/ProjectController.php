@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
 use App\Review;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
+use App\Document;
 
 
 class ProjectController extends Controller
@@ -141,7 +142,6 @@ class ProjectController extends Controller
 
         $button = "";
         $page_name = "project";
-        $open_positions = array();
 
         $project = Project::where('name', $name)->get();
 
@@ -177,8 +177,12 @@ class ProjectController extends Controller
 
         $project=$project->first();
 
+        //project's documents
+        $documents=Document::where('project_id', $project->id)->get();
+
+
         // dd($existing_positions);
-        return view('project', compact('button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications', 'teams'));
+        return view('project', compact('documents','button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications', 'teams'));
     }
 
 

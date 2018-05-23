@@ -111,7 +111,7 @@
                 <?php $user = \Illuminate\Support\Facades\Auth::user();?>
                 <div class="container attendees_section">
                     <div class="row align-items-center">
-                        <div class="col-md-5 organizer" id="{{$user->id}}">
+                        <div class="col-md-5 organizer" id="{{$user->username}}">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-xs-6 ">

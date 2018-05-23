@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Project_Attending;
 use App\SocialNetwork;
 use App\SocialUser;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use App\User;
 use App\Institution;
@@ -14,10 +13,9 @@ use App\Education;
 use App\Experience;
 use App\Position;
 use App\Company;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\Team;
-use Illuminate\Support\Facades\Storage;
+use App\Document;
 
 class UserController extends Controller
 {
@@ -71,10 +69,10 @@ class UserController extends Controller
 
     }
 
-    public function getProfileDetails($id)
+    public function getProfileDetails($username)
     {
 
-        $user = User::all()->find($id);
+        $user = User::where('username', $username)->get()->first();
 
         // user's social network links
         $socials = $user->social_users;
@@ -119,9 +117,13 @@ class UserController extends Controller
         $educations=$user->educations;
         $education_count=$educations->count();
 
+        //user's documents
+
+        $documents=Document::where('user_id', $user->id)->get();
+
         $page_name="profile";
         $button="";
-         return view('profile', compact('button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'teams','experience_count','educations', 'education_count', 'page_name'));
+         return view('profile', compact('documents','button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'teams','experience_count','educations', 'education_count', 'page_name'));
     }
 
     /**
@@ -129,9 +131,9 @@ class UserController extends Controller
      * @param $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function editProfile(Request $request, $id)
+    public function editProfile(Request $request, $username)
     {
-        $user = User::findOrFail($id);
+        $user = User::where('username', $username)->get()->first();
 
         $user->name = $request['user_name'];
         $user->surname = $request['surname'];
@@ -321,8 +323,8 @@ class UserController extends Controller
 
 
 
-    public function deleteExperienceandEducation(Request $request, $id){
-        $user=User::findOrFail($id);
+    public function deleteExperienceandEducation(Request $request, $username){
+        $user=User::where('username', $username)->get()->first();
 
         if($request['experience_id']!=null){ //delete experience
             $experience_id=$request['experience_id'];
@@ -336,11 +338,23 @@ class UserController extends Controller
 
 
 
-    public function uploadProfileImage(Request $request){
+    public function uploadProfileImage(Request $request, $username){
 
-        $user=Auth::user();
+        $user=User::where('username', $username)->get()->first();
 
         if($request->hasFile('image')){
+
+
+            $this->validate($request, [
+
+                'image' => 'required|mimes:png,jpg,jpeg||max:2048',
+
+            ],
+            [   'image.mimes'=>'Not a valid image format',
+                'image.max'=>'Image is too big'
+
+            ]);
+
 
             $extension = $request->file('image')->getClientOriginalExtension();
             $dir = 'img/'.$user->id.'/profile/';

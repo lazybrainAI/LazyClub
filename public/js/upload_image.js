@@ -8,7 +8,9 @@ $(document).ready(function () {
 
         //user id
         var id = $('.personal_info').attr('id');
-        var form = $('#image_upload_form');
+
+        var form = document.getElementById('image_upload_form');
+
 
 
         var form_data = new FormData();
@@ -24,6 +26,8 @@ $(document).ready(function () {
             contentType:false,
 
             success:function (data) {
+                form.reset();
+
                 $('#img_uploaded').text(data.msg);
             },
 
