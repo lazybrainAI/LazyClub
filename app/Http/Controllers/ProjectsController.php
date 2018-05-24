@@ -72,7 +72,8 @@ class ProjectsController extends Controller
     public function saveNewProject(Request $request)
     {
         $project_lead_id=Auth::user()->id;
-        $lazybot_id=User::where('username', 'lazybot')->get()->first()->id;
+        $lazybot_id=User::where('username', 'lazybot')->get()->first();
+        $lazybot_id = $lazybot_id->id;
 
         $this->validateNewProject($request);
         $project = new Project();
@@ -81,11 +82,11 @@ class ProjectsController extends Controller
         $project->addOpenPositions($request->input('project_new_cbox'), $project, $project_lead_id, $lazybot_id);
 
 
-        return response()->json((['msg'=>$msg,'id' => $project->id, 'name' => $project->name, 'description' => $project->description]));
+
+
 
         $team = Team::where('project_id', $project->id)->first();
         $attendies = Project_Attending::where('team_id', $team->id)->get();
-        //$attendies = $attendies->user();
         $users = array();
 
         foreach ($attendies as $attendy){

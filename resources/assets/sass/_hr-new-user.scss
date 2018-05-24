@@ -53,4 +53,11 @@
 
 }
 
+.resizeable_field{
 
+  min-width:55px!important;
+  max-width:350px!important;
+
+  transition: width 0.1s;
+  text-align:left;
+}

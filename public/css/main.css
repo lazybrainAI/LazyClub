@@ -4472,6 +4472,13 @@ body, html {
   background-size: cover;
 }
 
+.resizeable_field {
+  min-width: 55px !important;
+  max-width: 350px !important;
+  transition: width 0.1s;
+  text-align: left;
+}
+
 .timeline_section {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -4743,6 +4750,8 @@ a {
 @media (max-width: 1100px) {
   #sidebar_menu {
     padding-left: 0;
+    display: block;
+    width: 15%;
   }
 }
 @media (max-width: 767px) {
@@ -4779,6 +4788,19 @@ a {
     display: none;
   }
 
+  #page_title {
+    width: 50%;
+  }
+
+  .main_content_section {
+    margin-left: 10px;
+  }
+
+  .document {
+    width: 60%;
+  }
+}
+@media (max-width: 590px) {
   #page_title {
     width: 50%;
   }

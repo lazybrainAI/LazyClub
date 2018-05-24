@@ -49,7 +49,7 @@ class Project extends Model
         if ($location->first()) {
             $id = $location->first()->id;
         } else {
-            $location = new Location;
+            $location = new Location; //prebaci u Location::create()
             $location->name = $name;
             $location->save();
             $id = $location->id;

@@ -3012,7 +3012,7 @@ body, html {
       overflow: hidden;
       transition: all 0.9s ease; }
     .main_content_section .details_section .details_div {
-      min-height: 170px;
+      min-height: 100px;
       background-color: #025284;
       color: white;
       padding-left: 10px !important; }
@@ -3308,12 +3308,28 @@ body, html {
           border: 1px solid #025284;
           color: #025284 !important; }
 
-#image_upload_modal {
+#image_upload_modal, #document_upload_modal {
   color: #025284; }
-  #image_upload_modal #image_upload_form input {
-    margin-top: 40px;
-    margin-bottom: 40px; }
-  #image_upload_modal #image_upload_form .add_image {
+  #image_upload_modal #image_upload_form label, #image_upload_modal #document_upload_form label, #document_upload_modal #image_upload_form label, #document_upload_modal #document_upload_form label {
+    margin-top: 20px;
+    margin-bottom: -10px; }
+  #image_upload_modal #image_upload_form input, #image_upload_modal #image_upload_form select, #image_upload_modal #document_upload_form input, #image_upload_modal #document_upload_form select, #document_upload_modal #image_upload_form input, #document_upload_modal #image_upload_form select, #document_upload_modal #document_upload_form input, #document_upload_modal #document_upload_form select {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: none; }
+  #image_upload_modal #image_upload_form input#title, #image_upload_modal #image_upload_form select, #image_upload_modal #document_upload_form input#title, #image_upload_modal #document_upload_form select, #document_upload_modal #image_upload_form input#title, #document_upload_modal #image_upload_form select, #document_upload_modal #document_upload_form input#title, #document_upload_modal #document_upload_form select {
+    margin-right: 5%;
+    width: 85%;
+    height: 8%;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    border: 1px solid #025284;
+    margin-bottom: 5%;
+    color: #025284;
+    box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
+    outline: none; }
+  #image_upload_modal #image_upload_form .add_image, #image_upload_modal #image_upload_form .add_document, #image_upload_modal #document_upload_form .add_image, #image_upload_modal #document_upload_form .add_document, #document_upload_modal #image_upload_form .add_image, #document_upload_modal #image_upload_form .add_document, #document_upload_modal #document_upload_form .add_image, #document_upload_modal #document_upload_form .add_document {
     cursor: pointer;
     border-radius: 5px;
     color: white;
@@ -3325,7 +3341,7 @@ body, html {
     border-color: white;
     padding-left: 3%;
     padding-right: 3%; }
-    #image_upload_modal #image_upload_form .add_image:hover {
+    #image_upload_modal #image_upload_form .add_image:hover, #image_upload_modal #image_upload_form .add_document:hover, #image_upload_modal #document_upload_form .add_image:hover, #image_upload_modal #document_upload_form .add_document:hover, #document_upload_modal #image_upload_form .add_image:hover, #document_upload_modal #image_upload_form .add_document:hover, #document_upload_modal #document_upload_form .add_image:hover, #document_upload_modal #document_upload_form .add_document:hover {
       background-color: white;
       border: 1px solid #025284;
       color: #025284 !important; }
@@ -3371,6 +3387,12 @@ body, html {
 .modal-header {
   background: url("/img/page_top.jpg");
   background-size: cover; }
+
+.resizeable_field {
+  min-width: 55px !important;
+  max-width: 350px !important;
+  transition: width 0.1s;
+  text-align: left; }
 
 .timeline_section {
   margin-top: 40px;
@@ -3593,11 +3615,10 @@ a {
 
 @media (max-width: 1100px) {
   #sidebar_menu {
-    padding-left: 0; } }
+    padding-left: 0;
+    display: block;
+    width: 15%; } }
 @media (max-width: 767px) {
-  #sidebar_menu {
-    margin-top: -30%; }
-
   .description_section {
     margin-top: 0 !important; }
 
@@ -3619,14 +3640,8 @@ a {
   .main_content_section {
     margin-left: 10px; }
 
-  #sidebar_menu {
-    margin-top: -40%; }
-
   .document {
     width: 60%; } }
-@media (max-width: 450px) {
-  #sidebar_menu {
-    margin-top: -50%; } }
 @media (max-width: 575px) {
   .horizontal_line_left, .horizontal_line_right, .timeline_circle {
     display: none; }
@@ -3636,12 +3651,6 @@ a {
 
   .event_date_left, .event_date_right {
     text-align: center !important; } }
-@media (min-width: 768px) {
-  .navbar-collapse {
-    display: block; }
-
-  .navbar button {
-    display: none; } }
 .add_new_event {
   cursor: pointer;
   border-radius: 5px;
@@ -3751,7 +3760,7 @@ a {
 .div_btn_event_project {
   text-align: right; }
 
-.add_new_project {
+.add_new_project, .add_new_document {
   cursor: pointer;
   border-radius: 5px;
   color: white;
@@ -3764,7 +3773,7 @@ a {
   padding-left: 3%;
   padding-right: 3%;
   float: right; }
-  .add_new_project:hover {
+  .add_new_project:hover, .add_new_document:hover {
     background-color: white;
     border: 1px solid #025284;
     color: #025284 !important; }
@@ -3805,7 +3814,7 @@ a {
     #project_modal .select_field :-ms-input-placeholder {
       /* Internet Explorer 10-11 */
       color: #025284; }
-    #project_modal .select_field ::-ms-input-placeholder {
+    #project_modal .select_field :-ms-input-placeholder {
       /* Microsoft Edge */
       color: #025284; }
     #project_modal .select_field select {
