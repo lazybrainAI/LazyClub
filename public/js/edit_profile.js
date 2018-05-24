@@ -8,6 +8,7 @@ $(document).ready(function(){
         $('input').prop('disabled', false);
 
         $('textarea').prop('disabled', false);
+
         $('#add_education').css('display', 'block');
         $('#add_experience').css('display', 'block');
         $('#save_profile').css('display', 'block');

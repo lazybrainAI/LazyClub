@@ -97,7 +97,15 @@
              <div class="container description_section read_more_btn_parent">
                  <div class="row">
                      <div class="col-md-12">
-                         <textarea name="bio" cols="80" rows=6 class="expand" maxlength="450" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy."><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
+                         <textarea name="bio" cols="80" rows=6 class="description_count" maxlength="191" id="bio_description" disabled="disabled" placeholder="Write something about yourself. Don't be lazy." style="position: relative; width: 50%"><?php if(!is_null($user->bio)){ echo $user->bio;} ?></textarea>
+                         <p style="position: absolute; bottom: -15%; right: 50%; display: none;" id="char_count_p"><span id="char_count">
+                                 @if(!is_null($user->bio))
+                                     {{strlen($user->bio)}}
+                                  @else
+                                    0
+                                   @endif
+
+                             </span>/191</p>
                          <div class="read_more_btn">
                             <h6>read more</h6>
                          </div>
@@ -237,7 +245,7 @@
 
 @section('include_js')
     <script src={{ URL::asset('js/resizeable_fields.js')}}></script>
-
+    <script src={{ URL::asset('js/char_counter.js')}}></script>
 @endsection
 
 
