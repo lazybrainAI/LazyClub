@@ -51,7 +51,7 @@ Route::post('/account','AccountController@changePassword')->middleware('auth');
 
 //Documents
 
-Route::get('/documents', 'DocumentsController@showDetails')->middleware('auth');
-Route::post('/documents', 'DocumentsController@uploadDocument')->middleware('auth');
+Route::get('/document', 'DocumentsController@showDetails')->middleware('auth');
+Route::post('/document', 'DocumentsController@uploadDocument')->middleware('auth');
 
 

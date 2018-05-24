@@ -15,6 +15,11 @@
     @include('/php/page_top_picture')
 @endsection
 
+@section('small_menu')
+    @parent
+    @include ('/php/small_sidebar_menu')
+@endsection
+
 @section('main')
     @parent
 
@@ -189,8 +194,13 @@
                                             <div style="margin-bottom:20px">
                                                 <img class="attendees_img not_clicked" src={{ URL::asset($user->photo_link) }} id="attendee_{{$existing_position}}"/>
                                                 <div class="attendee_info" id="info_{{$existing_position}}">
-                                                    <h6>{{$user->name . " " . $user->surname}}</h6>
-                                                    <h6 class="h7">{{$existing_position}}</h6>
+                                                    @if($user->name=='Lazy')
+                                                        <h6>Open position</h6>
+                                                    @else
+                                                        <h6>{{$user->name . " " . $user->surname}}</h6>
+
+                                                    @endif
+                                                        <h6 class="h7">{{$existing_position}}</h6>
                                                 </div>
                                             </div>
                                             <div id="application_{{$existing_position}}" class="applications">

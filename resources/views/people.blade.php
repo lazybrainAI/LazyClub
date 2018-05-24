@@ -15,7 +15,10 @@
     @include('/php/page_top_picture')
 @endsection
 
-
+@section('small_menu')
+    @parent
+    @include ('/php/small_sidebar_menu')
+@endsection
 
 @section('main')
     @parent
@@ -31,7 +34,7 @@
                 <div class="container container-left-margin">
                     <div class="row">
                         {{--Event header--}}
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <h4 class="section_title" id="all_people_section_title">People</h4>
                         </div>
                         {{--Add new event button--}}

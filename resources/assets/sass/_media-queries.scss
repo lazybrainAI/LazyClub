@@ -9,15 +9,15 @@
 }
 
 
-
-
 // ispod ove sirine mora vertikalni timeline kod projekta
 @media (max-width: 767px){
 
   //sredi vertikalni na home page-u
 
-  #sidebar_menu{
-    margin-top: -30%;
+  #page_top_picture{
+    .edit_btn{
+      top:10px;
+    }
   }
 
   .description_section{
@@ -45,6 +45,18 @@
 
 
 @media (max-width: 590px){
+
+  #page_top_picture{
+    #toggle_menu_btn{
+      display: block;
+    }
+  }
+  
+  #sidebar_menu{
+    display: none;
+  }
+
+
   #page_title{
     width:50%;
   }
@@ -53,22 +65,13 @@
   }
 
 
-  #sidebar_menu{
-    margin-top: -40%;
-  }
-
   .document{
     width:60%;
   }
 
 
+}
 
-}
-@media (max-width: 450px){
-  #sidebar_menu{
-    margin-top: -50%;
-  }
-}
 
 @media (max-width: 575px){
 
@@ -84,15 +87,9 @@
     text-align: center!important;
   }
 }
-@media (min-width: 768px)
-{
-  .navbar-collapse {
-    display: block;
-  }
 
-  .navbar button {
-    display: none;
-  }
 
+@media (max-width: 450px){
 
 }
+

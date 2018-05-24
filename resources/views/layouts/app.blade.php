@@ -30,7 +30,7 @@
 
 <script src={{ URL::asset('js/jquery-3.3.1.min.js') }}></script>
 <script src={{ URL::asset('js/bootstrap.min.js') }}></script>
-<script src={{ URL::asset('js/main.js') }}></script>
+<script src={{ URL::asset('js/cancel_btns.js') }}></script>
 <script src={{URL::asset('js/going_button.js')}}></script>
 <script src={{URL::asset('js/ungoing_btn.js')}}></script>
 <script src={{URL::asset('js/edit_event.js')}}></script>
@@ -51,11 +51,14 @@
 <script src={{URL::asset('js/add_delete_experience.js')}}></script>
 <script src={{URL::asset('js/upload_image.js')}}></script>
 <script src={{URL::asset('js/upload_document.js')}}></script>
+<script src={{URL::asset('js/toggle_menu.js')}}></script>
 
 
 
 
 
+@section('small_menu')
+@show
 
 
 

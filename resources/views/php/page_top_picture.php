@@ -16,8 +16,10 @@
     </div>
     <?php
         if($button!="No button"){ ?>
-    <div class=" edit_btn" id="<?php echo $page_name?>_btn">
+    <div class="edit_btn" id="<?php echo $page_name?>_btn">
         <h6><?php echo "Edit " .$page_name?></h6>
     </div>
        <?php } ?>
+
+    <button type="button" id="toggle_menu_btn"><i class="fas fa-bars"></i></button>
 </div>

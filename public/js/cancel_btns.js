@@ -2,7 +2,8 @@
 $(document).ready(function () {
 
 
-    // ------- cancel button
+
+    // ------- profile cancel button
 
     $('#cancel_profile').click(function ()  {
         $('input').prop('disabled', true);
@@ -15,12 +16,40 @@ $(document).ready(function () {
         $('.delete_icon').css('display', 'none');
 
 
-
         $('#ln_input').val("");
         $('#twitter_input').val("");
         $('#fb_input').val("");
 
     });
+
+    $('#cancel_event').click(function(){
+
+        $('input').prop('disabled', true);
+        $('textarea').prop('disabled', true);
+
+        $('#save_event').css('display', 'none');
+        $('#cancel_event').css('display', 'none');
+    });
+
+    $('#cancel_project').click(function(){
+
+        $('input').prop('disabled', true);
+        $('textarea').prop('disabled', true);
+
+        $('#save_project').css('display', 'none');
+        $('#cancel_project').css('display', 'none');
+    });
+
+
+
+
+
+    // -------- event cancel button
+
+
+
+    // ------- project cancel button
+
 
 });
 

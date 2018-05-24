@@ -62,16 +62,20 @@ class DocumentsController extends Controller
 
             $request->file('document')->move($dir, $filename);
 
-            Document::create(['title'=> $request['title'], 'link'=>$dir.$filename, 'date_uploaded'=>Carbon::now(), 'user_id'=>$user->id, 'project_id'=>$project->id]);
+            $document=Document::create(['title'=> $request['title'], 'link'=>$dir.$filename, 'date_uploaded'=>Carbon::now(), 'user_id'=>$user->id, 'project_id'=>$project->id]);
 
-            $msg="Saved";
+            $msg="Document uploaded!";
+            $name=$request['title'];
+            $date='/'.$document->date_uploaded;
+            return response()->json(['msg'=>$msg, 'name'=>$name, 'date'=>$date, 'link'=>$dir.$name]);
+
 
         }
         else{
             $msg="Not an document";
-        }
+            return response()->json(['msg'=>$msg]);
 
-        return response()->json(['msg'=>$msg]);
+        }
 
 
 

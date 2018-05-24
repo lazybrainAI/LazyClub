@@ -12,10 +12,10 @@
                     <input name="title" id="title" placeholder="Title" type="text" autocomplete="off" required>
                 </div>
                 <div class="col-sm-12">
-                    <?php if($existing_projects==null){ ?>
-                        <p>No projects at the moment.</p>
+                    <select name="project" id="project" required>
+                    <?php if($existing_projects->isEmpty()){ ?>
+                        <option disabled>No projects at the moment.</option>
                     <?php } else {?>
-                    <select name="project" required >
                         <?php foreach($existing_projects as $existing_project) { ?>
                             <option selected>Choose project</option>
                             <option><?php echo $existing_project->name?></option>

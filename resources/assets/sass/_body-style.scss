@@ -18,6 +18,17 @@ body, html{
 }
 
 
+.disabled_content{
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.unabled_content{
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
+
 
 
 

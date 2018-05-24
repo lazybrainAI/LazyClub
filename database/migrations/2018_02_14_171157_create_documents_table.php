@@ -18,7 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('link');
-            $table->dateTime('date_uploaded');
+            $table->date('date_uploaded');
 
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();

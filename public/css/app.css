@@ -3614,6 +3614,16 @@ body, html {
   display: block !important;
 }
 
+.disabled_content {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.unabled_content {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
 #page_top_picture {
   background-image: url("/img/page_top.jpg");
   background-size: cover;
@@ -3622,6 +3632,16 @@ body, html {
   background-attachment: scroll;
   position: relative;
   height: 250px;
+}
+#page_top_picture #toggle_menu_btn {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 15px;
+  background: transparent;
+  border: none;
 }
 #page_top_picture .profile_img {
   position: absolute;
@@ -3676,6 +3696,38 @@ body, html {
 }
 .sidebar_section .row #sidebar_menu li a:hover {
   text-decoration: none;
+}
+
+#small_sidebar_menu {
+  background: white;
+  color: #025284;
+  width: 0;
+  z-index: 10;
+  position: fixed;
+  top: 0px;
+  left: 0;
+  transition: .2s width ease;
+  height: 100vh;
+  display: none;
+  box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
+}
+#small_sidebar_menu #close_menu {
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 15px;
+  top: 30px;
+}
+#small_sidebar_menu #close_menu i {
+  color: #025284;
+}
+#small_sidebar_menu ul {
+  margin-top: 30px;
+  width: 0;
+}
+#small_sidebar_menu ul li {
+  list-style: none;
+  margin-bottom: 20px;
 }
 
 .read_more_btn, .read_less_btn, .see_more_btn, .submit_btn, .save_btn, .cancel_btn {
@@ -3929,6 +3981,10 @@ body, html {
   width: 100px;
   border-radius: 50%;
   margin-bottom: 5px;
+  transition: .2s all ease;
+}
+.people_img:hover {
+  box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
 }
 
 .personal_info {
@@ -4045,41 +4101,40 @@ body, html {
   margin-bottom: 30px;
   margin-top: 30px;
   margin-left: 25px;
-  /*
-    .row{
-      div:last-child .document{
-        margin-bottom: 0px!important;
-      }
-    } */
 }
-.documents_section .document {
+
+.document {
   background-color: #025284;
   height: 80px;
   padding-left: 10px;
   padding-top: 15px;
   margin-bottom: 10px;
   position: relative;
+  transition: .2s all ease;
 }
-.documents_section .document h6 {
+.document h6 {
   color: white !important;
 }
-.documents_section .document .delete_icon, .documents_section .document .edit_icon {
+.document .delete_icon, .document .edit_icon {
   display: none;
 }
-.documents_section .document:hover .delete_icon, .documents_section .document:hover .edit_icon {
+.document:hover {
+  box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
+}
+.document:hover .delete_icon, .document:hover .edit_icon {
   display: inline;
   color: white;
   position: absolute;
   top: 0;
   z-index: 10;
 }
-.documents_section .document:hover .delete_icon:hover, .documents_section .document:hover .edit_icon:hover {
+.document:hover .delete_icon:hover, .document:hover .edit_icon:hover {
   cursor: pointer;
 }
-.documents_section .document:hover .delete_icon {
+.document:hover .delete_icon {
   right: 5px;
 }
-.documents_section .document:hover .edit_icon {
+.document:hover .edit_icon {
   right: 30px;
 }
 
@@ -4691,8 +4746,8 @@ a {
   }
 }
 @media (max-width: 767px) {
-  #sidebar_menu {
-    margin-top: -30%;
+  #page_top_picture .edit_btn {
+    top: 10px;
   }
 
   .description_section {
@@ -4716,6 +4771,14 @@ a {
   }
 }
 @media (max-width: 590px) {
+  #page_top_picture #toggle_menu_btn {
+    display: block;
+  }
+
+  #sidebar_menu {
+    display: none;
+  }
+
   #page_title {
     width: 50%;
   }
@@ -4724,17 +4787,8 @@ a {
     margin-left: 10px;
   }
 
-  #sidebar_menu {
-    margin-top: -40%;
-  }
-
   .document {
     width: 60%;
-  }
-}
-@media (max-width: 450px) {
-  #sidebar_menu {
-    margin-top: -50%;
   }
 }
 @media (max-width: 575px) {
@@ -4748,15 +4802,6 @@ a {
 
   .event_date_left, .event_date_right {
     text-align: center !important;
-  }
-}
-@media (min-width: 768px) {
-  .navbar-collapse {
-    display: block;
-  }
-
-  .navbar button {
-    display: none;
   }
 }
 .add_new_event {

@@ -4,6 +4,12 @@
     @parent
     @include ('/php/page_top_picture')
 @endsection
+
+@section('small_menu')
+    @parent
+    @include ('/php/small_sidebar_menu')
+@endsection
+
 @section('main')
     @parent
     <div class="container-fluid sidebar_section">

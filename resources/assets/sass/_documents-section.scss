@@ -6,48 +6,50 @@
     top:$section-margin-top;
     left:25px;
   }
-/*
-  .row{
-    div:last-child .document{
-      margin-bottom: 0px!important;
-    }
-  } */
 
-  .document{
-    background-color: $blue;
-    height: 80px;
-    padding-left:10px;
-    padding-top:15px;
-    margin-bottom: 10px;
-    position:relative;
-    h6{
-      color:white!important;
+}
 
-    }
+.document{
+  background-color: $blue;
+  height: 80px;
+  padding-left:10px;
+  padding-top:15px;
+  margin-bottom: 10px;
+  position:relative;
+  transition: .2s all ease;
+
+  h6{
+    color:white!important;
+
+  }
+
+
+  .delete_icon, .edit_icon{
+    display: none;
+  }
+
+
+  &:hover{
+    box-shadow: 0 10px 30px 0 rgba(46, 61, 73, 0.8);
+
+
     .delete_icon, .edit_icon{
-     display: none;
+      display: inline;
+      color:white;
+      position:absolute;
+      top:0;
+      z-index: 10;
+      &:hover{
+        cursor:pointer;
+
+      }
+    }
+    .delete_icon{
+      right:5px;
     }
 
-
-    &:hover{
-
-      .delete_icon, .edit_icon{
-        display: inline;
-        color:white;
-        position:absolute;
-        top:0;
-        z-index: 10;
-        &:hover{
-          cursor:pointer;
-        }
-      }
-      .delete_icon{
-        right:5px;
-      }
-
-      .edit_icon{
-        right:30px;
-      }
+    .edit_icon{
+      right:30px;
     }
   }
 }
