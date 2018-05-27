@@ -41,8 +41,15 @@
                     <div class="row justify-content-between no-gutters">
                         <div class="col-md-8 order-md-1 order-2">
 
-                            <textarea name="project_description" maxlength="450" cols="80"  id="project_description" disabled="disabled" placeholder="This is a place for project descripton, but MO is lazy."><?php if(!is_null($project->description)){ echo $project->description;} ?></textarea>
+                            <textarea name="project_description" maxlength="191"  cols="80" rows="6"  id="project_description" disabled="disabled" placeholder="This is a place for project descripton, but MO is lazy." style="position: relative; width: 80%"><?php if(!is_null($project->description)){ echo $project->description;} ?></textarea>
+                            <p style="position: absolute; bottom: 30%; right: 23%; display: none; color: #025284" id="char_count_project_p"><span id="char_count_project" >
+                                 @if(!is_null($project->description))
+                                        {{strlen($project->description)}}
+                                    @else
+                                        0
+                                    @endif
 
+                             </span>/191</p>
                             <!--       <div class="read_more_btn">
                                        <h6>read more</h6>
                                    </div> -->
@@ -260,6 +267,9 @@
 @endsection
 
 
+@section('include_js')
+    <script src={{ URL::asset('js/char_counter.js')}}></script>
+@endsection
 
 
 

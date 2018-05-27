@@ -14,7 +14,7 @@ $(document).ready(function () {
         $('#save_profile').css('display', 'none');
         $('#cancel_profile').css('display', 'none');
         $('.delete_icon').css('display', 'none');
-
+        $('.checkbox_div').css('display', 'none');
 
         $('#ln_input').val("");
         $('#twitter_input').val("");

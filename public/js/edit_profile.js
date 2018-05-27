@@ -8,12 +8,13 @@ $(document).ready(function(){
         $('input').prop('disabled', false);
 
         $('textarea').prop('disabled', false);
+
         $('#add_education').css('display', 'block');
         $('#add_experience').css('display', 'block');
         $('#save_profile').css('display', 'block');
         $('#cancel_profile').css('display', 'block');
         $('.delete_icon').css('display', 'inline');
-
+        $('.checkbox_div').css('display', 'block');
         $('#education_section').on('focus', 'input.from_period_education', function(){
            $(this).attr('type', 'date');
         });
@@ -133,7 +134,7 @@ $(document).ready(function(){
                     $('#save_profile').css('display', 'none');
                     $('#cancel_profile').css('display', 'none');
                     $('.delete_icon').css('display', 'none');
-
+                    $('.checkbox_div').css('display', 'none');
                     $('#msg').css('display', 'block');
                     $('#msg').text("Profile saved").delay(2000).fadeOut(1000);
 

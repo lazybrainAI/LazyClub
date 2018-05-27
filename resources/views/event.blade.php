@@ -39,7 +39,15 @@
                 <div class="container details_section" >
                     <div class="row justify-content-between no-gutters">
                         <div class="col-md-8 order-md-1 order-2">
-                            <textarea name="event_description" maxlength="450" cols="80"  id="event_description" disabled="disabled" placeholder="Write something about event. Don't be lazy."><?php if(!is_null($event->description)){ echo $event->description;} ?></textarea>
+                            <textarea name="event_description" maxlength="191" cols="80" rows="6" id="event_description" disabled="disabled" placeholder="Write something about event. Don't be lazy." style="position: relative; width: 50%"><?php if(!is_null($event->description)){ echo $event->description;} ?></textarea>
+                            <p style="position: absolute; bottom: -15%; right: 50%; display: none; color: #025284" id="char_count_event_p"><span id="char_count_event" >
+                                 @if(!is_null($event->description))
+                                        {{strlen($event->description)}}
+                                    @else
+                                        0
+                                    @endif
+
+                             </span>/191</p>
                             <div class="read_more_btn">
                                 <h6>read more</h6>
                             </div>
@@ -207,7 +215,9 @@
 
 @endsection
 
-
+@section('include_js')
+    <script src={{ URL::asset('js/char_counter.js')}}></script>
+@endsection
 
 
 
