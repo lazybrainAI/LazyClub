@@ -20,10 +20,31 @@ else
             if(!is_null($experience->start_date))
                 echo $experience->start_date;} ?>"  disabled="disabled">
 
-        <input name="to_period_experience" class="to_period_experience" type="text" placeholder="To" autocomplete="off" required
+        <input name="to_period_experience" class="to_period_experience" type="text" placeholder="To" autocomplete="off"
                value="<?php if($experience_count!=0) {
                    if(!is_null($experience->end_date))
-                       echo $experience->end_date;} ?>" disabled="disabled">
+                       echo $experience->end_date;} ?>" disabled="disabled" id="to_period_experience_<?php if($experience_count!=0) {
+            if(!is_null($experience->id))
+                echo $experience->id;
+            else echo "";
+        }
+        else
+            echo ""; ?>">
+        <div id="<?php if($experience_count!=0) {
+            if(!is_null($experience->id))
+                echo "experience_" . $experience->id;
+            else echo "";
+        }
+        else
+            echo ""; ?>" style="display: none;" class="checkbox_div"><input type="checkbox" disabled="disabled"  id="current_work_<?php if($experience_count!=0) {
+                if(!is_null($experience->id))
+                echo $experience->id;
+                else echo "";
+            }
+            else
+                echo ""; ?>" name="current_work" class="current_work_chbox" style="vertical-align: middle;
+    display: inline-block;
+    margin-right: 2%;"><label for="current_work">Current work</label> </div>
         <textarea name="description" rows="1" cols="80" maxlength="450" id="position_description" class="expand" required placeholder="Experience description" disabled="disabled"><?php if($experience_count!=0) {
                 if(!is_null($experience->description))
                     echo $experience->description;} ?></textarea>

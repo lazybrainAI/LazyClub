@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     //assigning ids to experience cards when there is still no info inputed by user
-    
+
     var z = 1;
     $('.experience').each(function () {
         if ($(this).attr('id', '')) {
@@ -31,12 +31,16 @@ $(document).ready(function(){
             "        <input name=\"from_period_experience\" class=\"from_period_experience\" type=\"text\"  placeholder=\"From\" required>\n" +
             "\n" +
             "        <input name=\"to_period_experience\" class=\"to_period_experience\" type=\"text\"\n" +
-            "               placeholder=\"To\" required>\n" +
-            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" placeholder=\'Experience description\' required></textarea>\n" +
-            "\n" +
+            "               placeholder=\"To\" id=\"to_period_experience_"+count+"\" required>\n" +
+            "<div id=\"experience_"+count+"\"><input type=\"checkbox\" id=\"current_work_"+count+"\" name=\"current_work\" class=\"current_work_chbox\" style=\"vertical-align: middle;\n" +
+            "    display: inline-block;\n" +
+            "    margin-right: 2%;\"><label for=\"current_work\">Current work</label> </div>\n"+
             "        <a class=\"delete_icon delete_btn\"  style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
             "\n" +
             "    </div>\n" +
+            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" placeholder=\'Experience description\' required></textarea>\n" +
+            "\n" +
+
             "    <div class=\"read_more_btn\">\n" +
             "        <h6>read more</h6>\n" +
             "    </div>\n" +
@@ -93,8 +97,8 @@ $(document).ready(function(){
         });
 
     });
-    
-    
-    
-    
+
+
+
+
 });

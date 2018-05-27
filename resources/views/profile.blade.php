@@ -34,6 +34,7 @@
 
              <form id="profile_form" method="post" accept-charset="UTF-8">
 
+                 @csrf
              <div class="container  container-left-margin">
                  <div class="row">
                      <div class="col-5 col-sm-4 col-md-3  col-lg-2">
@@ -246,6 +247,8 @@
 @section('include_js')
     <script src={{ URL::asset('js/resizeable_fields.js')}}></script>
     <script src={{ URL::asset('js/char_counter.js')}}></script>
+    <script src={{ URL::asset('js/hide_input_field.js')}}></script>
+
 @endsection
 
 
