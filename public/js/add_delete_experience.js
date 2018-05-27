@@ -32,7 +32,7 @@ $(document).ready(function(){
             "\n" +
             "        <input name=\"to_period_experience\" class=\"to_period_experience\" type=\"text\"\n" +
             "               placeholder=\"To\" id=\"to_period_experience_"+count+"\" required>\n" +
-            "<div id=\"experience_"+count+"\"><input type=\"checkbox\" id=\"current_work_"+count+"\" name=\"current_work\" class=\"current_work_chbox\" style=\"vertical-align: middle;\n" +
+            "<div id=\"experience_"+count+"\" class='checkbox_div'><input type=\"checkbox\" id=\"current_work_"+count+"\" name=\"current_work\" class=\"current_work_chbox\" style=\"vertical-align: middle;\n" +
             "    display: inline-block;\n" +
             "    margin-right: 2%;\"><label for=\"current_work\">Current work</label> </div>\n"+
             "        <a class=\"delete_icon delete_btn\"  style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
