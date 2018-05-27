@@ -28,24 +28,25 @@ $(document).ready(function(){
 
                 success:function(data){
 
-                    //remove applicants
+                    //remove other applicants for assigned position
                     var id='#application_'+position;   //----radi
                     $(id).remove();
 
-                    //add info and image about team member
+                    //add info and image about the new team member
 
-                    var info_id="#info_"+position;
+                    var info_id="#info_"+position+ " h6:first-child";
                     $(info_id).text(data.name+" "+data.surname);
 
                     var img="#attendee_"+position; //radi
-                    $(img).attr("src", data.photo);
+                    $(img).attr("src", "/"+data.photo);
 
 
-                    //delete position from select
+                    //delete assigned position from select in the team application form
 
-                    var sel = $("select#team_apply");
-                    sel.find("option[value=position]").remove();
+                    var option_id="#option_"+position;
+                    $(option_id).remove();
 
+                    /*
 
                     //delete application for position
                     $('.applications').each(function(){
@@ -56,9 +57,18 @@ $(document).ready(function(){
                             }
                         });
 
-                    });
+                    }); */
 
-                    //delete open positions
+                    //delete assigned position from open positions in project's details div
+                    var open_postion="#open_position_"+position;
+                    $(open_postion).remove();
+
+
+
+                    //add unclicked class to
+                    var attendee="#attendee_"+position;
+                    $(this).removeClass('not_clicked');
+
 
 
 

@@ -3,11 +3,6 @@
 
 @section('title', 'Project')
 
-@section('include_css')
-    @parent
-    <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
-
-@endsection
 
 
 @section('page_top_picture')
@@ -76,7 +71,7 @@
                                 </select></h6>
                             <br>
                             <h6 class="h7" id="=project_positions">Open positions/ @foreach($open_positions as $open_position)
-                                    <div id="{{"open_position". $open_position->title}}" >{{$open_position->title}}</div>
+                                    <div id="{{"open_position_". $open_position->title}}" >{{$open_position->title}}</div>
                                                                                     @endforeach</h6>
 
 

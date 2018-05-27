@@ -11,8 +11,9 @@
                 <div class="col-sm-12">
                     <label>Select position</label>
                     <select required autocomplete="off" name="open_positions" id="team_apply" form="signup_form">
+                        <option disabled="disabled" selected>Open positions</option>
                         <?php foreach($open_positions as $open_position) {?>
-                        <option><?php echo $open_position->title ?></option>
+                        <option id="option_<?php echo $open_position->title?>"><?php echo $open_position->title ?></option>
                         <?php } ?>
                     </select>
                 </div>

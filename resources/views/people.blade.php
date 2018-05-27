@@ -3,12 +3,6 @@
 @section('title', 'People')
 
 
-@section('include_css')
-    @parent
-    <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
-
-@endsection
-
 
 @section('page_top_picture')
     @parent

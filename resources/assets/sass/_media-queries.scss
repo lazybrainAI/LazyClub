@@ -1,11 +1,10 @@
 
 @media (max-width: 1100px) {
 
-  #sidebar_menu {
+  #sidebar{
+
     padding-left: 0;
     display: block;
-    width: 15%;
-
   }
 
 }
@@ -73,19 +72,7 @@
 }
 
 
-@media (max-width: 590px) {
-  #page_title {
-    width: 50%;
-  }
-  .main_content_section {
-    margin-left: 10px;
-  }
 
-  .document {
-    width: 60%;
-  }
-
-}
 
 @media (max-width: 575px) {
 

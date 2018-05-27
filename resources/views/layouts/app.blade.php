@@ -9,13 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href= {{ URL::asset('css/bootstrap.min.css') }}>
+    <link rel="stylesheet" href= {{ URL::asset('css/app.css') }}>
+
     <link rel="icon" href="{{URL::asset('img/lazybrain.png')}}" type="image/png">
 
+    <title>Lazy Club | @yield('title')</title>
 
-    @section('include_css')
-    @show
 
-    <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>    <title>Lazy Club | @yield('title')</title>
+
 </head>
 <body id="@yield('id')">
 

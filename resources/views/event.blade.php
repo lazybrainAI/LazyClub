@@ -4,13 +4,6 @@
 @section('title', 'Event')
 
 
-@section('include_css')
-    @parent
-    <link rel="stylesheet" href= {{ URL::asset('css/main.css') }}>
-
-@endsection
-
-
 @section('page_top_picture')
     @parent
     @include('/php/page_top_picture')

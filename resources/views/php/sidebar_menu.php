@@ -1,7 +1,7 @@
 <?php $user = \Illuminate\Support\Facades\Auth::user(); ?>
 <nav id="sidebar_menu">
 
-    <div >
+
         <ul style="padding-left:0">
             <li><a class="active" href="/home"><h5>Home</h5></a></li>
             <li ><a href="/events"><h5>Events</h5></a></li>
@@ -14,5 +14,4 @@
                     <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token() ?>">
                 </form></li>
         </ul>
-    </div>
 </nav>
