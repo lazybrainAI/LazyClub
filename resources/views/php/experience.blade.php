@@ -15,14 +15,14 @@
                 <div class="col-md-1">
                     <input name="from_period_experience" class="from_period_experience" type="text" placeholder="From"
                            autocomplete="off" required
-                           value="{{\Carbon\Carbon::parse($experience->start_date)->format('d.m.Y')}}"
+                           value="@if (!is_null($experience->start_date)){{\Carbon\Carbon::parse($experience->start_date)->format('d.m.Y')}}@endif"
                            disabled="disabled">
                 </div>
 
                 <div class="col-md-1 to_period_div" style="margin-left: 2%">
                     <input name="to_period_experience" class="to_period_experience" type="text" placeholder="To"
                            autocomplete="off"
-                           value="{{\Carbon\Carbon::parse($experience->end_date)->format('d.m.Y')}}"
+                           value="@if (!is_null($experience->end_date)){{\Carbon\Carbon::parse($experience->end_date)->format('d.m.Y')}}@endif"
                            disabled="disabled" id="to_period_experience_{{$experience->id}}">
                 </div>
             </div>
