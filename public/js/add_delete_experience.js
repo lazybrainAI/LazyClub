@@ -4,10 +4,29 @@ $(document).ready(function(){
 
     var z = 1;
     $('.experience').each(function () {
-        if ($(this).attr('id', '')) {
+        if ($(this).attr('id')==' ') {
             $(this).attr('id', 'experience_' + z);
         }
         z++;
+    });
+
+
+    $('.experience :input').each(function () {
+
+        if($(this).attr('name')=='current_work'){
+            $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().parent().attr('id').split('_')[1]);
+
+        }
+        else {
+            $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().attr('id').split('_')[1]);
+        }
+
+    });
+
+    $('.experience textarea').each(function () {
+        $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().attr('id').split('_')[1]);
+
+
     });
 
 
@@ -17,36 +36,47 @@ $(document).ready(function(){
     $('#add_experience').click(function () {
 
 
-        var count = $('.experience').length + 1;
-        var id = "experience_" + count;
+        var i=0;
+        $('.experience').each(function () {
+            if ($(this).attr('id')!='') {
+                var id=$(this).attr('id').split('_')[1];
+                if(id>i){
+                    i=id;
+                }
+            }
 
-        var experience = $("<div class=\"col-md-12 click_to_add experience\" >\n" +
-            "\n" +
-            "    <div class=\"experience_div\">\n" +
-            "        <input name=\"company_position\" id=\"position\"\n" +
-            "               placeholder=\"Position\" required> <!--Position-->\n" +
-            "\n" +
-            "        <input name=\"company_name\" id=\"company\"  placeholder=\"Company\" required>\n" +
-            "\n" +
-            "        <input name=\"from_period_experience\" class=\"from_period_experience\" type=\"text\"  placeholder=\"From\" required>\n" +
-            "\n" +
-            "        <input name=\"to_period_experience\" class=\"to_period_experience\" type=\"text\"\n" +
-            "               placeholder=\"To\" id=\"to_period_experience_"+count+"\" required>\n" +
-            "<div id=\"experience_"+count+"\" class='checkbox_div'><input type=\"checkbox\" id=\"current_work_"+count+"\" name=\"current_work\" class=\"current_work_chbox\" style=\"vertical-align: middle;\n" +
-            "    display: inline-block;\n" +
-            "    margin-right: 2%;\"><label for=\"current_work\">Current work</label> </div>\n"+
-            "        <a class=\"delete_icon delete_btn\"  style=\"display:block\"><i class=\"far fa-trash-alt\"></i></a>\n" +
-            "\n" +
-            "    </div>\n" +
-            "        <textarea name=\"description\" rows=\"4\" cols=\"100\" id=\"position_description\" placeholder=\'Experience description\' required></textarea>\n" +
-            "\n" +
+        });
 
-            "    <div class=\"read_more_btn\">\n" +
-            "        <h6>read more</h6>\n" +
-            "    </div>\n" +
-            "\n" +
-            "\n" +
-            "</div>").attr('id', 'experience_' + count);
+
+        i++;
+
+
+        var id = "experience_" + i;
+
+        var experience=document.createElement('div');
+        experience.setAttribute('class', 'col-md-12 click_to_add experience');
+        experience.setAttribute('id', id);
+
+        experience.innerHTML=`<div class="experience_div" >
+
+                                   <input name="company_position_${i}" id="position" placeholder="Position" autocomplete="off" required value="">
+                                   <input name="company_name_${i}" id="company"  disabled="disabled" placeholder="Company" autocomplete="off" required value="">
+                                   <input name="from_period_experience_${i}" class="from_period_experience" type="text" placeholder="From" autocomplete="off" required value="">
+                                   <input name="to_period_experience_${i}" class="to_period_experience" type="text" placeholder="To" autocomplete="off" value="" id="to_period_experience_${i}">
+                                  
+                                   <div class="checkbox_div">
+                                       <input type="checkbox"  name="current_work_${i}" id="current_work_${i}" class="current_work_chbox" style="vertical-align: middle;display: inline-block; margin-right: 2%;">
+                                       <label for="current_work">Current work</label> 
+                                   </div>
+                                    
+                                    <textarea name="description_${i}" rows="1" cols="80" maxlength="450" id="position_description" class="expand" required placeholder="Experience description" ></textarea>
+                                    <a class="delete_icon delete_btn" style="display:block"><i class="far fa-trash-alt"></i></a>
+                                   
+                               
+                                </div>
+                                
+                                `;
+
 
 
         $(experience).appendTo($('#experience_section'));
@@ -81,11 +111,11 @@ $(document).ready(function(){
             success: function (data) {
 
                 parent.remove();
-                var j = 1;
+                /*   var j = 1;
                 $('.experience').each(function () {  //after removin one/more assign new id values
                     $(this).attr('id', 'experience_' + j);
                     j++;
-                });
+                }); */
 
             },
             error: function (data) {

@@ -68,6 +68,15 @@ class UserController extends Controller
 
 
     }
+/*
+
+    public function lastModelId(Model $model){
+
+        return $model::latest()->first()->id;
+
+    } */
+
+
 
     public function getProfileDetails($username)
     {
@@ -121,6 +130,13 @@ class UserController extends Controller
 
         $documents=Document::where('user_id', $user->id)->get();
 
+
+        /*last education and experience id in database
+
+        $education_id=$this->lastModelId(Education::class);
+        $experience_id=$this->lastModelId(Experience::class); */
+
+
         $page_name="profile";
         $button="";
          return view('profile', compact('documents','button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'teams','experience_count','educations', 'education_count', 'page_name'));
@@ -134,7 +150,7 @@ class UserController extends Controller
     public function editProfile(Request $request, $username)
     {
         $user = User::where('username', $username)->get()->first();
-
+/*
         $user->name = $request['user_name'];
         $user->surname = $request['surname'];
         $user->position = $request['user_position'];
@@ -146,6 +162,7 @@ class UserController extends Controller
 
         //social networks
         $socials=array();
+
         $socials['facebook']=$request['facebook'];
         $socials['linkedin']=$request['linkedin'];
         $socials['twitter']=$request['twitter'];
@@ -162,7 +179,7 @@ class UserController extends Controller
                     $social_user->update();
                 }
             }
-        }
+        } */
 
 
 
@@ -172,9 +189,8 @@ class UserController extends Controller
 
 
         // data about education and experience
-        $msg="";
 
-        if ($request->ed_ids!=null) {
+  if($request->ed_ids!=null) {
             $ed_ids = explode(",", $request->ed_ids);
 
             $insts_id = array();
@@ -182,18 +198,19 @@ class UserController extends Controller
             $count = count($ed_ids);
 
 
-        // ------------------ education data --------------
 
+        // ------------------ education data --------------
             for ($i = 0; $i < $count; $i++) {
                 $institution = "institution_" . $ed_ids[$i];
                 $address = "institution_address_" . $ed_ids[$i];
                 $title = "title_" . $ed_ids[$i];
 
-                $institution_name = Input::get($institution);
+                $institution_name =Input::get($institution);
                 $institution_address = Input::get($address);
                 $institutions = Institution::where('name', $institution_name)->get();
                 $title_name = Input::get($title);
                 $titles = Title::where('name', $title_name)->get();
+
 
 
                 if ($institutions->isEmpty()) {
@@ -203,7 +220,6 @@ class UserController extends Controller
                     $inst->address = $institution_address;
                     $inst->save();
                     $insts_id[] = $inst->id;
-                    $msg = "created";
 
                 }
                 if ($titles->isEmpty()) {
@@ -213,13 +229,15 @@ class UserController extends Controller
                     $title->save();
                     $titles_id[] = $title->id;
 
+
                 } else { //title and institution exist
-                    foreach ($institutions as $institution) {
-                        $insts_id[] = $institution->id;
-                    }
-                    foreach ($titles as $title) {
+                        foreach($institutions as $institution){
+                            $insts_id[] = $institution->id;
+
+                        }
+                        foreach($titles as $title)
                         $titles_id[] = $title->id;
-                    }
+
 
                 }
 
@@ -228,12 +246,13 @@ class UserController extends Controller
             //iterate through educations ids and update/create new eudcation record
 
             for ($j = 0; $j < $count; $j++) {
-                $educations = Education::where('id', $ed_ids[$j])->get();
+                $educations = Education::where('id', $ed_ids[$j])->where('user_id', $user->id)->get();
                 $from = "from_period_education_" . $ed_ids[$j];
                 $start_date = Input::get($from);
                 $to = "to_period_education_" . $ed_ids[$j];
                 $end_date = Input::get($to);
                 if ($educations->isEmpty()) {
+
                     Education::create(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
                 } else {
                     Education::where('id', $ed_ids[$j])->update(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
@@ -244,16 +263,20 @@ class UserController extends Controller
         }
 
 
+
+
         // ------------ experience data ----------------
 
 
-
+/*
         if($request->exp_ids!=null) {
             $exp_ids = explode(",", $request->exp_ids);
 
             $companies_id=array();
             $positions_id=array();
             $count_exp = count($exp_ids);
+
+
 
 
             for ($i = 0; $i < $count_exp; $i++) {
@@ -296,7 +319,7 @@ class UserController extends Controller
 
             for ($j = 0; $j < $count_exp; $j++) {
 
-                $experiences = Experience::where('id', $exp_ids[$j])->get();
+                $experiences = Experience::where('id', $exp_ids[$j])->where('user_id', $user->id)->get();
                 $from = "from_period_experience_" . $exp_ids[$j];
                 $start_date = Input::get($from);
                 $to = "to_period_experience_" . $exp_ids[$j];
@@ -311,11 +334,10 @@ class UserController extends Controller
 
                 }
             }
-        }
+        } */
 
 
 
-        return response()->json(['name'=>$msg]);
 
 
 
@@ -323,16 +345,26 @@ class UserController extends Controller
 
 
 
+
     public function deleteExperienceandEducation(Request $request, $username){
+
         $user=User::where('username', $username)->get()->first();
 
         if($request['experience_id']!=null){ //delete experience
             $experience_id=$request['experience_id'];
-            $user->experiences()->where('id',$experience_id)->delete();
+            $experience=Experience::where('id',$experience_id)->where('user_id', $user->id)->get();
+            if(!$experience->isEmpty()) {
+                $experience->first()->delete();
+
+            }
         }
         else{
             $education_id=$request['education_id'];
-            $user->educations()->where('id', $education_id)->delete();
+            $education=Education::where('id',$education_id)->where('user_id', $user->id)->get();
+            if(!$education->isEmpty()) {
+                $education->first()->delete();
+
+            }
         }
     }
 

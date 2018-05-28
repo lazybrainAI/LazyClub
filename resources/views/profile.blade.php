@@ -27,10 +27,11 @@
          </div>
          <div class="col-sm-9 col-md-10  col-xs-12 main_content_section">
 
-             <form id="profile_form" method="post" accept-charset="UTF-8">
+             <form id="profile_form"  accept-charset="UTF-8">
 
                  @csrf
-             <div class="container  container-left-margin">
+
+                 <div class="container  container-left-margin">
                  <div class="row">
                      <div class="col-5 col-sm-4 col-md-3  col-lg-2">
                          <h5 class="section_title">Profile</h5>
@@ -207,13 +208,13 @@
 
                      @endif
 
-                     </div>
                  </div>
-
-
-
-
              </div>
+
+
+
+
+
 
              <button class="save_btn"  id="save_profile" type="submit">
                  <h6>Save changes</h6>

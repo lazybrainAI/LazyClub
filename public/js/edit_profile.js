@@ -36,9 +36,6 @@ $(document).ready(function(){
         $('#linkedin').off('click');
 
 
-
-
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -59,23 +56,14 @@ $(document).ready(function(){
 
             });
 
-            $('.education input').each(function () {
-                $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().attr('id').split('_')[1]);
-            });
+
 
             var exp_ids = [];
             $('.experience').each(function () {
                 exp_ids.push($(this).attr('id').split('_')[1]);
             });
 
-            $('.experience input').each(function () {
-                $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().attr('id').split('_')[1]);
-            });
 
-            $('.experience textarea').each(function () {
-                $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().attr('id').split('_')[1]);
-
-            });
 
 // ------------
 
@@ -135,8 +123,11 @@ $(document).ready(function(){
                     $('#cancel_profile').css('display', 'none');
                     $('.delete_icon').css('display', 'none');
                     $('.checkbox_div').css('display', 'none');
+
                     $('#msg').css('display', 'block');
                     $('#msg').text("Profile saved").delay(2000).fadeOut(1000);
+
+                    console.log(data.msg);
 
                 },
                 error: function (data) {
@@ -147,6 +138,9 @@ $(document).ready(function(){
                     $('#ln_input').val("");
                     $('#twitter_input').val("");
                     $('#fb_input').val("");
+
+                    console.log(data.msg);
+
 
 
                 }

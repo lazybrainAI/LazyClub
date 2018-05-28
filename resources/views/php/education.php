@@ -1,17 +1,15 @@
 
 <div class="col-sm-6 click_to_add education"
-     id="<?php if($education_count!=0) {
-    if(!is_null($education->id))
+     id="<?php
+    if($education_count!=0)
         echo "education_" . $education->id;
     else echo "";
-    }
-    else
-        echo ""; ?>">
+     ?> ">
 
-    <input name="institution" id="institution" type="text" placeholder="Institution" autocomplete="off" value="<?php if($education_count!=0) {if(!is_null($education->institution->name))
+    <input name="institution" class="institution" type="text" placeholder="Institution" autocomplete="off" value="<?php if($education_count!=0) {if(!is_null($education->institution->name))
             echo $education->institution->name;} ?>" disabled="disabled" required> <!-- institution -->
 
-    <input name="institution_address" id="address" type="text" placeholder="Address" autocomplete="off"
+    <input name="institution_address" class="address" type="text" placeholder="Address" autocomplete="off"
            value="<?php if($education_count!=0) {
         if(!is_null($education->institution->address))
             echo $education->institution->address;} ?>" disabled="disabled" required>
