@@ -47,7 +47,8 @@ Route::post('/project/{name}', 'ProjectController@saveReviewOrSaveApplication')-
 
 //Account
 Route::get('/account','AccountController@showDetails')->middleware('auth');
-Route::post('/account','AccountController@changePassword')->middleware('auth');
+//Route::post('/account','AccountController@changePassword')->middleware('auth');
+Route::post('/account','AccountController@changeUsername')->middleware('auth');
 
 //Documents
 

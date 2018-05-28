@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,5 +34,17 @@ class AccountController extends Controller
             $user->password = bcrypt($request->get('new-password'));
             $user->save();
         }
+    }
+    public function changeUsername(Request $request){
+        $request->validate([
+            'new-username' => 'required|unique:users,username',
+        ]);
+//        $username = $request['new-username'];
+        $user_id = Auth::id();
+        $user=User::find($user_id);
+        $user->username = $request['new-username'];
+        $user->save();
+//        $user = User::where('id', 2)->update(['username' => 'Kacacaca']);
+        return $user;
     }
 }
