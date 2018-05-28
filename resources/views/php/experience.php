@@ -37,7 +37,7 @@
             <label for="current_work">Current work</label>
         </div>
 
-        <textarea name="description" rows="1" cols="80" maxlength="450" id="position_description" class="expand" required placeholder="Experience description" disabled="disabled"><?php if($experience_count!=0) {
+        <textarea name="description" rows="1" cols="80" maxlength="450" id="position_description" class="expand"  placeholder="Experience description" disabled="disabled" required><?php if($experience_count!=0) {
                 if(!is_null($experience->description))
                     echo $experience->description;} ?>
         </textarea>
