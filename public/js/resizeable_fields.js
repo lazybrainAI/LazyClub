@@ -6,5 +6,4 @@ function resizable (el) {
     resize();
 }
 resizable(document.getElementById('name'));
-resizable(document.getElementsByClassName('from_period_experience'));
-resizable(document.getElementsByClassName('to_period_experience'));
+

@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </form>
-                    <div id="username_msg">
+                    <div id="password_msg">
                     </div>
                 </div>
                 <div class="container container-left-margin">
@@ -126,7 +126,7 @@
 
 @endsection
 @section('include_js')
-    {{--<script src={{ URL::asset('js/change_pass.js') }}></script>--}}
+    <script src={{ URL::asset('js/change_pass.js') }}></script>
     <script src={{ URL::asset('js/account_update_username.js') }}></script>
 @endsection
 
