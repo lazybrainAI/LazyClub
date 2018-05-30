@@ -42,7 +42,7 @@ $(document).ready(function(){
 
         el.innerHTML=`
                         <input name="institution_${i}" id="institution" type="text" placeholder="Institution"  required> 
-                        <input name="address_${i}" id="address" type="text" placeholder="Address"  required>
+                        <input name="institution_address_${i}" id="address" type="text" placeholder="Address"  required>
                         <input name="from_period_education_${i}" class="from_period_education" type="text" placeholder="From" required>
                         <input name="to_period_education_${i}" class="to_period_education" type="text" placeholder="To"  required>
                         <input name="title_${i}" id="title" type="text" placeholder="Title" required>

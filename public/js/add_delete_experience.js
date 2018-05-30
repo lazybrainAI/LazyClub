@@ -15,6 +15,7 @@ $(document).ready(function(){
 
         if($(this).attr('name')=='current_work'){
             $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().parent().attr('id').split('_')[1]);
+            $(this).attr('id', $(this).attr('id')+  $(this).parent().parent().parent().attr('id').split('_')[1] );
 
         }
         else {
@@ -23,11 +24,7 @@ $(document).ready(function(){
 
     });
 
-    $('.experience textarea').each(function () {
-        $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().attr('id').split('_')[1]);
 
-
-    });
 
 
 

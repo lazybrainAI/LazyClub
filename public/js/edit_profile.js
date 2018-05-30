@@ -15,6 +15,7 @@ $(document).ready(function(){
         $('#cancel_profile').css('display', 'block');
         $('.delete_icon').css('display', 'inline');
         $('.checkbox_div').css('display', 'block');
+
         $('#education_section').on('focus', 'input.from_period_education', function(){
            $(this).attr('type', 'date');
         });
@@ -48,6 +49,7 @@ $(document).ready(function(){
 
     //  experience and education data
 
+
             var ed_ids = [];//ids for education
 
             $('.education').each(function () {
@@ -59,6 +61,7 @@ $(document).ready(function(){
 
 
             var exp_ids = [];
+
             $('.experience').each(function () {
                 exp_ids.push($(this).attr('id').split('_')[1]);
             });
@@ -127,9 +130,27 @@ $(document).ready(function(){
                     $('#msg').css('display', 'block');
                     $('#msg').text("Profile saved").delay(2000).fadeOut(1000);
 
-                    console.log(data.msg);
+
+                    var new_ed_ids=data.new_ed_ids;
+                    for (old_id in new_ed_ids) {
+                        var id=new_ed_ids[old_id].toString();
+                        console.log(id);
+
+                        var old_id="#education_"+old_id;
+                        var new_id="education_"+id;
+                        $(old_id).attr('id', new_id);
+                        var inputs="#education_"+id+" input";
+                        $(inputs).each(function(){
+                            var name=$(this).attr('name').split('_');
+                            var length=name.length;
+                            name[length-1]=id;
+                            name=name.join("_");
+                            $(this).attr('name', name);
+                        });
+                    }
 
                 },
+
                 error: function (data) {
                     $('#msg').css('display', 'block');
                     $('#msg').text("Error occured.").delay(2000).fadeOut(1000);

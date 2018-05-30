@@ -146,7 +146,6 @@
                  <div class="row read_more_btn_parent" id="experience_section">
                      @if($experience_count==0)
                          @include('/php/experience')
-
                      @else
                          @foreach($experiences as $experience)
                              @include('/php/experience')

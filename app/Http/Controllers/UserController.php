@@ -183,6 +183,9 @@ class UserController extends Controller
 
 
 
+        $msg=array();
+        $new_ed_ids=array();
+        $new_exp_ids=array();
 
 
 
@@ -191,61 +194,66 @@ class UserController extends Controller
         // data about education and experience
 
   if($request->ed_ids!=null) {
-            $ed_ids = explode(",", $request->ed_ids);
+
+      $ed_ids = explode(",", $request->ed_ids);
 
             $insts_id = array();
             $titles_id = array();
             $count = count($ed_ids);
 
 
-
         // ------------------ education data --------------
-            for ($i = 0; $i < $count; $i++) {
-                $institution = "institution_" . $ed_ids[$i];
-                $address = "institution_address_" . $ed_ids[$i];
-                $title = "title_" . $ed_ids[$i];
+           for ($i = 0; $i < $count; $i++) {
+
+                $institution = "institution_" . trim($ed_ids[$i]);
+
+               $address = "institution_address_" . trim($ed_ids[$i]);
+                $title = "title_" . trim($ed_ids[$i]);
 
                 $institution_name =Input::get($institution);
                 $institution_address = Input::get($address);
                 $institutions = Institution::where('name', $institution_name)->get();
                 $title_name = Input::get($title);
                 $titles = Title::where('name', $title_name)->get();
+               $msg[]=$ed_ids[$i];
 
 
 
-                if ($institutions->isEmpty()) {
-                    //create institution
-                    $inst = new Institution;
-                    $inst->name = $institution_name;
-                    $inst->address = $institution_address;
-                    $inst->save();
-                    $insts_id[] = $inst->id;
+                               if ($institutions->isEmpty()) {
+                                   //create institution
+                                   $inst = new Institution;
+                                   $inst->name = $institution_name;
+                                   $inst->address = $institution_address;
+                                   $inst->save();
+                                   $insts_id[] = $inst->id;
 
-                }
-                if ($titles->isEmpty()) {
-                    //create title if doesn't exist
-                    $title = new Title;
-                    $title->name = $title_name;
-                    $title->save();
-                    $titles_id[] = $title->id;
-
-
-                } else { //title and institution exist
-                        foreach($institutions as $institution){
-                            $insts_id[] = $institution->id;
-
-                        }
-                        foreach($titles as $title)
-                        $titles_id[] = $title->id;
+                               }
+                               if ($titles->isEmpty()) {
+                                   //create title if doesn't exist
+                                   $title = new Title;
+                                   $title->name = $title_name;
+                                   $title->save();
+                                   $titles_id[] = $title->id;
 
 
-                }
+                               } else { //title and institution exist
+                                       foreach($institutions as $institution){
+                                           $insts_id[] = $institution->id;
+
+                                       }
+                                       foreach($titles as $title){
+                                           $titles_id[] = $title->id;
+
+                                       }
+
+
+                               }
 
             }
 
             //iterate through educations ids and update/create new eudcation record
 
-            for ($j = 0; $j < $count; $j++) {
+           for ($j = 0; $j < $count; $j++) {
                 $educations = Education::where('id', $ed_ids[$j])->where('user_id', $user->id)->get();
                 $from = "from_period_education_" . $ed_ids[$j];
                 $start_date = Input::get($from);
@@ -253,14 +261,26 @@ class UserController extends Controller
                 $end_date = Input::get($to);
                 if ($educations->isEmpty()) {
 
-                    Education::create(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
+
+                    $new_education=Education::create(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
+                    $new_ed_ids[$ed_ids[$j]]=$new_education->id;
+
                 } else {
+                /*    $education=$educations->first();
+                    $education->start_date=$start_date;
+                    $education->end_date=$end_date;
+                    $education->institution_id=$insts_id[$j];
+                    $education->title_id=$titles_id[$j];
+                    $education->save(); */
+
                     Education::where('id', $ed_ids[$j])->update(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
 
                 }
             }
 
-        }
+
+
+  }
 
 
 
@@ -337,6 +357,7 @@ class UserController extends Controller
         } */
 
 
+        return response()->json(['msg'=>$msg, 'new_ed_ids'=>$new_ed_ids]);
 
 
 
