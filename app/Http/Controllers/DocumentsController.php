@@ -67,7 +67,7 @@ class DocumentsController extends Controller
             $msg="Document uploaded!";
             $name=$request['title'];
             $date='/'.$document->date_uploaded;
-            return response()->json(['msg'=>$msg, 'name'=>$name, 'date'=>$date, 'link'=>$dir.$name]);
+            return response()->json(['msg'=>$msg, 'name'=>$name, 'date'=>$date, 'link'=>$dir.$filename]);
 
 
         }
