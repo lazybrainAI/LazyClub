@@ -16,8 +16,8 @@
                     <?php if($existing_projects->isEmpty()){ ?>
                         <option disabled>No projects at the moment.</option>
                     <?php } else {?>
+                        <option selected>Choose project</option>
                         <?php foreach($existing_projects as $existing_project) { ?>
-                            <option selected>Choose project</option>
                             <option><?php echo $existing_project->name?></option>
                         <?php } ?>
                     </select>
@@ -28,11 +28,12 @@
                 </div>
 
                 <div class="modal-footer" id="footer_review">
+                    <div id="doc_uploaded"></div>
                     <button type="submit" class="add_document" form="document_upload_form">Upload</button>
                     <button type="button" class="add_document" data-dismiss="modal">Close</button>
                     <input type="hidden" name="action" value="document">
 
-                    <div id="doc_uploaded"></div>
+
 
                 </div>
 

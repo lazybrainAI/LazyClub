@@ -30,8 +30,8 @@ class PeopleController extends Controller
         $button = "No button";
 
         $users = User::all();
-
-        return view('people', compact('button', 'users'));
+        $positions = SystemRole::where('id', '!=', '4')->get();
+        return view('people', compact('button', 'users', 'positions'));
 
     }
 
@@ -44,14 +44,17 @@ class PeopleController extends Controller
         $user->surname = $request['lastName'];
         $user->username = $request['username'];
         $user->email = $request['email'];
-        $user->photo_link='img/user_icon.png';
+        if ($request['positionsHR'] != null && $request['positionsHR'] != '0' && $request['positionsHR'] != 0) {
+            $user->SystemRole_id = $request['positionsHR'];
+        } else {
+            $sys_role = SystemRole::where('role_name', 'user')->get()->first()->id;
+            $user->SystemRole_id = $sys_role;
+        }
+        $user->photo_link = 'img/user_icon.png';
         $password = str_random(8);
         $user->password = Hash::make($password);
         $user->join_date = Carbon::today();
         $user->status = 'active';
-
-        $sys_role=SystemRole::where('role_name', 'user')->get()->first()->id;
-        $user->SystemRole_id=$sys_role;
         $user->save();
 
         Mail::to($user->email)->send(new SendInformationsToUser($password, $user->username));

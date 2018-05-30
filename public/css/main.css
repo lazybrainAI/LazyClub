@@ -3960,11 +3960,6 @@ body, html {
   width: 7%;
 }
 
-#password_msg {
-  margin-top: 5%;
-  margin-left: 2%;
-}
-
 #account_form_username input {
   padding-left: 5px;
   border-radius: 10px;

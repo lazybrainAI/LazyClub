@@ -130,9 +130,7 @@
                                        @if($user->id!=1)
                                             <a href="/profile/{{$user->username}}">
                                                 <div class="col-md-3">
-
-                                                    <img class="people_img" src={{ URL::asset($user->photo_link) }} />
-
+                                                    <img class="people_img" src={{ URL::asset($user->photo_link) }} title="{{$user->name}} {{$user->surname}}"/>
                                                 </div>
                                             </a>
                                         @endif

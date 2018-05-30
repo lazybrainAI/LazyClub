@@ -29,6 +29,18 @@
                         <input id="usernameHR" type="text" placeholder=""
                                name="username" required autocomplete="off">
                     </div>
+                    <div class="col-sm-12">
+                        <label>Position</label>
+                        <select name="positionsHR" id="project" required>
+                            <?php if($positions->isEmpty()){ ?>
+                                <option disabled>No projects at the moment.</option>
+                            <?php } else {?>
+                            <option value="0" selected>Choose project</option>
+                            <?php foreach($positions as $position) { ?>
+                                <option value="<?php echo $position->id?>"><?php echo $position->role_name?></option>
+                            <?php }} ?>
+                        </select>
+                    </div>
 
                     <div class="modal-footer" >
                         <div id="email_sent"></div>

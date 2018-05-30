@@ -46,17 +46,19 @@ $(document).ready(function(){
                 }
 
 
-                $('#doc_uploaded').text(data.msg);
 
+                $('#doc_uploaded').addClass('allgood').removeClass('notallgood').text('Your document has been uploaded!').show().delay(2000).fadeOut(1000);
 
+                console.log(data);
 
 
             },
 
             error:function(data){
-                form.reset();
-                $('#doc_uploaded').text(data.msg);
-
+               // form.reset();
+                // $('#doc_uploaded').text(data);
+                $('#doc_uploaded').addClass('notallgood').removeClass('allgood').text('Document must be pdf or smaller file.').show().delay(2000).fadeOut(1000);
+                console.log(data);
             }
 
 

@@ -9,9 +9,5 @@ $(document).ready(function () {
         else
             $(e.target).parent('div').parent('div').find('#to_period_experience_'+id).show();
             $(e.target).parent('div').parent('div').find('#to_period_experience_'+id).attr('required', true);
-        //alert(hide_input);
     });
-
-
-
 });
