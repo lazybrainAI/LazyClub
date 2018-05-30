@@ -13,7 +13,7 @@ $(document).ready(function () {
             type: 'POST',
             data: form,
             success: function (data) {
-                $('#email_sent').addClass('allgood').text('New user has been created!').show().delay(2000).fadeOut(1000);
+                $('#email_sent').addClass('allgood').removeClass('notallgood').text('New user has been created!').show().delay(2000).fadeOut(1000);
                 document.getElementById('hr_form').reset();
 
                 var div = document.createElement('div');
@@ -39,7 +39,7 @@ $(document).ready(function () {
             },
             error: function (data) {
                 console.log(data);
-                $('#email_sent').addClass('notallgood').text('Email or username already taken.').show().delay(2000).fadeOut(1000);
+                $('#email_sent').addClass('notallgood').removeClass('allgood').text('Email or username already taken.').show().delay(2000).fadeOut(1000);
             }
         });
     });

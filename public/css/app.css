@@ -3939,7 +3939,7 @@ body, html {
   font-weight: normal;
 }
 
-#account_form input {
+#account_form input, #account_form_username input {
   padding-left: 5px;
   border-radius: 10px;
   border: 1px solid #025284;
@@ -3947,7 +3947,8 @@ body, html {
   color: #025284;
   box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
 }
-#account_form #save_password, #account_form #cancel_password {
+
+#save_username, #cancel_username {
   display: block;
   margin-right: 60%;
   margin-top: 3%;
@@ -3956,34 +3957,39 @@ body, html {
   width: auto;
   max-width: 15%;
 }
-#account_form #cancel_password {
+
+#cancel_username {
   width: 7%;
+}
+
+#save_password, #cancel_password {
+  display: block;
+  margin-right: 60%;
+  margin-top: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
+  width: auto;
+  max-width: 15%;
+}
+
+#cancel_password {
+  width: 7%;
+}
+
+.notallgood {
+  color: red;
+}
+
+.allgood {
+  color: #025284 !important;
 }
 
 #password_msg {
   margin-top: 5%;
-  margin-left: 2%;
 }
 
-#account_form_username input {
-  padding-left: 5px;
-  border-radius: 10px;
-  border: 1px solid #025284;
-  margin-bottom: 20px;
-  color: #025284;
-  box-shadow: 0 3px 15px 0 rgba(46, 61, 73, 0.2);
-}
-#account_form_username #save_username, #account_form_username #cancel_username {
-  display: block;
-  margin-right: 60%;
-  margin-top: 3%;
-  padding-left: 1%;
-  padding-right: 1%;
-  width: auto;
-  max-width: 15%;
-}
-#account_form_username #cancel_username {
-  width: 7%;
+#username_msg {
+  margin-top: 5%;
 }
 
 .section_title {
@@ -4469,7 +4475,7 @@ body, html {
   margin-top: 2%;
   display: inline-block;
 }
-#user_modal input {
+#user_modal input, #user_modal select {
   margin-right: 5%;
   width: 85%;
   height: 8%;
@@ -4837,12 +4843,11 @@ a {
   cursor: pointer;
   border-radius: 5px;
   color: white;
-  border: 1px solid #025284;
+  border: 1px solid white;
   width: auto;
   height: 30px;
   background-color: #07dd85;
   display: inline-block;
-  border-color: white;
   padding-left: 3%;
   padding-right: 3%;
   float: right;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SystemRole;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -14,6 +15,7 @@ class AccountController extends Controller
     public function showDetails()
     {
         $button = "No button";
+
         return view('account', compact('button'));
 
     }
