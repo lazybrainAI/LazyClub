@@ -260,8 +260,6 @@ class UserController extends Controller
                 $to = "to_period_education_" . $ed_ids[$j];
                 $end_date = Input::get($to);
                 if ($educations->isEmpty()) {
-
-
                     $new_education=Education::create(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
                     $new_ed_ids[$ed_ids[$j]]=$new_education->id;
 

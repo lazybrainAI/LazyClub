@@ -147,6 +147,7 @@ $(document).ready(function(){
                             name=name.join("_");
                             $(this).attr('name', name);
                         });
+                        console.log(data);
                     }
 
                 },
@@ -154,7 +155,7 @@ $(document).ready(function(){
                 error: function (data) {
                     $('#msg').css('display', 'block');
                     $('#msg').text("Error occured.").delay(2000).fadeOut(1000);
-
+                    console.log(data);
 
                     $('#ln_input').val("");
                     $('#twitter_input').val("");

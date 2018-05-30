@@ -24,14 +24,18 @@ $(document).ready(function(){
 
         var i=0;
         $('.education').each(function () {
-            var id=$(this).attr('id').split('_')[1];
-            if(id>i){
-                i=id;
+            var elem_id=$(this).attr('id').split('_')[1];
+            if(elem_id>i){
+                i=elem_id;
+                console.log(elem_id);
             }
 
         });
 
         i++;
+        console.log(i);
+
+
 
 
         var id = "education_" + i;
