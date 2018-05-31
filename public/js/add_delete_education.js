@@ -20,7 +20,7 @@ $(document).ready(function(){
 
 
     // adding education on button click
-    $('#add_education').click(function () {
+    $('#add_education').off('click').click(function () {
 
         var i=0;
         $('.education').each(function () {
@@ -60,7 +60,7 @@ $(document).ready(function(){
 
 
     //delete education
-    $('#education_section').on('click', '.delete_icon', function () {
+    $('#education_section').off('click').on('click', '.delete_icon', function () {
 
         // deleting from DB with AJAX
         var parent = $(this).parent();
