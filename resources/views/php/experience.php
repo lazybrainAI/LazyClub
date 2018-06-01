@@ -22,7 +22,7 @@
         <input name="to_period_experience" class="to_period_experience" type="text" placeholder="To" autocomplete="off"
                value="<?php if($experience_count!=0) {
                    if (!is_null($experience->end_date)) {
-                       if (strtotime($experience->end_date) > time()) {
+                       if ( time()<strtotime($experience->end_date) ) {
                            echo "present";
                        } else {
                            echo $experience->end_date;

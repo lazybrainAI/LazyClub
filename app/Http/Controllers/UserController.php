@@ -216,13 +216,11 @@ class UserController extends Controller
                 $current_work="current_work_".$main_ids_array[$j];
                 $present=Input::get($current_work);
                 $start_date = Input::get($from);
+                $to = "to_period_experience_" . $main_ids_array[$j];
+                $end_date = Input::get($to);
 
-                if( $present==true ) {
+                if( $end_date=="present" ) {
                     $end_date=Carbon::now()->addYear(10);
-                }
-                else{
-                    $to = "to_period_experience_" . $main_ids_array[$j];
-                    $end_date = Input::get($to);
                 }
 
                 $description_name = "description_" . $main_ids_array[$j];
