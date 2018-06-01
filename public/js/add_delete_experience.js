@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 
     // adding experience on button click
-    $('#add_experience').click(function () {
+    $('#add_experience').off('click').click(function () {
 
 
         var i=0;
@@ -89,7 +89,7 @@ $(document).ready(function(){
 
     // deleting experience section
 
-    $('#experience_section').on('click', '.delete_icon', function () {
+    $('#experience_section').off('click').on('click', '.delete_icon', function () {
 
         var parent = $(this).parent().parent();
         var experience_id = parent.attr('id').split("_")[1];
