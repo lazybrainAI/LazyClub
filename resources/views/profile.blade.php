@@ -54,7 +54,7 @@
                                     <input class="resizeable_field" name="user_name" id="name" type="text" disabled="disabled" placeholder="Name" value="<?php if(!is_null($user->name)) {echo $user->name;}  ?>" required >
 
 
-                                    <input  name="surname" id="surname" type="text" disabled="disabled" placeholder="Surname" value="<?php if(!is_null($user->surname)) {echo $user->surname;}  ?>"  required>
+                                    <input  name="surname" id="surname" type="text" disabled="disabled" placeholder="Surname" value="<?php if(!is_null($user->surname)) {echo $user->surname;}  ?>"  required style="margin-left: 1%;">
                                     <input name="user_sector" id="sector" type="text" disabled="disabled" placeholder="Sector" value="<?php if(!is_null($user->sector)) { echo $user->sector;} ?>" >
                                     <input name="user_position" id="position" type="text" disabled="disabled" placeholder="Position" value="<?php if(!is_null($user->position)) {echo $user->position;} ?>" >
                                     <input name="user_email" id="email" type="email" disabled="disabled" placeholder="Email" value="<?php if(!is_null($user->email)) { echo $user->email;} ?>" >
@@ -72,7 +72,7 @@
                         <h6>Profile details:</h6>
                         <br>
                         <h6 class="h7" id="join_date">Join date / {{$user->join_date}}</h6>
-                        <h6 class="h7" id="status">Status / <input value="{{$user->status}}" type="text" required disabled="disabled"></h6>
+                        <h6 class="h7" id="status">Status / <input value="{{$user->status}}" type="text" required disabled="disabled" name="status"></h6>
 
                         <h6 class="h7" id="strength">Strength / {{$user->strength}}</h6>
 

@@ -4500,8 +4500,9 @@ body, html {
 }
 
 .resizeable_field {
-  min-width: 55px !important;
+  min-width: 35px !important;
   max-width: 350px !important;
+  width: auto;
   transition: width 0.1s;
   text-align: left;
 }

@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    
+
     // edit profile
 
 
@@ -16,36 +16,44 @@ $(document).ready(function(){
         $('.delete_icon').css('display', 'inline');
         $('.checkbox_div').css('display', 'block');
 
-        $('#education_section').on('focus', 'input.from_period_education', function(){
-           $(this).attr('type', 'date');
-        });
 
-        $('#education_section').on('focus', 'input.to_period_education', function(){
+        $('#education_section').on('focus', 'input.from_period_education', function () {
             $(this).attr('type', 'date');
         });
 
-        $('#experience_section').on('focus', 'input.from_period_experience', function(){
+        $('#education_section').on('focus', 'input.to_period_education', function () {
             $(this).attr('type', 'date');
         });
 
-
-
-        $('#experience_section').on('focus', 'input.to_period_experience', function(){
+        $('#experience_section').on('focus', 'input.from_period_experience', function () {
             $(this).attr('type', 'date');
         });
 
 
+        $('#experience_section').on('focus', 'input.to_period_experience', function () {
+            $(this).attr('type', 'date');
+        });
 
 
         $('#linkedin').off('click');
 
+        $('.experience').each(function () {
+            if ($(this).find('to_period_experience')) {
+                if ($(this).children('to_period_experience').attr('value', 'present')) {
+                    console.log('jeste');
+                    var to_period_id = $(this).attr('id').split('_')[1];
+                    $('#current_work_' + to_period_id).prop('checked', true);
+                    console.log(to_period_id);
+
+                }
 
 
+            }
 
+        });
 
 
     });
-
 
 
     $('#profile_form').submit(function (e) {
@@ -73,7 +81,6 @@ $(document).ready(function(){
         });
 
 
-
         var exp_ids = [];
 
         $('.experience').each(function () {
@@ -81,9 +88,7 @@ $(document).ready(function(){
         });
 
 
-
 // ------------
-
 
 
         var data = $('#profile_form').serializeArray();
@@ -97,32 +102,31 @@ $(document).ready(function(){
             data: data,
             success: function (data) {
 
-                if($('#twitter_input').val()==""){
+                if ($('#twitter_input').val() == "") {
                     $('#twitter').attr('href', '#');
 
                 }
-                else{
+                else {
                     $('#twitter').attr('href', $('#twitter_input').val());
 
                 }
-                if($('#fb_input').val()==""){
+                if ($('#fb_input').val() == "") {
                     $('#fb').attr('href', '#');
 
                 }
-                else{
+                else {
                     $('#fb').attr('href', $('#fb_input').val());
 
                 }
 
-                if($('#ln_input').val()==""){
+                if ($('#ln_input').val() == "") {
                     $('#linkedin').attr('href', '#');
 
                 }
-                else{
+                else {
                     $('#linkedin').attr('href', $('#ln_input').val());
 
                 }
-
 
 
                 $('#ln_input').val("");
@@ -144,12 +148,12 @@ $(document).ready(function(){
                 $('#msg').text("Profile saved").delay(2000).fadeOut(1000);
 
 
-                var new_ed_ids=data.new_ed_ids;
-                var new_exp_ids=data.new_exp_ids;
-                if(new_ed_ids!=null){
+                var new_ed_ids = data.new_ed_ids;
+                var new_exp_ids = data.new_exp_ids;
+                if (new_ed_ids != null) {
                     assignInputIds(new_ed_ids, "education");
                 }
-                if(new_exp_ids!=null){
+                if (new_exp_ids != null) {
                     assignInputIds(new_exp_ids, "experience");
                 }
 
@@ -168,47 +172,43 @@ $(document).ready(function(){
                 console.log(data.msg);
 
 
-
             }
 
         });
 
 
     });
-    
-    
-    
-    
-    
+
+
 });
 
 
-function assignInputIds(ids_array, input_name){
+function assignInputIds(ids_array, input_name) {
 
     for (old_id in ids_array) {
-        if(old_id!=ids_array[old_id]){
+        if (old_id != ids_array[old_id]) {
 
-            var id=ids_array[old_id].toString();
-            var old_id="#"+input_name+"_"+old_id;
-            var new_id=input_name+"_"+id;
+            var id = ids_array[old_id].toString();
+            var old_id = "#" + input_name + "_" + old_id;
+            var new_id = input_name + "_" + id;
             $(old_id).attr('id', new_id);
 
-            var inputs="#"+input_name+"_"+id+" input";
-            $(inputs).each(function(){
-                if($(this).attr('class')=='current_work_chbox'){
+            var inputs = "#" + input_name + "_" + id + " input";
+            $(inputs).each(function () {
+                if ($(this).attr('class') == 'current_work_chbox') {
 
-                    var name=$(this).attr('id').split('_');
-                    var length=name.length;
-                    name[length-1]=id;
-                    name=name.join("_");
+                    var name = $(this).attr('id').split('_');
+                    var length = name.length;
+                    name[length - 1] = id;
+                    name = name.join("_");
                     $(this).attr('id', name);
 
                 }
 
-                var name=$(this).attr('name').split('_');
-                var length=name.length;
-                name[length-1]=id;
-                name=name.join("_");
+                var name = $(this).attr('name').split('_');
+                var length = name.length;
+                name[length - 1] = id;
+                name = name.join("_");
                 $(this).attr('name', name);
             });
 
