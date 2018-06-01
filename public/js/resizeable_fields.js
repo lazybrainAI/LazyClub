@@ -1,5 +1,5 @@
 function resizable (el) {
-    var int = 8.8;
+    var int = 9;
     function resize() {el.style.width = ((el.value.length+1) * int) + 'px'}
     var e = 'keyup,keypress,focus,blur,change'.split(',');
     for (var i in e) el.addEventListener(e[i],resize,false);
