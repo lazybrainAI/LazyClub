@@ -8,8 +8,16 @@ $(document).ready(function () {
         $('select').prop('disabled', false);
         $('textarea').prop('disabled', false);
 
-        var name= $('#project').text();
-        var form=$('#project_form');
+
+
+    });
+
+
+
+    $('#project_form').submit(function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
 
         $.ajaxSetup({
             headers: {
@@ -17,37 +25,34 @@ $(document).ready(function () {
             }
         });
 
-        $(form).submit(function (e) {
-
-            e.preventDefault();
-            e.stopPropagation();
-
-            $.ajax({
-
-                url:'/project/'+name,
-                type:'PUT',
-                data:form.serialize(),
-
-                success:function (data) {
-                    $('#save_project').css('display', 'none');
-                    $('#cancel_project').css('display', 'none');
-                    $('input').prop('disabled', true);
-                    $('select').prop('disabled', true);
-                    $('textarea').prop('disabled', true);
+        var form=$('#project_form');
+        var name= $('#project').text();
 
 
 
-                    //  $('.msg').text(data.name);
-                },
-                error:function(data){
-                    console.log("error");
+        $.ajax({
 
-                }
+            url:'/project/'+name,
+            type:'PUT',
+            data:form.serialize(),
 
-            });
+            success:function (data) {
+                $('#save_project').css('display', 'none');
+                $('#cancel_project').css('display', 'none');
+                $('input').prop('disabled', true);
+                $('select').prop('disabled', true);
+                $('textarea').prop('disabled', true);
+
+
+
+                //  $('.msg').text(data.name);
+            },
+            error:function(data){
+                console.log("error");
+
+            }
 
         });
-
 
     });
 

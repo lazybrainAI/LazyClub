@@ -28,6 +28,10 @@ $(document).ready(function () {
             success:function (data) {
                 form.reset();
 
+                if(data.photo!=null){
+                    $('.profile_img').prop('src', '/'+data.photo);
+                }
+
                 $('#img_uploaded').text(data.msg);
             },
 

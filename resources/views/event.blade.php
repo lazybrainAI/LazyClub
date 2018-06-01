@@ -138,6 +138,7 @@
                                    @if($attendees->isEmpty())
                                        <div style="width:100%; text-align: center;" id="no_attendees_msg"><p>No attendees yet.</p></div>
                                    @else
+
                                         @foreach($attendees as $attendee)
                                             <div class="col-6 col-sm-4 event_attendee" id="attendee_{{$attendee->user->id}}">
                                                 <div  style="margin-bottom:20px">
@@ -149,9 +150,8 @@
                                                 </div>
                                             </div>
                                         @endforeach
+
                                     @endif
-
-
 
                                 </div>
                          <!--   </div> -->

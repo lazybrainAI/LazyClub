@@ -46,7 +46,7 @@
                         <div class="container user_info_section">
                             <div class="row align-items-center">
                                 <div class="col-xs-6 profile_img_div">
-                                    <img class="profile_img" src={{ URL::asset($user->photo_link) }} />
+                                    <img class="profile_img" src={{ URL::asset($user->photo_link) }}  />
                                     <button type="button" data-toggle="modal" data-target="#image_upload_modal"><i class="fas fa-camera fa-3x"></i></button>
                                 </div>
 

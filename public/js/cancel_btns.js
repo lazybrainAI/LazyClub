@@ -22,6 +22,10 @@ $(document).ready(function () {
 
     });
 
+    // -------- event cancel button
+
+
+
     $('#cancel_event').click(function(){
 
         $('input').prop('disabled', true);
@@ -30,6 +34,10 @@ $(document).ready(function () {
         $('#save_event').css('display', 'none');
         $('#cancel_event').css('display', 'none');
     });
+
+
+
+    // ------- project cancel button
 
     $('#cancel_project').click(function(){
 
@@ -44,11 +52,6 @@ $(document).ready(function () {
 
 
 
-    // -------- event cancel button
-
-
-
-    // ------- project cancel button
 
 
 });

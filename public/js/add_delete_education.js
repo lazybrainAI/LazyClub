@@ -20,7 +20,9 @@ $(document).ready(function(){
 
 
     // adding education on button click
-    $('#add_education').off('click').click(function () {
+
+    $('#add_education').off('click').click(function (e) {
+        e.stopImmediatePropagation();
 
         var i=0;
         $('.education').each(function () {
@@ -57,7 +59,9 @@ $(document).ready(function(){
 
 
     //delete education
-    $('#education_section').off('click').on('click', '.delete_icon', function () {
+    $('#education_section').off('click').on('click', '.delete_icon', function (e) {
+
+        e.stopImmediatePropagation();
 
         // deleting from DB with AJAX
         var parent = $(this).parent();

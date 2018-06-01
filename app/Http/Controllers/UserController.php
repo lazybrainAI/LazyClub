@@ -219,7 +219,6 @@ class UserController extends Controller
 
                 if( $present==true ) {
                     $end_date=Carbon::now()->addYear(10);
-                    // there is something for 'test'
                 }
                 else{
                     $to = "to_period_experience_" . $main_ids_array[$j];
@@ -376,12 +375,17 @@ class UserController extends Controller
 
             $msg="Saved";
 
-        }
-        else{
-            $msg="Not an image";
+            return response()->json(['msg'=>$msg, 'photo'=>$dir.$filename]);
+
         }
 
-        return response()->json(['msg'=>$msg]);
+        else{
+
+            $msg="Not an image";
+            return response()->json(['msg'=>$msg]);
+
+        }
+
 
 
     }

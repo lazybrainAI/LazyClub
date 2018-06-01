@@ -13,13 +13,15 @@ $(document).ready(function(){
 
     $('.experience :input').each(function () {
 
-        if($(this).attr('class')=='to_period_experience' ){
+        if($(this).attr('class')=='to_period_experience' && $(this).attr('id').split('_')[ $(this).attr('id').split('_').length-1 ] == '_'){
             $(this).attr('id', $(this).attr('id') + $(this).parent().parent().attr('id').split('_')[1]  );
         }
 
         if($(this).attr('name')=='current_work'){
             $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().parent().attr('id').split('_')[1]);
-            $(this).attr('id', $(this).attr('id')+  $(this).parent().parent().parent().attr('id').split('_')[1] );
+
+            if($(this).attr('id').split('_')[ $(this).attr('id').split('_').length-1 ] == '_')
+                $(this).attr('id', $(this).attr('id')+  $(this).parent().parent().parent().attr('id').split('_')[1] );
 
         }
         else {
@@ -34,8 +36,9 @@ $(document).ready(function(){
 
 
     // adding experience on button click
-    $('#add_experience').off('click').click(function () {
 
+    $('#add_experience').off('click').click(function (e) {
+        e.stopImmediatePropagation();
 
         var i=0;
         $('.experience').each(function () {
@@ -88,8 +91,10 @@ $(document).ready(function(){
 
 
     // deleting experience section
+    $('#experience_section').off('click').on('click', '.delete_icon', function (e) {
 
-    $('#experience_section').off('click').on('click', '.delete_icon', function () {
+        e.stopImmediatePropagation();
+
 
         var parent = $(this).parent().parent();
         var experience_id = parent.attr('id').split("_")[1];
