@@ -16,6 +16,8 @@ use App\Company;
 use Illuminate\Support\Facades\Input;
 use App\Team;
 use App\Document;
+use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -68,14 +70,6 @@ class UserController extends Controller
 
 
     }
-/*
-
-    public function lastModelId(Model $model){
-
-        return $model::latest()->first()->id;
-
-    } */
-
 
 
     public function getProfileDetails($username)
@@ -107,7 +101,7 @@ class UserController extends Controller
 
         //user's projects
 
-            $projects=$this->getUserProjects($user);
+        $projects=$this->getUserProjects($user);
 
         //teams
         $teams=array();
@@ -116,13 +110,11 @@ class UserController extends Controller
         }
 
 
-
-
         //user's company
         $experiences=$user->experiences;
         $experience_count=$experiences->count();
 
-         //user's education
+        //user's education
         $educations=$user->educations;
         $education_count=$educations->count();
 
@@ -130,23 +122,138 @@ class UserController extends Controller
 
         $documents=Document::where('user_id', $user->id)->get();
 
-
-        /*last education and experience id in database
-
-        $education_id=$this->lastModelId(Education::class);
-        $experience_id=$this->lastModelId(Experience::class); */
-
-
         $page_name="profile";
         $button="";
-         return view('profile', compact('documents','button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'teams','experience_count','educations', 'education_count', 'page_name'));
+        return view('profile', compact('documents','button','user', 'fb' , 'twitter', 'linked', 'projects', 'experiences', 'teams','experience_count','educations', 'education_count', 'page_name'));
     }
 
-    /**
-     * @param Request $request
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
+
+    private function createTable( $model, $column_value){
+
+        $table = new $model;
+        $table->name = $column_value;
+        $table->save();
+        return $table->id;
+    }
+
+    private function createORupdateEduExp($user, $ids_array_1, $ids_array_2, $main_ids_array, $count, $model1,  $model2,  $main_model, $input_name_1_part, $input_name_2_part){
+
+        $new_main_ids=array();
+
+        for ($i = 0; $i < $count; $i++) {
+
+            $input_name_1 = $input_name_1_part . trim($main_ids_array[$i]);
+            $input_name_2 = $input_name_2_part . trim($main_ids_array[$i]);
+            $input_value_1 =Input::get($input_name_1);
+            $input_value_2 = Input::get($input_name_2);
+            $table_rows_1 = $model1::where('name', $input_value_1)->get();
+            $table_rows_2 = $model2::where('name', $input_value_2)->get();
+
+
+            if ($table_rows_1->isEmpty()) {
+                //create institution
+                if($model1==Institution::class){
+                    $ids_array_1[]=$this->createTable(Institution::class, $input_value_1);
+                }
+                else{
+                    $ids_array_1[]=$this->createTable(Company::class, $input_value_1);
+                }
+
+            }
+            if ($table_rows_2->isEmpty()) {
+                //create title if doesn't exist
+                if($model2==Title::class) {
+                    $ids_array_2[] = $this->createTable(Title::class, $input_value_2);;
+                }
+                else{
+                    $ids_array_2[] = $this->createTable(Position::class, $input_value_2);
+                }
+
+
+            } else { //rows exist
+                foreach($table_rows_1 as $table_row_1){
+                    $ids_array_1[] = $table_row_1->id;
+
+                }
+                foreach($table_rows_2 as $table_row_2){
+                    $ids_array_2[] = $table_row_2->id;
+
+                }
+
+
+            }
+
+        }
+
+        //iterate through educations ids and update/create new eudcation record
+
+        for ($j = 0; $j < $count; $j++) {
+
+            if($main_model==Education::class) {
+                $from = "from_period_education_" . $main_ids_array[$j];
+                $to = "to_period_education_" . $main_ids_array[$j];
+                $start_date = Input::get($from);
+                $end_date = Input::get($to);
+
+                $main_model_rows = $main_model::where('id', $main_ids_array[$j])->where('user_id', $user->id)->get();
+
+                if($main_model_rows->isEmpty()) {
+
+                $new_main_row = Education::create([ 'start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $ids_array_1[$j], 'title_id' => $ids_array_2[$j] ]);
+                $new_main_ids[$main_ids_array[$j]] = $new_main_row->id;
+
+                }
+
+                else{
+                    Education::where('id', $main_ids_array[$j])->update(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $ids_array_1[$j], 'title_id' => $ids_array_2[$j] ]);
+
+                }
+            }
+
+
+            if($main_model==Experience::class){
+                $from = "from_period_experience_" . $main_ids_array[$j];
+                $current_work="current_work_".$main_ids_array[$j];
+                $present=Input::get($current_work);
+                $start_date = Input::get($from);
+
+                if( $present==true ) {
+                    $end_date=Carbon::now()->addYear(10);
+                    // there is something for 'test'
+                }
+                else{
+                    $to = "to_period_experience_" . $main_ids_array[$j];
+                    $end_date = Input::get($to);
+                }
+
+                $description_name = "description_" . $main_ids_array[$j];
+                $description = Input::get($description_name);
+
+                $main_model_rows = $main_model::where('id', $main_ids_array[$j])->where('user_id', $user->id)->get();
+
+
+                if( $main_model_rows->isEmpty()) {
+
+                    $new_main_row=Experience::create(['start_date' => $start_date, 'end_date' => $end_date, 'description' => $description, 'user_id' => $user->id, 'company_id' => $ids_array_1[$j], 'position_id' => $ids_array_2[$j]]);
+                    $new_main_ids[$main_ids_array[$j]] = $new_main_row->id;
+                }
+                else{
+                    Experience::where('id', $main_ids_array[$j])->update(['start_date' => $start_date, 'end_date' => $end_date, 'description' => $description, 'user_id' => $user->id, 'company_id' => $ids_array_1[$j], 'position_id' => $ids_array_2[$j]]);
+
+                }
+
+            }
+
+
+        }
+
+        return $new_main_ids;
+
+    }
+
+
+
+
     public function editProfile(Request $request, $username)
     {
         $user = User::where('username', $username)->get()->first();
@@ -183,185 +290,38 @@ class UserController extends Controller
 
 
 
-        $msg=array();
-        $new_ed_ids=array();
-        $new_exp_ids=array();
-
-
-
-
-
         // data about education and experience
+        $new_ed_ids=null;
+        $new_exp_ids=null;
 
-  if($request->ed_ids!=null) {
+        // ------------ education data ----------------
 
-      $ed_ids = explode(",", $request->ed_ids);
+        if($request->ed_ids!=null) {
 
+            $ed_ids = explode(",", $request->ed_ids);
             $insts_id = array();
             $titles_id = array();
             $count = count($ed_ids);
 
+            $new_ed_ids=$this->createORupdateEduExp($user, $insts_id, $titles_id, $ed_ids, $count, Institution::class, Title::class, Education::class, "institution_", "title_");
 
-        // ------------------ education data --------------
-           for ($i = 0; $i < $count; $i++) {
-
-                $institution = "institution_" . trim($ed_ids[$i]);
-
-               $address = "institution_address_" . trim($ed_ids[$i]);
-                $title = "title_" . trim($ed_ids[$i]);
-
-                $institution_name =Input::get($institution);
-                $institution_address = Input::get($address);
-                $institutions = Institution::where('name', $institution_name)->get();
-                $title_name = Input::get($title);
-                $titles = Title::where('name', $title_name)->get();
-               $msg[]=$ed_ids[$i];
-
-
-
-                               if ($institutions->isEmpty()) {
-                                   //create institution
-                                   $inst = new Institution;
-                                   $inst->name = $institution_name;
-                                   $inst->address = $institution_address;
-                                   $inst->save();
-                                   $insts_id[] = $inst->id;
-
-                               }
-                               if ($titles->isEmpty()) {
-                                   //create title if doesn't exist
-                                   $title = new Title;
-                                   $title->name = $title_name;
-                                   $title->save();
-                                   $titles_id[] = $title->id;
-
-
-                               } else { //title and institution exist
-                                       foreach($institutions as $institution){
-                                           $insts_id[] = $institution->id;
-
-                                       }
-                                       foreach($titles as $title){
-                                           $titles_id[] = $title->id;
-
-                                       }
-
-
-                               }
-
-            }
-
-            //iterate through educations ids and update/create new eudcation record
-
-           for ($j = 0; $j < $count; $j++) {
-                $educations = Education::where('id', $ed_ids[$j])->where('user_id', $user->id)->get();
-                $from = "from_period_education_" . $ed_ids[$j];
-                $start_date = Input::get($from);
-                $to = "to_period_education_" . $ed_ids[$j];
-                $end_date = Input::get($to);
-                if ($educations->isEmpty()) {
-                    $new_education=Education::create(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
-                    $new_ed_ids[$ed_ids[$j]]=$new_education->id;
-
-                } else {
-                /*    $education=$educations->first();
-                    $education->start_date=$start_date;
-                    $education->end_date=$end_date;
-                    $education->institution_id=$insts_id[$j];
-                    $education->title_id=$titles_id[$j];
-                    $education->save(); */
-
-                    Education::where('id', $ed_ids[$j])->update(['start_date' => $start_date, 'end_date' => $end_date, 'user_id' => $user->id, 'institution_id' => $insts_id[$j], 'title_id' => $titles_id[$j]]);
-
-                }
-            }
-
-
-
-  }
-
-
-
+        }
 
         // ------------ experience data ----------------
 
-
-/*
         if($request->exp_ids!=null) {
             $exp_ids = explode(",", $request->exp_ids);
-
             $companies_id=array();
             $positions_id=array();
             $count_exp = count($exp_ids);
 
+            $new_exp_ids=$this->createORupdateEduExp($user, $companies_id, $positions_id, $exp_ids, $count_exp, Company::class, Position::class, Experience::class, "company_name_", "company_position_");
 
+        }
 
-
-            for ($i = 0; $i < $count_exp; $i++) {
-                $company = "company_name_" . $exp_ids[$i];
-                $position = "company_position_" . $exp_ids[$i];
-
-                $company_name = Input::get($company);
-                $companies = Company::where('company_name', $company_name)->get();
-                $position_name = Input::get($position);
-                $positions = Position::where('name', $position_name)->get();
-
-
-                if ($companies->isEmpty()) {
-                    //create company if it doesn't exist
-                    $comp = new Company;
-                    $comp->company_name = $company_name;
-                    $comp->save();
-                    $companies_id[] = $comp->id;
-                }
-                if ($positions->isEmpty()) {
-                    //create position if doesn't exist
-                    $position = new Position;
-                    $position->name = $position_name;
-                    $position->save();
-                    $positions_id[] = $position->id;
-
-                } else { //title and institution exist
-                    foreach ($positions as $position) {
-                        $positions_id[] = $position->id;
-                    }
-                    foreach ($companies as $company) {
-                        $companies_id[] = $company->id;
-                    }
-
-                }
-
-            }
-
-            // insert or update experience record
-
-            for ($j = 0; $j < $count_exp; $j++) {
-
-                $experiences = Experience::where('id', $exp_ids[$j])->where('user_id', $user->id)->get();
-                $from = "from_period_experience_" . $exp_ids[$j];
-                $start_date = Input::get($from);
-                $to = "to_period_experience_" . $exp_ids[$j];
-                $end_date = Input::get($to);
-                $description_name = "description_" . $exp_ids[$j];
-                $description = Input::get($description_name);
-
-                if ($experiences->isEmpty()) {
-                    Experience::create(['start_date' => $start_date, 'end_date' => $end_date, 'description' => $description, 'user_id' => $user->id, 'company_id' => $companies_id[$j], 'position_id' => $positions_id[$j]]);
-                } else {
-                    Experience::where('id', $exp_ids[$j])->update(['start_date' => $start_date, 'end_date' => $end_date, 'description' => $description, 'user_id' => $user->id, 'company_id' => $companies_id[$j], 'position_id' => $positions_id[$j]]);
-
-                }
-            }
-        } */
-
-
-        return response()->json(['msg'=>$msg, 'new_ed_ids'=>$new_ed_ids]);
-
-
-
+        return response()->json(['new_ed_ids'=>$new_ed_ids, 'new_exp_ids'=>$new_exp_ids]);
 
     }
-
 
 
 
@@ -395,7 +355,6 @@ class UserController extends Controller
 
         if($request->hasFile('image')){
 
-
             $this->validate($request, [
 
                 'image' => 'required|mimes:png,jpg,jpeg||max:2048',
@@ -405,7 +364,6 @@ class UserController extends Controller
                 'image.max'=>'Image is too big'
 
             ]);
-
 
             $extension = $request->file('image')->getClientOriginalExtension();
             $dir = 'img/'.$user->id.'/profile/';
@@ -423,13 +381,9 @@ class UserController extends Controller
             $msg="Not an image";
         }
 
-
-
         return response()->json(['msg'=>$msg]);
 
 
     }
-
-
 
 }

@@ -28,9 +28,13 @@ $(document).ready(function(){
             $(this).attr('type', 'date');
         });
 
+
+
         $('#experience_section').on('focus', 'input.to_period_experience', function(){
             $(this).attr('type', 'date');
         });
+
+
 
 
 
@@ -46,6 +50,9 @@ $(document).ready(function(){
         var id = $('.personal_info').attr('id');
 
         $('#profile_form').submit(function (e) {
+
+            e.preventDefault();
+            e.stopPropagation();
 
     //  experience and education data
 
@@ -70,8 +77,7 @@ $(document).ready(function(){
 
 // ------------
 
-            e.preventDefault();
-            e.stopPropagation();
+
 
             var data = $('#profile_form').serializeArray();
             data.push({name: 'ed_ids', value: ed_ids});
@@ -132,23 +138,14 @@ $(document).ready(function(){
 
 
                     var new_ed_ids=data.new_ed_ids;
-                    for (old_id in new_ed_ids) {
-                        var id=new_ed_ids[old_id].toString();
-                        console.log(id);
-
-                        var old_id="#education_"+old_id;
-                        var new_id="education_"+id;
-                        $(old_id).attr('id', new_id);
-                        var inputs="#education_"+id+" input";
-                        $(inputs).each(function(){
-                            var name=$(this).attr('name').split('_');
-                            var length=name.length;
-                            name[length-1]=id;
-                            name=name.join("_");
-                            $(this).attr('name', name);
-                        });
-                        console.log(data);
+                    var new_exp_ids=data.new_exp_ids;
+                    if(new_ed_ids!=null){
+                       assignInputIds(new_ed_ids, "education");
                     }
+                    if(new_exp_ids!=null){
+                        assignInputIds(new_exp_ids, "experience");
+                    }
+
 
                 },
 
@@ -180,3 +177,37 @@ $(document).ready(function(){
     
     
 });
+
+
+function assignInputIds(ids_array, input_name){
+
+    for (old_id in ids_array) {
+        if(old_id!=ids_array[old_id]){
+
+            var id=ids_array[old_id].toString();
+            var old_id="#"+input_name+"_"+old_id;
+            var new_id=input_name+"_"+id;
+            $(old_id).attr('id', new_id);
+
+            var inputs="#"+input_name+"_"+id+" input";
+            $(inputs).each(function(){
+                if($(this).attr('class')=='current_work'){
+                    var name=$(this).attr('id').split('_');
+                    var length=name.length;
+                    name[length-1]=id;
+                    name=name.join("_");
+                    $(this).attr('id', name);
+
+                }
+                var name=$(this).attr('name').split('_');
+                var length=name.length;
+                name[length-1]=id;
+                name=name.join("_");
+                $(this).attr('name', name);
+            });
+
+        }
+    }
+
+
+}

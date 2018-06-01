@@ -4180,6 +4180,11 @@ body, html {
   transition: all 0.9s ease;
 }
 
+.not_vissible {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 .add_section {
   margin-left: 35px;
   margin-top: 30px;

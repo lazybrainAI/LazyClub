@@ -13,6 +13,10 @@ $(document).ready(function(){
 
     $('.experience :input').each(function () {
 
+        if($(this).attr('class')=='to_period_experience' ){
+            $(this).attr('id', $(this).attr('id') + $(this).parent().parent().attr('id').split('_')[1]  );
+        }
+
         if($(this).attr('name')=='current_work'){
             $(this).attr('name', $(this).attr('name') + "_" + $(this).parent().parent().parent().attr('id').split('_')[1]);
             $(this).attr('id', $(this).attr('id')+  $(this).parent().parent().parent().attr('id').split('_')[1] );
@@ -57,7 +61,7 @@ $(document).ready(function(){
         experience.innerHTML=`<div class="experience_div" >
 
                                    <input name="company_position_${i}" id="position" placeholder="Position" autocomplete="off" required value="">
-                                   <input name="company_name_${i}" id="company"  disabled="disabled" placeholder="Company" autocomplete="off" required value="">
+                                   <input name="company_name_${i}" id="company"  placeholder="Company" autocomplete="off" required value="">
                                    <input name="from_period_experience_${i}" class="from_period_experience" type="text" placeholder="From" autocomplete="off" required value="">
                                    <input name="to_period_experience_${i}" class="to_period_experience" type="text" placeholder="To" autocomplete="off" value="" id="to_period_experience_${i}">
                                   
@@ -66,7 +70,7 @@ $(document).ready(function(){
                                        <label for="current_work">Current work</label> 
                                    </div>
                                     
-                                    <textarea name="description_${i}" rows="1" cols="80" maxlength="450" id="position_description" class="expand" required placeholder="Experience description" ></textarea>
+                                    <textarea name="description_${i}" rows="1" cols="80" maxlength="450" id="position_description" class="expand" required="required" placeholder="Experience description"></textarea>
                                     <a class="delete_icon delete_btn" style="display:block"><i class="far fa-trash-alt"></i></a>
                                    
                                
