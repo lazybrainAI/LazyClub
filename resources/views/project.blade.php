@@ -188,7 +188,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7  attendees">
+                        <div class="col-md-7 attendees">
                             <div class="container">
                                 <div class="row">
                                     @foreach($existing_positions as $existing_position=>$user)

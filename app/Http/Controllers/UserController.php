@@ -220,9 +220,8 @@ class UserController extends Controller
                 $end_date = Input::get($to);
 
 
-                if( $end_date=="present" ) {
+                if( $present==true) {
                     $end_date=Carbon::now()->addYear(10);
-
                 }
 
                 $description_name = "description_" . $main_ids_array[$j];

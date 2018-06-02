@@ -23,7 +23,7 @@ $(document).ready(function(){
             success: function(data){
 
                 var attendee="#attendee_"+user_clicked;
-                $(attendee).remove();
+                $(attendee).parent().remove();
 
 
                 $('.ungoing_btn').addClass('going_btn');

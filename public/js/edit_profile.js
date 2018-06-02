@@ -37,11 +37,12 @@ $(document).ready(function () {
 
         $('#linkedin').off('click');
 
-        $('.experience').each(function () {
-            if ($(this).find('to_period_experience')) {
-                if ($(this).children('to_period_experience').attr('value', 'present')) {
+        $('.experience input').each(function () {
+            if ($(this).attr('class')=="to_period_experience") {
+                if ($(this).attr('value')=='present') {
                     console.log('jeste');
-                    var to_period_id = $(this).attr('id').split('_')[1];
+                    $(this).attr('disabled', 'disabled');
+                    var to_period_id = $(this).attr('id').split('_')[ $(this).attr('id').split("_").length-1 ];
                     $('#current_work_' + to_period_id).prop('checked', true);
                     console.log(to_period_id);
 

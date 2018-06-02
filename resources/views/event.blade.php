@@ -115,7 +115,7 @@
                 <?php $user = \Illuminate\Support\Facades\Auth::user();?>
                 <div class="container attendees_section">
                     <div class="row align-items-center">
-                        <div class="col-md-5 organizer" id="{{$user->username}}">
+                        <div class="col-md-5 organizer" id="{{$organizer_username}}">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-xs-6 ">
@@ -129,19 +129,18 @@
                             </div>
                         </div>
                         <div class="col-md-7 attendees">
-                            @if($num_attendees>9)
-                                <button onclick="plusDivs(-1)"><i class="fas fa-angle-left fa-2x"></i></button>
-                                <button onclick="plusDivs(+1)"><i class="fas fa-angle-right fa-2x"></i></button>
+                           @if($num_attendees>6)
+                                <div class="slide_btn" id="left_slide_arrow"><i class="fas fa-angle-left fa-2x"></i></div>
+                                <div class="slide_btn" id="right_slide_arrow"><i class="fas fa-angle-right fa-2x"></i></div>
                             @endif
-                    <!--    <div class="container mySlides"> -->
-                                <div class="row ">
+
                                    @if($attendees->isEmpty())
                                        <div style="width:100%; text-align: center;" id="no_attendees_msg"><p>No attendees yet.</p></div>
                                    @else
 
                                         @foreach($attendees as $attendee)
-                                            <div class="col-6 col-sm-4 event_attendee" id="attendee_{{$attendee->user->id}}">
-                                                <div  style="margin-bottom:20px">
+                                            <div class="col-6 col-sm-4 event_attendee" >
+                                                <div  style="margin-bottom:20px" id="attendee_{{$attendee->user->id}}">
                                                     <img class="attendees_img" src={{ URL::asset($attendee->user->photo_link) }} />
                                                     <div class="attendee_info">
                                                         <h6>{{$attendee->user->name}} {{$attendee->user->surname}}</h6>
@@ -153,8 +152,6 @@
 
                                     @endif
 
-                                </div>
-                         <!--   </div> -->
 
                         </div>
                     </div>

@@ -50,6 +50,8 @@
 <script src={{URL::asset('js/upload_image.js')}}></script>
 <script src={{URL::asset('js/upload_document.js')}}></script>
 <script src={{URL::asset('js/toggle_menu.js')}}></script>
+<script src={{URL::asset('js/slider.js')}}></script>
+
 
 
 
