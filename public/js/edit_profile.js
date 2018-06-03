@@ -78,6 +78,9 @@ $(document).ready(function () {
         $('.education').each(function () {
             var ed_id = $(this).attr('id').split('_')[1];
             ed_ids.push(ed_id);
+            // if(valueOf(document.getElementsByName('from_period_education_'+id))>valueOf(document.getElementsByName('to_period_education_'+id))){
+            //     alert("Please check your education dates.");
+            // }
 
         });
 
@@ -86,6 +89,9 @@ $(document).ready(function () {
 
         $('.experience').each(function () {
             exp_ids.push($(this).attr('id').split('_')[1]);
+            // if(valueOf(document.getElementsByName('from_period_experience_'+id))>valueOf(document.getElementsByName('to_period_experience_'+id))){
+            //     alert("Please check your experience dates.");
+            // }
         });
 
 

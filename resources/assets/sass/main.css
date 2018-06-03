@@ -3118,19 +3118,17 @@ body, html {
   .attendees_section .attendees {
     position: relative;
     width: 100px; }
-    .attendees_section .attendees:hover button {
-      display: block; }
-    .attendees_section .attendees button {
-      display: none;
+    .attendees_section .attendees .slide_btn {
+      display: block;
       position: absolute;
       border: none;
       background-color: transparent;
       top: 50%; }
-      .attendees_section .attendees button:nth-of-type(1) {
+      .attendees_section .attendees .slide_btn:nth-of-type(1) {
         left: 0; }
-      .attendees_section .attendees button:nth-of-type(2) {
+      .attendees_section .attendees .slide_btn:nth-of-type(2) {
         right: 20px; }
-      .attendees_section .attendees button i:hover {
+      .attendees_section .attendees .slide_btn i:hover {
         cursor: pointer; }
     .attendees_section .attendees .attendees_img {
       border-radius: 50%;

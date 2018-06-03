@@ -208,15 +208,17 @@ class UserController extends Controller
 
         }
 
-        //iterate through educations ids and update/create new eudcation record
+        //iterate through educations ids and update/create new education record
 
         for ($j = 0; $j < $count; $j++) {
 
             if ($main_model == Education::class) {
+
                 $from = "from_period_education_" . $main_ids_array[$j];
                 $to = "to_period_education_" . $main_ids_array[$j];
                 $start_date = Input::get($from);
                 $end_date = Input::get($to);
+
 
                 $main_model_rows = $main_model::where('id', $main_ids_array[$j])->where('user_id', $user->id)->get();
 
@@ -241,8 +243,8 @@ class UserController extends Controller
                 $end_date = Input::get($to);
 
 
-                if( $present==true) {
-                    $end_date=Carbon::now()->addYear(10);
+                if ($present == true) {
+                    $end_date = Carbon::now()->addYear(10);
                 }
 
                 $description_name = "description_" . $main_ids_array[$j];
@@ -272,7 +274,25 @@ class UserController extends Controller
 
     public function editProfile(Request $request, $username)
     {
+        $request->validate([
+            'user_name' => 'required|max:191',
+            'surname' => 'required|max:191',
+            'user_position' => 'required|max:191',
+            'user_sector' => 'max:191',
+            'user_email' => 'required',
+            'status' => 'required|max:191',
+            'phone_num' => 'required',
+            'bio' => 'required|max:191',
+            'facebook' => 'max:191',
+            'linkedin' => 'max:191',
+            'twitter' => 'max:191',
+        ],[
+            'user_email.unique'=>'Email already taken.',
+            'phone_num.unique'=>'Phone number already taken',
+
+        ]);
         $user = User::where('username', $username)->get()->first();
+
 
                 $user->name = $request['user_name'];
                 $user->surname = $request['surname'];
@@ -304,6 +324,7 @@ class UserController extends Controller
                         }
                     }
                 }
+
 
 
         // data about education and experience
@@ -372,7 +393,7 @@ class UserController extends Controller
 
             $this->validate($request, [
 
-                'image' => 'required|mimes:png,jpg,jpeg||max:2048',
+                'image' => 'required|mimes:png,jpg,jpeg|max:2048',
 
             ],
                 ['image.mimes' => 'Not a valid image format',

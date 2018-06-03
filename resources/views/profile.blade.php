@@ -60,7 +60,7 @@
                                     <input  name="surname" id="surname" type="text" disabled="disabled" placeholder="Surname" value="<?php if(!is_null($user->surname)) {echo $user->surname;}  ?>"  required style="margin-left: 1%;">
                                     <input name="user_sector" id="sector" type="text" disabled="disabled" placeholder="Sector" value="<?php if(!is_null($user->sector)) { echo $user->sector;} ?>" >
                                     <input name="user_position" id="position" type="text" disabled="disabled" placeholder="Position" value="<?php if(!is_null($user->position)) {echo $user->position;} ?>" >
-                                    <input name="user_email" id="email" type="email" disabled="disabled" placeholder="Email" value="<?php if(!is_null($user->email)) { echo $user->email;} ?>" >
+                                    <input name="user_email" id="email" type="email" disabled="disabled" placeholder="Email" value="<?php if(!is_null($user->email)) { echo $user->email;} ?>" required>
                                     <input name="phone_num" id="phone_num" type="text" disabled="disabled" placeholder="Phone number" value="<?php if(is_null($user->phone_num)) {echo "Phone number";} else{ echo $user->phone_num;} ?>" >
                                     <h6><a class="social_form_btn" id="linkedin" href="<?php if($linked!=null) echo $linked; else echo "#";?>"><input autocomplete="off" name="linkedin" id="ln_input" placeholder="LinkedIn |" disabled="disabled"></a>
                                         <a class="social_form_btn" id="twitter" href="<?php if($twitter!=null) echo $twitter; else echo "#";?>"><input autocomplete="off" name="twitter" id="twitter_input"  placeholder="Twitter |" disabled="disabled"></a>
