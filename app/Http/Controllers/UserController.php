@@ -18,6 +18,9 @@ use App\Team;
 use App\Document;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use \Illuminate\Support\Facades\Auth;
+use App\SystemRole;
+
 
 class UserController extends Controller
 {
@@ -78,6 +81,24 @@ class UserController extends Controller
     {
 
         $user = User::where('username', $username)->get()->first();
+        $user_clicked=Auth::user();
+
+        $button="";
+        $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
+
+        if($user_clicked->id==$user->id){
+            $button = "";
+            $no_photo_upload=false;
+        }
+        elseif( $user_clicked->SystemRole_id==$hr){
+            $button = "";
+            $no_photo_upload=true;
+        }
+        else{
+            $button = "No button";
+            $no_photo_upload=true;
+
+        }
 
         // user's social network links
         $socials = $user->social_users;
@@ -125,8 +146,8 @@ class UserController extends Controller
         $documents = Document::where('user_id', $user->id)->get();
 
         $page_name = "profile";
-        $button = "";
-        return view('profile', compact('documents', 'button', 'user', 'fb', 'twitter', 'linked', 'projects', 'experiences', 'teams', 'experience_count', 'educations', 'education_count', 'page_name'));
+
+        return view('profile', compact('documents', 'button','no_photo_upload', 'user', 'fb', 'twitter', 'linked', 'projects', 'experiences', 'teams', 'experience_count', 'educations', 'education_count', 'page_name'));
     }
 
 
@@ -252,7 +273,7 @@ class UserController extends Controller
     public function editProfile(Request $request, $username)
     {
         $user = User::where('username', $username)->get()->first();
-        /*
+
                 $user->name = $request['user_name'];
                 $user->surname = $request['surname'];
                 $user->position = $request['user_position'];
@@ -282,7 +303,7 @@ class UserController extends Controller
                             $social_user->update();
                         }
                     }
-                } */
+                }
 
 
         // data about education and experience

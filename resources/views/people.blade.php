@@ -32,10 +32,12 @@
                             <h4 class="section_title" id="all_people_section_title">People</h4>
                         </div>
                         {{--Add new event button--}}
-                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
-                            <button class="add_new_project" data-toggle="modal" data-target="#userModal">Add new user
-                            </button>
-                        </div>
+                        @if($add_new_user==true)
+                            <div class="col-sm-4 offset-sm-4 div_btn_event_project">
+                                <button class="add_new_project" data-toggle="modal" data-target="#userModal">Add new user
+                                </button>
+                            </div>
+                        @endif
                     </div>
                 </div>
 

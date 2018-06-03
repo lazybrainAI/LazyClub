@@ -140,7 +140,7 @@ class ProjectController extends Controller
     public function showDetails($name)
     {
 
-        $button = "";
+        $user=Auth::user();
         $page_name = "project";
 
         $project = Project::where('name', $name)->get();
@@ -180,9 +180,25 @@ class ProjectController extends Controller
         //project's documents
         $documents=Document::where('project_id', $project->id)->get();
 
+        //
+        if($user->id==$lead->id){
+            $button = "";
+            $review_btn="No button";
+            $applyMail_btn="No button";
+
+        }
+
+        else{
+            $button = "No button";
+            $review_btn="";
+            $applyMail_btn="";
+
+
+        }
+
 
         // dd($existing_positions);
-        return view('project', compact('documents','button', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications', 'teams'));
+        return view('project', compact('documents','button','review_btn','applyMail_btn', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications', 'teams'));
     }
 
 

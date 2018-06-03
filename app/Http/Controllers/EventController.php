@@ -90,6 +90,9 @@ class EventController extends Controller
     public function showDetails($name)
     {
 
+        $user_clicked=Auth::user();
+
+
         // event info
 
         $event = Event::where('name', $name)->get()->first();
@@ -127,16 +130,24 @@ class EventController extends Controller
         //
         $page_name = "event";
 
-        // page-top button
-        $button = "";
 
 
-        //setting slider
+        if($organizer->id==$user_clicked->id){
+            $button="";
+            $review_btn="No button";
+            $goingAskOrg_btn="No button";
+        }
 
-        //$this->setSlider($num_attendees);
+        else{
+            $button="No button";
+            $review_btn="";
+            $goingAskOrg_btn="";
+        }
 
 
-        return view('event', compact('reviews', 'num_attendees', 'button', 'event', 'location_name', 'language_name', 'organizer_name', 'organizer_username', 'organizer_surname', 'organizer_position', 'organizer_email', 'organizer_photo', 'attendees', 'going', 'page_name'));
+
+
+        return view('event', compact('review_btn','goingAskOrg_btn','reviews', 'num_attendees', 'button', 'event', 'location_name', 'language_name', 'organizer_name', 'organizer_username', 'organizer_surname', 'organizer_position', 'organizer_email', 'organizer_photo', 'attendees', 'going', 'page_name'));
     }
 
 

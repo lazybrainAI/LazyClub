@@ -2,7 +2,9 @@
 <div class="col-sm-4 padding_left" id="<?php echo $project['id']; ?>">
     <div class="p_e_card" id="p_e_card_<?php echo $project['id']; ?>">
         <div class="p_e_img" id="p_e_img_<?php echo $project['id']; ?>">
-            <button type="button" class="delete_project close" id="delete_project">&times;</button>
+            <?php if($organizers[$project->name]==$user->id){ ?>
+                <button type="button" class="delete_project close" id="delete_project">&times;</button>
+            <?php }; ?>
             <h5 class="section_title"><?php echo $project['name']; ?></h5>
             <ul>
                 <?php $team=$teams[$project->name];

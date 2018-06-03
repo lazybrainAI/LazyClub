@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function MongoDB\BSON\toJSON;
 use App\Role;
+use App\User;
 
 class EventsController extends Controller
 {
@@ -25,18 +26,29 @@ class EventsController extends Controller
         return $going;
     }
 
+
+    private function getAllEventOrganizers($event){
+
+        $organizer_role = Role::where('project/event', 'event')->where('title', 'organizer')->get()->first();
+        $event_attending = Event_Attending::where('event_id', $event->id)->where('role_id', $organizer_role->id)->get()->first();
+        return $event_attending->user_id;
+
+    }
+
     public function showDetails()
     {
         $events = Event::all()->sortByDesc('date');
         $user = Auth::user();
         //foreach event check the user's going/not going status
         $goings = array();
+        $organizers=array();
         foreach ($events as $event) {
             $goings[$event->name] = $this->isUserAttending($event, $user);
+            $organizers[$event->name]=$this->getAllEventOrganizers($event);
         }
         $button = "No button";
         $events_language = Language::all();
-        return view('events', compact('events', 'button', 'events_language', 'goings'));
+        return view('events', compact('events', 'button', 'events_language', 'goings', 'user', 'organizers'));
     }
 
     private function validateNewEvent($request)

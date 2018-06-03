@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\Mail\SendInformationsToUser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use \Illuminate\Support\Facades\Auth;
+
 
 class PeopleController extends Controller
 {
@@ -29,9 +31,21 @@ class PeopleController extends Controller
     {
         $button = "No button";
 
+        $user_clicked=Auth::user();
+
+        $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
+
+        if($user_clicked->SystemRole_id==$hr){
+            $add_new_user=true;
+        }
+        else{
+            $add_new_user=false;
+        }
+
+
         $users = User::all();
         $positions = SystemRole::where('id', '!=', '4')->get();
-        return view('people', compact('button', 'users', 'positions'));
+        return view('people', compact('button', 'users', 'positions', 'add_new_user'));
 
     }
 

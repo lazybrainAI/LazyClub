@@ -132,9 +132,11 @@
                             @endforeach
                         @endif
                     </div>
+                    @if($review_btn=="")
                     <button type="button" class="add_btn" id="add_review" data-toggle="modal" data-target="#project_review_modal">
                         <h6>Add review</h6>
                     </button>
+                        @endif
                 </div>
 
 
@@ -225,22 +227,23 @@
                     </div>
 
                 </div>
+                @if($applyMail_btn=="")
+                    <div class="container" style="margin-left:25px">
+                        <div class="row">
 
-                <div class="container" style="margin-left:25px">
-                    <div class="row">
+                            <button type="button" class="add_btn" id="join_us" data-toggle="modal" data-target="#signup_modal" style="background: transparent">
+                                <h6>Join us</h6>
+                            </button>
 
-                        <button type="button" class="add_btn" id="join_us" data-toggle="modal" data-target="#signup_modal" style="background: transparent">
-                            <h6>Join us</h6>
-                        </button>
-
-                        <button type="button" class="add_btn" id="contact_us" style="background: transparent">
-                            <a href="mailto: {{$lead->email}}"><h6>Contact us</h6></a>
-                        </button>
+                            <button type="button" class="add_btn" id="contact_us" style="background: transparent">
+                                <a href="mailto: {{$lead->email}}"><h6>Contact us</h6></a>
+                            </button>
 
 
 
+                        </div>
                     </div>
-                </div>
+                @endif
 
 
                     <button class="save_btn" id="save_project" type="submit">

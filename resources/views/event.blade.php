@@ -62,9 +62,9 @@
                             <h6 class="h7" id="=event_lang">Language/ <select name="event_language" form="event_form" required disabled="disabled">
                                     <option >{{$language_name}}</option>
                                     @if($language_name=="serbian")
-                                        <option >english</option>
+                                        <option>english</option>
                                     @else
-                                        <option >serbian</option>
+                                        <option>serbian</option>
 
                                     @endif
                                 </select>
@@ -99,23 +99,25 @@
                         @endif
 
                     </div>
-                    <button type="button" class="add_btn" id="add_review" data-toggle="modal" data-target="#review_modal">
-                        <h6>Add review</h6>
-                    </button>
+                    @if($review_btn=="")
+                        <button type="button" class="add_btn" id="add_review" data-toggle="modal" data-target="#review_modal">
+                            <h6>Add review</h6>
+                        </button>
+                    @endif
                 </div>
 
 
-                <div class="container  container-left-margin">
-                    <div class="row">
-                        <div class="col-5 col-sm-4 col-md-3  col-lg-2">
-                            <h5 class="section_title">Attendees</h5>
+                    <div class="container container-left-margin" >
+                        <div class="row">
+                            <div class="col-5 col-sm-4 col-md-3 col-lg-2">
+                                <h5 class="section_title">Attendees</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php $user = \Illuminate\Support\Facades\Auth::user();?>
                 <div class="container attendees_section">
                     <div class="row align-items-center">
-                        <div class="col-md-5 organizer" id="{{$organizer_username}}">
+                        <div class="col-sm-12 col-md-4 organizer" id="{{$organizer_username}}">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-xs-6 ">
@@ -128,11 +130,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-7 attendees">
-                           @if($num_attendees>6)
+                        <div class="col-sm-12 col-md-8 attendees">
+
                                 <div class="slide_btn" id="left_slide_arrow"><i class="fas fa-angle-left fa-2x"></i></div>
                                 <div class="slide_btn" id="right_slide_arrow"><i class="fas fa-angle-right fa-2x"></i></div>
-                            @endif
+
 
                                    @if($attendees->isEmpty())
                                        <div style="width:100%; text-align: center;" id="no_attendees_msg"><p>No attendees yet.</p></div>
@@ -159,26 +161,29 @@
                 </div>
                 <div class="container event_btns" style="margin-left:25px" id="{{$user->id}}" >
                     <div class="row">
-                        @if($going=="going")
-                            <div class="col-sm-5 col-md-3 col-xl-2">
-                                <div class="add_btn ungoing_btn" style="margin-bottom: 10px">
-                                    <h6>Not going</h6>
+                        @if($goingAskOrg_btn=="")
+                            @if($going=="going")
+                                <div class="col-sm-5 col-md-3 col-xl-2">
+                                    <div class="add_btn ungoing_btn" style="margin-bottom: 10px">
+                                        <h6>Not going</h6>
+                                    </div>
                                 </div>
-                            </div>
-                        @else
-                            <div class="col-sm-5 col-md-3 col-xl-2">
-                                <div class="add_btn going_btn" style="margin-bottom: 10px">
-                                    <h6>Going</h6>
+                            @else
+                                <div class="col-sm-5 col-md-3 col-xl-2">
+                                    <div class="add_btn going_btn" style="margin-bottom: 10px">
+                                        <h6>Going</h6>
+                                    </div>
                                 </div>
-                            </div>
 
                             @endif
+                                <div class="col-sm-5 col-md-3 col-xl-2">
+                                    <div class=" add_btn">
+                                        <a href="mailto:{{$organizer_email}}"><h6>Ask organizer</h6></a>
+                                    </div>
+                                </div>
+                        @endif
 
-                        <div class="col-sm-5 col-md-3 col-xl-2">
-                            <div class=" add_btn">
-                                <a href="mailto:{{$organizer_email}}"><h6>Ask organizer</h6></a>
-                            </div>
-                        </div>
+
 
                     </div>
                 </div>

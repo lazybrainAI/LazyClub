@@ -23,7 +23,25 @@ $(document).ready(function(){
             success: function(data){
 
                 var attendee="#attendee_"+user_clicked;
-                $(attendee).parent().remove();
+                var parent_row=$(attendee).parent().parent();
+                var parent_container=parent_row.parent();
+                var attendees_num=$('.event_attendee').length;
+
+
+                if(parent_row.children().length==1 && attendees_num==7){
+                    parent_container.remove();
+                    $('#slide_1').css('display', 'block');
+                    $('.slide_btn').css('display', 'none');
+                }
+
+                if(parent_row.children().length==1 && attendees_num!=7){
+                    parent_container.remove();
+                }
+
+                else{
+                    $(attendee).remove();
+                }
+
 
 
                 $('.ungoing_btn').addClass('going_btn');

@@ -65,6 +65,15 @@ class HomeController extends Controller
 
     }
 
+
+    private function getAllEventOrganizers($event){
+
+        $organizer_role = Role::where('project/event', 'event')->where('title', 'organizer')->get()->first();
+        $event_attending = Event_Attending::where('event_id', $event->id)->where('role_id', $organizer_role->id)->get()->first();
+        return $event_attending->user_id;
+
+    }
+
     public function returnEventsAndProjects(){
 
         $user=Auth::user();
@@ -80,6 +89,8 @@ class HomeController extends Controller
         $goings=array();
         foreach ($events as $event){
             $goings[$event->name]=$this->isUserAttending($event, $user);
+            $organizers[$event->name]=$this->getAllEventOrganizers($event);
+
         }
 
 
@@ -90,7 +101,7 @@ class HomeController extends Controller
 
 
 
-        return view('home', compact('projects', 'events','button', 'users', 'goings', 'teams'));
+        return view('home', compact('projects', 'events','button', 'users', 'goings', 'teams', 'user', 'organizers'));
 
 
     }

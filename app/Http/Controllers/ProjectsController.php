@@ -44,8 +44,20 @@ class ProjectsController extends Controller
 
     }
 
+
+    private function getProjectOrganizer($project){
+
+        $team = $project->team;
+        $role = Role::where('title', 'lead')->get()->first()->id;
+        $project_attending = Project_Attending::where('team_id', $team->id)->where('role_id', $role)->get()->first();
+        return $project_attending->user_id;
+
+
+    }
+
     public function showDetails()
     {
+        $user=Auth::user();
         $button = "No button";
         $projects = Project::all()->sortByDesc('start_date');;
         $positions = Role::where('project/event', 'project')->get();
@@ -53,10 +65,12 @@ class ProjectsController extends Controller
 
         if(!$projects->isEmpty()) {
             $teams=array();
+            $organizers=array();
             foreach ($projects as $project){
                 $teams[$project->name]= $this->getProjectsTeams($project);
+                $organizers[$project->name]=$this->getProjectOrganizer($project);
             }
-            return view('projects', compact('projects', 'positions', 'button', 'project_language', 'teams'));
+            return view('projects', compact('projects', 'positions', 'button', 'project_language', 'teams', 'organizers', 'user'));
 
         }
 

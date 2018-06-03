@@ -47,7 +47,10 @@
                             <div class="row align-items-center">
                                 <div class="col-xs-6 profile_img_div">
                                     <img class="profile_img" src={{ URL::asset($user->photo_link) }}  />
-                                    <button type="button" data-toggle="modal" data-target="#image_upload_modal"><i class="fas fa-camera fa-3x"></i></button>
+                                    @if($no_photo_upload!=true)
+                                        <button type="button" data-toggle="modal" data-target="#image_upload_modal"><i class="fas fa-camera fa-3x"></i></button>
+
+                                    @endif
                                 </div>
 
                                 <div class="col-xs-6  personal_info" id="{{$user->username}}">
@@ -72,7 +75,14 @@
                         <h6>Profile details:</h6>
                         <br>
                         <h6 class="h7" id="join_date">Join date / {{$user->join_date}}</h6>
-                        <h6 class="h7" id="status">Status / <input value="{{$user->status}}" type="text" required disabled="disabled" name="status"></h6>
+                        <h6 class="h7" id="status">Status / <select type="text" disabled="disabled" class="hr_input" name="user_status">
+                                                                <option>{{$user->status}}</option>
+                                                                @if($user->status=="active")
+                                                                    <option>not active</option>
+                                                                @else
+                                                                    <option>active</option>
+                                                                @endif
+                                                            </select></h6>
 
                         <h6 class="h7" id="strength">Strength / {{$user->strength}}</h6>
 
@@ -173,7 +183,7 @@
                  <div class="container">
                      <div class="row">
                          @if($projects==null)
-                             <div><p>You don't have ongoing projects.</p></div>
+                             <div><p>No ongoing projects.</p></div>
                          @else
                              @foreach($projects as $project)
                              <div class="col-md-5">

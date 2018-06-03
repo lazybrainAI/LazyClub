@@ -6,6 +6,11 @@ var slideIndex = 1;
 
 $(document).ready(function(){
 
+    var attendees_num=$('.event_attendee').length;
+    if(attendees_num>6){
+        $('.slide_btn').css('display', 'block');
+    }
+
     var event_attend_id=1;
     $('.event_attendee').each(function(){
         $(this).attr('id', 'event_attendee_'+event_attend_id);
@@ -72,8 +77,8 @@ function assignSlides(slideIndex){
             }
 
             var wrap=".slide_"+j.toString();
-
-            $(wrap).wrapAll( "<div class='container mySlides' ><div class='row'></div></div>" );
+            var id="slide_"+j.toString();
+            $(wrap).wrapAll(`<div class="container mySlides" id=${id} ><div class="row"></div></div>` );
 
             j++;
         }
