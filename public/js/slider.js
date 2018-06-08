@@ -36,7 +36,6 @@ $(document).ready(function(){
 function assignSlides(slideIndex){
 
     var attendees_num=$('.event_attendee').length;
-    console.log(attendees_num);
 
 
 

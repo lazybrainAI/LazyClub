@@ -7,21 +7,24 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendInformationsToUser extends Mailable
+class ProjectApplicationAccepted extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $password, $username, $name;
+    public $name, $project, $position;
+
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($password, $username,$name)
+    public function __construct($name, $project, $position)
     {
+        //
         $this->name=$name;
-        $this->password = $password;
-        $this->username = $username;
+        $this->project=$project;
+        $this->position=$position;
     }
 
     /**
@@ -31,6 +34,6 @@ class SendInformationsToUser extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome to the Club|Lazy Brain!')->view('email.email');
+        return $this->subject('Application accepted')->view('email.application_accepted');
     }
 }

@@ -194,6 +194,8 @@
                     <button class="cancel_btn" id="cancel_event" type="reset">
                         <h6>Cancel</h6>
                     </button>
+                    <div id="msg"></div>
+
 
                 </form>
 

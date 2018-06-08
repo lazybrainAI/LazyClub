@@ -46,6 +46,13 @@
       select{
         background: $blue;
         color:white;
+        border:none;
+
+          /* for Firefox */
+          -moz-appearance: none;
+          /* for Chrome */
+          -webkit-appearance: none;
+
       }
     }
 

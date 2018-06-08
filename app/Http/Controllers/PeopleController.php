@@ -34,12 +34,17 @@ class PeopleController extends Controller
         $user_clicked=Auth::user();
 
         $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
+        $admin=SystemRole::where('role_name', 'admin')->get()->first()->id;
 
-        if($user_clicked->SystemRole_id==$hr){
-            $add_new_user=true;
+        if($user_clicked->SystemRole_id==$hr) {
+            $add_new_user="hr";
+
+        }
+        elseif($user_clicked->SystemRole_id==$admin){
+            $add_new_user="admin";
         }
         else{
-            $add_new_user=false;
+            $add_new_user="other";
         }
 
 
@@ -58,12 +63,12 @@ class PeopleController extends Controller
         $user->surname = $request['lastName'];
         $user->username = $request['username'];
         $user->email = $request['email'];
-        if ($request['positionsHR'] != null && $request['positionsHR'] != '0' && $request['positionsHR'] != 0) {
-            $user->SystemRole_id = $request['positionsHR'];
-        } else {
-            $sys_role = SystemRole::where('role_name', 'user')->get()->first()->id;
-            $user->SystemRole_id = $sys_role;
-        }
+        $user->sector=$request['user_sector'];
+        $user->position=$request['user_position'];
+
+        $sys_role = SystemRole::where('role_name', $request['roles'])->get()->first()->id;
+        $user->SystemRole_id = $sys_role;
+
         $user->photo_link = 'img/user_icon.png';
         $password = str_random(8);
         $user->password = Hash::make($password);
@@ -71,8 +76,8 @@ class PeopleController extends Controller
         $user->status = 'active';
         $user->save();
 
-        Mail::to($user->email)->send(new SendInformationsToUser($password, $user->username));
+        Mail::to($user->email)->send(new SendInformationsToUser($password, $user->username, $user->name));
 
-        return response()->json((['name' => $user->name, 'surname' => $user->surname]));
+        return response()->json((['name' => $user->name, 'surname' => $user->surname, 'photo'=>$user->photo_link]));
     }
 }

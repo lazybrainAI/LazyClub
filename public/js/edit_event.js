@@ -8,6 +8,10 @@ $(document).ready(function () {
         $('select').prop('disabled', false);
         $('textarea').prop('disabled', false);
 
+        $('input').addClass('style_input');
+        $('textarea').addClass('style_input');
+
+
 
 
         $('#event_form').submit(function (e) {
@@ -37,13 +41,22 @@ $(document).ready(function () {
                     $('select').prop('disabled', true);
                     $('textarea').prop('disabled', true);
 
+                    $('input').removeClass('style_input');
+                    $('textarea').removeClass('style_input');
 
 
 
-                  //  $('.msg').text(data.name);
+
+                    $('#msg').css('display', 'block');
+                    $('#msg').text("Event saved.").delay(2000).fadeOut(1000);
+
+
                 },
                 error:function(data){
-                    $('.msg').text("Error");
+
+                    $('#msg').css('display', 'block');
+                    $('#msg').text("Error occured.").delay(2000).fadeOut(1000);
+
 
                 }
 

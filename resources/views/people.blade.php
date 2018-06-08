@@ -32,7 +32,7 @@
                             <h4 class="section_title" id="all_people_section_title">People</h4>
                         </div>
                         {{--Add new event button--}}
-                        @if($add_new_user==true)
+                        @if($add_new_user=="hr" || $add_new_user=="admin")
                             <div class="col-sm-4 offset-sm-4 div_btn_event_project">
                                 <button class="add_new_project" data-toggle="modal" data-target="#userModal">Add new user
                                 </button>

@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'teodora.mitrovic@lazybrain.org'),
-        'name' => env('MAIL_FROM_NAME', 'Lazy brain'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@lazybrain.xyz'),
+        'name' => env('MAIL_FROM_NAME', 'LazyBrain | DigitalIntelligence'),
     ],
 
     /*

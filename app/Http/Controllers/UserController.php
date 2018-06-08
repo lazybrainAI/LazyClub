@@ -83,22 +83,47 @@ class UserController extends Controller
         $user = User::where('username', $username)->get()->first();
         $user_clicked=Auth::user();
 
-        $button="";
-        $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
+        $hr=SystemRole::where('role_name', 'HR')->get()->first();
+        $admin=SystemRole::where('role_name', 'admin')->get()->first();
+        $user_role=SystemRole::where('role_name', 'user')->get()->first()->id;
 
-        if($user_clicked->id==$user->id){
+
+        if($user_clicked->id==$user->id){ //their own profile
             $button = "";
             $no_photo_upload=false;
         }
-        elseif( $user_clicked->SystemRole_id==$hr){
-            $button = "";
-            $no_photo_upload=true;
-        }
+
         else{
-            $button = "No button";
-            $no_photo_upload=true;
+            if( $user_clicked->SystemRole_id==$hr->id ){
+                if($user->SystemRole_id==$admin->id){
+                    $button = "No button";
+                    $no_photo_upload=true;
+                }
+                else{
+                    $button = "";
+                    $no_photo_upload=true;
+                }
+
+            }
+
+            elseif($user_clicked->SystemRole_id==$admin->id){
+                if($user->SystemRole_id==$hr->id){
+                    $button = "";
+                    $no_photo_upload=true;
+                }
+                else{
+                    $button = "No button";
+                    $no_photo_upload=true;
+                }
+            }
+            else{
+                $button = "No button";
+                $no_photo_upload=true;
+            }
 
         }
+
+
 
         // user's social network links
         $socials = $user->social_users;
@@ -147,7 +172,24 @@ class UserController extends Controller
 
         $page_name = "profile";
 
-        return view('profile', compact('documents', 'button','no_photo_upload', 'user', 'fb', 'twitter', 'linked', 'projects', 'experiences', 'teams', 'experience_count', 'educations', 'education_count', 'page_name'));
+
+        //role
+
+        if($user_clicked->SystemRole_id==$hr->id){
+            $user_clicked_role="hr";
+        }
+        elseif($user_clicked->SystemRole_id==$admin->id){
+            $user_clicked_role="admin";
+
+        }
+        else{
+            $user_clicked_role="user";
+
+        }
+
+        $user_id=$user->id;
+        $user_sys_role=$user->SystemRole_id;
+        return view('profile', compact('user_clicked_role','user_clicked','user_role','hr', 'admin','documents', 'button','no_photo_upload', 'user','user_id','user_sys_role', 'fb', 'twitter', 'linked', 'projects', 'experiences', 'teams', 'experience_count', 'educations', 'education_count', 'page_name'));
     }
 
 
@@ -274,57 +316,68 @@ class UserController extends Controller
 
     public function editProfile(Request $request, $username)
     {
-        $request->validate([
-            'user_name' => 'required|max:191',
-            'surname' => 'required|max:191',
-            'user_position' => 'required|max:191',
-            'user_sector' => 'max:191',
-            'user_email' => 'required',
-            'status' => 'required|max:191',
-            'phone_num' => 'required',
-            'bio' => 'required|max:191',
-            'facebook' => 'max:191',
-            'linkedin' => 'max:191',
-            'twitter' => 'max:191',
-        ],[
-            'user_email.unique'=>'Email already taken.',
-            'phone_num.unique'=>'Phone number already taken',
-
-        ]);
         $user = User::where('username', $username)->get()->first();
 
 
-                $user->name = $request['user_name'];
-                $user->surname = $request['surname'];
-                $user->position = $request['user_position'];
-                $user->sector = $request['user_sector'];
-                $user->email = $request['user_email'];
-                $user->status = $request['status'];
-                $user->phone_num = $request['phone_num'];
-                $user->bio = $request['bio'];
-                $user->update();
+        if ($request->has('status')) {
+            $user->status = $request['status'];
+            $user->position = $request['position'];
+            $user->sector = $request['sector'];
+            $user->save();
+        }
 
-                //social networks
-                $socials=array();
+        else{
 
-                $socials['facebook']=$request['facebook'];
-                $socials['linkedin']=$request['linkedin'];
-                $socials['twitter']=$request['twitter'];
+            $request->validate([
+                'user_name' => 'required|max:191',
+                'surname' => 'required|max:191',
+                'user_email' => 'required',
+                'phone_num' => 'required',
+                'bio' => 'required|max:191',
+                'facebook' => 'max:191',
+                'linkedin' => 'max:191',
+                'twitter' => 'max:191',
+            ], [
+                'user_email.unique' => 'Email already taken.',
+                'phone_num.unique' => 'Phone number already taken',
 
-                foreach($socials as $name=>$social){
-                    $sn=SocialNetwork::where('name', $name)->get()->first();
-                    if($social!=""){
-                        $social_user=SocialUser::where('user_id', $user->id)->where('sn_id', $sn->id)->get();//Social_user table
-                        if($social_user->isEmpty()){
-                           SocialUser::create(['user_id'=>$user->id, 'sn_id'=>$sn->id, 'URL'=>$social]);
-                        }
-                        else{
-                            $social_user->URL=$social;
-                            $social_user->update();
-                        }
-                    }
+            ]);
+
+        if($request->has('user_status')){
+            $user->status=$request['user_status'];
+            $user->sector=$request['user_sector'];
+            $user->position=$request['user_position'];
+
+
+
+        }
+        $user->name = $request['user_name'];
+        $user->surname = $request['surname'];
+
+        $user->email = $request['user_email'];
+        $user->phone_num = $request['phone_num'];
+        $user->bio = $request['bio'];
+        $user->save();
+
+        //social networks
+        $socials = array();
+
+        $socials['facebook'] = $request['facebook'];
+        $socials['linkedin'] = $request['linkedin'];
+        $socials['twitter'] = $request['twitter'];
+
+        foreach ($socials as $name => $social) {
+            $sn = SocialNetwork::where('name', $name)->get()->first();
+            if ($social != "") {
+                $social_user = SocialUser::where('user_id', $user->id)->where('sn_id', $sn->id)->get();//Social_user table
+                if ($social_user->isEmpty()) {
+                    SocialUser::create(['user_id' => $user->id, 'sn_id' => $sn->id, 'URL' => $social]);
+                } else {
+                    $social_user->URL = $social;
+                    $social_user->update();
                 }
-
+            }
+        }
 
 
         // data about education and experience
@@ -357,6 +410,7 @@ class UserController extends Controller
         }
 
         return response()->json(['new_ed_ids' => $new_ed_ids, 'new_exp_ids' => $new_exp_ids]);
+    }
 
     }
 

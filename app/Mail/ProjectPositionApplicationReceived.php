@@ -11,18 +11,19 @@ class ProjectPositionApplicationReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $project, $position, $name;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct( $project, $position, $name, $surname)
+    public function __construct($project, $position, $name)
     {
         //
-        $this->project_name=$project;
-        $this->project_position=$position;
-        $this->receiver_name=$name;
-        $this->receiver_surname=$surname;
+        $this->name=$name;
+        $this->project=$project;
+        $this->position=$position;
+
     }
 
     /**
@@ -32,6 +33,6 @@ class ProjectPositionApplicationReceived extends Mailable
      */
     public function build()
     {
-        return $this->subject('Application received')->view('mail.application_received');
+        return $this->subject('Your application has been received')->view('email.application_received');
     }
 }

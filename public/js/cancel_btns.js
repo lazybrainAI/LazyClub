@@ -6,8 +6,13 @@ $(document).ready(function () {
     // ------- profile cancel button
 
     $('#cancel_profile').click(function ()  {
+        $('input').removeClass('style_input');
+        $('textarea').removeClass('style_input');
+
+
         $('input').prop('disabled', true);
         $('textarea').prop('disabled', true);
+
 
         $('#add_education').css('display', 'none');
         $('#add_experience').css('display', 'none');
@@ -27,6 +32,9 @@ $(document).ready(function () {
 
 
     $('#cancel_event').click(function(){
+        $('input').removeClass('style_input');
+        $('textarea').removeClass('style_input');
+
 
         $('input').prop('disabled', true);
         $('textarea').prop('disabled', true);
@@ -40,6 +48,8 @@ $(document).ready(function () {
     // ------- project cancel button
 
     $('#cancel_project').click(function(){
+        $('input').removeClass('style_input');
+        $('textarea').removeClass('style_input');
 
         $('input').prop('disabled', true);
         $('textarea').prop('disabled', true);

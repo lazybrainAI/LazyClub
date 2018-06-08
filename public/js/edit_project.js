@@ -8,7 +8,8 @@ $(document).ready(function () {
         $('select').prop('disabled', false);
         $('textarea').prop('disabled', false);
 
-
+        $('input').addClass('style_input');
+        $('textarea').addClass('style_input');
 
     });
 
@@ -42,13 +43,22 @@ $(document).ready(function () {
                 $('input').prop('disabled', true);
                 $('select').prop('disabled', true);
                 $('textarea').prop('disabled', true);
+                $('input').removeClass('style_input');
+                $('textarea').removeClass('style_input');
+
+                $('#msg').css('display', 'block');
+                $('#msg').text("Project saved.").delay(2000).fadeOut(1000);
+
 
 
 
                 //  $('.msg').text(data.name);
             },
             error:function(data){
-                console.log("error");
+                $('#msg').css('display', 'block');
+                $('#msg').text("Error occured.").delay(2000).fadeOut(1000);
+
+
 
             }
 

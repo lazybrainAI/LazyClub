@@ -16,6 +16,8 @@ $(document).ready(function () {
                 $('#email_sent').addClass('allgood').removeClass('notallgood').text('New user has been created!').show().delay(2000).fadeOut(1000);
                 document.getElementById('hr_form').reset();
 
+                var photo="/"+data.photo;
+
                 var div = document.createElement('div');
                 div.setAttribute('class', 'col-sm-4');
                 div.innerHTML = `
@@ -23,7 +25,7 @@ $(document).ready(function () {
                     <div class="row align-items-center">
                         <a href="">
                         <div class="col-xs-6 ">
-                        <img class="people_img" src=""/>
+                        <img class="people_img" src=${photo}/>
                         </div>
                         </a>
                     <div class="col-xs-6  personal_info">

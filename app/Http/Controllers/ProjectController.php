@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\ApplicationProject;
 use App\Mail\ProjectPositionApplicationReceived;
+use App\Mail\ProjectApplicationLetter;
+use App\Mail\ProjectApplicationDenied;
+use App\Mail\ProjectApplicationAccepted;
 use App\Project_Attending;
 use Illuminate\Http\Request;
 use App\Project;
@@ -11,7 +14,7 @@ use App\Language;
 use App\Location;
 use App\Role;
 use App\User;
-use \Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use App\Review;
 use Illuminate\Support\Facades\Input;
@@ -141,6 +144,7 @@ class ProjectController extends Controller
     {
 
         $user=Auth::user();
+
         $page_name = "project";
 
         $project = Project::where('name', $name)->get();
@@ -160,6 +164,12 @@ class ProjectController extends Controller
 
         //team info
         $lead = $this->getPositionInfo("Lead", $project->first());
+        if($lead->id==$user->id){
+            $click="Yes";
+        }
+        else{
+            $click="No";
+        }
 
         $existing_positions = $this->getExistingPositions($project->first());
 
@@ -196,9 +206,7 @@ class ProjectController extends Controller
 
         }
 
-
-        // dd($existing_positions);
-        return view('project', compact('documents','button','review_btn','applyMail_btn', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications', 'teams'));
+        return view('project', compact('click','documents','button','review_btn','applyMail_btn', 'page_name', 'project', 'reviews', 'location_name', 'language_name', 'open_positions', 'lead', 'existing_positions', 'applications', 'teams'));
     }
 
 
@@ -258,10 +266,17 @@ class ProjectController extends Controller
         //delete all applications
         $applications=ApplicationProject::where('project_id', $project->id)->where('role_id', $role->id)->get();
         foreach($applications as $application){
+            // send mails to all applicants that are not accepted
+            if($application->user_id!=$user_id){
+                $user_denied=User::where('id', $application->user_id)->get()->first();
+                Mail::to($user_denied->email)->send(new ProjectApplicationDenied($user_denied->name, $project->name, $role->title));
+            }
             $application->delete();
         }
 
         $user=User::where('id', $user_id)->get()->first();
+
+        Mail::to($user->email)->send(new ProjectApplicationAccepted($user->name, $project->name, $role->title));
 
 
         return $user;
@@ -327,6 +342,9 @@ class ProjectController extends Controller
         $role_id = Role::where('title', $role_name)->get()->first()->id;
         $project = Project::where('name', $name)->get()->first();
 
+        $lead = $this->getPositionInfo("Lead", $project);
+
+
 
         $application = ApplicationProject::where('user_id', $user_id)->where('project_id', $project->id)->where('role_id', $role_id)->get();
         if ($application->isEmpty()) {
@@ -337,7 +355,8 @@ class ProjectController extends Controller
             $application->motivational_letter = $request['motivational_letter'];
             $application->save();
 
-           // Mail::to($user->email)->send(new ProjectPositionApplicationReceived($project->name, $role_name, $user->name, $user->surname));
+            Mail::to($user->email)->send(new ProjectPositionApplicationReceived($project->name, $role_name, $user->name));
+            Mail::to($lead->email)->send(new ProjectApplicationLetter($project->name, $role_name, $user->name,$user->surname, $request['motivational_letter']));
             $msg = "Your application has been saved.";
 
         } else {

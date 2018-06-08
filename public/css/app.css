@@ -3624,6 +3624,12 @@ body, html {
   pointer-events: all !important;
 }
 
+.style_input {
+  border: 2px solid #e3e2dd !important;
+  margin-top: 5px;
+  padding-left: 2px;
+}
+
 #page_top_picture {
   background-image: url("/img/page_top.jpg");
   background-size: cover;
@@ -4057,6 +4063,11 @@ body, html {
 .main_content_section .details_section .details_div select {
   background: #025284;
   color: white;
+  border: none;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
 }
 
 .profile_img {

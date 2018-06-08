@@ -28,6 +28,9 @@ $(document).ready(function(){
 
                 success:function(data){
 
+                    $('#msg').css('display', 'block');
+                    $('#msg').text("Team member added.").delay(2000).fadeOut(1000);
+
                     //remove other applicants for assigned position
                     var id='#application_'+position;   //----radi
                     $(id).remove();
@@ -46,23 +49,10 @@ $(document).ready(function(){
                     var option_id="#option_"+position;
                     $(option_id).remove();
 
-                    /*
-
-                    //delete application for position
-                    $('.applications').each(function(){
-                        var user=data.name+" "+data.surname;
-                        $('.applicant').each(function (){
-                            if($(this).text()==user){
-                                $(this).remove();
-                            }
-                        });
-
-                    }); */
 
                     //delete assigned position from open positions in project's details div
                     var open_postion="#open_position_"+position;
                     $(open_postion).remove();
-
 
 
                     //add unclicked class to
@@ -71,15 +61,10 @@ $(document).ready(function(){
 
 
 
-
-                 //   alert(data.msg);
-
-
-
-
                 },
                 error:function(data){
-                    alert('Error');
+                    $('#msg').css('display', 'block');
+                    $('#msg').text("Error while adding team member.").delay(2000).fadeOut(1000);
                 }
 
             });
