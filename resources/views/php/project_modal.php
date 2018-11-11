@@ -1,4 +1,5 @@
 <div id="projectModal" class="modal fade" role="dialog">
+
     <div class="modal-dialog">
         <form method="post" name="add_new_project_form" id="add_new_project_form">
             <div class="modal-content">

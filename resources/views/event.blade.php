@@ -17,6 +17,8 @@
 @section('main')
     @parent
 
+     @include('/php/custom_alert_window')
+
     <div class="container-fluid sidebar_section">
         <div class="row">
             <div class="col-sm-3 col-md-2 d-none d-sm-block">
@@ -89,7 +91,7 @@
                 <div class="container review_section">
                     <div class="row align-items-center">
                         @if($reviews->isEmpty())
-                            <div><p>No reviews for this event yet.</p></div>
+                            <div id="reviews_msg"><p >No reviews for this event yet.</p></div>
                         @else
                             @foreach($reviews as $review)
                                 <div class="col-md-4 col-sm-6">
@@ -194,21 +196,12 @@
                     <button class="cancel_btn" id="cancel_event" type="reset">
                         <h6>Cancel</h6>
                     </button>
-                    <div id="msg"></div>
 
 
                 </form>
 
-                <div class="msg"></div>
-
-
-
-
-
-
+           
             </div>
-
-
 
         </div>
     </div>
@@ -221,6 +214,13 @@
 
 @section('include_js')
     <script src={{ URL::asset('js/char_counter.js')}}></script>
+    <script src={{URL::asset('js/slider.js')}}></script>
+    <script src={{URL::asset('js/going_button.js')}}></script>
+    <script src={{URL::asset('js/ungoing_btn.js')}}></script>
+    <script src={{URL::asset('js/edit_event.js')}}></script>
+    <script src={{URL::asset('js/submit_review.js')}}></script>
+
+
 @endsection
 
 

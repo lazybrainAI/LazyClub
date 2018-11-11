@@ -6,6 +6,9 @@
     padding-left: 0;
     display: block;
   }
+  #change-username-div {
+      margin-top: 15%!important;
+    }
 
 }
 
@@ -40,32 +43,47 @@
   .profile_details {
     width: 40%;
   }
+
+  .home_section .p_e_card {
+    margin-left: 25px;
+    margin-right: 25px;
+
+  }
+
+  .event_date_right {
+    margin-left: -25px;
+
+  }
+
+  .event_date_left {
+    margin-left: 25px;
+  }
+
 }
 
 
 @media (max-width: 590px){
 
-  #page_top_picture{
-    #toggle_menu_btn{
+  #page_top_picture {
+    #toggle_menu_btn {
       display: block;
     }
   }
   
-  #sidebar_menu{
+  #sidebar_menu {
     display: none;
   }
 
-
-  #page_title{
-    width:50%;
-  }
-  .main_content_section{
-    margin-left:10px;
+  #page_title {
+    width: 50%;
   }
 
+  .main_content_section {
+    margin-left: 10px;
+  }
 
-  .document{
-    width:60%;
+  .document {
+    width: 60%;
   }
 
 
@@ -84,13 +102,24 @@
     content: none;
   }
 
-  .event_date_left, .event_date_right {
+  .home_section .left_section .event_date_left, .home_section .left_section .event_date_right {
     text-align: center !important;
+    margin-left: 0px;
+    margin-right: 0px;
+    height:10px;
+    position: relative;
   }
+
+  .home_section .p_e_card{
+    margin-left:0px;
+    margin-right:0px;
+
+  }
+
 }
 
 
 @media (max-width: 450px){
-
+    
 }
 

@@ -8,6 +8,12 @@
     @include ('/php/page_top_picture')
 @endsection
 
+@section('small_menu')
+    @parent
+    @include ('/php/small_sidebar_menu')
+@endsection
+
+
 @section('main')
     @parent
 
@@ -30,7 +36,7 @@
                                 @foreach($events as $event)
                                     @if($loop->index%2==0)
                                         <div class="row no-gutters justify-content-between">
-                                            <div class="col-sm-6 col-md-5">
+                                            <div class="col-sm-6 col-md-5 ">
                                                 <div class="event_date_right">
                                                     <h6>@include('/php/date')</h6>
                                                 </div>
@@ -49,13 +55,7 @@
                                     @endif
                                 @endforeach
                                 @foreach($events as $event)
-                                    <div class="timeline_circle" id="tml_crcl_{{$loop->index+1}}">
-                                        @if($loop->index%2==0)
-                                            <div class="horizontal_line_right"></div>
-                                        @else
-                                            <div class="horizontal_line_left"></div>
-                                        @endif
-                                    </div>
+                                    <div class="timeline_circle" id="tml_crcl_{{$loop->index+1}}"></div>
                                 @endforeach
                             </div>
                             <div class="see_more_btn no_home_events">
@@ -123,7 +123,7 @@
                         <div class="container people_home_section">
                             <div class="row">
 
-                                @if($users->isEmpty())
+                                @if( count($users)==1)
                                     <div>No members in organization at the moment.</div>
                                 @else
                                     @foreach($users as $user)
@@ -152,4 +152,12 @@
 
         </div>
     </div>
+@endsection
+
+
+@section('include_js')
+
+
+<script src={{URL::asset('js/home_attend_event.js')}}></script>
+<script src={{URL::asset('js/home_unattend_event.js')}}></script>
 @endsection

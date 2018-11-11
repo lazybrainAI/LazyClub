@@ -6,6 +6,8 @@
                     <h5 class="modal-title" id="modal_heading">Upload document</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                
+                <input id="signup-token" name="_token" type="hidden" value="<?php echo csrf_token() ?>">
 
                 <div class="col-sm-12">
                     <label>Title for document</label>
@@ -33,9 +35,9 @@
                     <button type="button" class="add_document" data-dismiss="modal">Close</button>
                     <input type="hidden" name="action" value="document">
 
-
-
                 </div>
+                <p style="margin-left:5px">*Please upload only pdf format with size less than 10MB.</p>
+
 
 
 

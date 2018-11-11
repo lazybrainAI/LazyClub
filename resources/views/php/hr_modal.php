@@ -48,9 +48,11 @@
                         <select name="roles" id="project" required>
                             <?php if($add_new_user=="hr") {?>
                             <option selected>user</option>
-                            <?php } else {?>
+                            <?php } else if($add_new_user=="admin") {?>
                                 <option selected>HR</option>
-                                <option>admin</option>
+                            <?php } else{ ?>
+                                <option selected>admin</option>
+
                             <?php } ?>
 
                         </select>

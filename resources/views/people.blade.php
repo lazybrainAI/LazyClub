@@ -3,7 +3,6 @@
 @section('title', 'People')
 
 
-
 @section('page_top_picture')
     @parent
     @include('/php/page_top_picture')
@@ -27,12 +26,12 @@
 
                 <div class="container container-left-margin">
                     <div class="row">
-                        {{--Event header--}}
+                        {{--People header--}}
                         <div class="col-sm-3">
                             <h4 class="section_title" id="all_people_section_title">People</h4>
                         </div>
-                        {{--Add new event button--}}
-                        @if($add_new_user=="hr" || $add_new_user=="admin")
+                        {{--Add new user button--}}
+                        @if($add_new_user=="hr" || $add_new_user=="admin" || $add_new_user=="root" )
                             <div class="col-sm-4 offset-sm-4 div_btn_event_project">
                                 <button class="add_new_project" data-toggle="modal" data-target="#userModal">Add new user
                                 </button>
@@ -44,8 +43,8 @@
 
                 <div class="container">
                     <div class="row" id="all_users">
-                        @if($users->isEmpty())
-                            <div>No people in organization yet.</div>
+                        @if(count($users)==1)
+                            <div style="margin-left:10px">No members yet.</div>
                         @else
                             @foreach($users as $user)
                                 @if($user->id!=1)
@@ -73,6 +72,7 @@
                 </div>
 
 
+
             </div>
 
 
@@ -80,6 +80,7 @@
     </div>
     @include('/php/hr_modal')
 @endsection
+
 @section('include_js')
     <script src={{ URL::asset('js/hrpanel_add_new_user.js') }}></script>
 @endsection

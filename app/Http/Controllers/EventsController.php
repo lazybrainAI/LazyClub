@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function MongoDB\BSON\toJSON;
 use App\Role;
-use App\User;
+use App\SystemRole;
+
 
 class EventsController extends Controller
 {
@@ -48,7 +49,15 @@ class EventsController extends Controller
         }
         $button = "No button";
         $events_language = Language::all();
-        return view('events', compact('events', 'button', 'events_language', 'goings', 'user', 'organizers'));
+
+        $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
+        $add_new_event="";
+
+        if($user->SystemRole_id==$hr) {
+            $add_new_event="hr";
+        }
+
+        return view('events', compact('add_new_event','events', 'button', 'events_language', 'goings', 'user', 'organizers'));
     }
 
     private function validateNewEvent($request)

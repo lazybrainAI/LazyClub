@@ -30,7 +30,6 @@ $(document).ready(function () {
         var name= $('#project').text();
 
 
-
         $.ajax({
 
             url:'/project/'+name,
@@ -38,6 +37,7 @@ $(document).ready(function () {
             data:form.serialize(),
 
             success:function (data) {
+
                 $('#save_project').css('display', 'none');
                 $('#cancel_project').css('display', 'none');
                 $('input').prop('disabled', true);
@@ -46,23 +46,36 @@ $(document).ready(function () {
                 $('input').removeClass('style_input');
                 $('textarea').removeClass('style_input');
 
-                $('#msg').css('display', 'block');
-                $('#msg').text("Project saved.").delay(2000).fadeOut(1000);
+                $('#alert-wrapper').show().css('opacity', 1);
+                $('#alert-message').text("Project saved successfully!");
+
+                $('#warning').text("");
+                $('#alert-wrapper').delay(3000).fadeOut(1000);
+                $('#alert-ok-btn').css('display', 'none');             
+                $('#alert-cncl-btn').css('display', 'none');    
 
 
+                
 
-
-                //  $('.msg').text(data.name);
             },
             error:function(data){
-                $('#msg').css('display', 'block');
-                $('#msg').text("Error occured.").delay(2000).fadeOut(1000);
-
-
-
+                $('#alert-wrapper').show().css('opacity', 1);
+                $('#alert-message').text("Something went wrong!");
+                $('#warning').text("*Reload page and try again or contact administrator");
+                $('#alert-ok-btn').css('display', 'none'); 
+                $('#alert-cncl-btn').css('display', 'inline');             
             }
 
         });
+
+    });
+
+     $('#alert-cncl-btn').click(function(e){
+         $('#alert-wrapper').fadeOut(1000);
+         $('#alert-wrapper').hide();
+         $('#cancel_project').trigger('click');
+
+        
 
     });
 

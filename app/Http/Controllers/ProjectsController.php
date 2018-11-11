@@ -10,6 +10,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Project;
 use \Illuminate\Support\Facades\Auth;
+use App\SystemRole;
+
 
 
 class ProjectsController extends Controller
@@ -63,6 +65,14 @@ class ProjectsController extends Controller
         $positions = Role::where('project/event', 'project')->get();
         $project_language = Language::all();
 
+        $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
+        $add_new_project="";
+
+        if($user->SystemRole_id==$hr) {
+            $add_new_project="hr";
+
+        }
+
         if(!$projects->isEmpty()) {
             $teams=array();
             $organizers=array();
@@ -70,12 +80,12 @@ class ProjectsController extends Controller
                 $teams[$project->name]= $this->getProjectsTeams($project);
                 $organizers[$project->name]=$this->getProjectOrganizer($project);
             }
-            return view('projects', compact('projects', 'positions', 'button', 'project_language', 'teams', 'organizers', 'user'));
+            return view('projects', compact('add_new_project','projects', 'positions', 'button', 'project_language', 'teams', 'organizers', 'user'));
 
         }
 
         else {
-            return view('projects', compact('projects', 'positions', 'button', 'project_language'));
+            return view('projects', compact('add_new_project','projects', 'positions', 'button', 'project_language'));
 
         }
 
@@ -135,6 +145,14 @@ class ProjectsController extends Controller
         if($applications!=null){
             foreach($applications as $application){
                 $application->delete();
+
+            }
+        }
+
+        $documents=$project->dosuments;
+        if($documents!=null){
+            foreach($documents as $doc){
+                $doc->delete();
 
             }
         }

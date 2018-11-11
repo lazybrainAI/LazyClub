@@ -109,9 +109,16 @@ function showDivs(n) {
     }
     ;
     for (i; i < x.length; i++) {
-        x[i].style.display = "none";
+        if(typeof x[i]!= 'undefined'){
+            x[i].style.display = "none";
+
+        }
     }
-    x[slideIndex - 1].style.display = "block";
+
+    if(typeof x[slideIndex-1] != 'undefined'){
+        x[slideIndex - 1].style.display = "block";
+            
+    }
 }
 
 

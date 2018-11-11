@@ -57,7 +57,7 @@ class DocumentsController extends Controller
 
 
             $extension = $request->file('document')->getClientOriginalExtension();
-            $dir = 'documents/'.$user->id.'/';
+            $dir = 'documents/'.$project->name.'/'.$user->username.'/';
             $filename=time().'.'.$extension;
 
             $request->file('document')->move($dir, $filename);
@@ -67,7 +67,9 @@ class DocumentsController extends Controller
             $msg="Document uploaded!";
             $name=$request['title'];
             $date='/'.$document->date_uploaded;
-            return response()->json(['msg'=>$msg, 'name'=>$name, 'date'=>$date, 'link'=>$dir.$filename]);
+            $date_to_display=date("d/m/Y", strtotime($document->date_uploaded));
+            
+            return response()->json(['msg'=>$msg, 'name'=>$name, 'date'=>$date_to_display, 'link'=>$dir.$filename]);
 
 
         }

@@ -18,6 +18,8 @@
 @section('main')
     @parent
 
+    @include('/php/custom_alert_window')
+    
     <div class="container-fluid sidebar_section">
         <div class="row">
             <div class="col-sm-3 col-md-2 d-none d-sm-block">
@@ -140,9 +142,6 @@
                 </div>
 
 
-
-
-
                 <div class="container container-left-margin">
                     <div class="row">
                         <div class="col-5 col-sm-4 col-md-3  col-lg-2">
@@ -194,7 +193,7 @@
                             <div class="container">
                                 <div class="row">
                                     @foreach($existing_positions as $existing_position=>$user)
-                                        <div class="col-sm-6 col-6 "> <!-- personal_info -->
+                                        <div class="col-md-6 col-12 "> <!-- personal_info -->
                                             <div style="margin-bottom:20px">
                                                 @if($click=="Yes")
                                                     <img class="attendees_img not_clicked" src={{ URL::asset($user->photo_link) }} id="attendee_{{$existing_position}}"/>
@@ -260,8 +259,7 @@
                     <button class="cancel_btn" id="cancel_project" type="reset">
                         <h6>Cancel</h6>
                     </button>
-                    <div id="msg"></div>
-
+                   
 
                 </form>
 
@@ -282,6 +280,12 @@
 
 @section('include_js')
     <script src={{ URL::asset('js/char_counter.js')}}></script>
+    <script src={{URL::asset('js/edit_project.js')}}></script>
+        
+    <script src={{URL::asset('js/submit_project_review.js')}}></script>
+    <script src={{URL::asset('js/project_submit_application.js')}}></script>
+    <script src={{URL::asset('js/add_team_member.js')}}></script>
+    <script src={{URL::asset('js/hide_team_applications.js')}}></script>
 @endsection
 
 

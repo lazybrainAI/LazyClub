@@ -36,7 +36,7 @@ class CreateSystemRolesTable extends Migration
         );
         DB::table('system_roles')->insert(
             array(
-                'role_name' => 'lazy_bot'
+                'role_name' => 'root'
             )
         );
     }

@@ -43,7 +43,7 @@ class CreateUsersTable extends Migration
                 'name' => 'Lazy',
                 'surname'=>'Member',
                 'username'=>'lazybot',
-                'password'=>'lazybot',
+                'password'=>'$2y$10$mznl1KDEmyQ466frhXbUK.haBqp7liXg39CmO.5VyBfDBww3G.zSO',
                 'email'=>'lazy@bot',
                 'photo_link'=>'img/user_icon.png',
                 'join_date'=>Carbon::now(),

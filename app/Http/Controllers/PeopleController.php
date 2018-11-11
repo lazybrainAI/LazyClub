@@ -33,8 +33,10 @@ class PeopleController extends Controller
 
         $user_clicked=Auth::user();
 
-        $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
         $admin=SystemRole::where('role_name', 'admin')->get()->first()->id;
+        $hr=SystemRole::where('role_name', 'HR')->get()->first()->id;
+        $super_admin=SystemRole::where('role_name', 'root')->get()->first()->id;
+
 
         if($user_clicked->SystemRole_id==$hr) {
             $add_new_user="hr";
@@ -43,8 +45,12 @@ class PeopleController extends Controller
         elseif($user_clicked->SystemRole_id==$admin){
             $add_new_user="admin";
         }
-        else{
+        elseif($user_clicked->SystemRole_id==$super_admin){
+            $add_new_user="root";
+        }
+        else {
             $add_new_user="other";
+
         }
 
 

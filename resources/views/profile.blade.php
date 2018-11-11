@@ -84,7 +84,7 @@
                                                                 @endif
                                                             </select></h6>
 
-                        <h6 class="h7" id="strength">Strength / {{$user->strength}}</h6>
+                    {{--    <h6 class="h7" id="strength">Strength / {{$user->strength}}</h6> --}}
 
                     </div>
 
@@ -253,6 +253,11 @@
     <script src={{ URL::asset('js/resizeable_fields.js')}}></script>
     <script src={{ URL::asset('js/char_counter.js')}}></script>
     <script src={{ URL::asset('js/hide_input_field.js')}}></script>
+        
+    <script src={{URL::asset('js/edit_profile.js')}}></script>
+    <script src={{URL::asset('js/add_delete_education.js')}}></script>
+    <script src={{URL::asset('js/add_delete_experience.js')}}></script>
+    <script src={{URL::asset('js/upload_image.js')}}></script>
 
 @endsection
 

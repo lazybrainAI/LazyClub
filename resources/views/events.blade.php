@@ -32,10 +32,14 @@
                             <h4 class="section_title" id="all_events_section_title">All events</h4>
                         </div>
                         {{--Add new event button--}}
-                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
-                            <button class="add_new_event" data-toggle="modal" data-target="#myModal">Add new event
-                            </button>
-                        </div>
+                        @if($add_new_event=="hr")
+                            <div class="col-sm-4 offset-sm-4 div_btn_event_project">
+                                <button class="add_new_event" data-toggle="modal" data-target="#myModal">Add new
+                                </button>
+                            </div>
+
+                        @endif
+
                     </div>
                 </div>
                 {{--Event section--}}
@@ -55,12 +59,17 @@
             </div>
         </div>
     </div>
-
     {{--Modal--}}
     @include('/php/modal')
+    @include('/php/custom_alert_window')
+
 @endsection
 @section('include_js')
     <script src={{ URL::asset('js/show_no_events_div.js') }}></script>
     <script src={{ URL::asset('js/events_delete_event.js') }}></script>
     <script src={{ URL::asset('js/events_add_new_event.js') }}></script>
+        
+    <script src={{URL::asset('js/events_unattend_event.js')}}></script>
+    <script src={{URL::asset('js/events_attend_event.js')}}></script>
+
 @endsection

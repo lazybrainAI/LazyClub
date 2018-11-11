@@ -10,8 +10,13 @@
     @include ('/php/small_sidebar_menu')
 @endsection
 
+
+
 @section('main')
     @parent
+
+    @include('/php/custom_alert_window')
+    
     <div class="container-fluid sidebar_section">
         <div class="row">
             {{--Side bar--}}
@@ -26,11 +31,13 @@
                             <h4 class="section_title" id="all_projects_section_title">All projects</h4>
                         </div>
                         {{--Add new project button--}}
-                        <div class="col-sm-4 offset-sm-4 div_btn_event_project">
-                            <button class="add_new_project" data-toggle="modal" data-target="#projectModal">Add new
-                                project
-                            </button>
-                        </div>
+                        @if($add_new_project=="hr")
+                            <div class="col-sm-4 offset-sm-4 div_btn_event_project">
+                                <button class="add_new_project" data-toggle="modal" data-target="#projectModal">Add new</button>
+                            </div>
+
+                        @endif
+
                     </div>
                 </div>
                 {{--Projects section--}}
@@ -51,6 +58,8 @@
     </div>
     {{--Modal--}}
     @include('/php/project_modal')
+
+
 @endsection
 @section('include_js')
     <script src={{ URL::asset('js/show_no_projects_div.js')}}></script>
